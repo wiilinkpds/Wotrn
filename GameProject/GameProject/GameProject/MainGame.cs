@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using GameProject.Menus;
 using GameProject.Managers;
+using GameProject.UtilsFun;
 
 namespace GameProject
 {
@@ -47,8 +48,8 @@ namespace GameProject
 
         protected override void Update(GameTime gameTime)
         {
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-            //    this.Exit();
+            if (Utils.Down(Keys.Enter) && MainMenu.choiceMenu() == 5)
+              Exit();
 
 
             base.Update(gameTime);
@@ -59,9 +60,7 @@ namespace GameProject
             GraphicsDevice.Clear(Color.Black);
             SpriteBatch.Begin();
 
-
             MainMenu.mainMenu();
-
 
             SpriteBatch.End();
             base.Draw(gameTime);
