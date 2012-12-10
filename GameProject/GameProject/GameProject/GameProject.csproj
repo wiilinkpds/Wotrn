@@ -16,8 +16,8 @@
     <XnaProfile>HiDef</XnaProfile>
     <XnaCrossPlatformGroupID>1147bd19-1a74-4fb1-a872-578c09a0002f</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
-    <ApplicationIcon>Icons\Game.ico</ApplicationIcon>
-    <Thumbnail>Icons\GameThumbnail.png</Thumbnail>
+    <ApplicationIcon>_Program\Game.ico</ApplicationIcon>
+    <Thumbnail>_Program\GameThumbnail.png</Thumbnail>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -107,16 +107,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Managers\TexturesManager.cs" />
-    <Compile Include="Menus\MainMenu.cs" />
+    <Compile Include="Menus\GraphicM.cs" />
+    <Compile Include="Menus\LoadM.cs" />
+    <Compile Include="Menus\MainM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="_Program\Program.cs" />
     <Compile Include="MainGame.cs" />
-    <Compile Include="UtilsFun\Utils.cs" />
+    <Compile Include="_UtilsFun\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Icons\Game.ico" />
-    <Content Include="Icons\GameThumbnail.png" />
+    <Content Include="_Program\Game.ico" />
+    <Content Include="_Program\GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameProjectContent\GameProjectContent.contentproj">

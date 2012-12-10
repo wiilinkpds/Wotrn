@@ -1,9 +1,8 @@
 Content\Sprites\Arbrebeta.xnb
-Content\Sprites\Balle.xnb
-Content\Sprites\Flammes.xnb
 Content\Sprites\Herbe.xnb
-Content\Sprites\Nemesis.xnb
-Content\Sprites\Rack.xnb
-Content\Sprites\Dialogues.xnb
-Content\Sprites\Test.xnb
-Content\Sprites\Titre.xnb
+Content\Sprites\Menu\Ville.xnb
+Content\Sprites\Menu\Rack.xnb
+Content\Sprites\Menu\SpriteFonts\Titre.xnb
+Content\Sprites\Joueur.xnb
+Content\Sprites\Menu\Flamme.xnb
+Content\Sprites\Menu\SpriteFonts\Menu.xnb

@@ -13,3 +13,17 @@ C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\obj\x86\Debug\Resol
 C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\obj\x86\Debug\GameProject.exe
 C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\obj\x86\Debug\GameProject.pdb
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Arbrebeta.xnb
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Herbe.xnb
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\GameProject.exe
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\GameProject.pdb
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\obj\x86\Debug\GameProject.exe
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\obj\x86\Debug\GameProject.pdb
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Ville.xnb
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Rack.xnb
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\SpriteFonts\Titre.xnb
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Joueur.xnb
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Flamme.xnb
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\SpriteFonts\Menu.xnb
