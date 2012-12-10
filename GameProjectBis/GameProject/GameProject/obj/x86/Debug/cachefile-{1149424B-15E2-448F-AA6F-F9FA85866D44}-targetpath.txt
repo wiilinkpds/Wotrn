@@ -1,0 +1,9 @@
+Content\Sprites\Arbrebeta.xnb
+Content\Sprites\Balle.xnb
+Content\Sprites\Flammes.xnb
+Content\Sprites\Herbe.xnb
+Content\Sprites\Nemesis.xnb
+Content\Sprites\Rack.xnb
+Content\Sprites\Dialogues.xnb
+Content\Sprites\Test.xnb
+Content\Sprites\Titre.xnb
