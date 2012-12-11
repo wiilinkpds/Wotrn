@@ -27,7 +27,6 @@ namespace GameProject
         private Sprite balle;
         private Sprite[] Decor;
         private bool MenuLaunch;
-        private Sprite Decor_0;
         private Vector2[] posDec;
         private Vector2 posBal;
 
@@ -39,15 +38,17 @@ namespace GameProject
 
         protected override void Initialize()
         {
-            posDec = new Vector2[1];
-            posDec[0] = Vector2.Zero;
-            posBal = new Vector2(ScreenX/2,ScreenY/2);
-            Decor = new Sprite[1];
+            posDec = new Vector2[2];
+            posBal = Vector2.Zero;
+            posDec[0] = new Vector2(ScreenX / 2, ScreenY / 2);
+            posDec[1] = new Vector2(ScreenX / 3, ScreenY / 3);
+            Decor = new Sprite[2];
             balle = new Sprite();
             balle.Initialize(posBal);
             Decor[0] = new Sprite();
-            Decor_0 = Decor[0];
-            Decor_0.Initialize(posDec[0]);
+            Decor[1] = new Sprite();
+            Decor[0].Initialize(posDec[0]);
+            Decor[1].Initialize(posDec[1]);
             MenuLaunch = true;
             base.Initialize();
         }
@@ -55,7 +56,8 @@ namespace GameProject
         protected override void LoadContent()
         {
             balle.LoadContent(Content, "Sprites/Balle");
-            Decor_0.LoadContent(Content,"Sprites/Arbrebeta");
+            Decor[0].LoadContent(Content,"Sprites/Arbrebeta");
+            Decor[1].LoadContent(Content, "Sprites/Arbrebeta");
             SpriteBatch = new SpriteBatch(GraphicsDevice);
             TexturesMenu = new TexturesManager();
             TexturesMenu.LoadMenu(Content);
@@ -72,7 +74,6 @@ namespace GameProject
             if (MenuLaunch && !MainMenu.choiceMade(MenuLaunch))
                 MenuLaunch = false;
             balle.Update(Decor, posDec);
-
             
             base.Update(gameTime);
         }
@@ -87,7 +88,8 @@ namespace GameProject
             {
                 GraphicsDevice.Clear(Color.Blue);
                 balle.Draw(SpriteBatch, gameTime);
-                Decor_0.Draw(SpriteBatch, gameTime);
+                Decor[0].Draw(SpriteBatch, gameTime);
+                Decor[1].Draw(SpriteBatch, gameTime);
             }
             SpriteBatch.End();
             base.Draw(gameTime);

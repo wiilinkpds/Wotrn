@@ -24,13 +24,13 @@ namespace GameProject.Managers
             {
                 /* Verifie respectivement si le joueurs est en contact avec un element du décors a Droite, a Gauche, au dessus ou en dessous de lui 
                  Si c'est le cas Col... est true */
-                if (VectJ.X + TextJ.Width == VectTab[i].X && Vect.Y + TextJ.Height > VectTab[i].Y && Vect.Y + TextJ.Height < VectTab[i].Y + TextTab[i].Height()) 
+                if (VectJ.X + TextJ.Width == VectTab[i].X && VectJ.Y + TextJ.Height > VectTab[i].Y && VectJ.Y < VectTab[i].Y + TextTab[i].Height()) 
                     ColDroit = true;
-                if (VectJ.X == VectTab[i].X + VectTab[i].Width() && Vect.Y + TextJ.Height > VectTab[i].Y && Vect.Y + TextJ.Height < VectTab[i].Y + TextTab[i].Height())
+                if (VectJ.X == VectTab[i].X + TextTab[i].Width() && VectJ.Y + TextJ.Height > VectTab[i].Y && VectJ.Y < VectTab[i].Y + TextTab[i].Height())
                     ColGauche = true;
-                if (VectJ.Y == VectTab[i].Y + VectTab[i].Height() && Vect.X > VectTab[i].X && Vect.X < VectTab[i].X + TextTab[i].Width())
+                if (VectJ.Y == VectTab[i].Y + TextTab[i].Height() && VectJ.X + TextJ.Width > VectTab[i].X && VectJ.X < VectTab[i].X + TextTab[i].Width())
                     ColHaut = true;
-                if (VectJ.Y + TextJ.Height == VectTab[i].Y && Vect.X > VectTab[i].X && Vect.X < VectTab[i].X + TextTab[i].Width())
+                if (VectJ.Y + TextJ.Height == VectTab[i].Y && VectJ.X + TextJ.Width > VectTab[i].X && VectJ.X < VectTab[i].X + TextTab[i].Width())
                     ColBas = true;
             }
 
