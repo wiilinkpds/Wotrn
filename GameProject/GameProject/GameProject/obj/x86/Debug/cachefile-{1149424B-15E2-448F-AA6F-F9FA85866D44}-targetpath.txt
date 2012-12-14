@@ -1,8 +1,10 @@
 Content\Sprites\Arbrebeta.xnb
 Content\Sprites\Herbe.xnb
-Content\Sprites\Menu\Ville.xnb
 Content\Sprites\Menu\Rack.xnb
-Content\Sprites\Menu\SpriteFonts\Titre.xnb
+Content\Sprites\Menu\Ville.xnb
 Content\Sprites\Joueur.xnb
 Content\Sprites\Menu\Flamme.xnb
+Content\Sprites\Menu\Logo.xnb
+Content\Sprites\Menu\Goutte.xnb
 Content\Sprites\Menu\SpriteFonts\Menu.xnb
+Content\Sprites\Menu\SpriteFonts\Titre.xnb

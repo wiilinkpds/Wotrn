@@ -1,12 +1,5 @@
 C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Arbrebeta.xnb
-C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Balle.xnb
-C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Flammes.xnb
 C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Herbe.xnb
-C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Nemesis.xnb
-C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Rack.xnb
-C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Dialogues.xnb
-C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Test.xnb
-C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Titre.xnb
 C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\GameProject.exe
 C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\GameProject.pdb
 C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\obj\x86\Debug\ResolveAssemblyReference.cache
@@ -27,3 +20,13 @@ F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Conte
 F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Joueur.xnb
 F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Flamme.xnb
 F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\SpriteFonts\Menu.xnb
+C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Rack.xnb
+C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Ville.xnb
+C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Joueur.xnb
+C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Flamme.xnb
+C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\SpriteFonts\Menu.xnb
+C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\SpriteFonts\Titre.xnb
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Logo.xnb
+C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Logo.xnb
+C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Goutte.xnb
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Goutte.xnb

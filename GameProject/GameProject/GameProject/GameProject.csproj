@@ -108,9 +108,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Menus\GraphicM.cs" />
+    <Compile Include="Menus\IngameM.cs" />
     <Compile Include="Menus\LoadM.cs" />
     <Compile Include="Menus\MainM.cs" />
+    <Compile Include="Managers\MoteurPhysique.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Managers\Sprite.cs" />
     <Compile Include="_Program\Program.cs" />
     <Compile Include="MainGame.cs" />
     <Compile Include="_UtilsFun\Utils.cs" />

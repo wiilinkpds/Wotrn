@@ -14,12 +14,16 @@ namespace GameProject.Menus
 {
     public class GraphicM
     {
-        // Desing du Menu
+        static private Vector2 posGoutte = new Vector2(0, 0);
+
+        // Design du Menu
         public static void graphMenu(int ScreenX, int ScreenY, SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(LoadM.Ville, new Vector2(0, 0), Color.White); // Image de fond
-            spriteBatch.Draw(LoadM.Rack, new Vector2(500, 400), Color.White); // Rack
             spriteBatch.DrawString(LoadM.Titre, "Wrath of the Rack Ninja", new Vector2(80, 50), Color.Red); // Titre
+            spriteBatch.Draw(LoadM.Flamme, new Vector2(100, 120), Color.White);
+            spriteBatch.Draw(LoadM.Flamme, new Vector2(90 + LoadM.Flamme.Width, 120), Color.White);
+            spriteBatch.Draw(LoadM.Goutte, posGoutte, Color.White);
         }
 
     }
