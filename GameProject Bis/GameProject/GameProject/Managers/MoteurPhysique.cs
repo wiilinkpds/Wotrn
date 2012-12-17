@@ -17,32 +17,32 @@ namespace GameProject.Managers
     {
         static private int vitesse = 1;
 
-        static public Vector2 Colision (Vector2[] VectTab,Sprite[] TextTab,Vector2 VectJ,Texture2D TextJ)
+        static public void Colision (Sprite[] TextTab,Sprite TextJ)
         {
             bool ColDroit = false, ColGauche = false , ColHaut = false , ColBas = false;
-            for (int i = 0; i < VectTab.Length; i++)
+            for (int i = 0; i < TextTab.Length; i++)
             {
-                /* Verifie respectivement si le joueurs est en contact avec un element du décors a Droite, a Gauche, au dessus ou en dessous de lui 
+                /*Verifie respectivement si le joueurs est en contact avec un element du décors a Droite, a Gauche, au dessus ou en dessous de lui 
                  Si c'est le cas Col... est true */
-                if (VectJ.X + TextJ.Width == VectTab[i].X && VectJ.Y + TextJ.Height > VectTab[i].Y && VectJ.Y < VectTab[i].Y + TextTab[i].Height()) 
+                if (TextJ.Position.X + TextJ.Width() == TextTab[i].Position.X && TextJ.Position.Y + TextJ.Height() > TextTab[i].Position.Y && TextJ.Position.Y < TextTab[i].Position.Y + TextTab[i].Height()) 
                     ColDroit = true;
-                if (VectJ.X == VectTab[i].X + TextTab[i].Width() && VectJ.Y + TextJ.Height > VectTab[i].Y && VectJ.Y < VectTab[i].Y + TextTab[i].Height())
+                if (TextJ.Position.X == TextTab[i].Position.X + TextTab[i].Width() && TextJ.Position.Y + TextJ.Height() > TextTab[i].Position.Y && TextJ.Position.Y < TextTab[i].Position.Y + TextTab[i].Height())
                     ColGauche = true;
-                if (VectJ.Y == VectTab[i].Y + TextTab[i].Height() && VectJ.X + TextJ.Width > VectTab[i].X && VectJ.X < VectTab[i].X + TextTab[i].Width())
+                if (TextJ.Position.Y == TextTab[i].Position.Y + TextTab[i].Height() && TextJ.Position.X + TextJ.Width() > TextTab[i].Position.X && TextJ.Position.X < TextTab[i].Position.X + TextTab[i].Width())
                     ColHaut = true;
-                if (VectJ.Y + TextJ.Height == VectTab[i].Y && VectJ.X + TextJ.Width > VectTab[i].X && VectJ.X < VectTab[i].X + TextTab[i].Width())
+                if (TextJ.Position.Y + TextJ.Height() == TextTab[i].Position.Y && TextJ.Position.X + TextJ.Width() > TextTab[i].Position.X && TextJ.Position.X < TextTab[i].Position.X + TextTab[i].Width())
                     ColBas = true;
             }
 
                 if (Utils.Down(Keys.Up) &&  !ColHaut)
-                            VectJ.Y -= vitesse;
+                            TextJ.Position = new Vector2 (TextJ.Position.X ,TextJ.Position.Y - vitesse);
                 if (Utils.Down(Keys.Down) && !ColBas)
-                            VectJ.Y += vitesse;
+                            TextJ.Position = new Vector2(TextJ.Position.X, TextJ.Position.Y + vitesse);
                 if (Utils.Down(Keys.Right) && !ColDroit)
-                            VectJ.X += vitesse;
+                            TextJ.Position = new Vector2(TextJ.Position.X + vitesse, TextJ.Position.Y);
                 if (Utils.Down(Keys.Left) && !ColGauche)
-                            VectJ.X -= vitesse;
-            return VectJ;
+                            TextJ.Position = new Vector2(TextJ.Position.X - vitesse, TextJ.Position.Y);
+            
         }
     }
 }
