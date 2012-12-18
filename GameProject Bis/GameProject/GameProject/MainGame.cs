@@ -21,8 +21,8 @@ namespace GameProject
 
         static public TexturesManager TexturesMenu { get; private set; }
 
-        public const int ScreenX = 1024;
-        public const int ScreenY = 768;
+        public const int ScreenX = 1680;
+        public const int ScreenY = 1050;
 
         private Sprite balle;
         private Sprite[] Decor;
@@ -36,14 +36,14 @@ namespace GameProject
 
         protected override void Initialize()
         {
-            Decor = new Sprite[10];
+            Decor = new Sprite[1000];
             balle = new Sprite();
-            balle.Initialize(Vector2.Zero);
+            balle.Initialize(new Vector2(ScreenX / 2 , ScreenY /2));
             Random rand = new Random();
             for (int i = 0; i < Decor.Length; i++)
             {
                 Decor[i] = new Sprite();
-                Decor[i].Initialize(new Vector2(rand.Next(0, ScreenX), rand.Next(0, ScreenY)));
+                Decor[i].Initialize(new Vector2(rand.Next(- 5 *ScreenX , 5 * ScreenX), rand.Next(- 5 * ScreenY , 5 * ScreenY)));
             }
             MenuLaunch = true;
             base.Initialize();
