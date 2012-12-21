@@ -107,6 +107,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animation\SpriteAnimation.cs" />
+    <Compile Include="Animation\SpriteManager.cs" />
+    <Compile Include="BackGrounds\Background.cs" />
+    <Compile Include="BackGrounds\LoadBack.cs" />
     <Compile Include="Menus\GraphicM.cs" />
     <Compile Include="Menus\IngameM.cs" />
     <Compile Include="Menus\LoadM.cs" />

@@ -30,3 +30,6 @@ F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Conte
 C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Logo.xnb
 C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Goutte.xnb
 F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Goutte.xnb
+C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\BackGrounds\Fond1.xnb
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\BackGrounds\Fond1.xnb
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\figure_6_13.xnb

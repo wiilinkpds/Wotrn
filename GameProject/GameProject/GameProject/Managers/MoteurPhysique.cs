@@ -15,42 +15,54 @@ namespace GameProject.Managers
 {
     public class MoteurPhysique
     {
-        static private int vitesse = 1;
+        static private int vitesse = 8;
 
-        static public Vector2 Colision(Vector2[] VectTab, Sprite[] TextTab, Vector2 VectJ, Texture2D TextJ, int ScreenX, int ScreenY)
+        static public void Colision(Sprite[] TextTab, Sprite TextJ)
         {
-            bool ColDroit = false, ColGauche = false, ColHaut = false, ColBas = false;
-            for (int i = 0; i < VectTab.Length; i++)
+            for (int j = 0; j < vitesse; j++)
             {
-                /* Verifie respectivement si le joueurs est en contact avec un element du décors a Droite, a Gauche, au dessus ou en dessous de lui 
-                 Si c'est le cas Col... est true */
-                if (VectJ.X     ==  VectTab[i].X  - TextJ.Width
-                    && VectJ.Y  >   VectTab[i].Y  - TextJ.Height  
-                    && VectJ.Y  <   VectTab[i].Y  + TextTab[i].Height())
-                    ColDroit = true;
-                if (VectJ.X     ==  VectTab[i].X  + TextTab[i].Width()
-                    && VectJ.Y  >   VectTab[i].Y  - TextJ.Height 
-                    && VectJ.Y  <   VectTab[i].Y  + TextTab[i].Height())
-                    ColGauche = true;
-                if (VectJ.Y     ==  VectTab[i].Y  + TextTab[i].Height()
-                    && VectJ.X  >   VectTab[i].X  - TextJ.Width 
-                    && VectJ.X  <   VectTab[i].X  + TextTab[i].Width())
-                    ColHaut = true;
-                if (VectJ.Y     ==  VectTab[i].Y - TextJ.Height
-                    && VectJ.X  >   VectTab[i].X - TextJ.Width 
-                    && VectJ.X  <   VectTab[i].X + TextTab[i].Width())
-                    ColBas = true;
-            }
+                bool ColDroit = false, ColGauche = false, ColHaut = false, ColBas = false;
+                for (int i = 0; i < TextTab.Length; i++)
+                {
+                    /*Verifie respectivement si le joueurs est en contact avec un element du décors a Droite, a Gauche, au dessus ou en dessous de lui 
+                     Si c'est le cas Col... est true */
+                    if (TextJ.Position.X + TextJ.Width() == TextTab[i].Position.X && TextJ.Position.Y + TextJ.Height() > TextTab[i].Position.Y && TextJ.Position.Y < TextTab[i].Position.Y + TextTab[i].Height())
+                        ColDroit = true;
+                    if (TextJ.Position.X == TextTab[i].Position.X + TextTab[i].Width() && TextJ.Position.Y + TextJ.Height() > TextTab[i].Position.Y && TextJ.Position.Y < TextTab[i].Position.Y + TextTab[i].Height())
+                        ColGauche = true;
+                    if (TextJ.Position.Y == TextTab[i].Position.Y + TextTab[i].Height() && TextJ.Position.X + TextJ.Width() > TextTab[i].Position.X && TextJ.Position.X < TextTab[i].Position.X + TextTab[i].Width())
+                        ColHaut = true;
+                    if (TextJ.Position.Y + TextJ.Height() == TextTab[i].Position.Y && TextJ.Position.X + TextJ.Width() > TextTab[i].Position.X && TextJ.Position.X < TextTab[i].Position.X + TextTab[i].Width())
+                        ColBas = true;
+                }
 
-            if (Utils.Down(Keys.Up) && !ColHaut)
-                VectJ.Y -= vitesse;
-            if (Utils.Down(Keys.Down) && !ColBas)
-                VectJ.Y += vitesse;
-            if (Utils.Down(Keys.Right) && !ColDroit)
-                VectJ.X += vitesse;
-            if (Utils.Down(Keys.Left) && !ColGauche)
-                VectJ.X -= vitesse;
-            return VectJ;
+                if (Utils.Down(Keys.Up) && !ColHaut)
+                    DeplacementDecor(TextTab, Keys.Up);
+                //TextJ.Position = new Vector2(TextJ.Position.X, TextJ.Position.Y - vitesse);
+                if (Utils.Down(Keys.Down) && !ColBas)
+                    DeplacementDecor(TextTab, Keys.Down);
+                //TextJ.Position = new Vector2(TextJ.Position.X, TextJ.Position.Y + vitesse);
+                if (Utils.Down(Keys.Right) && !ColDroit)
+                    DeplacementDecor(TextTab, Keys.Right);
+                //TextJ.Position = new Vector2(TextJ.Position.X + vitesse, TextJ.Position.Y);
+                if (Utils.Down(Keys.Left) && !ColGauche)
+                    DeplacementDecor(TextTab, Keys.Left);
+                //TextJ.Position = new Vector2(TextJ.Position.X - vitesse, TextJ.Position.Y);
+            }
+        }
+        static private void DeplacementDecor(Sprite[] SpritTab, Keys Key)
+        {
+            for (int i = 0; i < SpritTab.Length; i++)
+            {
+                if (Key == Keys.Up)
+                    SpritTab[i].Position = new Vector2(SpritTab[i].Position.X, SpritTab[i].Position.Y + 1);
+                if (Key == Keys.Down)
+                    SpritTab[i].Position = new Vector2(SpritTab[i].Position.X, SpritTab[i].Position.Y - 1);
+                if (Key == Keys.Right)
+                    SpritTab[i].Position = new Vector2(SpritTab[i].Position.X - 1, SpritTab[i].Position.Y);
+                if (Key == Keys.Left)
+                    SpritTab[i].Position = new Vector2(SpritTab[i].Position.X + 1, SpritTab[i].Position.Y);
+            }
         }
     }
 }

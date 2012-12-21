@@ -50,9 +50,9 @@ namespace GameProject.Managers
         {
             return _texture.Width;
         }
-        public virtual void Update(Sprite[] textTab, Vector2[] vecTab)
+        public virtual void Update(Sprite[] textTab)
         {
-            _position = MoteurPhysique.Colision(vecTab, textTab, _position, _texture, MainGame.ScreenX, MainGame.ScreenY);
+            MoteurPhysique.Colision(textTab, this);
         }
     }
 }

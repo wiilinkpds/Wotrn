@@ -23,9 +23,13 @@ namespace GameProject.Menus
 
 
         private static Color colorTextMenu = Color.Ivory;
-        private static string[] ingameMenuPos = new string[] {"Retourner sur le Jeu" ,"Quitter vers le Menu Principal", "Quitter vers le Bureau" };
+        public static string[] ingameMenuPos = new string[] {"Retourner sur le Jeu" ,"Sauvegarder","Quitter vers le Menu Principal", "Quitter vers le Bureau" };
 
-
+        static public void InitIngameMenu()
+        {
+            InGameMenu = false;
+            choiceNumber = 0;
+        }
         // Empeche le choix de se "téléporter" grace à la modification de la variable isHold.
         static public int ChoiceIngameMenu()
         {

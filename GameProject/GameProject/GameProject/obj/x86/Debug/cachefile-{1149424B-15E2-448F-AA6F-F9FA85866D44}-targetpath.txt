@@ -6,5 +6,7 @@ Content\Sprites\Joueur.xnb
 Content\Sprites\Menu\Flamme.xnb
 Content\Sprites\Menu\Logo.xnb
 Content\Sprites\Menu\Goutte.xnb
+Content\Sprites\BackGrounds\Fond1.xnb
 Content\Sprites\Menu\SpriteFonts\Menu.xnb
 Content\Sprites\Menu\SpriteFonts\Titre.xnb
+Content\figure_6_13.xnb

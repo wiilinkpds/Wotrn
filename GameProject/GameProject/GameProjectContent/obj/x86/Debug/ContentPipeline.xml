@@ -7,7 +7,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Arbrebeta.xnb</Output>
+      <Output>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Arbrebeta.xnb</Output>
       <Time>2012-12-05T14:08:30.9221114+01:00</Time>
     </Item>
     <Item>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Herbe.xnb</Output>
-      <Time>2012-12-05T14:08:30.9471128+01:00</Time>
+      <Output>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Herbe.xnb</Output>
+      <Time>2012-12-20T12:23:37.0701318+01:00</Time>
     </Item>
     <Item>
       <Source>Sprites\Menu\Rack.png</Source>
@@ -25,7 +25,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Rack.xnb</Output>
+      <Output>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Rack.xnb</Output>
       <Time>2012-12-10T12:57:25.3139004+01:00</Time>
     </Item>
     <Item>
@@ -34,7 +34,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Ville.xnb</Output>
+      <Output>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Ville.xnb</Output>
       <Time>2012-12-08T19:10:53.4500402+01:00</Time>
     </Item>
     <Item>
@@ -43,7 +43,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Joueur.xnb</Output>
+      <Output>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Joueur.xnb</Output>
       <Time>2012-12-11T12:38:31.0563026+01:00</Time>
     </Item>
     <Item>
@@ -52,7 +52,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Flamme.xnb</Output>
+      <Output>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Flamme.xnb</Output>
       <Time>2012-12-09T22:28:30.7206543+01:00</Time>
     </Item>
     <Item>
@@ -61,7 +61,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Logo.xnb</Output>
+      <Output>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Logo.xnb</Output>
       <Time>2012-12-10T19:52:51.2017946+01:00</Time>
     </Item>
     <Item>
@@ -70,8 +70,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Goutte.xnb</Output>
+      <Output>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Goutte.xnb</Output>
       <Time>2012-12-11T12:56:26.3568147+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\BackGrounds\Fond1.png</Source>
+      <Name>Sprites\BackGrounds\Fond1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\BackGrounds\Fond1.xnb</Output>
+      <Time>2012-12-20T12:28:29.2440851+01:00</Time>
     </Item>
     <Item>
       <Source>Sprites\Menu\SpriteFonts\Menu.spritefont</Source>
@@ -79,8 +88,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\SpriteFonts\Menu.xnb</Output>
-      <Time>2012-12-05T14:08:30.9581134+01:00</Time>
+      <Output>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\SpriteFonts\Menu.xnb</Output>
+      <Time>2012-12-18T12:42:06.9663025+01:00</Time>
     </Item>
     <Item>
       <Source>Sprites\Menu\SpriteFonts\Titre.spritefont</Source>
@@ -88,8 +97,17 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\SpriteFonts\Titre.xnb</Output>
+      <Output>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\SpriteFonts\Titre.xnb</Output>
       <Time>2012-12-09T22:48:04.3057795+01:00</Time>
+    </Item>
+    <Item>
+      <Source>figure_6_13.png</Source>
+      <Name>figure_6_13</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\figure_6_13.xnb</Output>
+      <Time>2012-12-20T20:50:01.2983751+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -97,10 +115,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProjectContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProjectContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProjectContent\</RootDirectory>
+      <LoggerRootDirectory>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\</LoggerRootDirectory>
+      <IntermediateDirectory>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProjectContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -129,7 +147,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2011-08-03T17:33:58.6222029+02:00</Value>
+        <Value>2012-10-22T20:31:38.9904276+02:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
