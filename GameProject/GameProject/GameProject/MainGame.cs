@@ -12,26 +12,25 @@ using GameProject.Menus;
 using GameProject.UtilsFun;
 using GameProject.Managers;
 using GameProject.BackGrounds;
+using GameProject.Decors;
 
 namespace GameProject
 {
     public class MainGame : Microsoft.Xna.Framework.Game
     {
-        public const int ScreenX = 1024;
-        public const int ScreenY = 768;
+        public const int ScreenX = 1280;
+        public const int ScreenY = 1024;
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch SpriteBatch;
         private SpriteAnimation loading;
 
         static private LoadM TexturesMenu;
-        static private LoadBack TexturesBack;
         static private bool noHold = true;
 
         // Teddy
         private bool MenuLaunch = true;
 
-        private static Sprite[] Decor = new Sprite[1];
         private Vector2 posJoueur = new Vector2(ScreenX / 2, ScreenY / 2 + 50);
         private Sprite joueur;
 
@@ -49,14 +48,8 @@ namespace GameProject
             joueur = new Sprite();
             joueur.Initialize(posJoueur);
 
-            Decor = new Sprite[1000];
-
             Random rand = new Random();
-            for (int i = 0; i < Decor.Length; i++)
-            {
-                Decor[i] = new Sprite();
-                Decor[i].Initialize(new Vector2(rand.Next(-5 * ScreenX, 5 * ScreenX), rand.Next(-5 * ScreenY, 5 * ScreenY)));
-            }
+
 
             // Teddy
             base.Initialize();
@@ -67,8 +60,6 @@ namespace GameProject
             // Teddy
             joueur.LoadContent(Content, "Sprites/Joueur");
 
-            for (int i = 0; i < Decor.Length; i++)
-                Decor[i].LoadContent(Content, "Sprites/Arbrebeta");
             // Teddy
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);
@@ -76,8 +67,7 @@ namespace GameProject
             TexturesMenu = new LoadM();
             TexturesMenu.LoadMenu(Content);
 
-            TexturesBack = new LoadBack();
-            TexturesBack.LoadBackground(Content);
+            Decor.LoadDecors(Content,2);
 
             // Animation
 
@@ -109,7 +99,7 @@ namespace GameProject
                 noHold = true;
             
             // Teddy
-            joueur.Update(Decor);
+            joueur.Update(Decor.DecorCol(), Decor.back());
             // Teddy
 
             loading.Update(gameTime);
@@ -137,11 +127,7 @@ namespace GameProject
                 }
                 else
                 {
-                    Background.Back(SpriteBatch);
-                    for (int i = 0; i < Decor.Length; i++) // Dessine le tableau de Decor choisi
-                    {
-                        Decor[i].Draw(SpriteBatch, gameTime);
-                    }
+                    Decor.DrawDecors(SpriteBatch, gameTime);
                     joueur.Draw(SpriteBatch, gameTime); // Dessine le Joueur
                     loading.Draw(SpriteBatch);
                 }

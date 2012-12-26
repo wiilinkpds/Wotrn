@@ -14,9 +14,9 @@ namespace GameProject.BackGrounds
 {
     class Background
     {
-        static public void Back(SpriteBatch spriteBatch)
+        static public void Back(SpriteBatch spriteBatch, Vector2 position)
         {
-            spriteBatch.Draw(LoadBack.Fond1, new Vector2(0,0), Color.White);
+            spriteBatch.Draw(LoadBack.Fond1, position, Color.White);
         }
     }
 }

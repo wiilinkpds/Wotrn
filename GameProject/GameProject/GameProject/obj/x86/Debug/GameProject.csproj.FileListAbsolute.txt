@@ -33,3 +33,41 @@ F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Conte
 C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\BackGrounds\Fond1.xnb
 F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\BackGrounds\Fond1.xnb
 F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProject\bin\x86\Debug\Content\figure_6_13.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Arbrebeta.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Herbe.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Rack.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Ville.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Joueur.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Flamme.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Logo.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Goutte.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\BackGrounds\Fond1.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\figure_6_13.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\SpriteFonts\Menu.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\SpriteFonts\Titre.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\GameProject.exe
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\GameProject.pdb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\obj\x86\Debug\GameProject.exe
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\obj\x86\Debug\GameProject.pdb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\BackGrounds\Fond2.xnb
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Arbrebeta.xnb
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Herbe.xnb
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Rack.xnb
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Ville.xnb
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Joueur.xnb
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Flamme.xnb
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Logo.xnb
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\Goutte.xnb
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\BackGrounds\Fond1.xnb
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\bin\x86\Debug\Content\figure_6_13.xnb
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\BackGrounds\Fond2.xnb
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\SpriteFonts\Menu.xnb
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Menu\SpriteFonts\Titre.xnb
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\bin\x86\Debug\GameProject.exe
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\bin\x86\Debug\GameProject.pdb
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\obj\x86\Debug\GameProject.exe
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProject\obj\x86\Debug\GameProject.pdb

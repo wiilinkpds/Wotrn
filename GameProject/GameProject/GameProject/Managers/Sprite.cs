@@ -50,9 +50,9 @@ namespace GameProject.Managers
         {
             return _texture.Width;
         }
-        public virtual void Update(Sprite[] textTab)
+        public virtual void Update(Sprite[] textTab, Sprite background)
         {
-            MoteurPhysique.Colision(textTab, this);
+            MoteurPhysique.Colision(textTab,this, background);
         }
     }
 }

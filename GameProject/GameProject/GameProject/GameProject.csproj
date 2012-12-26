@@ -13,7 +13,7 @@
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
-    <XnaProfile>HiDef</XnaProfile>
+    <XnaProfile>Reach</XnaProfile>
     <XnaCrossPlatformGroupID>1147bd19-1a74-4fb1-a872-578c09a0002f</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>_Program\Game.ico</ApplicationIcon>
@@ -111,6 +111,7 @@
     <Compile Include="Animation\SpriteManager.cs" />
     <Compile Include="BackGrounds\Background.cs" />
     <Compile Include="BackGrounds\LoadBack.cs" />
+    <Compile Include="Decors\Decor.cs" />
     <Compile Include="Menus\GraphicM.cs" />
     <Compile Include="Menus\IngameM.cs" />
     <Compile Include="Menus\LoadM.cs" />

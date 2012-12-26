@@ -17,7 +17,7 @@ namespace GameProject.Managers
     {
         static private int vitesse = 8;
 
-        static public void Colision(Sprite[] TextTab, Sprite TextJ)
+        static public void Colision(Sprite[] TextTab, Sprite TextJ, Sprite Back)
         {
             for (int j = 0; j < vitesse; j++)
             {
@@ -37,20 +37,20 @@ namespace GameProject.Managers
                 }
 
                 if (Utils.Down(Keys.Up) && !ColHaut)
-                    DeplacementDecor(TextTab, Keys.Up);
+                    DeplacementDecor(TextTab, Keys.Up, Back);
                 //TextJ.Position = new Vector2(TextJ.Position.X, TextJ.Position.Y - vitesse);
                 if (Utils.Down(Keys.Down) && !ColBas)
-                    DeplacementDecor(TextTab, Keys.Down);
+                    DeplacementDecor(TextTab, Keys.Down, Back);
                 //TextJ.Position = new Vector2(TextJ.Position.X, TextJ.Position.Y + vitesse);
                 if (Utils.Down(Keys.Right) && !ColDroit)
-                    DeplacementDecor(TextTab, Keys.Right);
+                    DeplacementDecor(TextTab, Keys.Right, Back);
                 //TextJ.Position = new Vector2(TextJ.Position.X + vitesse, TextJ.Position.Y);
                 if (Utils.Down(Keys.Left) && !ColGauche)
-                    DeplacementDecor(TextTab, Keys.Left);
+                    DeplacementDecor(TextTab, Keys.Left, Back);
                 //TextJ.Position = new Vector2(TextJ.Position.X - vitesse, TextJ.Position.Y);
             }
         }
-        static private void DeplacementDecor(Sprite[] SpritTab, Keys Key)
+        static private void DeplacementDecor(Sprite[] SpritTab, Keys Key, Sprite back )
         {
             for (int i = 0; i < SpritTab.Length; i++)
             {
@@ -63,6 +63,14 @@ namespace GameProject.Managers
                 if (Key == Keys.Left)
                     SpritTab[i].Position = new Vector2(SpritTab[i].Position.X + 1, SpritTab[i].Position.Y);
             }
+            if (Key == Keys.Up)
+                back.Position = new Vector2(back.Position.X, back.Position.Y + 1);
+            if (Key == Keys.Down)
+                back.Position = new Vector2(back.Position.X, back.Position.Y - 1);
+            if (Key == Keys.Right)
+                back.Position = new Vector2(back.Position.X - 1, back.Position.Y);
+            if (Key == Keys.Left)
+                back.Position = new Vector2(back.Position.X + 1, back.Position.Y);
         }
     }
 }

@@ -1,2 +1,4 @@
 C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProjectContent\obj\x86\Debug\ResolveAssemblyReference.cache
 F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProjectContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProjectContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Teddy\Documents\wotrn\GameProject\GameProject\GameProjectContent\obj\x86\Debug\ResolveAssemblyReference.cache
