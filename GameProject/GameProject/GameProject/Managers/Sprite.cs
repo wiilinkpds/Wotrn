@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using GameProject.Joueurs;
 
 namespace GameProject.Managers
 {
@@ -38,7 +39,7 @@ namespace GameProject.Managers
             _texture = content.Load<Texture2D>(assetName);
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_texture, _position, Color.White);
         }
@@ -50,9 +51,13 @@ namespace GameProject.Managers
         {
             return _texture.Width;
         }
-        public virtual void Update(Sprite[] textTab, Sprite background)
+        public virtual void Update(Sprite[] textTab, Sprite background, Sprite[] enemis)
         {
-            MoteurPhysique.Colision(textTab,this, background);
+            for (int i = 0; i < enemis.Length; i++)
+            {
+                textTab[textTab.Length - (i + 1)] = enemis[i];
+            }
+            MoteurPhysique.Colision(textTab ,this, background);
         }
     }
 }

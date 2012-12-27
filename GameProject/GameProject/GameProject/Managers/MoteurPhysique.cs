@@ -19,6 +19,7 @@ namespace GameProject.Managers
 
         static public void Colision(Sprite[] TextTab, Sprite TextJ, Sprite Back)
         {
+            bool saut = false;
             for (int j = 0; j < vitesse; j++)
             {
                 bool ColDroit = false, ColGauche = false, ColHaut = false, ColBas = false;
@@ -36,6 +37,7 @@ namespace GameProject.Managers
                         ColBas = true;
                 }
 
+
                 if (Utils.Down(Keys.Up) && !ColHaut)
                     DeplacementDecor(TextTab, Keys.Up, Back);
                 //TextJ.Position = new Vector2(TextJ.Position.X, TextJ.Position.Y - vitesse);
@@ -48,9 +50,18 @@ namespace GameProject.Managers
                 if (Utils.Down(Keys.Left) && !ColGauche)
                     DeplacementDecor(TextTab, Keys.Left, Back);
                 //TextJ.Position = new Vector2(TextJ.Position.X - vitesse, TextJ.Position.Y);
+
+                if (Utils.Down(Keys.Space))
+                {
+                    saut = true;
+                    DeplacementDecor(TextTab, Keys.Up, Back);
+                }
             }
+            if (saut)
+                for (int i = 0; i < vitesse;i++)
+                    DeplacementDecor(TextTab, Keys.Down, Back);
         }
-        static private void DeplacementDecor(Sprite[] SpritTab, Keys Key, Sprite back )
+        static private void DeplacementDecor(Sprite[] SpritTab, Keys Key, Sprite back)
         {
             for (int i = 0; i < SpritTab.Length; i++)
             {
@@ -71,6 +82,32 @@ namespace GameProject.Managers
                 back.Position = new Vector2(back.Position.X - 1, back.Position.Y);
             if (Key == Keys.Left)
                 back.Position = new Vector2(back.Position.X + 1, back.Position.Y);
+        }
+
+        static public void ColisionIa (Sprite[] Entité, Sprite IA, string direct)
+        {
+            bool ColDroit = false, ColGauche = false, ColHaut = false, ColBas = false;
+            for (int i = 0; i < Entité.Length; i++)
+            {
+                /*Verifie respectivement si le joueurs est en contact avec un element du décors a Droite, a Gauche, au dessus ou en dessous de lui 
+                 Si c'est le cas Col... est true */
+                if (IA.Position.X + IA.Width() == Entité[i].Position.X && IA.Position.Y + IA.Height() > Entité[i].Position.Y && IA.Position.Y < Entité[i].Position.Y + Entité[i].Height())
+                    ColDroit = true;
+                if (IA.Position.X == Entité[i].Position.X + Entité[i].Width() && IA.Position.Y + IA.Height() > Entité[i].Position.Y && IA.Position.Y < Entité[i].Position.Y + Entité[i].Height())
+                    ColGauche = true;
+                if (IA.Position.Y == Entité[i].Position.Y + Entité[i].Height() && IA.Position.X + IA.Width() > Entité[i].Position.X && IA.Position.X < Entité[i].Position.X + Entité[i].Width())
+                    ColHaut = true;
+                if (IA.Position.Y + IA.Height() == Entité[i].Position.Y && IA.Position.X + IA.Width() > Entité[i].Position.X && IA.Position.X < Entité[i].Position.X + Entité[i].Width())
+                    ColBas = true;
+            }
+            if (direct == "U" && !ColHaut)
+                IA.Position = new Vector2(IA.Position.X, IA.Position.Y - 1);
+            else if (direct == "D" && !ColBas)
+                IA.Position = new Vector2(IA.Position.X, IA.Position.Y + 1);
+            else if (direct == "L" && !ColGauche)
+                IA.Position = new Vector2(IA.Position.X - 1, IA.Position.Y);
+            else if (direct == "R" && !ColDroit)
+                IA.Position = new Vector2(IA.Position.X + 1, IA.Position.Y);
         }
     }
 }
