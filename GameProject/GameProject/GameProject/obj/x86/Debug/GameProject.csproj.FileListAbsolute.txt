@@ -53,3 +53,6 @@ C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\Gam
 C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\obj\x86\Debug\GameProject.pdb
 C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\BackGrounds\Fond2.xnb
 C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Life.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\cailloux.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\montagne.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Montagne2.xnb

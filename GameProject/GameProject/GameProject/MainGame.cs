@@ -54,11 +54,11 @@ namespace GameProject
             // Teddy
             joueur = new Sprite();
             joueur.Initialize(new Vector2(ScreenX / 2 , ScreenY / 2));
-            Enemis = new Sprite[10];
+            Enemis = new Sprite[1];
             for (int i = 0; i < Enemis.Length;i++)
             {
                 Enemis[i] = new Sprite();
-                Enemis[i].Initialize(new Vector2(rand.Next(- 5 *ScreenX , 5 * ScreenX),rand.Next(-5 * ScreenY, 5 * ScreenY)));
+                Enemis[i].Initialize(new Vector2(rand.Next(0 , ScreenX),rand.Next(0,ScreenY)));
             }
             SLife = new Sprite[life];
             for (int i = 0; i < SLife.Length; i++)
@@ -85,7 +85,7 @@ namespace GameProject
             TexturesMenu = new LoadM();
             TexturesMenu.LoadMenu(Content);
 
-            Decor.LoadDecors(Content,1);
+            Decor.LoadDecors(Content,2);
 
             // Animation
 
@@ -146,6 +146,8 @@ namespace GameProject
                 else
                 {
                     Decor.DrawDecors(SpriteBatch);
+                    for (int i = 0; i < Enemis.Length; i++)
+                        Enemis[i].Draw(SpriteBatch);
                     joueur.Draw(SpriteBatch); // Dessine le Joueur
                     loading.Draw(SpriteBatch);
                     for (int i = 0; i < life; i++)

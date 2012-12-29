@@ -42,16 +42,24 @@ namespace GameProject.Decors
         }
         static private void Decors1(ContentManager content) //Definie les caractéristiques du décors 1
         {
+            int nbArb = 41;
             Back.Initialize(Vector2.Zero);
             Entité = new Sprite[100];
             Back.LoadContent(content, "Sprites/BackGrounds/Fond2");
-            for (int i = 0; i < Entité.Length - 10; i++)
+            for (int i = 0; i < nbArb; i++)
             {
                 Entité[i] = new Sprite();
                 Entité[i].Initialize(new Vector2(80 * i));
             }
-            for (int i = 0; i < Entité.Length - 10; i++)
+            for (int i = 0; i < nbArb; i++)
                 Entité[i].LoadContent(content, "Sprites/Arbrebeta");
+            for (int i = nbArb; i < Entité.Length; i++)
+            {
+                Entité[i] = new Sprite();
+                Entité[i].Initialize(new Vector2(80 * i));
+            }
+            for (int i = nbArb; i < Entité.Length; i++)
+                Entité[i].LoadContent(content, "Sprites/cailloux");
         }
         static private void Decors2(ContentManager content) //Definie les caractéristique du décors 2
         {
@@ -63,13 +71,16 @@ namespace GameProject.Decors
                 Entité[i] = new Sprite();
                 Entité[i].Initialize(new Vector2(80 * i, 0));
             }
-            for (int i = 0; i < Entité.Length - 60; i++)
+            for (int i = 0; i < Entité.Length - 40; i++)
             {
-                Entité[i + 50] = new Sprite();
-                Entité[i + 50].Initialize(new Vector2(0, 80 * i));
+                Entité[i + 40] = new Sprite();
+                Entité[i + 40].Initialize(new Vector2(0, 80 * i));
             }
-            for (int i = 0; i < Entité.Length - 10; i++)
+            for (int i = 0; i < 40; i++)
                 Entité[i].LoadContent(content, "Sprites/Arbrebeta");
+            for (int i = 40; i < Entité.Length; i++)
+                Entité[i].LoadContent(content, "Sprites/cailloux");
+
         }
     }
 }

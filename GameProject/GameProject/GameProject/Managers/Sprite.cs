@@ -53,11 +53,7 @@ namespace GameProject.Managers
         }
         public virtual void Update(Sprite[] textTab, Sprite background, Sprite[] enemis)
         {
-            for (int i = 0; i < enemis.Length; i++)
-            {
-                textTab[textTab.Length - (i + 1)] = enemis[i];
-            }
-            MoteurPhysique.Colision(textTab ,this, background);
+            MoteurPhysique.Colision(textTab ,this, background, enemis);
         }
     }
 }

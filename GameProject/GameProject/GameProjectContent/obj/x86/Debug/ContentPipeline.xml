@@ -127,6 +127,33 @@
       <Output>C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Life.xnb</Output>
       <Time>2012-12-27T16:26:11.3650992+01:00</Time>
     </Item>
+    <Item>
+      <Source>Sprites\cailloux.png</Source>
+      <Name>Sprites\cailloux</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\cailloux.xnb</Output>
+      <Time>2012-12-28T12:11:16.5883381+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\montagne.png</Source>
+      <Name>Sprites\montagne</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\montagne.xnb</Output>
+      <Time>2012-12-28T11:42:03.2890551+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Montagne2.png</Source>
+      <Name>Sprites\Montagne2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Montagne2.xnb</Output>
+      <Time>2012-12-28T11:42:03.2830548+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
