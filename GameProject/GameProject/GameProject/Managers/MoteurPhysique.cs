@@ -65,9 +65,10 @@ namespace GameProject.Managers
         }
         static private void DeplacementDecor(Sprite[] SpritTab, Keys Key, Sprite back, Sprite[] Enemis)
         {
-            for (int i = 0; i < SpritTab.Length; i++)
-            {
-                if (Key == Keys.Up)
+            /* Cette fonction va comme son nom l'indique déplacer le decors en laissant le joueur imobile (il déplace aussi les enemis) */
+            for (int i = 0; i < SpritTab.Length; i++) 
+            {  //Deplace le décors
+                if (Key == Keys.Up) 
                     SpritTab[i].Position = new Vector2(SpritTab[i].Position.X, SpritTab[i].Position.Y + 1);
                 if (Key == Keys.Down)
                     SpritTab[i].Position = new Vector2(SpritTab[i].Position.X, SpritTab[i].Position.Y - 1);
@@ -77,7 +78,7 @@ namespace GameProject.Managers
                     SpritTab[i].Position = new Vector2(SpritTab[i].Position.X + 1, SpritTab[i].Position.Y);
             }
             for (int i = 0; i < Enemis.Length; i++)
-            {
+            {   //Deplace les enemis
                 if (Key == Keys.Up)
                     Enemis[i].Position = new Vector2(Enemis[i].Position.X, Enemis[i].Position.Y + 1);
                 if (Key == Keys.Down)
@@ -87,7 +88,7 @@ namespace GameProject.Managers
                 if (Key == Keys.Left)
                     Enemis[i].Position = new Vector2(Enemis[i].Position.X + 1, Enemis[i].Position.Y);
             }
-            if (Key == Keys.Up)
+            if (Key == Keys.Up)  //Deplace le fonts
                 back.Position = new Vector2(back.Position.X, back.Position.Y + 1);
             if (Key == Keys.Down)
                 back.Position = new Vector2(back.Position.X, back.Position.Y - 1);
@@ -97,7 +98,7 @@ namespace GameProject.Managers
                 back.Position = new Vector2(back.Position.X + 1, back.Position.Y);
         }
 
-/*        static public void ColisionIa (Sprite[] Entité, Sprite IA, string direct)
+/*        static public void ColisionIa (Sprite[] Entité, Sprite IA, string direct)   //A garder on sais jamais ....
         {
             bool ColDroit = false, ColGauche = false, ColHaut = false, ColBas = false;
             for (int i = 0; i < Entité.Length; i++)
@@ -125,9 +126,10 @@ namespace GameProject.Managers
 
         static public void Col(ref bool ColDroit, ref bool ColGauche, ref bool ColHaut, ref bool ColBas, Sprite[] Entité, Sprite Perso)
         {
+            /* Verifie si le Perso est en colision avec quelque chose a modifie les bools en fonction d'ou il est en colision */
             for (int i = 0; i < Entité.Length; i++)
             {
-                /*Verifie respectivement si le joueurs est en contact avec un element du décors a Droite, a Gauche, au dessus ou en dessous de lui 
+                /*Verifie respectivement si le perso est en contact avec un element du décors a Droite, a Gauche, au dessus ou en dessous de lui 
                  Si c'est le cas Col... est true */
                 if (Perso.Position.X + Perso.Width() == Entité[i].Position.X && Perso.Position.Y + Perso.Height() > Entité[i].Position.Y && Perso.Position.Y < Entité[i].Position.Y + Entité[i].Height())
                     ColDroit = true;
@@ -142,6 +144,8 @@ namespace GameProject.Managers
 
         static public void ColEntre2(ref bool ColX, ref bool ColY, Sprite[] Entité, Sprite J1, Sprite J2)
         {
+            /* Cette fonction vas parcourir tous le chemin sur X et Y que le J2 doit faire pour arrivé au J1
+             Si il rencontre quelque chose sur le chemin pour allez a la position du J1 en X colX devient faux de même pour Y*/
             ColX = false; ColY = false;
                 for (int i = 0; i < Entité.Length; i++)
                 {
