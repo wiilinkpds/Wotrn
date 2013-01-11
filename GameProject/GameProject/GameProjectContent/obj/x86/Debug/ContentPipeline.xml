@@ -154,6 +154,16 @@
       <Output>C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Montagne2.xnb</Output>
       <Time>2012-12-28T11:42:03.2830548+01:00</Time>
     </Item>
+    <Item>
+      <Source>Kalimba.mp3</Source>
+      <Name>Kalimba</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Kalimba.xnb</Output>
+      <Extra>C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Kalimba.wma</Extra>
+      <Time>2013-01-10T12:49:11.9822945+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

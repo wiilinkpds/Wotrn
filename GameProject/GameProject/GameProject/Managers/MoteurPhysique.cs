@@ -29,13 +29,13 @@ namespace GameProject.Managers
                 {
                     /*Verifie respectivement si le joueurs est en contact avec un element du décors a Droite, a Gauche, au dessus ou en dessous de lui 
                      Si c'est le cas Col... est true 
-                    if (TextJ.Position.X + TextJ.Width() == Enemis[i].Position.X && TextJ.Position.Y + TextJ.Height() > Enemis[i].Position.Y && TextJ.Position.Y < Enemis[i].Position.Y + Enemis[i].Height())
+                    if (TextJ.Position.X + TextJ.Width == Enemis[i].Position.X && TextJ.Position.Y + TextJ.Height > Enemis[i].Position.Y && TextJ.Position.Y < Enemis[i].Position.Y + Enemis[i].Height)
                         ColDroit = true;
-                    if (TextJ.Position.X == Enemis[i].Position.X + Enemis[i].Width() && TextJ.Position.Y + TextJ.Height() > Enemis[i].Position.Y && TextJ.Position.Y < Enemis[i].Position.Y + Enemis[i].Height())
+                    if (TextJ.Position.X == Enemis[i].Position.X + Enemis[i].Width && TextJ.Position.Y + TextJ.Height > Enemis[i].Position.Y && TextJ.Position.Y < Enemis[i].Position.Y + Enemis[i].Height)
                         ColGauche = true;
-                    if (TextJ.Position.Y == Enemis[i].Position.Y + Enemis[i].Height() && TextJ.Position.X + TextJ.Width() > Enemis[i].Position.X && TextJ.Position.X < Enemis[i].Position.X + Enemis[i].Width())
+                    if (TextJ.Position.Y == Enemis[i].Position.Y + Enemis[i].Height && TextJ.Position.X + TextJ.Width > Enemis[i].Position.X && TextJ.Position.X < Enemis[i].Position.X + Enemis[i].Width)
                         ColHaut = true;
-                    if (TextJ.Position.Y + TextJ.Height() == Enemis[i].Position.Y && TextJ.Position.X + TextJ.Width() > Enemis[i].Position.X && TextJ.Position.X < Enemis[i].Position.X + Enemis[i].Width())
+                    if (TextJ.Position.Y + TextJ.Height == Enemis[i].Position.Y && TextJ.Position.X + TextJ.Width > Enemis[i].Position.X && TextJ.Position.X < Enemis[i].Position.X + Enemis[i].Width)
                         ColBas = true;
                 }*/
 
@@ -68,34 +68,46 @@ namespace GameProject.Managers
             /* Cette fonction va comme son nom l'indique déplacer le decors en laissant le joueur imobile (il déplace aussi les enemis) */
             for (int i = 0; i < SpritTab.Length; i++) 
             {  //Deplace le décors
-                if (Key == Keys.Up) 
+                if (Key == Keys.Up)
+                    //SpritTab[i].rectangle = new Rectangle((int)SpritTab[i].rectangle.X, (int)SpritTab[i].rectangle.Y + 1, (int)SpritTab[i].rectangle.Width, (int)SpritTab[i].rectangle.Height);
                     SpritTab[i].Position = new Vector2(SpritTab[i].Position.X, SpritTab[i].Position.Y + 1);
                 if (Key == Keys.Down)
+                    //SpritTab[i].rectangle = new Rectangle((int)SpritTab[i].rectangle.X, (int)SpritTab[i].rectangle.Y - 1, (int)SpritTab[i].rectangle.Width, (int)SpritTab[i].rectangle.Height);
                     SpritTab[i].Position = new Vector2(SpritTab[i].Position.X, SpritTab[i].Position.Y - 1);
                 if (Key == Keys.Right)
+                    //SpritTab[i].rectangle = new Rectangle((int)SpritTab[i].rectangle.X - 1, (int)SpritTab[i].rectangle.Y, (int)SpritTab[i].rectangle.Width, (int)SpritTab[i].rectangle.Height);
                     SpritTab[i].Position = new Vector2(SpritTab[i].Position.X - 1, SpritTab[i].Position.Y);
                 if (Key == Keys.Left)
+                    //SpritTab[i].rectangle = new Rectangle((int)SpritTab[i].rectangle.X + 1, (int)SpritTab[i].rectangle.Y, (int)SpritTab[i].rectangle.Width, (int)SpritTab[i].rectangle.Height);
                     SpritTab[i].Position = new Vector2(SpritTab[i].Position.X + 1, SpritTab[i].Position.Y);
             }
             for (int i = 0; i < Enemis.Length; i++)
             {   //Deplace les enemis
                 if (Key == Keys.Up)
+                    //Enemis[i].rectangle = new Rectangle((int)Enemis[i].rectangle.X, (int)Enemis[i].rectangle.Y + 1, (int)Enemis[i].rectangle.Width, (int)Enemis[i].rectangle.Height);
                     Enemis[i].Position = new Vector2(Enemis[i].Position.X, Enemis[i].Position.Y + 1);
                 if (Key == Keys.Down)
+                    //Enemis[i].rectangle = new Rectangle((int)Enemis[i].rectangle.X, (int)Enemis[i].rectangle.Y - 1, (int)Enemis[i].rectangle.Width, (int)Enemis[i].rectangle.Height);
                     Enemis[i].Position = new Vector2(Enemis[i].Position.X, Enemis[i].Position.Y - 1);
                 if (Key == Keys.Right)
+                    //Enemis[i].rectangle = new Rectangle((int)Enemis[i].rectangle.X - 1, (int)Enemis[i].rectangle.Y, (int)Enemis[i].rectangle.Width, (int)Enemis[i].rectangle.Height);
                     Enemis[i].Position = new Vector2(Enemis[i].Position.X - 1, Enemis[i].Position.Y);
                 if (Key == Keys.Left)
+                    //Enemis[i].rectangle = new Rectangle((int)Enemis[i].rectangle.X + 1, (int)Enemis[i].rectangle.Y, (int)Enemis[i].rectangle.Width, (int)Enemis[i].rectangle.Height);
                     Enemis[i].Position = new Vector2(Enemis[i].Position.X + 1, Enemis[i].Position.Y);
             }
             if (Key == Keys.Up)  //Deplace le fonts
+                //back.rectangle = new Rectangle((int)back.rectangle.X , (int)back.rectangle.Y + 1, (int)back.rectangle.Width, (int)back.rectangle.Height);
                 back.Position = new Vector2(back.Position.X, back.Position.Y + 1);
             if (Key == Keys.Down)
+                //back.rectangle = new Rectangle((int)back.rectangle.X, (int)back.rectangle.Y - 1, (int)back.rectangle.Width, (int)back.rectangle.Height);
                 back.Position = new Vector2(back.Position.X, back.Position.Y - 1);
             if (Key == Keys.Right)
+                //back.rectangle = new Rectangle((int)back.rectangle.X - 1, (int)back.rectangle.Y, (int)back.rectangle.Width, (int)back.rectangle.Height);
                 back.Position = new Vector2(back.Position.X - 1, back.Position.Y);
             if (Key == Keys.Left)
-                back.Position = new Vector2(back.Position.X + 1, back.Position.Y);
+                //back.rectangle = new Rectangle((int)back.rectangle.X + 1, (int)back.rectangle.Y, (int)back.rectangle.Width, (int)back.rectangle.Height);
+               back.Position = new Vector2(back.Position.X + 1, back.Position.Y);
         }
 
 /*        static public void ColisionIa (Sprite[] Entité, Sprite IA, string direct)   //A garder on sais jamais ....
@@ -105,13 +117,13 @@ namespace GameProject.Managers
             {
                 /*Verifie respectivement si l'ia est en contact avec un element du décors a Droite, a Gauche, au dessus ou en dessous de lui 
                  Si c'est le cas Col... est true
-                if (IA.Position.X + IA.Width() == Entité[i].Position.X && IA.Position.Y + IA.Height() > Entité[i].Position.Y && IA.Position.Y < Entité[i].Position.Y + Entité[i].Height())
+                if (IA.Position.X + IA.Width == Entité[i].Position.X && IA.Position.Y + IA.Height > Entité[i].Position.Y && IA.Position.Y < Entité[i].Position.Y + Entité[i].Height)
                     ColDroit = true;
-                if (IA.Position.X == Entité[i].Position.X + Entité[i].Width() && IA.Position.Y + IA.Height() > Entité[i].Position.Y && IA.Position.Y < Entité[i].Position.Y + Entité[i].Height())
+                if (IA.Position.X == Entité[i].Position.X + Entité[i].Width && IA.Position.Y + IA.Height > Entité[i].Position.Y && IA.Position.Y < Entité[i].Position.Y + Entité[i].Height)
                     ColGauche = true;
-                if (IA.Position.Y == Entité[i].Position.Y + Entité[i].Height() && IA.Position.X + IA.Width() > Entité[i].Position.X && IA.Position.X < Entité[i].Position.X + Entité[i].Width())
+                if (IA.Position.Y == Entité[i].Position.Y + Entité[i].Height && IA.Position.X + IA.Width > Entité[i].Position.X && IA.Position.X < Entité[i].Position.X + Entité[i].Width)
                     ColHaut = true;
-                if (IA.Position.Y + IA.Height() == Entité[i].Position.Y && IA.Position.X + IA.Width() > Entité[i].Position.X && IA.Position.X < Entité[i].Position.X + Entité[i].Width())
+                if (IA.Position.Y + IA.Height == Entité[i].Position.Y && IA.Position.X + IA.Width > Entité[i].Position.X && IA.Position.X < Entité[i].Position.X + Entité[i].Width)
                     ColBas = true;
             }
             if (direct == "U" && !ColHaut)
@@ -131,13 +143,13 @@ namespace GameProject.Managers
             {
                 /*Verifie respectivement si le perso est en contact avec un element du décors a Droite, a Gauche, au dessus ou en dessous de lui 
                  Si c'est le cas Col... est true */
-                if (Perso.Position.X + Perso.Width() == Entité[i].Position.X && Perso.Position.Y + Perso.Height() > Entité[i].Position.Y && Perso.Position.Y < Entité[i].Position.Y + Entité[i].Height())
+                if (Perso.rectangle.Right == Entité[i].rectangle.Left && Perso.rectangle.Bottom > Entité[i].rectangle.Top && Perso.rectangle.Top < Entité[i].rectangle.Bottom)
                     ColDroit = true;
-                if (Perso.Position.X == Entité[i].Position.X + Entité[i].Width() && Perso.Position.Y + Perso.Height() > Entité[i].Position.Y && Perso.Position.Y < Entité[i].Position.Y + Entité[i].Height())
+                if (Perso.rectangle.Left == Entité[i].rectangle.Right && Perso.rectangle.Bottom > Entité[i].rectangle.Top && Perso.rectangle.Top < Entité[i].rectangle.Bottom)
                     ColGauche = true;
-                if (Perso.Position.Y == Entité[i].Position.Y + Entité[i].Height() && Perso.Position.X + Perso.Width() > Entité[i].Position.X && Perso.Position.X < Entité[i].Position.X + Entité[i].Width())
+                if (Perso.rectangle.Top == Entité[i].rectangle.Bottom && Perso.rectangle.Right > Entité[i].rectangle.Left && Perso.rectangle.Left < Entité[i].rectangle.Right)
                     ColHaut = true;
-                if (Perso.Position.Y + Perso.Height() == Entité[i].Position.Y && Perso.Position.X + Perso.Width() > Entité[i].Position.X && Perso.Position.X < Entité[i].Position.X + Entité[i].Width())
+                if (Perso.rectangle.Bottom == Entité[i].rectangle.Top && Perso.rectangle.Right > Entité[i].rectangle.Left && Perso.rectangle.Left < Entité[i].rectangle.Right)
                     ColBas = true;
             }
         }
@@ -149,37 +161,37 @@ namespace GameProject.Managers
             ColX = false; ColY = false;
                 for (int i = 0; i < Entité.Length; i++)
                 {
-                    if (J1.Position.X < J2.Position.X)
+                    if (J1.rectangle.Left < J2.rectangle.Left)
                     {   
-                        if (J1.Position.Y < J2.Position.Y)
+                        if (J1.rectangle.Top < J2.rectangle.Top)
                         {
-                            if (J1.Position.X <= Entité[i].Position.X && Entité[i].Position.X <= J2.Position.X + J2.Width() && J2.Position.Y < Entité[i].Position.Y + Entité[i].Height() && J2.Position.Y + J2.Height() > Entité[i].Position.Y)
+                            if (J1.rectangle.Left <= Entité[i].rectangle.Left && Entité[i].rectangle.Left <= J2.rectangle.Right && J2.rectangle.Top < Entité[i].rectangle.Bottom && J2.rectangle.Bottom > Entité[i].rectangle.Top)
                                 ColX = true;
-                            if (J1.Position.Y <= Entité[i].Position.Y && Entité[i].Position.Y + Entité[i].Height() <= J2.Position.Y&& J2.Position.X < Entité[i].Position.X + Entité[i].Width() && J2.Position.X + J2.Width() > Entité[i].Position.X)
+                            if (J1.rectangle.Top <= Entité[i].rectangle.Top && Entité[i].rectangle.Bottom <= J2.rectangle.Top && J2.rectangle.Left < Entité[i].rectangle.Right && J2.rectangle.Right > Entité[i].rectangle.Left)
                                 ColY = true;
                         }
                         else
                         {
-                            if (J1.Position.X <= Entité[i].Position.X && Entité[i].Position.X <= J2.Position.X + J2.Width() && J2.Position.Y < Entité[i].Position.Y + Entité[i].Height() && J2.Position.Y + J2.Height() > Entité[i].Position.Y)
+                            if (J1.rectangle.Left <= Entité[i].rectangle.Left && Entité[i].rectangle.Left <= J2.rectangle.Right && J2.rectangle.Top < Entité[i].rectangle.Bottom && J2.rectangle.Bottom > Entité[i].rectangle.Top)
                                 ColX = true;
-                            if (J1.Position.Y + J1.Height() >= Entité[i].Position.Y && Entité[i].Position.Y >= J2.Position.Y && J2.Position.X < Entité[i].Position.X + Entité[i].Width() && J2.Position.X + J2.Width() > Entité[i].Position.X)
+                            if (J1.rectangle.Bottom >= Entité[i].rectangle.Top && Entité[i].rectangle.Top >= J2.rectangle.Top && J2.rectangle.Left < Entité[i].rectangle.Right && J2.rectangle.Right > Entité[i].rectangle.Left)
                                 ColY = true;
                         }
                     }
                     else
                     {
-                        if (J1.Position.Y < J2.Position.Y)
+                        if (J1.rectangle.Top < J2.rectangle.Top)
                         {
-                            if (J1.Position.X + J1.Width() >= Entité[i].Position.X && Entité[i].Position.X >= J2.Position.X && J2.Position.Y < Entité[i].Position.Y + Entité[i].Height() && J2.Position.Y + J2.Height() > Entité[i].Position.Y)
+                            if (J1.rectangle.Right >= Entité[i].rectangle.Left && Entité[i].rectangle.Left >= J2.rectangle.Left && J2.rectangle.Top < Entité[i].rectangle.Bottom && J2.rectangle.Bottom > Entité[i].rectangle.Top)
                                 ColX = true;
-                            if (J1.Position.Y <= Entité[i].Position.Y && Entité[i].Position.Y + Entité[i].Height() < J2.Position.Y && J2.Position.X < Entité[i].Position.X + Entité[i].Width() && J2.Position.X + J2.Width() > Entité[i].Position.X)
+                            if (J1.rectangle.Top <= Entité[i].rectangle.Top && Entité[i].rectangle.Bottom < J2.rectangle.Top && J2.rectangle.Left < Entité[i].rectangle.Right && J2.rectangle.Right > Entité[i].rectangle.Left)
                                 ColY = true;
                         }
                         else
                         {
-                            if (J1.Position.X + J1.Width() >= Entité[i].Position.X && Entité[i].Position.X >= J2.Position.X && J2.Position.Y < Entité[i].Position.Y + Entité[i].Height() && J2.Position.Y + J2.Height() > Entité[i].Position.Y)
+                            if (J1.rectangle.Right >= Entité[i].rectangle.Left && Entité[i].rectangle.Left >= J2.rectangle.Left && J2.rectangle.Top < Entité[i].rectangle.Bottom && J2.rectangle.Bottom > Entité[i].rectangle.Top)
                                 ColX = true;
-                            if (J1.Position.Y + J1.Height() >= Entité[i].Position.Y && Entité[i].Position.Y >= J2.Position.Y && J2.Position.X < Entité[i].Position.X + Entité[i].Width() && J2.Position.X + J2.Width() > Entité[i].Position.X)
+                            if (J1.rectangle.Bottom >= Entité[i].rectangle.Top && Entité[i].rectangle.Top >= J2.rectangle.Top && J2.rectangle.Left < Entité[i].rectangle.Right && J2.rectangle.Right > Entité[i].rectangle.Left)
                                 ColY = true;
                         }
                     }

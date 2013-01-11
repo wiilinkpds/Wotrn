@@ -72,6 +72,10 @@ namespace GameProject
 
         protected override void LoadContent()
         {
+            //Sound : 
+            //Song song = Content.Load<Song>("Kalimba");
+            //MediaPlayer.Play(song);
+
             // Teddy
             joueur.LoadContent(Content, "Sprites/Joueur");
             for (int i = 0; i < Enemis.Length; i++)

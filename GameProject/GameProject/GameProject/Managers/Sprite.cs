@@ -29,6 +29,11 @@ namespace GameProject.Managers
         }
         private Vector2 _position;
 
+        public Rectangle rectangle
+        {
+            get { return new Rectangle((int)_position.X, (int)_position.Y + this.Height / 2, this.Width, this.Height / 2);}
+        }
+
         public virtual void Initialize(Vector2 Position_init)
         {
             _position = Position_init;
@@ -41,15 +46,15 @@ namespace GameProject.Managers
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, _position, Color.White);
+            spriteBatch.Draw(_texture,_position, Color.White);
         }
-        public virtual int Height()
+        public int Height
         {
-            return _texture.Height;
+            get { return _texture.Height; }
         }
-        public virtual int Width()
+        public int Width
         {
-            return _texture.Width;
+            get { return _texture.Width; }
         }
         public virtual void Update(Sprite[] textTab, Sprite background, Sprite[] enemis)
         {
