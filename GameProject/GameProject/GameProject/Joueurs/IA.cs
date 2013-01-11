@@ -62,7 +62,7 @@ namespace GameProject.Joueurs
                         coldroit = false; colgauch = false; colhaut = false; colbas = false; //Initialise toutes les colisions a faux
                         MoteurPhysique.Col(ref coldroit, ref colgauch, ref colhaut, ref colbas, entité, Enemis[j]); //Verifie si l'enemis est en colision et où
                         MoteurPhysique.ColEntre2(ref Colx, ref Coly, EntitéDecors, Joueur, Enemis[j]); //Verifie si l'enemis rencontrerais quelque chose sur le chemin en X ou en Y (compliquer a expliquer un dessins serait plus simple ...)
-                        if (Joueur.Position.X + Joueur.Width < Enemis[j].Position.X || Joueur.Position.X > Enemis[j].Position.X + Enemis[j].Width || Joueur.Position.Y + Joueur.Height < Enemis[j].Position.Y || Joueur.Position.Y > Enemis[j].Position.Y + Enemis[j].Height) //Verifie si l'enemis n'est pas en contact avec le joueur
+                        if (!Joueur.rectangle.Intersects(Enemis[j].rectangle)) //Verifie si l'enemis n'est pas en contact avec le joueur
                         { //L'histoire du touche le joueurs je le changerais il y a plus simple je sais 
                             if (Coly && !touchJ && Joueur.Position.Y + Joueur.Height != Enemis[j].Position.Y + Enemis[j].Height) //Si il y a un obstacle entre l'enemis et le joueurs en Y ET que l'enemis ne touche pas le joueur ET que le joueurs et l'enemis ne sont pas au même point Y (A changer la fin aussi)
                             {
@@ -120,7 +120,7 @@ namespace GameProject.Joueurs
                                 Enemis[j].Position = new Vector2(Enemis[j].Position.X, Enemis[j].Position.Y - 1);
                             }
                         }
-                        if (Joueur.rectangle.Intersects(new Rectangle(Enemis[j].rectangle.Left - 1, Enemis[j].rectangle.Top - 1, Enemis[j].rectangle.Width + 1, Enemis[j].rectangle.Height + 1)))
+                        if (Joueur.rectangle.Intersects(new Rectangle(Enemis[j].rectangle.Left - 1, Enemis[j].rectangle.Top - 1, Enemis[j].rectangle.Width + 2, Enemis[j].rectangle.Height + 2)))
                             touchJ = true; //Si le joueur est en contact avec l'enemis touchJ est vrai
 
                          /*if ((Joueur.Position.X - 1 <= Enemis[j].Position.X + Enemis[j].Width && Enemis[j].Position.X <= Joueur.Position.X + Joueur.Height + 1) && (Joueur.Position.Y - 1 <= Enemis[j].Position.Y + Enemis[j].Height && Enemis[j].Position.Y <= Joueur.Position.Y + Joueur.Height + 1))

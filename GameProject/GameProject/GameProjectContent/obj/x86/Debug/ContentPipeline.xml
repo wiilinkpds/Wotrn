@@ -164,6 +164,15 @@
       <Extra>C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Kalimba.wma</Extra>
       <Time>2013-01-10T12:49:11.9822945+01:00</Time>
     </Item>
+    <Item>
+      <Source>Game Over.jpg</Source>
+      <Name>Game Over</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Game Over.xnb</Output>
+      <Time>2013-01-11T19:13:30.799561+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

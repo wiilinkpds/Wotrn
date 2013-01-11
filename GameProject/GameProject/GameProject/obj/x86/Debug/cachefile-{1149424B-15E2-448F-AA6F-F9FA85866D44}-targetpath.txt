@@ -17,3 +17,4 @@ Content\Sprites\montagne.xnb
 Content\Sprites\Montagne2.xnb
 Content\Kalimba.xnb
 Content\Kalimba.wma
+Content\Game Over.xnb

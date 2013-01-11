@@ -58,3 +58,4 @@ C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\Gam
 C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Sprites\Montagne2.xnb
 C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Kalimba.xnb
 C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Kalimba.wma
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Game Over.xnb

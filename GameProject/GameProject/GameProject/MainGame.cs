@@ -40,6 +40,8 @@ namespace GameProject
 
         private Sprite[] SLife;
 
+        private Sprite GameOver;
+
         // Teddy
 
         public MainGame()
@@ -67,6 +69,8 @@ namespace GameProject
                 SLife[i].Initialize(new Vector2(i * 2.5F,0));
             }
             // Teddy
+            GameOver = new Sprite();
+            GameOver.Initialize(Vector2.Zero);
             base.Initialize();
         }
 
@@ -89,6 +93,8 @@ namespace GameProject
             TexturesMenu = new LoadM();
             TexturesMenu.LoadMenu(Content);
 
+            GameOver.LoadContent(Content, "Game Over");
+
             Decor.LoadDecors(Content,2);
 
             // Animation
@@ -102,7 +108,7 @@ namespace GameProject
 
         protected override void Update(GameTime gameTime)
         {
-            if ((Utils.Down(Keys.Enter) && (MainM.ChoiceMenu() == 5 || IngameM.ingameMenuPos[IngameM.ChoiceIngameMenu()] == "Quitter vers le Bureau")) || life == 0)
+            if ((Utils.Down(Keys.Enter) && (MainM.ChoiceMenu() == 5 || IngameM.ingameMenuPos[IngameM.ChoiceIngameMenu()] == "Quitter vers le Bureau")))
              Exit();
 
             // Conditions du Menu (a changer)
@@ -156,6 +162,8 @@ namespace GameProject
                     loading.Draw(SpriteBatch);
                     for (int i = 0; i < life; i++)
                         SLife[i].Draw(SpriteBatch);
+                    if (life <= 0)
+                        SpriteBatch.Draw(GameOver.Texture,new Rectangle(0,0,ScreenX,ScreenY),Color.White);
                 }
             }
 
