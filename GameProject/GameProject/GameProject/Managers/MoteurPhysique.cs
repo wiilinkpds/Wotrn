@@ -34,17 +34,16 @@ namespace GameProject.Managers
                     TextJ.Position = new Vector2(TextJ.Position.X - 1, TextJ.Position.Y);
             }  
         }
-        
 
         static public void Col(ref bool ColDroit, ref bool ColGauche, ref bool ColHaut, ref bool ColBas, Sprite[] Entité, Sprite Perso)
         {
-            if (Perso.rectangleColision.Top == Decors.Decor.back.rectangle.Top)
+            if (Perso.rectangleColision.Top == Decors.Decor.backRectangle.Top)
                 ColHaut = true;
-            else if (Perso.rectangleColision.Bottom == Decors.Decor.back.rectangle.Bottom)
+            else if (Perso.rectangleColision.Bottom == Decors.Decor.backRectangle.Bottom)
                 ColBas = true;
-            if (Perso.rectangleColision.Right == Decors.Decor.back.rectangle.Right)
+            if (Perso.rectangleColision.Right == Decors.Decor.backRectangle.Right)
                 ColDroit = true;
-            else if (Perso.rectangleColision.Left == Decors.Decor.back.rectangle.Left)
+            else if (Perso.rectangleColision.Left == Decors.Decor.backRectangle.Left)
                 ColGauche = true;
             /* Verifie si le Perso est en colision avec quelque chose a modifie les bools en fonction d'ou il est en colision */
             for (int i = 0; i < Entité.Length; i++)

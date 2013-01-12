@@ -34,6 +34,7 @@ namespace GameProject
         static private LoadM TexturesMenu;
         static private bool noHold = true;
 
+        // Teddy
         private bool MenuLaunch = true;
 
         private Sprite joueur;
@@ -47,6 +48,8 @@ namespace GameProject
 
         private Random rand = new Random();
 
+        // Teddy
+
         public MainGame()
         {
             graphics = new GraphicsDeviceManager(this) { PreferredBackBufferWidth = ScreenX, PreferredBackBufferHeight = ScreenY };
@@ -55,6 +58,7 @@ namespace GameProject
 
         protected override void Initialize()
         {
+            // Teddy
             joueur = new Sprite();
             joueur.Initialize(new Vector2(ScreenX / 2 , ScreenY / 2));
             SLife = new Sprite[life];
@@ -63,6 +67,7 @@ namespace GameProject
                 SLife[i] = new Sprite();
                 SLife[i].Initialize(new Vector2(i * 2.5F,0));
             }
+            // Teddy
             GameOver = new Sprite();
             GameOver.Initialize(Vector2.Zero);
             base.Initialize();
@@ -74,7 +79,11 @@ namespace GameProject
 
             GameOverString = Content.Load<SpriteFont>("Sprites/GameOver/GameOverString");
             GameOver.LoadContent(Content, "Sprites/GameOver/Game Over");
+            //Sound : 
+            //Song song = Content.Load<Song>("Kalimba");
+            //MediaPlayer.Play(song);
 
+            // Teddy
             joueur.LoadContent(Content, "Sprites/Joueur");
             Enemis = new Sprite[1];
             for (int i = 0; i < Enemis.Length; i++)
@@ -93,7 +102,7 @@ namespace GameProject
             TexturesMenu = new LoadM();
             TexturesMenu.LoadMenu(Content);
 
-            _camera = new Camera.Camera(Decor.back.Width, Decor.back.Height, GraphicsDevice);
+            _camera = new Camera.Camera(Decor.backRectangle.Width, Decor.backRectangle.Height, GraphicsDevice);
 
             // Animation
 
@@ -124,9 +133,11 @@ namespace GameProject
             if (Utils.Up(Keys.Enter))
                 noHold = true;
             
+            // Teddy
             joueur.Update(Decor.DecorCol, Decor.back, Enemis);
             IA.MovIA(joueur,Enemis,Decor.DecorCol);
             _camera.CameraMouvement(joueur);
+            // Teddy
 
             loading.Update(gameTime);
 
@@ -139,6 +150,7 @@ namespace GameProject
             SpriteBatch.Begin(SpriteSortMode.Immediate,BlendState.AlphaBlend,SamplerState.PointClamp,null,null,null, _camera.GetTransformation());
             if (MenuLaunch) // Dessine le MainMenu
             {
+                /* Moi */
                 GraphicM.graphMenu(ScreenX, ScreenY, SpriteBatch);
                 MainM.MainMenu(ScreenX, ScreenY, SpriteBatch);
             }

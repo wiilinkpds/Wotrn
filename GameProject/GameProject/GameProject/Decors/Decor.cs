@@ -15,9 +15,9 @@ namespace GameProject.Decors
         private static Sprite Back;
         private static Sprite[] Entité;
 
-        public Rectangle backRectangle
+        static public Rectangle backRectangle
         {
-            get { return new Rectangle((int)Back.Position.X, (int)Back.Position.Y, Back.Width, Back.Height); }
+            get { return new Rectangle((int)Back.Position.X, (int)Back.Position.Y, Back.Width * 3, Back.Height * 3); }
         }
         
 
@@ -32,7 +32,7 @@ namespace GameProject.Decors
 
         static public void DrawDecors(SpriteBatch spritebatch) //Draw le décors load dans la fonction précedente
         {
-            Back.Draw(spritebatch);
+            Back.Draw(spritebatch,backRectangle);
             for (int i = 0; i < Entité.Length; i++)
                 Entité[i].Draw(spritebatch);
         }

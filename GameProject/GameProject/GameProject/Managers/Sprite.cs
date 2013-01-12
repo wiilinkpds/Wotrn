@@ -50,8 +50,13 @@ namespace GameProject.Managers
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture,_position, Color.White);
+            spriteBatch.Draw(_texture,rectangle, Color.White);
         }
+        public virtual void Draw(SpriteBatch spriteBatch, Rectangle _rectangle)
+        {
+            spriteBatch.Draw(_texture, _rectangle, Color.White);
+        }
+
         public int Height
         {
             get { return _texture.Height; }
