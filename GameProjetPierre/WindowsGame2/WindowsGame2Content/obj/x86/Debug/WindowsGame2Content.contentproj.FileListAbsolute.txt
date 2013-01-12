@@ -3,3 +3,4 @@ C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2Cont
 C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2Content\obj\x86\Debug\ResolveAssemblyReference.cache
 F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2Content\obj\x86\Debug\WindowsGame2Content.contentprojResolveAssemblyReference.cache
 C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2Content\obj\x86\Debug\WindowsGame2Content.contentprojResolveAssemblyReference.cache
+C:\Users\Teddy\Documents\wotrn\GameProjetPierre\WindowsGame2\WindowsGame2Content\obj\x86\Debug\ResolveAssemblyReference.cache

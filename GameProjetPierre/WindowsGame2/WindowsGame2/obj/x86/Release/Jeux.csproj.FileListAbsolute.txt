@@ -1,0 +1,2 @@
+C:\Users\Teddy\Documents\wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Teddy\Documents\wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt

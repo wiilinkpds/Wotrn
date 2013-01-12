@@ -88,3 +88,7 @@ C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame
 C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.application
 C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.exe
 C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.pdb
+C:\Users\Teddy\Documents\wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Teddy\Documents\wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Teddy\Documents\wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.exe
+C:\Users\Teddy\Documents\wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.pdb

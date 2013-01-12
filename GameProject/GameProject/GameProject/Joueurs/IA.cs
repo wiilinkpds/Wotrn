@@ -26,7 +26,7 @@ namespace GameProject.Joueurs
             entité[entité.Length - 1] = Joueur; //On ajoute le joueur en derniere place
             bool coldroit = false, colgauch = false , colhaut = false, colbas = false; //Pleins de bool qui servent pas tous certain à supprimer.
             bool touchJ = false, left = false,right = false,down = false,up = false;
-            bool Colx = false, Coly = false, col = false;
+            bool Colx = false, Coly = false;
             int compteurfinX = 0, compteurfinY = 0; //Simple compteur verifiant quand on a fini dévité l'obstacle respectivement sur X et Y
             string dx = "R", dy = "U"; //Les directions que l'IA doit prendre (à changer)
                 for (int j = 0; j < Enemis.Length; j++) //Parcours le tableau des enemis
@@ -62,7 +62,7 @@ namespace GameProject.Joueurs
                         coldroit = false; colgauch = false; colhaut = false; colbas = false; //Initialise toutes les colisions a faux
                         MoteurPhysique.Col(ref coldroit, ref colgauch, ref colhaut, ref colbas, entité, Enemis[j]); //Verifie si l'enemis est en colision et où
                         MoteurPhysique.ColEntre2(ref Colx, ref Coly, EntitéDecors, Joueur, Enemis[j]); //Verifie si l'enemis rencontrerais quelque chose sur le chemin en X ou en Y (compliquer a expliquer un dessins serait plus simple ...)
-                        if (!Joueur.rectangle.Intersects(Enemis[j].rectangle)) //Verifie si l'enemis n'est pas en contact avec le joueur
+                        if (!Joueur.rectangleColision.Intersects(Enemis[j].rectangleColision)) //Verifie si l'enemis n'est pas en contact avec le joueur
                         { //L'histoire du touche le joueurs je le changerais il y a plus simple je sais 
                             if (Coly && !touchJ && Joueur.Position.Y + Joueur.Height != Enemis[j].Position.Y + Enemis[j].Height) //Si il y a un obstacle entre l'enemis et le joueurs en Y ET que l'enemis ne touche pas le joueur ET que le joueurs et l'enemis ne sont pas au même point Y (A changer la fin aussi)
                             {
@@ -72,10 +72,10 @@ namespace GameProject.Joueurs
                                     dy = "D";
                                 compteurfinY = 1; //On met le compteur a 1 (A changer)
                                 if (dx == "R") //Si R (Right) alors l'enemis se deplacement a droite sinon a gauche
-                                    //Enemis[j].rectangle = new Rectangle((int)Enemis[j].rectangle.X + 1, (int)Enemis[j].rectangle.Y, (int)Enemis[j].rectangle.Width, (int)Enemis[j].rectangle.Height);
+                                    //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X + 1, (int)Enemis[j].rectangleColision.Y, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height);
                                     Enemis[j].Position = new Vector2(Enemis[j].Position.X + 1, Enemis[j].Position.Y);
                                 else
-                                    //Enemis[j].rectangle = new Rectangle((int)Enemis[j].rectangle.X - 1, (int)Enemis[j].rectangle.Y, (int)Enemis[j].rectangle.Width, (int)Enemis[j].rectangle.Height);
+                                    //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X - 1, (int)Enemis[j].rectangleColision.Y, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height);
                                     Enemis[j].Position = new Vector2(Enemis[j].Position.X - 1, Enemis[j].Position.Y);
                                     MoteurPhysique.ColEntre2(ref Colx, ref Coly, EntitéDecors, Joueur, Enemis[j]); //On reverifie la position des 2
                                 if (!Coly) //Si a ce moment la l'enemis n'est plus en colision avec un objet sur l'axe Y alors on ajoute 1 au compteur pour pouvoir bouger autre part (A changer)
@@ -83,12 +83,12 @@ namespace GameProject.Joueurs
                             }
                             else if (!Colx && right && !coldroit && (compteurfinY > 4 || compteurfinY == 0)) //Si pas de colision en X ET que le joueur est a droite de l'enemis ET qu'on est sortie de la boucle précedente
                             {
-                                //Enemis[j].rectangle = new Rectangle((int)Enemis[j].rectangle.X + 1, (int)Enemis[j].rectangle.Y, (int)Enemis[j].rectangle.Width, (int)Enemis[j].rectangle.Height); //L'enemis va à droite
+                                //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X + 1, (int)Enemis[j].rectangleColision.Y, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height); //L'enemis va à droite
                                 Enemis[j].Position = new Vector2(Enemis[j].Position.X + 1, Enemis[j].Position.Y);
                             }
                             else if (!Colx && left && !colgauch && (compteurfinY > 4 || compteurfinY == 0)) //De même que precedent mais pour la gauche
                             {
-                                //Enemis[j].rectangle = new Rectangle((int)Enemis[j].rectangle.X - 1, (int)Enemis[j].rectangle.Y, (int)Enemis[j].rectangle.Width, (int)Enemis[j].rectangle.Height); //L'enemis va à gauche
+                                //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X - 1, (int)Enemis[j].rectangleColision.Y, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height); //L'enemis va à gauche
                                 Enemis[j].Position = new Vector2(Enemis[j].Position.X - 1, Enemis[j].Position.Y);
                             }
                             MoteurPhysique.ColEntre2(ref Colx, ref Coly, EntitéDecors, Joueur, Enemis[j]); //Verification a nouveau
@@ -100,10 +100,10 @@ namespace GameProject.Joueurs
                                     dx = "R";
                                 compteurfinX = 1;
                                 if (dy == "D")
-                                    //Enemis[j].rectangle = new Rectangle((int)Enemis[j].rectangle.X, (int)Enemis[j].rectangle.Y + 1, (int)Enemis[j].rectangle.Width, (int)Enemis[j].rectangle.Height);
+                                    //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X, (int)Enemis[j].rectangleColision.Y + 1, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height);
                                     Enemis[j].Position = new Vector2(Enemis[j].Position.X , Enemis[j].Position.Y + 1);
                                 else
-                                    //Enemis[j].rectangle = new Rectangle((int)Enemis[j].rectangle.X , (int)Enemis[j].rectangle.Y - 1, (int)Enemis[j].rectangle.Width, (int)Enemis[j].rectangle.Height);
+                                    //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X , (int)Enemis[j].rectangleColision.Y - 1, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height);
                                     Enemis[j].Position = new Vector2(Enemis[j].Position.X, Enemis[j].Position.Y - 1);
                                 MoteurPhysique.ColEntre2(ref Colx, ref Coly, EntitéDecors, Joueur, Enemis[j]);
                                 if (!Colx)
@@ -111,39 +111,17 @@ namespace GameProject.Joueurs
                             }
                             else if (!Coly && down && !colbas && (compteurfinX > 4 || compteurfinX == 0)) //De même pour déplacer le joueur en bas
                             {
-                                //Enemis[j].rectangle = new Rectangle((int)Enemis[j].rectangle.X, (int)Enemis[j].rectangle.Y + 1, (int)Enemis[j].rectangle.Width, (int)Enemis[j].rectangle.Height);
+                                //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X, (int)Enemis[j].rectangleColision.Y + 1, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height);
                                 Enemis[j].Position = new Vector2(Enemis[j].Position.X, Enemis[j].Position.Y + 1);
                             }
                             else if (!Coly && up && !colhaut && (compteurfinX > 4 || compteurfinX == 0)) //en Haut
                             {
-                                //Enemis[j].rectangle = new Rectangle((int)Enemis[j].rectangle.X, (int)Enemis[j].rectangle.Y - 1, (int)Enemis[j].rectangle.Width, (int)Enemis[j].rectangle.Height);
+                                //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X, (int)Enemis[j].rectangleColision.Y - 1, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height);
                                 Enemis[j].Position = new Vector2(Enemis[j].Position.X, Enemis[j].Position.Y - 1);
                             }
                         }
-                        if (Joueur.rectangle.Intersects(new Rectangle(Enemis[j].rectangle.Left - 1, Enemis[j].rectangle.Top - 1, Enemis[j].rectangle.Width + 2, Enemis[j].rectangle.Height + 2)))
+                        if (Joueur.rectangleColision.Intersects(new Rectangle(Enemis[j].rectangleColision.Left - 1, Enemis[j].rectangleColision.Top - 1, Enemis[j].rectangleColision.Width + 2, Enemis[j].rectangleColision.Height + 2)))
                             touchJ = true; //Si le joueur est en contact avec l'enemis touchJ est vrai
-
-                         /*if ((Joueur.Position.X - 1 <= Enemis[j].Position.X + Enemis[j].Width && Enemis[j].Position.X <= Joueur.Position.X + Joueur.Height + 1) && (Joueur.Position.Y - 1 <= Enemis[j].Position.Y + Enemis[j].Height && Enemis[j].Position.Y <= Joueur.Position.Y + Joueur.Height + 1))
-                            touchJ = true;
-                         if (!coldroit && colhaut && !touchJ  && Joueur.Position.Y != Enemis[j].Position.Y && Coly)
-                             Enemis[j].Position = new Vector2(Enemis[j].Position.X + 1, Enemis[j].Position.Y);
-                         else if (!colgauch && colbas && !touchJ  && Joueur.Position.Y + Joueur.Height != Enemis[j].Position.Y + Enemis[j].Height && Coly)
-                             Enemis[j].Position = new Vector2(Enemis[j].Position.X - 1, Enemis[j].Position.Y);
-                         else if (right && ! coldroit)
-                             Enemis[j].Position = new Vector2(Enemis[j].Position.X + 1, Enemis[j].Position.Y);
-                         else if (left && !colgauch)
-                             Enemis[j].Position = new Vector2(Enemis[j].Position.X - 1, Enemis[j].Position.Y);
-                         MoteurPhysique.Col(ref coldroit, ref colgauch, ref colhaut, ref colbas, entité, Enemis[j]);
-                         MoteurPhysique.ColEntre2(ref Colx, ref Coly, EntitéDecors, Joueur, Enemis[j]);
-                         if (!colhaut && coldroit && !touchJ  && Joueur.Position.X + Joueur.Width != Enemis[j].Position.X + Enemis[j].Width && Colx)
-                             Enemis[j].Position = new Vector2(Enemis[j].Position.X, Enemis[j].Position.Y - 1);
-                         else if (!colbas && colgauch && !touchJ   && Joueur.Position.X != Enemis[j].Position.X && Colx)
-                             Enemis[j].Position = new Vector2(Enemis[j].Position.X, Enemis[j].Position.Y + 1);
-                         else if (up && !colhaut)
-                             Enemis[j].Position = new Vector2(Enemis[j].Position.X, Enemis[j].Position.Y - 1);
-                         else if (down && !colbas)
-                             Enemis[j].Position = new Vector2(Enemis[j].Position.X, Enemis[j].Position.Y + 1);*/
-                    }
 
                 }
             if (touchJ) //Si le joueur touche l'enemis alors on décremente la vie du joueur

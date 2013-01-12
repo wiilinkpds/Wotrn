@@ -15,6 +15,12 @@ namespace GameProject.Decors
         private static Sprite Back;
         private static Sprite[] Entité;
 
+        public Rectangle backRectangle
+        {
+            get { return new Rectangle((int)Back.Position.X, (int)Back.Position.Y, Back.Width, Back.Height); }
+        }
+        
+
         static public void LoadDecors(ContentManager content, int DecorNum) //Load le décors en fonction du int
         {
              Back = new Sprite();
@@ -31,14 +37,14 @@ namespace GameProject.Decors
                 Entité[i].Draw(spritebatch);
         }
 
-        static public Sprite[] DecorCol() //renvoie le tableau correspondant au entité pouvant être colisionner (sert pour le moteur physique)
+        static public Sprite[] DecorCol //renvoie le tableau correspondant au entité pouvant être colisionner (sert pour le moteur physique)
         {
-            return Entité;
+            get { return Entité; }
         }
 
-        static public Sprite back() //renvoie le fond (pas de colision) (sert pour le moteur physique)
+        static public Sprite back //renvoie le fond (pas de colision) (sert pour le moteur physique)
         {
-            return Back;
+            get { return Back; }
         }
         static private void Decors1(ContentManager content) //Definie les caractéristiques du décors 1
         {

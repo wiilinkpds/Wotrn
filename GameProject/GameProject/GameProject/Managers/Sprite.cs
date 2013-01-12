@@ -29,9 +29,13 @@ namespace GameProject.Managers
         }
         private Vector2 _position;
 
-        public Rectangle rectangle
+        public Rectangle rectangleColision
         {
             get { return new Rectangle((int)_position.X, (int)_position.Y + this.Height / 2, this.Width, this.Height / 2);}
+        }
+        public Rectangle rectangle
+        {
+            get { return new Rectangle((int)_position.X, (int)_position.Y, this.Width, this.Height); }
         }
 
         public virtual void Initialize(Vector2 Position_init)
