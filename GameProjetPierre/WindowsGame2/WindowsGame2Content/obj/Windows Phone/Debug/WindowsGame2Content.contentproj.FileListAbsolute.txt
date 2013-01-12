@@ -1,0 +1,2 @@
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2Content\obj\Windows Phone\Debug\WindowsGame2Content.contentprojResolveAssemblyReference.cache
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2Content\obj\Windows Phone\Debug\ResolveAssemblyReference.cache

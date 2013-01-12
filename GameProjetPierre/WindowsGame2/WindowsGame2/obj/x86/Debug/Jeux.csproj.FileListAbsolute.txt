@@ -1,0 +1,90 @@
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\SS-M.xnb
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\BM.xnb
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.exe
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.pdb
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.exe
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.pdb
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\sf.xnb
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\three.xnb
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.csprojResolveAssemblyReference.cache
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\three2.xnb
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\Montagne.xnb
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\Grass.xnb
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\herbeGrand.xnb
+C:\Users\Pierre\Desktop\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\rectangle.xnb
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\SS-M.xnb
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\BM.xnb
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\Grass.xnb
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\three2.xnb
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\three.xnb
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\montagne.xnb
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\herbeGrand.xnb
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\rectangle.xnb
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\sf.xnb
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.exe
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.pdb
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.exe
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.pdb
+C:\Users\Pierre\SkyDrive\Documents\C#\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\SS-M.xnb
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\BM.xnb
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\Grass.xnb
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\three2.xnb
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\three.xnb
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\montagne.xnb
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\rectangle.xnb
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\sf.xnb
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.exe
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.pdb
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.exe
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.pdb
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\batman.xnb
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\SS-M.xnb
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\BM.xnb
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\Grass.xnb
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\three2.xnb
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\three.xnb
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\montagne.xnb
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\batman.xnb
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\rectangle.xnb
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\sf.xnb
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.exe
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.pdb
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.csprojResolveAssemblyReference.cache
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.exe
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.pdb
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.exe.manifest
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.application
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.TrustInfo.xml
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.exe.manifest
+F:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.application
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.exe.manifest
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.application
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.TrustInfo.xml
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.exe.manifest
+C:\Users\Pierre\Documents\Projet Wotnr\WindowsGame2\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.application
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\SS-M.xnb
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\BM.xnb
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\Grass.xnb
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\three2.xnb
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\three.xnb
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\montagne.xnb
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\batman.xnb
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\rectangle.xnb
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\sf.xnb
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.exe.manifest
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.application
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.exe
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\bin\x86\Debug\Jeux.pdb
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.csprojResolveAssemblyReference.cache
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.TrustInfo.xml
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.exe.manifest
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.application
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.exe
+C:\Users\Pierre\Documents\GitHub\Wotrn\GameProjetPierre\WindowsGame2\WindowsGame2\obj\x86\Debug\Jeux.pdb
