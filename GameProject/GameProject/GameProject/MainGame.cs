@@ -21,8 +21,10 @@ namespace GameProject
     public class MainGame : Microsoft.Xna.Framework.Game
     {
         static public Camera.Camera _camera;
-        public const int ScreenX = 1280;
-        public const int ScreenY = 1024;
+
+        static public int ScreenX = 1280; //Il faudra changer la resolution un jour
+        static public int ScreenY = 1000;
+
         public const int VitesseJoueur = 8;
 
         static public int life = 100;
@@ -53,6 +55,10 @@ namespace GameProject
         public MainGame()
         {
             graphics = new GraphicsDeviceManager(this) { PreferredBackBufferWidth = ScreenX, PreferredBackBufferHeight = ScreenY };
+            //graphics = new GraphicsDeviceManager(this);
+            //graphics.IsFullScreen = true;
+            //ScreenX = graphics.PreferredBackBufferWidth;
+            //ScreenY = graphics.PreferredBackBufferHeight;
             Content.RootDirectory = "Content";
         }
 
@@ -101,7 +107,7 @@ namespace GameProject
 
             TexturesMenu = new LoadM();
             TexturesMenu.LoadMenu(Content);
-
+            
             _camera = new Camera.Camera(Decor.backRectangle.Width, Decor.backRectangle.Height, GraphicsDevice);
 
             // Animation
@@ -134,9 +140,12 @@ namespace GameProject
                 noHold = true;
             
             // Teddy
-            joueur.Update(Decor.DecorCol, Decor.back, Enemis);
-            IA.MovIA(joueur,Enemis,Decor.DecorCol);
-            _camera.CameraMouvement(joueur);
+            if (MenuLaunch == false)
+            {
+                joueur.Update(Decor.DecorCol, Decor.back, Enemis);
+                IA.MovIA(joueur, Enemis, Decor.DecorCol);
+                _camera.CameraMouvement(joueur);
+            }
             // Teddy
 
             loading.Update(gameTime);
@@ -147,7 +156,7 @@ namespace GameProject
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            SpriteBatch.Begin(SpriteSortMode.Immediate,BlendState.AlphaBlend,SamplerState.PointClamp,null,null,null, _camera.GetTransformation());
+            SpriteBatch.Begin();
             if (MenuLaunch) // Dessine le MainMenu
             {
                 /* Moi */
@@ -163,6 +172,8 @@ namespace GameProject
                 }
                 else
                 {
+                    SpriteBatch.End();
+                    SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _camera.GetTransformation());
                     Decor.DrawDecors(SpriteBatch);
                     for (int i = 0; i < Enemis.Length; i++)
                         Enemis[i].Draw(SpriteBatch);

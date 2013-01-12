@@ -26,7 +26,7 @@ namespace GameProject.Joueurs
             entité[entité.Length - 1] = Joueur; //On ajoute le joueur en derniere place
             bool coldroit = false, colgauch = false , colhaut = false, colbas = false; //Pleins de bool qui servent pas tous certain à supprimer.
             bool touchJ = false, left = false,right = false,down = false,up = false;
-            bool Colx = false, Coly = false, col = false;
+            bool Colx = false, Coly = false;
             int compteurfinX = 0, compteurfinY = 0; //Simple compteur verifiant quand on a fini dévité l'obstacle respectivement sur X et Y
             string dx = "R", dy = "U"; //Les directions que l'IA doit prendre (à changer)
                 for (int j = 0; j < Enemis.Length; j++) //Parcours le tableau des enemis

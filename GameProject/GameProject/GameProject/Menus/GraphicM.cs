@@ -20,9 +20,10 @@ namespace GameProject.Menus
         public static void graphMenu(int ScreenX, int ScreenY, SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(LoadM.Ville, new Rectangle(0, 0,ScreenX,ScreenY), Color.White); // Image de fond
-            spriteBatch.DrawString(LoadM.Titre, "Wrath of the Rack Ninja", new Vector2(ScreenX / 5, ScreenY / 10), Color.Red); // Titre
-            spriteBatch.Draw(LoadM.Flamme, new Vector2(ScreenX / 5 + 20, ScreenY / 10 + LoadM.Titre.MeasureString("Wrath of the Rack Ninja").Y - 40), Color.White);
-            spriteBatch.Draw(LoadM.Flamme, new Vector2(ScreenX / 5 + 10 + LoadM.Flamme.Width, ScreenY / 10 + LoadM.Titre.MeasureString("Wrath of the Rack Ninja").Y - 40), Color.White);
+            Vector2 titre = LoadM.Titre.MeasureString("Wrath of the Rack Ninja"); //Taille du titre dans le vector2
+            spriteBatch.DrawString(LoadM.Titre, "Wrath of the Rack Ninja", new Vector2(ScreenX / 2 -titre.X / 2, ScreenY / 10), Color.Red); // Titre
+            spriteBatch.Draw(LoadM.Flamme, new Vector2(ScreenX / 2 - titre.X / 2 + 10 ,ScreenY / 10 + titre.Y - 40), Color.White);
+            spriteBatch.Draw(LoadM.Flamme, new Vector2(ScreenX / 2 ,ScreenY / 10 + titre.Y - 40), Color.White);
             spriteBatch.Draw(LoadM.Goutte, posGoutte, Color.White);
         }
 
