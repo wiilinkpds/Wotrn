@@ -1,0 +1,3 @@
+C:\Users\NaudotN\Desktop\GameProject\GameProject\GameProjectContent\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\Users\NaudotN\Desktop\GameProject\GameProject\GameProjectContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Nicolas\Desktop\GameProject\GameProject\GameProjectContent\obj\x86\Debug\ResolveAssemblyReference.cache
