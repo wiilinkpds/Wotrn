@@ -1,7 +1,0 @@
-﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="Jeux" EntryPointType="Jeux.MainGame" RuntimeVersion="3.0">
-  <Deployment.Parts>
-    <AssemblyPart x:Name="Jeux" Source="Jeux.dll" />
-    <AssemblyPart x:Name="Microsoft.Advertising.Mobile.UI" Source="Microsoft.Advertising.Mobile.UI.dll" />
-    <AssemblyPart x:Name="Microsoft.Advertising.Mobile" Source="Microsoft.Advertising.Mobile.dll" />
-  </Deployment.Parts>
-</Deployment>
