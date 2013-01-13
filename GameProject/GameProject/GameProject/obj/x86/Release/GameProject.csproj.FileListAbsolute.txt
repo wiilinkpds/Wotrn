@@ -29,3 +29,4 @@ C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\Gam
 C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\obj\x86\Release\GameProject.application
 C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Release\Content\Sprites\GameOver\Game Over.xnb
 C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Release\Content\Sprites\GameOver\GameOverString.xnb
+C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Release\Content\Sprites\Perso\mario.xnb

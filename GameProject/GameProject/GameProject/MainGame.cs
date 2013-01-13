@@ -20,12 +20,16 @@ namespace GameProject
 {
     public class MainGame : Microsoft.Xna.Framework.Game
     {
+        /* Les fleches servent a ce déplacer
+         * La touche espace sert a sprinter
+         * */
+
         static public Camera.Camera _camera;
 
         static public int ScreenX = 1280; //Il faudra changer la resolution un jour
         static public int ScreenY = 1000;
 
-        public const int VitesseJoueur = 8;
+        public const float VitesseJoueurInit = 2f;
 
         static public int life = 100;
 
@@ -66,7 +70,7 @@ namespace GameProject
         {
             // Teddy
             joueur = new Sprite();
-            joueur.Initialize(new Vector2(ScreenX / 2 , ScreenY / 2));
+            joueur.Initialize(new Vector2(ScreenX / 2 , ScreenY / 2),new Rectangle(0,0,50,69));
             SLife = new Sprite[life];
             for (int i = 0; i < SLife.Length; i++)
             {
@@ -90,7 +94,7 @@ namespace GameProject
             //MediaPlayer.Play(song);
 
             // Teddy
-            joueur.LoadContent(Content, "Sprites/Joueur");
+            joueur.LoadContent(Content, "Sprites/Perso/mario",4,4,"h");
             Enemis = new Sprite[1];
             for (int i = 0; i < Enemis.Length; i++)
             {
@@ -142,7 +146,7 @@ namespace GameProject
             // Teddy
             if (MenuLaunch == false)
             {
-                joueur.Update(Decor.DecorCol, Decor.back, Enemis);
+                joueur.Update(Decor.DecorCol, Decor.back, Enemis, gameTime);
                 IA.MovIA(joueur, Enemis, Decor.DecorCol);
                 _camera.CameraMouvement(joueur);
             }

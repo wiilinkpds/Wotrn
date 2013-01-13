@@ -17,7 +17,7 @@ namespace GameProject.Decors
 
         static public Rectangle backRectangle
         {
-            get { return new Rectangle((int)Back.Position.X, (int)Back.Position.Y, Back.Width * 3, Back.Height * 3); }
+            get { return new Rectangle((int)Back.Position.X, (int)Back.Position.Y, Back.Width * 2, Back.Height * 2); }
         }
         
 

@@ -14,7 +14,7 @@ namespace GameProject.Joueurs
 {
     public class IA
     {
-        static private int vitesse = 6;
+        static private float vitesse = 1f;
 
         static public void MovIA(Sprite Joueur, Sprite[] Enemis , Sprite[]EntitéDecors) //Pas encore au point
         {

@@ -19,3 +19,4 @@ Content\Sprites\Menu\SpriteFonts\Titre.xnb
 Content\Sprites\GameOver\GameOverString.xnb
 Content\Kalimba.xnb
 Content\Kalimba.wma
+Content\Sprites\Perso\mario.xnb

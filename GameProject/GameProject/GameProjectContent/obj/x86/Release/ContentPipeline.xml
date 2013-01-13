@@ -182,6 +182,15 @@
       <Extra>C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Release\Content\Kalimba.wma</Extra>
       <Time>2013-01-10T12:49:11.9822945+01:00</Time>
     </Item>
+    <Item>
+      <Source>Sprites\Perso\mario.png</Source>
+      <Name>Sprites\Perso\mario</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Teddy\Documents\Visual Studio 2010\Projects\GameProject\GameProject\GameProject\bin\x86\Release\Content\Sprites\Perso\mario.xnb</Output>
+      <Time>2013-01-13T13:51:49.9128503+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

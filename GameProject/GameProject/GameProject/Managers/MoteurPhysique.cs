@@ -15,23 +15,70 @@ namespace GameProject.Managers
 {
     public class MoteurPhysique
     {
-
-        static public void Colision(Sprite[] TextTab, Sprite TextJ, Sprite Back, Sprite[] Enemis)
+        static public void Colision(Sprite[] TextTab, Sprite joueur, Sprite Back, Sprite[] Enemis, GameTime gameTime)
         {
-            for (int j = 0; j < MainGame.VitesseJoueur; j++)
+            float vitesse = MainGame.VitesseJoueurInit;
+
+            //Sprint 
+            if (Utils.Down(Keys.Space) && vitesse < MainGame.VitesseJoueurInit + 1f)
+                vitesse += 1f;
+            else if (Utils.Up(Keys.Space))
+                vitesse = MainGame.VitesseJoueurInit;
+
+            for (int j = 0; j < vitesse; j++)
             {
                 bool ColDroit = false, ColGauche = false, ColHaut = false, ColBas = false;
-                Col(ref ColDroit, ref ColGauche, ref ColHaut, ref ColBas, TextTab, TextJ);
-                Col(ref ColDroit, ref ColGauche, ref ColHaut, ref ColBas, Enemis, TextJ);
+                Col(ref ColDroit, ref ColGauche, ref ColHaut, ref ColBas, TextTab, joueur);
+                Col(ref ColDroit, ref ColGauche, ref ColHaut, ref ColBas, Enemis, joueur);
 
-                if (Utils.Down(Keys.Up) && !ColHaut)
-                    TextJ.Position = new Vector2(TextJ.Position.X, TextJ.Position.Y - 1);
-                if (Utils.Down(Keys.Down) && !ColBas)
-                    TextJ.Position = new Vector2(TextJ.Position.X, TextJ.Position.Y + 1);
-                if (Utils.Down(Keys.Right) && !ColDroit)
-                    TextJ.Position = new Vector2(TextJ.Position.X + 1, TextJ.Position.Y);
-                if (Utils.Down(Keys.Left) && !ColGauche)
-                    TextJ.Position = new Vector2(TextJ.Position.X - 1, TextJ.Position.Y);
+                //Deplacement du joueur avec animation
+                if (Utils.Down(Keys.Up))
+                {
+                    if (!ColHaut)
+                    {
+                        joueur.UpdateSetStateAnimation(0, 3);
+                        joueur.UpdateAnimation(gameTime);
+                        joueur.Position = new Vector2(joueur.Position.X, joueur.Position.Y - 1);
+                    }
+                    else
+                        joueur.UpdateSetStateAnimation(0, 3);
+                }
+                else if (Utils.Down(Keys.Down))
+                {
+                    if (!ColBas)
+                    {
+                        joueur.UpdateSetStateAnimation(0, 0);
+                        joueur.UpdateAnimation(gameTime);
+                        joueur.Position = new Vector2(joueur.Position.X, joueur.Position.Y + 1);
+
+                    }
+                    else
+                        joueur.UpdateSetStateAnimation(0, 0);
+                }
+                else if (Utils.Down(Keys.Right))
+                {
+                    if (!ColDroit)
+                    {
+                        joueur.UpdateSetStateAnimation(0, 2);
+                        joueur.UpdateAnimation(gameTime);
+                        joueur.Position = new Vector2(joueur.Position.X + 1, joueur.Position.Y);
+                    }
+                    else
+                        joueur.UpdateSetStateAnimation(0, 2);
+                }
+                else if (Utils.Down(Keys.Left))
+                {
+                    if (!ColGauche)
+                    {
+                        joueur.UpdateSetStateAnimation(0, 1);
+                        joueur.UpdateAnimation(gameTime);
+                        joueur.Position = new Vector2(joueur.Position.X - 1, joueur.Position.Y);
+                    }
+                    else
+                        joueur.UpdateSetStateAnimation(0, 1);
+                }
+                else
+                    joueur.UpdateSetStateAnimation(0);
             }  
         }
 
