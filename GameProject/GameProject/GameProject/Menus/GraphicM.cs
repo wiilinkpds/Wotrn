@@ -17,7 +17,7 @@ namespace GameProject.Menus
         static private Vector2 posGoutte = new Vector2(0, 0);
 
         // Design du Menu
-        public static void graphMenu(int ScreenX, int ScreenY, SpriteBatch spriteBatch)
+        public static void MainGraph(int ScreenX, int ScreenY, SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(LoadM.Ville, new Rectangle(0, 0,ScreenX,ScreenY), Color.White); // Image de fond
             Vector2 titre = LoadM.Titre.MeasureString("Wrath of the Rack Ninja"); //Taille du titre dans le vector2

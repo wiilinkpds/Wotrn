@@ -17,20 +17,14 @@ namespace GameProject.UtilsFun
         static public bool Up(Keys key)
         {
             KeyboardState etatClavier = Keyboard.GetState();
-            if (etatClavier.IsKeyUp(key))
-                return true;
-            else
-                return false;
+            return etatClavier.IsKeyUp(key);
         }
 
         // Verifie si l'utilisateur appuie sur la "key"
         static public bool Down(Keys key)
         {
             KeyboardState etatClavier = Keyboard.GetState();
-            if (etatClavier.IsKeyDown(key))
-                return true;
-            else
-                return false;
+            return etatClavier.IsKeyDown(key);
         }
     }
 }

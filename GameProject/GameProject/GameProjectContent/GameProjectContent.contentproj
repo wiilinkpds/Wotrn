@@ -42,12 +42,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\Arbrebeta.png">
+    <Compile Include="Sprites\Decors\Arbrebeta.png">
       <Name>Arbrebeta</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprites\Herbe.png">
+    <Compile Include="Sprites\BackGrounds\Herbe.png">
       <Name>Herbe</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -80,7 +80,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\Joueur.png">
+    <Compile Include="Sprites\Perso\Joueur.png">
       <Name>Joueur</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -136,17 +136,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\cailloux.png">
+    <Compile Include="Sprites\Decors\cailloux.png">
       <Name>cailloux</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprites\montagne.png">
+    <Compile Include="Sprites\Decors\montagne.png">
       <Name>montagne</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprites\Montagne2.png">
+    <Compile Include="Sprites\Decors\Montagne2.png">
       <Name>Montagne2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -176,6 +176,13 @@
   <ItemGroup>
     <Compile Include="Sprites\Perso\mario.png">
       <Name>mario</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\Mana.png">
+      <Name>Mana</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

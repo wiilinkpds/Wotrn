@@ -120,12 +120,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animation\SpriteAnimation.cs" />
-    <Compile Include="Animation\SpriteManager.cs" />
     <Compile Include="BackGrounds\Background.cs" />
     <Compile Include="BackGrounds\LoadBack.cs" />
     <Compile Include="Camera\Camera.cs" />
     <Compile Include="Decors\Decor.cs" />
+    <Compile Include="Decors\DesignDecors.cs" />
     <Compile Include="Joueurs\IA.cs" />
     <Compile Include="Menus\GraphicM.cs" />
     <Compile Include="Menus\IngameM.cs" />

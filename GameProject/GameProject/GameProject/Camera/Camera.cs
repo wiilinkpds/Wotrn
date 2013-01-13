@@ -89,26 +89,11 @@ namespace GameProject.Camera
 
         public void CameraMouvement(Managers.Sprite Joueur)
         {
-            Vector2 movement = Vector2.Zero;
-
-            //Sprint
-            float vitesse = MainGame.VitesseJoueurInit;
-            if (UtilsFun.Utils.Down(Keys.Space) && vitesse < MainGame.VitesseJoueurInit + 1f)
-                vitesse += 1f;
-            else if (UtilsFun.Utils.Up(Keys.Space))
-                vitesse = MainGame.VitesseJoueurInit;
-
-            if (UtilsFun.Utils.Down(Keys.Up) && Joueur.rectangleColision.Center.Y < _worldHeight - MainGame.ScreenY / 2)
-                movement.Y--;
-            else if (UtilsFun.Utils.Down(Keys.Down) && Joueur.rectangleColision.Center.Y > MainGame.ScreenY / 2)
-                movement.Y++;
-            else if (UtilsFun.Utils.Down(Keys.Right) && Joueur.rectangleColision.Center.X > MainGame.ScreenX / 2)
-                movement.X++;
-            else if (UtilsFun.Utils.Down(Keys.Left) && Joueur.rectangleColision.Center.X < _worldWidth - MainGame.ScreenX / 2)
-                movement.X--;
-            this.Position += movement * vitesse;
+            Position = Joueur.Position;
             for (int i = 0; i < MainGame.life; i++)
                 MainGame.SLife[i].Position = new Vector2((_position.X - MainGame.ScreenX / 2 ) + i * 2.5f, _position.Y - MainGame.ScreenY / 2);
+            for (int i = 0; i < MainGame.mana; i++)
+                MainGame.SMana[i].Position = new Vector2((_position.X - MainGame.ScreenX / 2) + i * 2.5f, _position.Y - MainGame.ScreenY / 2 + 20);
 
         }
     }
