@@ -119,16 +119,16 @@ namespace GameProject.Managers
                     {   
                         if (J1.rectangleColision.Top < J2.rectangleColision.Top)
                         {
-                            if (J1.rectangleColision.Left <= Entité[i].rectangleColision.Left && Entité[i].rectangleColision.Left <= J2.rectangleColision.Right && J2.rectangleColision.Top < Entité[i].rectangleColision.Bottom && J2.rectangleColision.Bottom > Entité[i].rectangleColision.Top)
+                            if (J1.rectangleColision.Left < Entité[i].rectangleColision.Left && Entité[i].rectangleColision.Left < J2.rectangleColision.Right && J2.rectangleColision.Top < Entité[i].rectangleColision.Bottom && J2.rectangleColision.Bottom > Entité[i].rectangleColision.Top)
                                 ColX = true;
-                            if (J1.rectangleColision.Top <= Entité[i].rectangleColision.Top && Entité[i].rectangleColision.Bottom <= J2.rectangleColision.Top && J2.rectangleColision.Left < Entité[i].rectangleColision.Right && J2.rectangleColision.Right > Entité[i].rectangleColision.Left)
+                            if (J1.rectangleColision.Top < Entité[i].rectangleColision.Top && Entité[i].rectangleColision.Bottom < J2.rectangleColision.Top && J2.rectangleColision.Left < Entité[i].rectangleColision.Right && J2.rectangleColision.Right > Entité[i].rectangleColision.Left)
                                 ColY = true;
                         }
                         else
                         {
-                            if (J1.rectangleColision.Left <= Entité[i].rectangleColision.Left && Entité[i].rectangleColision.Left <= J2.rectangleColision.Right && J2.rectangleColision.Top < Entité[i].rectangleColision.Bottom && J2.rectangleColision.Bottom > Entité[i].rectangleColision.Top)
+                            if (J1.rectangleColision.Left < Entité[i].rectangleColision.Left && Entité[i].rectangleColision.Left < J2.rectangleColision.Right && J2.rectangleColision.Top < Entité[i].rectangleColision.Bottom && J2.rectangleColision.Bottom > Entité[i].rectangleColision.Top)
                                 ColX = true;
-                            if (J1.rectangleColision.Bottom >= Entité[i].rectangleColision.Top && Entité[i].rectangleColision.Top >= J2.rectangleColision.Top && J2.rectangleColision.Left < Entité[i].rectangleColision.Right && J2.rectangleColision.Right > Entité[i].rectangleColision.Left)
+                            if (J1.rectangleColision.Bottom > Entité[i].rectangleColision.Top && Entité[i].rectangleColision.Top > J2.rectangleColision.Top && J2.rectangleColision.Left < Entité[i].rectangleColision.Right && J2.rectangleColision.Right > Entité[i].rectangleColision.Left)
                                 ColY = true;
                         }
                     }
@@ -136,9 +136,9 @@ namespace GameProject.Managers
                     {
                         if (J1.rectangleColision.Top < J2.rectangleColision.Top)
                         {
-                            if (J1.rectangleColision.Right >= Entité[i].rectangleColision.Left && Entité[i].rectangleColision.Left >= J2.rectangleColision.Left && J2.rectangleColision.Top < Entité[i].rectangleColision.Bottom && J2.rectangleColision.Bottom > Entité[i].rectangleColision.Top)
+                            if (J1.rectangleColision.Right > Entité[i].rectangleColision.Left && Entité[i].rectangleColision.Left > J2.rectangleColision.Left && J2.rectangleColision.Top < Entité[i].rectangleColision.Bottom && J2.rectangleColision.Bottom > Entité[i].rectangleColision.Top)
                                 ColX = true;
-                            if (J1.rectangleColision.Top <= Entité[i].rectangleColision.Top && Entité[i].rectangleColision.Bottom < J2.rectangleColision.Top && J2.rectangleColision.Left < Entité[i].rectangleColision.Right && J2.rectangleColision.Right > Entité[i].rectangleColision.Left)
+                            if (J1.rectangleColision.Top < Entité[i].rectangleColision.Top && Entité[i].rectangleColision.Bottom < J2.rectangleColision.Top && J2.rectangleColision.Left < Entité[i].rectangleColision.Right && J2.rectangleColision.Right > Entité[i].rectangleColision.Left)
                                 ColY = true;
                         }
                         else

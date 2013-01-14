@@ -14,10 +14,17 @@ namespace GameProject.Joueurs
 {
     public class IA
     {
-        static private float vitesse = 1f;
+        static private float vitesse = 2f;
 
-        static public void MovIA(Sprite Joueur, Sprite[] Enemis , Sprite[]EntitéDecors) //Pas encore au point
+        static public void MovIA(Sprite Joueur, Sprite[] Enemis , Sprite[]EntitéDecors,ContentManager content) //Pas encore au point
         {
+            if (UtilsFun.Utils.Down(Keys.Tab) && MainGame.mana > 0)
+            {
+                vitesse = 0f;
+                MainGame.mana--;
+            }
+            else
+                vitesse = 2f;
             /* Cette fonction va gerer les mouvements de l'ia en evitant les obstacles */
             Vector2[] oldpos = new Vector2[Enemis.Length]; //Inutile pour le moment
             Sprite[] entité = new Sprite[EntitéDecors.Length + 1]; // Créer un nouveau tableau qui va contenir le joueurs permettant de gerer les collisions entres les enemis et le joueurs
@@ -71,12 +78,13 @@ namespace GameProject.Joueurs
                                 else
                                     dy = "D";
                                 compteurfinY = 1; //On met le compteur a 1 (A changer)
-                                if (dx == "R") //Si R (Right) alors l'enemis se deplacement a droite sinon a gauche
+                                deplacement(dx, Enemis[j], content);
+                                //if (dx == "R") //Si R (Right) alors l'enemis se deplacement a droite sinon a gauche
                                     //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X + 1, (int)Enemis[j].rectangleColision.Y, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height);
-                                    Enemis[j].Position = new Vector2(Enemis[j].Position.X + 1, Enemis[j].Position.Y);
-                                else
+                                    //Enemis[j].Position = new Vector2(Enemis[j].Position.X + 1, Enemis[j].Position.Y);
+                                //else
                                     //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X - 1, (int)Enemis[j].rectangleColision.Y, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height);
-                                    Enemis[j].Position = new Vector2(Enemis[j].Position.X - 1, Enemis[j].Position.Y);
+                                    //Enemis[j].Position = new Vector2(Enemis[j].Position.X - 1, Enemis[j].Position.Y);
                                     MoteurPhysique.ColEntre2(ref Colx, ref Coly, EntitéDecors, Joueur, Enemis[j]); //On reverifie la position des 2
                                 if (!Coly) //Si a ce moment la l'enemis n'est plus en colision avec un objet sur l'axe Y alors on ajoute 1 au compteur pour pouvoir bouger autre part (A changer)
                                     compteurfinY++;
@@ -84,12 +92,14 @@ namespace GameProject.Joueurs
                             else if (!Colx && right && !coldroit && (compteurfinY > 4 || compteurfinY == 0)) //Si pas de colision en X ET que le joueur est a droite de l'enemis ET qu'on est sortie de la boucle précedente
                             {
                                 //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X + 1, (int)Enemis[j].rectangleColision.Y, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height); //L'enemis va à droite
-                                Enemis[j].Position = new Vector2(Enemis[j].Position.X + 1, Enemis[j].Position.Y);
+                                //Enemis[j].Position = new Vector2(Enemis[j].Position.X + 1, Enemis[j].Position.Y);
+                                deplacement("R", Enemis[j], content);
                             }
                             else if (!Colx && left && !colgauch && (compteurfinY > 4 || compteurfinY == 0)) //De même que precedent mais pour la gauche
                             {
                                 //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X - 1, (int)Enemis[j].rectangleColision.Y, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height); //L'enemis va à gauche
-                                Enemis[j].Position = new Vector2(Enemis[j].Position.X - 1, Enemis[j].Position.Y);
+                                //Enemis[j].Position = new Vector2(Enemis[j].Position.X - 1, Enemis[j].Position.Y);
+                                deplacement("L", Enemis[j], content);
                             }
                             MoteurPhysique.ColEntre2(ref Colx, ref Coly, EntitéDecors, Joueur, Enemis[j]); //Verification a nouveau
                             if (Colx && !touchJ && Joueur.Position.X + Joueur.Width != Enemis[j].Position.X + Enemis[j].Width && compteurfinY == 0)
@@ -99,12 +109,13 @@ namespace GameProject.Joueurs
                                 else
                                     dx = "R";
                                 compteurfinX = 1;
-                                if (dy == "D")
+                                deplacement(dy, Enemis[j], content);
+                                //if (dy == "D")
                                     //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X, (int)Enemis[j].rectangleColision.Y + 1, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height);
-                                    Enemis[j].Position = new Vector2(Enemis[j].Position.X , Enemis[j].Position.Y + 1);
-                                else
+                                    //Enemis[j].Position = new Vector2(Enemis[j].Position.X , Enemis[j].Position.Y + 1);
+                                //else
                                     //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X , (int)Enemis[j].rectangleColision.Y - 1, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height);
-                                    Enemis[j].Position = new Vector2(Enemis[j].Position.X, Enemis[j].Position.Y - 1);
+                                    //Enemis[j].Position = new Vector2(Enemis[j].Position.X, Enemis[j].Position.Y - 1);
                                 MoteurPhysique.ColEntre2(ref Colx, ref Coly, EntitéDecors, Joueur, Enemis[j]);
                                 if (!Colx)
                                     compteurfinX++;
@@ -112,12 +123,14 @@ namespace GameProject.Joueurs
                             else if (!Coly && down && !colbas && (compteurfinX > 4 || compteurfinX == 0)) //De même pour déplacer le joueur en bas
                             {
                                 //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X, (int)Enemis[j].rectangleColision.Y + 1, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height);
-                                Enemis[j].Position = new Vector2(Enemis[j].Position.X, Enemis[j].Position.Y + 1);
+                                //Enemis[j].Position = new Vector2(Enemis[j].Position.X, Enemis[j].Position.Y + 1);
+                                deplacement("D", Enemis[j], content);
                             }
                             else if (!Coly && up && !colhaut && (compteurfinX > 4 || compteurfinX == 0)) //en Haut
                             {
                                 //Enemis[j].rectangleColision = new rectangleColision((int)Enemis[j].rectangleColision.X, (int)Enemis[j].rectangleColision.Y - 1, (int)Enemis[j].rectangleColision.Width, (int)Enemis[j].rectangleColision.Height);
-                                Enemis[j].Position = new Vector2(Enemis[j].Position.X, Enemis[j].Position.Y - 1);
+                                //Enemis[j].Position = new Vector2(Enemis[j].Position.X, Enemis[j].Position.Y - 1);
+                                deplacement("U", Enemis[j], content);
                             }
                         }
                         if (Joueur.rectangleColision.Intersects(new Rectangle(Enemis[j].rectangleColision.Left - 1, Enemis[j].rectangleColision.Top - 1, Enemis[j].rectangleColision.Width + 2, Enemis[j].rectangleColision.Height + 2)))
@@ -126,6 +139,19 @@ namespace GameProject.Joueurs
                 }
             if (touchJ) //Si le joueur touche l'enemis alors on décremente la vie du joueur
                 MainGame.life--;
+        }
+
+        static private void deplacement(string direction,Sprite Enemis,ContentManager content)
+        {
+            Enemis.LoadContent(content, "Sprites/Enemis/enemis" + direction);
+            if (direction == "D")
+                Enemis.Position = new Vector2(Enemis.Position.X, Enemis.Position.Y + 1);
+            else if (direction =="U")
+                Enemis.Position = new Vector2(Enemis.Position.X, Enemis.Position.Y - 1);
+            else if (direction == "L")
+                Enemis.Position = new Vector2(Enemis.Position.X - 1, Enemis.Position.Y);
+            else if (direction =="R")
+                Enemis.Position = new Vector2(Enemis.Position.X + 1, Enemis.Position.Y);
         }
     }
 }

@@ -44,11 +44,13 @@ namespace GameProject.Decors
                     Entite[i] = new Sprite();
                     Entite[i].Initialize(new Vector2(80 * i + PosDepart.X, PosDepart.Y));
                 }
-                for (int i = 0; i < Entite.Length / 2; i++)
+                for (int i = 0; i < Entite.Length / 2 - 1; i++)
                 {
                     Entite[i + Entite.Length / 2] = new Sprite();
                     Entite[i + Entite.Length / 2].Initialize(new Vector2(PosDepart.X, 80 * i + PosDepart.Y));
                 }
+                Entite[Entite.Length - 1] = new Sprite();
+                Entite[Entite.Length - 1].Initialize(new Vector2(MainGame.ScreenX / 2, MainGame.ScreenY / 2));
                 for (int i = 0; i < Entite.Length; i++)
                     Entite[i].LoadContent(content, "Sprites/Decors/Arbrebeta");
             }

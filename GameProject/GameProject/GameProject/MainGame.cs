@@ -112,7 +112,7 @@ namespace GameProject
             for (int i = 0; i < Enemis.Length; i++)
             {
                 Enemis[i] = new Sprite();
-                Enemis[i].LoadContent(Content, "Sprites/Decors/Arbrebeta");
+                Enemis[i].LoadContent(Content, "Sprites/Enemis/enemisD");
             }
             for (int i = 0; i < Enemis.Length; i++) //On initialise ici car l'on a besoin de la taille du fond et des enemis donc il faut qu'il soit load
                 Enemis[i].Initialize(new Vector2(rand.Next(0, Decor.back.rectangle.Right - Enemis[i].Width), rand.Next(0, Decor.back.rectangle.Bottom - Enemis[i].Height)));
@@ -153,9 +153,14 @@ namespace GameProject
             if (MenuLaunch == false) //Verifie que le menu soit fermer
             {
                 joueur.Update(Decor.DecorCol, Decor.back, Enemis, gameTime); //Update le joueur
-                IA.MovIA(joueur, Enemis, Decor.DecorCol); //Update l'enemis
+                IA.MovIA(joueur, Enemis, Decor.DecorCol,Content); //Update l'enemis
                 _camera.CameraMouvement(joueur); //Update la camera
             }
+
+            if (gameTime.TotalGameTime.Seconds % 10 == 0 && mana < 200)
+                mana++;
+            if (gameTime.TotalGameTime.Seconds % 30 == 0 && life < 100)
+                life++;
 
 
             base.Update(gameTime);

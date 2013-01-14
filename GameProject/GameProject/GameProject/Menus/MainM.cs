@@ -19,7 +19,7 @@ namespace GameProject.Menus
         private static int choiceNumber = 0, posX = 0, posY = 0;
 
         private static Color colorTextMenu = Color.Ivory;
-        private static string[] menuPos = new string[] { "Lancer une nouvelle partie", "Charger une partie", "Rejoindre une partie Multijoueur", "Editeur de map", "Options", "Quitter le jeu" };
+        private static string[] menuPos = new string[] { "Lancer une nouvelle partie ", "Charger une partie ", "Rejoindre une partie Multijoueur ", "Editeur de map ", "Options ", "Quitter le jeu " };
 
         static public void InitMainMenu()
         {
@@ -52,18 +52,18 @@ namespace GameProject.Menus
         {
             for (int i = 0; i < menuPos.Length; i++)
             {
-                posX = menuPos[i].Length * 7 + 60;
-                posY = i * 95 + 140;
+                posX = (int)LoadM.Menu.MeasureString(menuPos[i]).X;
+                posY = i * 95 + ScreenY / 3;
 
                 if (i == ChoiceMainMenu(true))
                 {
                     colorTextMenu = Color.Red;
-                    spriteBatch.Draw(LoadM.Rack, new Vector2(ScreenY / 2 + 80 + posX, posY), Color.White); // Rack droit
-                    spriteBatch.Draw(LoadM.Rack, new Vector2(ScreenY / 2 - posX, posY), Color.White); // Rack gauche
+                    spriteBatch.Draw(LoadM.Rack, new Vector2(ScreenX / 2 + posX / 2, posY), Color.White); // Rack droit
+                    spriteBatch.Draw(LoadM.Rack, new Vector2(ScreenX / 2 - posX / 2 - LoadM.Rack.Width, posY), Color.White); // Rack gauche
                 }
                 else
                     colorTextMenu = Color.Ivory;
-                spriteBatch.DrawString(LoadM.Menu, menuPos[i], new Vector2(ScreenX / 2 - menuPos[i].Length * 7, ScreenY / 4 + 95 * i), colorTextMenu);
+                spriteBatch.DrawString(LoadM.Menu, menuPos[i], new Vector2(ScreenX / 2 - posX / 2 , posY), colorTextMenu);
             }
         }
     }
