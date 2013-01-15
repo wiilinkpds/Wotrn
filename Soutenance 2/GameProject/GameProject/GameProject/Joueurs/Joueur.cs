@@ -24,10 +24,13 @@ namespace GameProject.Joueurs
             spriteBatch.Draw(Texture, Position, SourceRectangle, Color.White);
             spriteBatch.DrawString(this.DrawVieMana, "Vie : ", new Vector2(camera.Position.X - MainGame.ScreenX / 2, camera.Position.Y - MainGame.ScreenY / 2), Color.Red);
             spriteBatch.DrawString(this.DrawVieMana, "Mana : ", new Vector2(camera.Position.X - MainGame.ScreenX / 2, camera.Position.Y + Barre.Height + 10 - MainGame.ScreenY / 2), Color.BlueViolet);
+            spriteBatch.DrawString(this.DrawVieMana, "Fatigue : ", new Vector2(camera.Position.X - MainGame.ScreenX / 2, camera.Position.Y + 2 * Barre.Height + 20 - MainGame.ScreenY / 2), Color.DarkMagenta);
             for (int i = 0; i < Life; i++)
                 spriteBatch.Draw(Barre, new Vector2(camera.Position.X + (Barre.Width + 1) * i + this.DrawVieMana.MeasureString("Vie : ").X - MainGame.ScreenX / 2, camera.Position.Y - MainGame.ScreenY / 2), Color.Red);
             for (int i = 0; i < Mana; i++)
                 spriteBatch.Draw(Barre, new Vector2(camera.Position.X + (Barre.Width + 1) * i + this.DrawVieMana.MeasureString("Mana : ").X - MainGame.ScreenX / 2, camera.Position.Y + Barre.Height + 10 - MainGame.ScreenY / 2), Color.BlueViolet);
+            for (int i = 0; i < Fatigue; i++)
+                spriteBatch.Draw(Barre, new Vector2(camera.Position.X + (Barre.Width + 1) * i + this.DrawVieMana.MeasureString("Fatigue : ").X - MainGame.ScreenX / 2, camera.Position.Y + 2 * Barre.Height + 20 - MainGame.ScreenY / 2), Color.DarkMagenta);
         }
     }
 }

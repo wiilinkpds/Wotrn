@@ -21,8 +21,11 @@ namespace GameProject.Managers
             float vitesse = joueur.Vitesse;
 
             //Sprint 
-            if (Utils.Down(Keys.Space) && vitesse < joueur.Vitesse + 1f)
+            if (Utils.Down(Keys.Space) && vitesse < joueur.Vitesse + 1f && joueur.Fatigue > 0)
+            {
                 vitesse += 1f;
+                joueur.Fatigue--;
+            }
             else if (Utils.Up(Keys.Space))
                 vitesse = joueur.Vitesse;
 

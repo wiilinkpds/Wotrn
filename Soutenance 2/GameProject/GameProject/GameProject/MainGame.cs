@@ -49,6 +49,8 @@ namespace GameProject
 
         private Decor Decor;
 
+        private float TimerLife = 3, TimerFatigue = 0.1f, TimerMana = 0.5f; //A changer
+
         // Teddy
 
         public MainGame()
@@ -61,7 +63,7 @@ namespace GameProject
         protected override void Initialize()
         {
             joueur = new Joueur();
-            joueur.Initialize(new Vector2(ScreenX / 2, ScreenY / 2), new Rectangle(0, 0, 50, 69), 100, 200, 2f, "Hero");
+            joueur.Initialize(new Vector2(ScreenX / 2, ScreenY / 2), new Rectangle(0, 0, 50, 69), 100, 200,100, 2f, "Hero");
 
             GameOver = new Sprite();
             GameOver.Initialize(Vector2.Zero);
@@ -90,7 +92,7 @@ namespace GameProject
                 Enemis[i].LoadContent(Content, "Sprites/Perso/Enemis/enemis", 1, 4, "h", "Sprites/Perso/VieMana/barre");
             }
             for (int i = 0; i < Enemis.Length; i++) //On initialise ici car l'on a besoin de la taille du fond et des ennemis donc il faut qu'il soit load
-                Enemis[i].Initialize(new Vector2(rand.Next(0, Decor.back.rectangle.Right - Enemis[i].Width), rand.Next(0, Decor.back.rectangle.Bottom - Enemis[i].Height)),new Rectangle(0,0,69,110),100,0,2f,"Rack");
+                Enemis[i].Initialize(new Vector2(rand.Next(0, Decor.back.rectangle.Right - Enemis[i].Width), rand.Next(0, Decor.back.rectangle.Bottom - Enemis[i].Height)),new Rectangle(0,0,69,110),100,0,0,2f,"Rack");
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -126,10 +128,27 @@ namespace GameProject
                 _camera.CameraMouvement(joueur); //Update la camera
             }
 
-            if (gameTime.TotalGameTime.Seconds % 10 == 0 && joueur.Mana < 200)
-                joueur.Mana++;
-            if (gameTime.TotalGameTime.Seconds % 30 == 0 && joueur.Life < 100)
-                joueur.Life++;
+            TimerLife -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            TimerFatigue -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            TimerMana -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (TimerLife < 0)
+            {
+                if (joueur.Life < 100)
+                    joueur.Life++;
+                TimerLife = 1;
+            }
+            if (TimerFatigue < 0)
+            {
+                if (joueur.Fatigue < 100)
+                    joueur.Fatigue++;
+                TimerFatigue = 0.1f;
+            }
+            if (TimerMana < 0)
+            {
+                    if (joueur.Mana < 200)
+                        joueur.Mana++;
+                    TimerMana = 0.5f;
+            }
 
 
             base.Update(gameTime);

@@ -16,19 +16,20 @@ namespace GameProject.Managers
         public string Name { get; set; }
 
         public int Life { get; set; }
-
         public int Mana { get; set; }
+        public int Fatigue { get; set; }
 
         public SpriteFont DrawVieMana { get; set; }
 
         public Texture2D Barre { get; set; } //Sert pour representer la vie
 
-        public virtual void Initialize(Vector2 Position_init, Rectangle? SourceRectangle, int Life, int Mana, float Vitesse, string Name)
+        public virtual void Initialize(Vector2 Position_init, Rectangle? SourceRectangle, int Life, int Mana,int Fatigue, float Vitesse, string Name)
         {
             this.Position = Position_init;
             this.SourceRectangle = SourceRectangle;
             this.Life = Life;
             this.Mana = Mana;
+            this.Fatigue = Fatigue;
             this.Vitesse = Vitesse;
             this.maXindex = 0;
             this.maYindex = 0;
