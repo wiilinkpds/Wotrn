@@ -22,10 +22,12 @@ namespace GameProject.Joueurs
         public virtual void Draw(SpriteBatch spriteBatch, Camera.Camera camera)
         {
             spriteBatch.Draw(Texture, Position, SourceRectangle, Color.White);
+            spriteBatch.DrawString(this.DrawVieMana, "Vie : ", new Vector2(camera.Position.X - MainGame.ScreenX / 2, camera.Position.Y - MainGame.ScreenY / 2), Color.Red);
+            spriteBatch.DrawString(this.DrawVieMana, "Mana : ", new Vector2(camera.Position.X - MainGame.ScreenX / 2, camera.Position.Y + Barre.Height + 10 - MainGame.ScreenY / 2), Color.BlueViolet);
             for (int i = 0; i < Life; i++)
-                spriteBatch.Draw(LifeT, new Vector2(camera.Position.X + LifeT.Width * i - MainGame.ScreenX / 2, camera.Position.Y - MainGame.ScreenY / 2), Color.White);
+                spriteBatch.Draw(Barre, new Vector2(camera.Position.X + (Barre.Width + 1) * i + this.DrawVieMana.MeasureString("Vie : ").X - MainGame.ScreenX / 2, camera.Position.Y - MainGame.ScreenY / 2), Color.Red);
             for (int i = 0; i < Mana; i++)
-                spriteBatch.Draw(ManaT, new Vector2(camera.Position.X + ManaT.Width * i - MainGame.ScreenX / 2, camera.Position.Y + LifeT.Height + 10 - MainGame.ScreenY / 2), Color.White);
+                spriteBatch.Draw(Barre, new Vector2(camera.Position.X + (Barre.Width + 1) * i + this.DrawVieMana.MeasureString("Mana : ").X - MainGame.ScreenX / 2, camera.Position.Y + Barre.Height + 10 - MainGame.ScreenY / 2), Color.BlueViolet);
         }
     }
 }

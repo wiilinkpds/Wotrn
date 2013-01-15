@@ -19,8 +19,9 @@ namespace GameProject.Managers
 
         public int Mana { get; set; }
 
-        public Texture2D LifeT { get; set; }
-        public Texture2D ManaT { get; set; }
+        public SpriteFont DrawVieMana { get; set; }
+
+        public Texture2D Barre { get; set; } //Sert pour representer la vie
 
         public virtual void Initialize(Vector2 Position_init, Rectangle? SourceRectangle, int Life, int Mana, float Vitesse, string Name)
         {
@@ -34,11 +35,11 @@ namespace GameProject.Managers
             this.Name = Name;
         }
 
-        public virtual void LoadContent(ContentManager content, string assetName,int maXindex, int maYindex, string readingDimension, string LifeName, string ManaName)
+        public virtual void LoadContent(ContentManager content, string assetName,int maXindex, int maYindex, string readingDimension, string barre)
         {
             this.Texture = content.Load<Texture2D>(assetName);
-            LifeT = content.Load<Texture2D>(LifeName);
-            ManaT = content.Load<Texture2D>(ManaName);
+            Barre = content.Load<Texture2D>(barre);
+            DrawVieMana = content.Load<SpriteFont>("Sprites/Perso/VieMana/viemana");
             this.maXindex = maXindex;
             this.maYindex = maYindex;
             this.readingDimension = readingDimension;

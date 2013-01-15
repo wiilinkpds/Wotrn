@@ -27,8 +27,8 @@ namespace GameProject
 
         static public Camera.Camera _camera;
 
-        static public int ScreenX = 1200; //Il faudra changer la resolution un jour
-        static public int ScreenY = 800;
+        static public int ScreenX = 1280; //Il faudra changer la resolution un jour
+        static public int ScreenY = 1024;
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch SpriteBatch;
@@ -55,6 +55,7 @@ namespace GameProject
         {
             graphics = new GraphicsDeviceManager(this) { PreferredBackBufferWidth = ScreenX, PreferredBackBufferHeight = ScreenY };
             Content.RootDirectory = "Content";
+            graphics.IsFullScreen = true;
         }
 
         protected override void Initialize()
@@ -81,12 +82,12 @@ namespace GameProject
             //MediaPlayer.Play(song);
 
             //Load Joueurs et Ennemis
-            joueur.LoadContent(Content, "Sprites/Perso/mario",4,4,"h","Sprites/Life","Sprites/Mana");
+            joueur.LoadContent(Content, "Sprites/Perso/Joueur/mario", 4, 4, "h", "Sprites/Perso/VieMana/barre");
             Enemis = new Ennemis[5];
             for (int i = 0; i < Enemis.Length; i++)
             {
                 Enemis[i] = new Ennemis();
-                Enemis[i].LoadContent(Content, "Sprites/Enemis/enemis",1,4,"h","Sprites/Life","Sprites/Mana");
+                Enemis[i].LoadContent(Content, "Sprites/Perso/Enemis/enemis", 1, 4, "h", "Sprites/Perso/VieMana/barre");
             }
             for (int i = 0; i < Enemis.Length; i++) //On initialise ici car l'on a besoin de la taille du fond et des ennemis donc il faut qu'il soit load
                 Enemis[i].Initialize(new Vector2(rand.Next(0, Decor.back.rectangle.Right - Enemis[i].Width), rand.Next(0, Decor.back.rectangle.Bottom - Enemis[i].Height)),new Rectangle(0,0,69,110),100,0,2f,"Rack");
@@ -161,7 +162,7 @@ namespace GameProject
                     if (joueur.Life <= 0) //Dessine game over si on est plus de vie
                     {
                         SpriteBatch.Draw(GameOver.Texture, new Rectangle((int)_camera.Position.X - ScreenX / 2,(int) _camera.Position.Y - ScreenY / 2, ScreenX, ScreenY), Color.White);
-                        SpriteBatch.DrawString(GameOverString, "Appuyer sur Entree pour quitter", new Vector2(_camera.Position.X - ScreenX / 4, _camera.Position.Y - 60), Color.Green);
+                        SpriteBatch.DrawString(GameOverString, "Appuyer sur Entree pour quitter", new Vector2(_camera.Position.X - GameOverString.MeasureString("Appuyer sur Entree pour quitter").X / 2 , _camera.Position.Y - 60), Color.Green);
                     }
                 }
             }

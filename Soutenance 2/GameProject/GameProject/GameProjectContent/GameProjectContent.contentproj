@@ -80,7 +80,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\Perso\Joueur.png">
+    <Compile Include="Sprites\Perso\Joueur\Joueur.png">
       <Name>Joueur</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -122,7 +122,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\Life.png">
+    <Compile Include="Sprites\Perso\VieMana\Life.png">
       <Name>Life</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -167,44 +167,58 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\Perso\mario.png">
+    <Compile Include="Sprites\Perso\Joueur\mario.png">
       <Name>mario</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\Mana.png">
+    <Compile Include="Sprites\Perso\VieMana\Mana.png">
       <Name>Mana</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\Enemis\enemisD.png">
+    <Compile Include="Sprites\Perso\Enemis\enemisD.png">
       <Name>enemisD</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprites\Enemis\enemisL.png">
+    <Compile Include="Sprites\Perso\Enemis\enemisL.png">
       <Name>enemisL</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprites\Enemis\enemisR.png">
+    <Compile Include="Sprites\Perso\Enemis\enemisR.png">
       <Name>enemisR</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprites\Enemis\enemisU.png">
+    <Compile Include="Sprites\Perso\Enemis\enemisU.png">
       <Name>enemisU</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\Enemis\enemis.png">
+    <Compile Include="Sprites\Perso\Enemis\enemis.png">
       <Name>enemis</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\Perso\VieMana\viemana.spritefont">
+      <Name>viemana</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\Perso\VieMana\barre.png">
+      <Name>barre</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
