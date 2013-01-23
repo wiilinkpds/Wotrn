@@ -13,7 +13,8 @@ namespace GameProjectReborn
         public const int ScreenX = 1024;
         public const int ScreenY = 768;
 
-        public Map Map { get; private set; }
+        public Map MapFirst { get; private set; }
+
         public Player Player { get; private set; } 
         public IList<Entity> Entities { get; private set; }
 
@@ -44,7 +45,7 @@ namespace GameProjectReborn
             MapData mapData = new MapData();
             if (!mapData.FromFile("Content/Maps/map.mrm"))
                 Exit();
-            Map = new Map(mapData);
+            MapFirst = new Map(mapData);
         }
 
         protected override void Update(GameTime gameTime)
@@ -71,15 +72,15 @@ namespace GameProjectReborn
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             Vector2 center = Player.CanMove ? Player.Position : Player.AstralPosition;
-            spriteBatch.Position = -center + new Vector2(ScreenX / 2, ScreenY / 2) - new Vector2(Player.Texture.Width / 2.0f, Player.Texture.Height / 2.0f);
+            spriteBatch.Position = -center + new Vector2(ScreenX / 2, ScreenY / 2) - new Vector2(Player.TextureSize.X / 2.0f, Player.TextureSize.Y / 2.0f);
 
-            Map.Draw(spriteBatch, true);
+            MapFirst.Draw(spriteBatch, true);
 
             foreach (Monster entity in Entities.OfType<Monster>())
                 entity.Draw(gameTime, spriteBatch);
             Player.Draw(gameTime, spriteBatch);
 
-            Map.Draw(spriteBatch, false);
+            MapFirst.Draw(spriteBatch, false);
 
             foreach (Entity entity in Entities)
                 entity.DrawUI(gameTime, spriteBatch);

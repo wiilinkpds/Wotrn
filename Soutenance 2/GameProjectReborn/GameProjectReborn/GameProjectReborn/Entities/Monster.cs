@@ -13,8 +13,10 @@ namespace GameProjectReborn.Entities
 
         protected int xp { private get; set; }
 
-        public Monster(MainGame game, Texture2D texture) : base(game, texture) // Constructeur avec pour paramètres les mêmes que sa classe père
+        public Monster(MainGame game, Texture2D texture) : base(game) // Constructeur avec pour paramètres les mêmes que sa classe père
         {
+            InitTexture(texture, 3, 4);
+
             Speed = 1.0f;
             Position = new Vector2(100, 100);
 
@@ -25,12 +27,13 @@ namespace GameProjectReborn.Entities
 
         public override void Update(GameTime gameTime)
         {
+            base.Update(gameTime);
             float time = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 10.0f;
         }
 
         public override void Draw(GameTime gameTime, UberSpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, Position, Targeter == null ? Color.White : Color.SkyBlue); // Draw le monstre et change la couleur de la cible
+            InternalDraw(spriteBatch, Targeter == null ? Color.White : Color.SkyBlue); // Draw le monstre et change la couleur de la cible
         }
 
         public override void DrawUI(GameTime gameTime, UberSpriteBatch spriteBatch)

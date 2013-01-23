@@ -21,9 +21,9 @@ namespace GameProjectReborn.Spells
                 return false;
 
             // Créer un vecteur directeur
-            Vector2 move = target.Position + new Vector2(target.Texture.Width, target.Texture.Height) / 2;
+            Vector2 move = target.Position + new Vector2(target.TextureSize.X, target.TextureSize.Y) / 2;
 
-            move -= Owner.Position + new Vector2(Owner.Texture.Width, Owner.Texture.Height) / 2;
+            move -= Owner.Position + new Vector2(Owner.TextureSize.X, Owner.TextureSize.Y) / 2;
             move.Normalize(); // Donne au vecteur la taille d'un pixel
 
             target.Position += move * 20;

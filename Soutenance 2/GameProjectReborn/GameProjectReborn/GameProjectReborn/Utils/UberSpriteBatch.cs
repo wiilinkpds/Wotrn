@@ -35,6 +35,12 @@ namespace GameProjectReborn.Utils
             spriteBatch.Draw(texture, new Vector2((int)position.X, (int)position.Y), color);
         }
 
+        public void Draw(Texture2D texture, Vector2 position, Rectangle sourceRectangle, Color color)
+        {
+            position += Position;
+            spriteBatch.Draw(texture, new Vector2((int)position.X, (int)position.Y), sourceRectangle, color);
+        }
+
         public void Draw(Texture2D texture, Rectangle destinationRectangle, Rectangle? sourceRectangle)
         {
             destinationRectangle.X += (int)Position.X;

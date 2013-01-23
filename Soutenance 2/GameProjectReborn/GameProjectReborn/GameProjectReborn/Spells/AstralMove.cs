@@ -39,21 +39,20 @@ namespace GameProjectReborn.Spells
             float time = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 10.0f;
             Vector2 move = Vector2.Zero;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Right) && position.X < MainGame.ScreenX - Owner.Texture.Width)
+            if (Keyboard.GetState().IsKeyDown(Keys.Right))
                 move.X += 1;
-            if (Keyboard.GetState().IsKeyDown(Keys.Left) && position.X > 0)
+            if (Keyboard.GetState().IsKeyDown(Keys.Left))
                 move.X -= 1;
-            if (Keyboard.GetState().IsKeyDown(Keys.Down) && position.Y < MainGame.ScreenY - Owner.Texture.Height)
+            if (Keyboard.GetState().IsKeyDown(Keys.Down))
                 move.Y += 1;
-            if (Keyboard.GetState().IsKeyDown(Keys.Up) && position.Y > 0)
+            if (Keyboard.GetState().IsKeyDown(Keys.Up))
                 move.Y -= 1;
 
             if (move == Vector2.Zero)
                 return;
 
             move.Normalize();
-
-            position = Owner.Game.Map.Move(Owner, position, move * Owner.Speed * time * 1.5f);
+            position = Owner.Game.MapFirst.Move(Owner, position, move * Owner.Speed * time * 1.5f);
         }
         public override void Draw(UberSpriteBatch spriteBatch)
         {

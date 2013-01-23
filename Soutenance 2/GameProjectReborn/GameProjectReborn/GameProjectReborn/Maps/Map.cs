@@ -36,13 +36,13 @@ namespace GameProjectReborn.Maps
             Point point = new Point((int)position.X, (int)position.Y);
             if (IsCollidedAt(entity, position, point)) return true;
 
-            point = new Point((int)position.X + entity.Texture.Width, (int)position.Y);
+            point = new Point((int)position.X + (int)entity.TextureSize.X, (int)position.Y);
             if (IsCollidedAt(entity, position, point)) return true;
 
-            point = new Point((int)position.X, (int)position.Y + entity.Texture.Height);
+            point = new Point((int)position.X, (int)position.Y + (int)entity.TextureSize.Y);
             if (IsCollidedAt(entity, position, point)) return true;
 
-            point = new Point((int)position.X + entity.Texture.Width, (int)position.Y + entity.Texture.Height);
+            point = new Point((int)position.X + (int)entity.TextureSize.X, (int)position.Y + (int)entity.TextureSize.Y);
             if (IsCollidedAt(entity, position, point)) return true;
 
             return false;
@@ -61,7 +61,8 @@ namespace GameProjectReborn.Maps
             if (data.Accessibility[id] == 1)
                 return true;
 
-            // Haut 1 - Bas 2 - Gauche 4 - Droite 8
+            // 0000 1111
+            // [0][0][0][0] [Droite] [Gauche] [Bas] [Haut]
 
             IList<Vector2> intersect = new List<Vector2>();
 
@@ -96,10 +97,10 @@ namespace GameProjectReborn.Maps
             foreach (Vector2 vect in intersect)
             {
                 if (vect.X >= position.X
-                    && vect.X <= position.X + entity.Texture.Height) // Si il est compris entre Position.X et Position.X + entity.Texture.Width !!!!
+                    && vect.X <= position.X + entity.TextureSize.X) // Si il est compris entre Position.X et Position.X + entity.Texture.Width !!!!
                 {
                     if (vect.Y >= position.Y
-                        && vect.Y <= position.Y + entity.Texture.Width)
+                        && vect.Y <= position.Y + entity.TextureSize.Y)
                         return true;
                 }
             }

@@ -26,8 +26,10 @@ namespace GameProjectReborn.Entities
         private int targetIndex;
         private readonly IList<Spell> spells;
         
-        public Player(MainGame game, Texture2D texture) : base(game, texture)
+        public Player(MainGame game, Texture2D texture) : base(game)
         {
+            InitTexture(texture, 3, 4);
+
             Speed = 3.0f;
             Power = 600; // Mana
             PowerMax = 600; // Change uniquement en lvlUp
@@ -62,6 +64,8 @@ namespace GameProjectReborn.Entities
 
         public override void Update(GameTime gameTime)
         {
+            base.Update(gameTime);
+
             if (CanMove)
                 InternalMove(gameTime);
 
@@ -129,13 +133,25 @@ namespace GameProjectReborn.Entities
                 move.Y += 1;
             if (KeyboardManager.IsDown(Keys.Up))
                 move.Y -= 1;
-
+            
             if (move == Vector2.Zero)
+            {
+                step = 1;
                 return;
+            }
+
+            if ((int)move.Y == 1) // Defini la Directiondu Player
+                direction = Direction.Down;
+            if ((int)move.Y == -1)
+                direction = Direction.Up;
+            if ((int)move.X == 1)
+                direction = Direction.Right;
+            if ((int)move.X == -1)
+                direction = Direction.Left;
 
             move.Normalize(); // Donne au vecteur la taille d'un pixel
 
-            Position = Game.Map.Move(this, Position, move * Speed * time);
+            Position = Game.MapFirst.Move(this, Position, move * Speed * time);
         }
 
         public override void Draw(GameTime gameTime, UberSpriteBatch spriteBatch)
