@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using GameProject._UtilsFun;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 using GameProject.Managers;
 
 namespace GameProject.Joueurs
@@ -18,7 +11,7 @@ namespace GameProject.Joueurs
 
         static public void MovIA(Joueur Joueur, Personnage[] Enemis , Sprite[]EntitéDecors,GameTime gameTime) //Pas encore au point
         {
-            if (UtilsFun.Utils.Down(Keys.Tab) && Joueur.Mana > 0)
+            if (Utils.Down(Keys.Tab) && Joueur.Mana > 0)
             {
                 vitesse = 0f;
                 Joueur.Mana--;
@@ -69,7 +62,7 @@ namespace GameProject.Joueurs
                         coldroit = false; colgauch = false; colhaut = false; colbas = false; //Initialise toutes les colisions a faux
                         MoteurPhysique.Col(ref coldroit, ref colgauch, ref colhaut, ref colbas, entité, Enemis[j]); //Verifie si l'enemis est en colision et où
                         MoteurPhysique.ColEntre2(ref Colx, ref Coly, EntitéDecors, Joueur, Enemis[j]); //Verifie si l'enemis rencontrerais quelque chose sur le chemin en X ou en Y (compliquer a expliquer un dessins serait plus simple ...)
-                        if (!Joueur.rectangleColision.Intersects(Enemis[j].rectangleColision)) //Verifie si l'enemis n'est pas en contact avec le joueur
+                        if (!Joueur.RectangleColision.Intersects(Enemis[j].RectangleColision)) //Verifie si l'enemis n'est pas en contact avec le joueur
                         { //L'histoire du touche le joueurs je le changerais il y a plus simple je sais 
                             if (Coly && !touchJ && Joueur.Position.Y + Joueur.Height != Enemis[j].Position.Y + Enemis[j].Height) //Si il y a un obstacle entre l'enemis et le joueurs en Y ET que l'enemis ne touche pas le joueur ET que le joueurs et l'enemis ne sont pas au même point Y (A changer la fin aussi)
                             {
@@ -133,7 +126,7 @@ namespace GameProject.Joueurs
                                 Enemis[j].Move("U", gameTime);
                             }
                         }
-                        if (Joueur.rectangleColision.Intersects(new Rectangle(Enemis[j].rectangleColision.Left - 1, Enemis[j].rectangleColision.Top - 1, Enemis[j].rectangleColision.Width + 2, Enemis[j].rectangleColision.Height + 2)))
+                        if (Joueur.RectangleColision.Intersects(new Rectangle(Enemis[j].RectangleColision.Left - 1, Enemis[j].RectangleColision.Top - 1, Enemis[j].RectangleColision.Width + 2, Enemis[j].RectangleColision.Height + 2)))
                             touchJ = true; //Si le joueur est en contact avec l'enemis touchJ est vrai
                     }
                 }

@@ -1,30 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using GameProject._UtilsFun;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using GameProject.UtilsFun;
 
 namespace GameProject.Menus
 {
     public class IngameM
     {
         // Initialisation
-        private static bool InGameMenu = false, hold = false, noHold = true;
-        private static int choiceNumber = 0;
+        private static bool inGameMenu, hold, noHold = true;
+        private static int choiceNumber;
 
         private static Color colorTextMenu = Color.Ivory;
-        public static string[] ingameMenuPos = new string[] { "Retourner sur le Jeu", "Sauvegarder", "Quitter vers le Menu Principal", "Quitter vers le Bureau" };
+        public static readonly string[] IngameMenuPos = new[] { "Retourner sur le Jeu", "Sauvegarder", "Quitter vers le Menu Principal", "Quitter vers le Bureau" };
 
         // Initialisation
         static public void InitIngameMenu()
         {
-            InGameMenu = false;
+            inGameMenu = false;
             choiceNumber = 0;
         }
 
@@ -33,9 +26,9 @@ namespace GameProject.Menus
         {
             if (noHold)
             {
-                if (Utils.Down(Keys.Down) && choiceNumber < ingameMenuPos.Length - 1 && InGameMenu)
+                if (Utils.Down(Keys.Down) && choiceNumber < IngameMenuPos.Length - 1 && inGameMenu)
                     choiceNumber += 1;
-                else if (Utils.Down(Keys.Up) && choiceNumber > 0 && InGameMenu)
+                else if (Utils.Down(Keys.Up) && choiceNumber > 0 && inGameMenu)
                     choiceNumber -= 1;
                 noHold = false;
             }
@@ -49,27 +42,24 @@ namespace GameProject.Menus
         // Retourne un booléen, vrai si le IngameMenu est lancé.
         public static bool IngameLaunched()
         {
-            if ((Utils.Down(Keys.Escape) || (Utils.Down(Keys.Enter) && choiceNumber == 0 && InGameMenu)) && !hold)
+            if ((Utils.Down(Keys.Escape) || (Utils.Down(Keys.Enter) && choiceNumber == 0 && inGameMenu)) && !hold)
             {
                 choiceNumber = 0;
-                InGameMenu = !InGameMenu;
+                inGameMenu = !inGameMenu;
                 hold = true;
             }
             else if (Utils.Up(Keys.Escape))
                 hold = false;
-            return InGameMenu;
+            return inGameMenu;
         }
 
         // Dessine le Menu Ingame
-        static public void IngameDraw(int ScreenX, int ScreenY, SpriteBatch spriteBatch)
+        static public void IngameDraw(SpriteBatch sprite_batch)
         {
-            for (int i = 0; i < ingameMenuPos.Length; i++)
+            for (int i = 0; i < IngameMenuPos.Length; i++)
             {
-                if (i == ChoiceIngameMenu())
-                    colorTextMenu = Color.Red;
-                else
-                    colorTextMenu = Color.Ivory;
-                spriteBatch.DrawString(LoadM.Menu, ingameMenuPos[i], new Vector2(350, 300 + 80 * i), colorTextMenu);
+                colorTextMenu = i == ChoiceIngameMenu() ? Color.Red : Color.Ivory;
+                sprite_batch.DrawString(LoadM.Menu, IngameMenuPos[i], new Vector2(350, 300 + 80 * i), colorTextMenu);
             }
         }
     }

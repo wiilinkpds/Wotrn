@@ -1,25 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using GameProject._UtilsFun;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using GameProject.UtilsFun;
 
 namespace GameProject.Menus
 {
-    class MainM
+    public class MainM
     {
         // Initialisation
         private static bool noHold = true;
-        private static int choiceNumber = 0, posX = 0, posY = 0;
+        private static int choiceNumber, posX , posY ;
 
         private static Color colorTextMenu = Color.Ivory;
-        private static string[] menuPos = new string[] { "Lancer une nouvelle partie ", "Charger une partie ", "Rejoindre une partie Multijoueur ", "Editeur de map ", "Options ", "Quitter le jeu " };
+        private static readonly string[] menuPos = new[] { "Lancer une nouvelle partie ", "Charger une partie ", "Rejoindre une partie Multijoueur ", "Editeur de map ", "Options ", "Quitter le jeu " };
 
         static public void InitMainMenu()
         {
@@ -28,15 +21,15 @@ namespace GameProject.Menus
         // Initialisation
 
         // Empeche le choix de se "téléporter" grace à la modification de la variable noHold.
-        static public int ChoiceMainMenu(bool MenuLaunch)
+        static public int ChoiceMainMenu(bool menulaunch)
         {
             if (noHold)
             {
-                if (Utils.Down(Keys.Down) && choiceNumber < menuPos.Length - 1 && MenuLaunch)
+                if (Utils.Down(Keys.Down) && choiceNumber < menuPos.Length - 1 && menulaunch)
                     choiceNumber += 1;
                 else if (Utils.Down(Keys.Up) && choiceNumber > 0)
                     choiceNumber -= 1;
-                else if ((Utils.Down(Keys.Up) || Utils.Down(Keys.Down)) && choiceNumber == -1 && MenuLaunch)
+                else if ((Utils.Down(Keys.Up) || Utils.Down(Keys.Down)) && choiceNumber == -1 && menulaunch)
                     choiceNumber = 0;
                 noHold = false;
             }
@@ -48,22 +41,22 @@ namespace GameProject.Menus
         }
 
         // Dessine le MainMenu. posX est la position de départ des choix du menu sur l'axe X.
-        static public void MainDraw(int ScreenX, int ScreenY, SpriteBatch spriteBatch)
+        static public void MainDraw(int screen_x, int screen_y, SpriteBatch sprite_batch)
         {
             for (int i = 0; i < menuPos.Length; i++)
             {
                 posX = (int)LoadM.Menu.MeasureString(menuPos[i]).X;
-                posY = i * 95 + ScreenY / 3;
+                posY = i * 95 + screen_y / 3;
 
                 if (i == ChoiceMainMenu(true))
                 {
                     colorTextMenu = Color.Red;
-                    spriteBatch.Draw(LoadM.Rack, new Vector2(ScreenX / 2 + posX / 2, posY), Color.White); // Rack droit
-                    spriteBatch.Draw(LoadM.Rack, new Vector2(ScreenX / 2 - posX / 2 - LoadM.Rack.Width, posY), Color.White); // Rack gauche
+                    sprite_batch.Draw(LoadM.Rack, new Vector2(screen_x / 2 + posX / 2, posY), Color.White); // Rack droit
+                    sprite_batch.Draw(LoadM.Rack, new Vector2(screen_x / 2 - posX / 2 - LoadM.Rack.Width, posY), Color.White); // Rack gauche
                 }
                 else
                     colorTextMenu = Color.Ivory;
-                spriteBatch.DrawString(LoadM.Menu, menuPos[i], new Vector2(ScreenX / 2 - posX / 2 , posY), colorTextMenu);
+                sprite_batch.DrawString(LoadM.Menu, menuPos[i], new Vector2(screen_x / 2 - posX / 2 , posY), colorTextMenu);
             }
         }
     }

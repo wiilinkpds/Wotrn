@@ -1,78 +1,68 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 
 namespace GameProject.Managers
 {
     public class Personnage : Sprite
     {
-        public string Name { get; set; }
-
         public int Life { get; set; }
         public int Mana { get; set; }
         public int Fatigue { get; set; }
+        public float Vitesse { get; private set; }
 
-        public SpriteFont DrawVieMana { get; set; }
+        protected Texture2D Barre { get; private set; } //Sert pour representer la vie
+        protected SpriteFont DrawVieMana { get; private set; }
+        private string Name { get; set; }
 
-        public Texture2D Barre { get; set; } //Sert pour representer la vie
-
-        public virtual void Initialize(Vector2 Position_init, Rectangle? SourceRectangle, int Life, int Mana,int Fatigue, float Vitesse, string Name)
+        public virtual void Initialize(Vector2 position_init, Rectangle? source_rect, int life, int mana,int fatigue, float vitesse, string name)
         {
-            this.Position = Position_init;
-            this.SourceRectangle = SourceRectangle;
-            this.Life = Life;
-            this.Mana = Mana;
-            this.Fatigue = Fatigue;
-            this.Vitesse = Vitesse;
-            this.maXindex = 0;
-            this.maYindex = 0;
-            this.Name = Name;
+            Position = position_init;
+            SourceRectangle = source_rect;
+            Life = life;
+            Mana = mana;
+            Fatigue = fatigue;
+            Vitesse = vitesse;
+            MaXindex = 0;
+            MaYindex = 0;
+            Name = name;
         }
 
-        public virtual void LoadContent(ContentManager content, string assetName,int maXindex, int maYindex, string readingDimension, string barre)
+        public void LoadContent(ContentManager content, string asset_name,int max_x, int max_y, string read_dim, string barre)
         {
-            this.Texture = content.Load<Texture2D>(assetName);
+            Texture = content.Load<Texture2D>(asset_name);
             Barre = content.Load<Texture2D>(barre);
             DrawVieMana = content.Load<SpriteFont>("Sprites/Perso/VieMana/viemana");
-            this.maXindex = maXindex;
-            this.maYindex = maYindex;
-            this.readingDimension = readingDimension;
+            MaXindex = max_x;
+            MaYindex = max_y;
+            ReadingDimension = read_dim;
         }
 
-        public float Vitesse { get; set; }
-
-        public void Move(string direction, GameTime gameTime)
+        public void Move(string direction, GameTime game_time)
         {
             if (direction == "U")
             {
-                this.UpdateSetStateAnimation(0, 3);
-                this.UpdateAnimation(gameTime);
-                this.Position = new Vector2(this.Position.X, this.Position.Y - 1);
+                UpdateSetStateAnimation(0, 3);
+                UpdateAnimation(game_time);
+                Position = new Vector2(Position.X, Position.Y - 1);
             }
             else if (direction == "D")
             {
-                this.UpdateSetStateAnimation(0, 0);
-                this.UpdateAnimation(gameTime);
-                this.Position = new Vector2(this.Position.X, this.Position.Y + 1);
+                UpdateSetStateAnimation(0, 0);
+                UpdateAnimation(game_time);
+                Position = new Vector2(Position.X, Position.Y + 1);
             }
             else if (direction == "R")
             {
-                this.UpdateSetStateAnimation(0, 2);
-                this.UpdateAnimation(gameTime);
-                this.Position = new Vector2(this.Position.X + 1, this.Position.Y);
+                UpdateSetStateAnimation(0, 2);
+                UpdateAnimation(game_time);
+                Position = new Vector2(Position.X + 1, Position.Y);
             }
             else if (direction == "L")
             {
-                this.UpdateSetStateAnimation(0, 1);
-                this.UpdateAnimation(gameTime);
-                this.Position = new Vector2(this.Position.X - 1, this.Position.Y);
+                UpdateSetStateAnimation(0, 1);
+                UpdateAnimation(game_time);
+                Position = new Vector2(Position.X - 1, Position.Y);
             }
         }
 

@@ -122,7 +122,7 @@
   <ItemGroup>
     <Compile Include="BackGrounds\Background.cs" />
     <Compile Include="BackGrounds\LoadBack.cs" />
-    <Compile Include="Camera\Camera.cs" />
+    <Compile Include="Camera\Cam.cs" />
     <Compile Include="Decors\Decor.cs" />
     <Compile Include="Decors\DesignDecors.cs" />
     <Compile Include="Enemis\Enemis.cs" />

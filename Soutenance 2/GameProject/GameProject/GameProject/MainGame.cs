@@ -1,55 +1,48 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using GameProject._UtilsFun;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 using GameProject.Menus;
-using GameProject.UtilsFun;
 using GameProject.Managers;
-using GameProject.BackGrounds;
 using GameProject.Decors;
 using GameProject.Joueurs;
-using GameProject.Camera;
 using GameProject.Enemis;
+using GameProject.Camera;
 
 namespace GameProject
 {
-    public class MainGame : Microsoft.Xna.Framework.Game
+    public class MainGame : Game
     {
         /* Les fleches servent a ce déplacer
          * La touche espace sert a sprinter
          * */
 
-        static public Camera.Camera _camera;
+        private static Cam camera;
 
-        static public int ScreenX = 1280; //Il faudra changer la resolution un jour
-        static public int ScreenY = 1024;
+        public const int ScreenX = 1680; //Il faudra changer la resolution un jour
+        public const int ScreenY = 1050;
 
-        private GraphicsDeviceManager graphics;
-        private SpriteBatch SpriteBatch;
+        private readonly GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
 
-        static private LoadM TexturesMenu;
+        static private LoadM texturesMenu;
 
         // Teddy
-        private bool MenuLaunch = true;
+        private bool menuLaunch = true;
 
         private Joueur joueur;
 
-        private Ennemis[] Enemis;
+        private Ennemis[] enemis;
 
-        private Sprite GameOver;
-        private SpriteFont GameOverString;
+        private Sprite gameOver;
+        private SpriteFont gameOverString;
 
-        static public Random rand = new Random();
+        static public readonly Random Rand = new Random();
 
-        private Decor Decor;
+        private Decor decor;
 
-        private float TimerLife = 3, TimerFatigue = 0.1f, TimerMana = 0.5f; //A changer
+        private float timerLife = 3, timerFatigue = 0.1f, timerMana = 0.5f; //A changer
 
         // Teddy
 
@@ -63,21 +56,21 @@ namespace GameProject
         protected override void Initialize()
         {
             joueur = new Joueur();
-            joueur.Initialize(new Vector2(ScreenX / 2, ScreenY / 2), new Rectangle(0, 0, 50, 69), 100, 200,100, 2f, "Hero");
+            joueur.Initialize(new Vector2(ScreenX / 2, ScreenY / 2), new Rectangle(0, 0, 50, 69), 100, 100,100, 2f, "Hero");
 
-            GameOver = new Sprite();
-            GameOver.Initialize(Vector2.Zero);
+            gameOver = new Sprite();
+            gameOver.Initialize(Vector2.Zero);
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             //Load Decors
-            Decor = new Decor();
-            Decor.LoadDecors(Content, 3);
+            decor = new Decor();
+            decor.LoadDecors(Content, 2);
             //Load Game Over
-            GameOverString = Content.Load<SpriteFont>("Sprites/GameOver/GameOverString");
-            GameOver.LoadContent(Content, "Sprites/GameOver/Game Over");
+            gameOverString = Content.Load<SpriteFont>("Sprites/GameOver/GameOverString");
+            gameOver.LoadContent(Content, "Sprites/GameOver/Game Over");
 
             //Sound : 
             //Song song = Content.Load<Song>("Kalimba");
@@ -85,109 +78,109 @@ namespace GameProject
 
             //Load Joueurs et Ennemis
             joueur.LoadContent(Content, "Sprites/Perso/Joueur/mario", 4, 4, "h", "Sprites/Perso/VieMana/barre");
-            Enemis = new Ennemis[5];
-            for (int i = 0; i < Enemis.Length; i++)
+            enemis = new Ennemis[1];
+            for (int i = 0; i < enemis.Length; i++)
             {
-                Enemis[i] = new Ennemis();
-                Enemis[i].LoadContent(Content, "Sprites/Perso/Enemis/enemis", 1, 4, "h", "Sprites/Perso/VieMana/barre");
+                enemis[i] = new Ennemis();
+                enemis[i].LoadContent(Content, "Sprites/Perso/Enemis/enemis", 1, 4, "h", "Sprites/Perso/VieMana/barre");
             }
-            for (int i = 0; i < Enemis.Length; i++) //On initialise ici car l'on a besoin de la taille du fond et des ennemis donc il faut qu'il soit load
-                Enemis[i].Initialize(new Vector2(rand.Next(0, Decor.back.rectangle.Right - Enemis[i].Width), rand.Next(0, Decor.back.rectangle.Bottom - Enemis[i].Height)),new Rectangle(0,0,69,110),100,0,0,2f,"Rack");
+            for (int i = 0; i < enemis.Length; i++) //On initialise ici car l'on a besoin de la taille du fond et des ennemis donc il faut qu'il soit load
+                enemis[i].Initialize(new Vector2(Rand.Next(0, Decor.back.Rectangle.Right - enemis[i].Width), Rand.Next(0, Decor.back.Rectangle.Bottom - enemis[i].Height)),new Rectangle(0,0,69,110),100,0,0,2f,"Rack");
 
-            SpriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //Load le menu
-            TexturesMenu = new LoadM();
-            TexturesMenu.LoadMenu(Content);
+            texturesMenu = new LoadM();
+            texturesMenu.LoadMenu(Content);
 
             //Load la camera
-            _camera = new Camera.Camera(Decor.backRectangle.Width, Decor.backRectangle.Height, GraphicsDevice);
+            camera = new Cam(Decor.BackRectangle.Width, Decor.BackRectangle.Height, GraphicsDevice);
         }
 
-        protected override void Update(GameTime gameTime)
+        protected override void Update(GameTime game_time)
         {
-            if (Utils.Down(Keys.Enter) && (MainM.ChoiceMainMenu(MenuLaunch) == 5 || IngameM.ingameMenuPos[IngameM.ChoiceIngameMenu()] == "Quitter vers le Bureau") || (joueur.Life <=0 && Utils.Down(Keys.Enter)))
+            if (Utils.Down(Keys.Enter) && (MainM.ChoiceMainMenu(menuLaunch) == 5 || IngameM.IngameMenuPos[IngameM.ChoiceIngameMenu()] == "Quitter vers le Bureau") || (joueur.Life <=0 && Utils.Down(Keys.Enter)))
              Exit(); //On quitte si on est sur quitter dans l'un des menus ou si on est sur gameover et qu'on fait entrer
 
-            if (MenuLaunch && MainM.ChoiceMainMenu(MenuLaunch) == 0 && Utils.Down(Keys.Enter))
+            if (menuLaunch && MainM.ChoiceMainMenu(menuLaunch) == 0 && Utils.Down(Keys.Enter))
             {
-                MenuLaunch = false; // Stop le MainMenu
+                menuLaunch = false; // Stop le MainMenu
                 Initialize(); // Initialise le Jeu
             }
-            else if (Utils.Down(Keys.Enter) && IngameM.ingameMenuPos[IngameM.ChoiceIngameMenu()] == "Quitter vers le Menu Principal")
+            else if (Utils.Down(Keys.Enter) && IngameM.IngameMenuPos[IngameM.ChoiceIngameMenu()] == "Quitter vers le Menu Principal")
             {
-                MenuLaunch = true; // Lance le MainMenu
+                menuLaunch = true; // Lance le MainMenu
                 IngameM.InitIngameMenu(); // Initialise le IngameMenu
                 MainM.InitMainMenu(); // Initialise le MainMenu
             }
             
-            if (MenuLaunch == false) //Verifie que le menu soit fermer
+            if (menuLaunch == false) //Verifie que le menu soit fermer
             {
-                joueur.Update(Decor.DecorCol, Decor.back, Enemis, gameTime); //Update le joueur
-                IA.MovIA(joueur, Enemis, Decor.DecorCol,gameTime); //Update l'enemis
-                _camera.CameraMouvement(joueur); //Update la camera
+                joueur.Update(Decor.DecorCol, Decor.back, enemis, game_time); //Update le joueur
+                IA.MovIA(joueur, enemis, Decor.DecorCol,game_time); //Update l'enemis
+                camera.CameraMouvement(joueur); //Update la camera
             }
 
-            TimerLife -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            TimerFatigue -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            TimerMana -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (TimerLife < 0)
+            timerLife -= (float)game_time.ElapsedGameTime.TotalSeconds;
+            timerFatigue -= (float)game_time.ElapsedGameTime.TotalSeconds;
+            timerMana -= (float)game_time.ElapsedGameTime.TotalSeconds;
+            if (timerLife < 0)
             {
                 if (joueur.Life < 100)
                     joueur.Life++;
-                TimerLife = 1;
+                timerLife = 1;
             }
-            if (TimerFatigue < 0)
+            if (timerFatigue < 0)
             {
                 if (joueur.Fatigue < 100)
                     joueur.Fatigue++;
-                TimerFatigue = 0.1f;
+                timerFatigue = 0.1f;
             }
-            if (TimerMana < 0)
+            if (timerMana < 0)
             {
-                    if (joueur.Mana < 200)
+                    if (joueur.Mana < 100)
                         joueur.Mana++;
-                    TimerMana = 0.5f;
+                    timerMana = 0.5f;
             }
 
 
-            base.Update(gameTime);
+            base.Update(game_time);
         }
 
-        protected override void Draw(GameTime gameTime)
+        protected override void Draw(GameTime game_time)
         {
             GraphicsDevice.Clear(Color.Black); //Fond noir pour le debut
-            SpriteBatch.Begin(); //Debut du draw
-            if (MenuLaunch) //Si le menu est lancer
+            spriteBatch.Begin(); //Debut du draw
+            if (menuLaunch) //Si le menu est lancer
             {
-                GraphicM.MainGraph(ScreenX, ScreenY, SpriteBatch); // Dessine les elements deco du MainMenu
-                MainM.MainDraw(ScreenX, ScreenY, SpriteBatch); // Dessine les elements interactifs du MainMenu
+                GraphicM.MainGraph(ScreenX, ScreenY, spriteBatch); // Dessine les elements deco du MainMenu
+                MainM.MainDraw(ScreenX, ScreenY, spriteBatch); // Dessine les elements interactifs du MainMenu
             }
             else
             {
                 GraphicsDevice.Clear(Color.Blue); //Fond bleu (on ne le voit pas donc pas forcement utile)
                 if (IngameM.IngameLaunched())
                 {
-                    IngameM.IngameDraw(ScreenX, ScreenY, SpriteBatch); // Dessine le MenuIngame
+                    IngameM.IngameDraw(spriteBatch); // Dessine le MenuIngame
                 }
                 else
                 {
-                    SpriteBatch.End(); //On arrete le draw en cours car l'on va maintenant utiliser la camera
-                    SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _camera.GetTransformation()); //On recommence le draw mais avec la camera
-                    Decor.DrawDecors(SpriteBatch); //Draw le decors
-                    for (int i = 0; i < Enemis.Length; i++) //Dessine les enemis
-                        Enemis[i].Draw(SpriteBatch);
-                    joueur.Draw(SpriteBatch,_camera); // Dessine le Joueur
+                    spriteBatch.End(); //On arrete le draw en cours car l'on va maintenant utiliser la camera
+                    spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, camera.GetTransformation()); //On recommence le draw mais avec la camera
+                    decor.DrawDecors(spriteBatch); //Draw le decors
+                    for (int i = 0; i < enemis.Length; i++) //Dessine les ennemis
+                        enemis[i].Draw(spriteBatch);
+                    joueur.Draw(spriteBatch,camera); // Dessine le Joueur
                     if (joueur.Life <= 0) //Dessine game over si on est plus de vie
                     {
-                        SpriteBatch.Draw(GameOver.Texture, new Rectangle((int)_camera.Position.X - ScreenX / 2,(int) _camera.Position.Y - ScreenY / 2, ScreenX, ScreenY), Color.White);
-                        SpriteBatch.DrawString(GameOverString, "Appuyer sur Entree pour quitter", new Vector2(_camera.Position.X - GameOverString.MeasureString("Appuyer sur Entree pour quitter").X / 2 , _camera.Position.Y - 60), Color.Green);
+                        spriteBatch.Draw(gameOver.Texture, new Rectangle((int)camera.Position.X - ScreenX / 2,(int) camera.Position.Y - ScreenY / 2, ScreenX, ScreenY), Color.White);
+                        spriteBatch.DrawString(gameOverString, "Appuyer sur Entree pour quitter", new Vector2(camera.Position.X - gameOverString.MeasureString("Appuyer sur Entree pour quitter").X / 2 , camera.Position.Y - 60), Color.Green);
                     }
                 }
             }
 
-            SpriteBatch.End();  //Fin
-            base.Draw(gameTime);
+            spriteBatch.End();  //Fin
+            base.Draw(game_time);
         }
     }
 }

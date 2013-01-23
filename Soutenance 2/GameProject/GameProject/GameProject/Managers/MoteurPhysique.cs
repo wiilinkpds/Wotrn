@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using GameProject._UtilsFun;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using GameProject.UtilsFun;
-using GameProject.Managers;
-using GameProject.Joueurs;
 
 namespace GameProject.Managers
 {
@@ -21,7 +11,7 @@ namespace GameProject.Managers
             float vitesse = joueur.Vitesse;
 
             //Sprint 
-            if (Utils.Down(Keys.Space) && vitesse < joueur.Vitesse + 1f && joueur.Fatigue > 0)
+            if (Utils.Down(Keys.Space) && vitesse < joueur.Vitesse + 1f && joueur.Fatigue > 0 && (Utils.Down(Keys.Left) || Utils.Down(Keys.Right) || Utils.Down(Keys.Up) || Utils.Down(Keys.Down)))
             {
                 vitesse += 1f;
                 joueur.Fatigue--;
@@ -71,26 +61,26 @@ namespace GameProject.Managers
 
         static public void Col(ref bool ColDroit, ref bool ColGauche, ref bool ColHaut, ref bool ColBas, Sprite[] Entité, Sprite Perso)
         {
-            if (Perso.rectangleColision.Top == Decors.Decor.backRectangle.Top)
+            if (Perso.RectangleColision.Top == Decors.Decor.BackRectangle.Top)
                 ColHaut = true;
-            else if (Perso.rectangleColision.Bottom == Decors.Decor.backRectangle.Bottom)
+            else if (Perso.RectangleColision.Bottom == Decors.Decor.BackRectangle.Bottom)
                 ColBas = true;
-            if (Perso.rectangleColision.Right == Decors.Decor.backRectangle.Right)
+            if (Perso.RectangleColision.Right == Decors.Decor.BackRectangle.Right)
                 ColDroit = true;
-            else if (Perso.rectangleColision.Left == Decors.Decor.backRectangle.Left)
+            else if (Perso.RectangleColision.Left == Decors.Decor.BackRectangle.Left)
                 ColGauche = true;
             /* Verifie si le Perso est en colision avec quelque chose a modifie les bools en fonction d'ou il est en colision */
             for (int i = 0; i < Entité.Length; i++)
             {
                 /*Verifie respectivement si le perso est en contact avec un element du décors a Droite, a Gauche, au dessus ou en dessous de lui 
                  Si c'est le cas Col... est true */
-                if (Perso.rectangleColision.Right == Entité[i].rectangleColision.Left && Perso.rectangleColision.Bottom > Entité[i].rectangleColision.Top && Perso.rectangleColision.Top < Entité[i].rectangleColision.Bottom)
+                if (Perso.RectangleColision.Right == Entité[i].RectangleColision.Left && Perso.RectangleColision.Bottom > Entité[i].RectangleColision.Top && Perso.RectangleColision.Top < Entité[i].RectangleColision.Bottom)
                     ColDroit = true;
-                if (Perso.rectangleColision.Left == Entité[i].rectangleColision.Right && Perso.rectangleColision.Bottom > Entité[i].rectangleColision.Top && Perso.rectangleColision.Top < Entité[i].rectangleColision.Bottom)
+                if (Perso.RectangleColision.Left == Entité[i].RectangleColision.Right && Perso.RectangleColision.Bottom > Entité[i].RectangleColision.Top && Perso.RectangleColision.Top < Entité[i].RectangleColision.Bottom)
                     ColGauche = true;
-                if (Perso.rectangleColision.Top == Entité[i].rectangleColision.Bottom && Perso.rectangleColision.Right > Entité[i].rectangleColision.Left && Perso.rectangleColision.Left < Entité[i].rectangleColision.Right)
+                if (Perso.RectangleColision.Top == Entité[i].RectangleColision.Bottom && Perso.RectangleColision.Right > Entité[i].RectangleColision.Left && Perso.RectangleColision.Left < Entité[i].RectangleColision.Right)
                     ColHaut = true;
-                if (Perso.rectangleColision.Bottom == Entité[i].rectangleColision.Top && Perso.rectangleColision.Right > Entité[i].rectangleColision.Left && Perso.rectangleColision.Left < Entité[i].rectangleColision.Right)
+                if (Perso.RectangleColision.Bottom == Entité[i].RectangleColision.Top && Perso.RectangleColision.Right > Entité[i].RectangleColision.Left && Perso.RectangleColision.Left < Entité[i].RectangleColision.Right)
                     ColBas = true;
             }
         }
@@ -102,37 +92,37 @@ namespace GameProject.Managers
             ColX = false; ColY = false;
                 for (int i = 0; i < Entité.Length; i++)
                 {
-                    if (J1.rectangleColision.Left < J2.rectangleColision.Left)
+                    if (J1.RectangleColision.Left < J2.RectangleColision.Left)
                     {   
-                        if (J1.rectangleColision.Top < J2.rectangleColision.Top)
+                        if (J1.RectangleColision.Top < J2.RectangleColision.Top)
                         {
-                            if (J1.rectangleColision.Left < Entité[i].rectangleColision.Left && Entité[i].rectangleColision.Left < J2.rectangleColision.Right && J2.rectangleColision.Top < Entité[i].rectangleColision.Bottom && J2.rectangleColision.Bottom > Entité[i].rectangleColision.Top)
+                            if (J1.RectangleColision.Left < Entité[i].RectangleColision.Left && Entité[i].RectangleColision.Left < J2.RectangleColision.Right && J2.RectangleColision.Top < Entité[i].RectangleColision.Bottom && J2.RectangleColision.Bottom > Entité[i].RectangleColision.Top)
                                 ColX = true;
-                            if (J1.rectangleColision.Top < Entité[i].rectangleColision.Top && Entité[i].rectangleColision.Bottom < J2.rectangleColision.Top && J2.rectangleColision.Left < Entité[i].rectangleColision.Right && J2.rectangleColision.Right > Entité[i].rectangleColision.Left)
+                            if (J1.RectangleColision.Top < Entité[i].RectangleColision.Top && Entité[i].RectangleColision.Bottom < J2.RectangleColision.Top && J2.RectangleColision.Left < Entité[i].RectangleColision.Right && J2.RectangleColision.Right > Entité[i].RectangleColision.Left)
                                 ColY = true;
                         }
                         else
                         {
-                            if (J1.rectangleColision.Left < Entité[i].rectangleColision.Left && Entité[i].rectangleColision.Left < J2.rectangleColision.Right && J2.rectangleColision.Top < Entité[i].rectangleColision.Bottom && J2.rectangleColision.Bottom > Entité[i].rectangleColision.Top)
+                            if (J1.RectangleColision.Left < Entité[i].RectangleColision.Left && Entité[i].RectangleColision.Left < J2.RectangleColision.Right && J2.RectangleColision.Top < Entité[i].RectangleColision.Bottom && J2.RectangleColision.Bottom > Entité[i].RectangleColision.Top)
                                 ColX = true;
-                            if (J1.rectangleColision.Bottom > Entité[i].rectangleColision.Top && Entité[i].rectangleColision.Top > J2.rectangleColision.Top && J2.rectangleColision.Left < Entité[i].rectangleColision.Right && J2.rectangleColision.Right > Entité[i].rectangleColision.Left)
+                            if (J1.RectangleColision.Bottom > Entité[i].RectangleColision.Top && Entité[i].RectangleColision.Top > J2.RectangleColision.Top && J2.RectangleColision.Left < Entité[i].RectangleColision.Right && J2.RectangleColision.Right > Entité[i].RectangleColision.Left)
                                 ColY = true;
                         }
                     }
                     else
                     {
-                        if (J1.rectangleColision.Top < J2.rectangleColision.Top)
+                        if (J1.RectangleColision.Top < J2.RectangleColision.Top)
                         {
-                            if (J1.rectangleColision.Right > Entité[i].rectangleColision.Left && Entité[i].rectangleColision.Left > J2.rectangleColision.Left && J2.rectangleColision.Top < Entité[i].rectangleColision.Bottom && J2.rectangleColision.Bottom > Entité[i].rectangleColision.Top)
+                            if (J1.RectangleColision.Right > Entité[i].RectangleColision.Left && Entité[i].RectangleColision.Left > J2.RectangleColision.Left && J2.RectangleColision.Top < Entité[i].RectangleColision.Bottom && J2.RectangleColision.Bottom > Entité[i].RectangleColision.Top)
                                 ColX = true;
-                            if (J1.rectangleColision.Top < Entité[i].rectangleColision.Top && Entité[i].rectangleColision.Bottom < J2.rectangleColision.Top && J2.rectangleColision.Left < Entité[i].rectangleColision.Right && J2.rectangleColision.Right > Entité[i].rectangleColision.Left)
+                            if (J1.RectangleColision.Top < Entité[i].RectangleColision.Top && Entité[i].RectangleColision.Bottom < J2.RectangleColision.Top && J2.RectangleColision.Left < Entité[i].RectangleColision.Right && J2.RectangleColision.Right > Entité[i].RectangleColision.Left)
                                 ColY = true;
                         }
                         else
                         {
-                            if (J1.rectangleColision.Right >= Entité[i].rectangleColision.Left && Entité[i].rectangleColision.Left >= J2.rectangleColision.Left && J2.rectangleColision.Top < Entité[i].rectangleColision.Bottom && J2.rectangleColision.Bottom > Entité[i].rectangleColision.Top)
+                            if (J1.RectangleColision.Right >= Entité[i].RectangleColision.Left && Entité[i].RectangleColision.Left >= J2.RectangleColision.Left && J2.RectangleColision.Top < Entité[i].RectangleColision.Bottom && J2.RectangleColision.Bottom > Entité[i].RectangleColision.Top)
                                 ColX = true;
-                            if (J1.rectangleColision.Bottom >= Entité[i].rectangleColision.Top && Entité[i].rectangleColision.Top >= J2.rectangleColision.Top && J2.rectangleColision.Left < Entité[i].rectangleColision.Right && J2.rectangleColision.Right > Entité[i].rectangleColision.Left)
+                            if (J1.RectangleColision.Bottom >= Entité[i].RectangleColision.Top && Entité[i].RectangleColision.Top >= J2.RectangleColision.Top && J2.RectangleColision.Left < Entité[i].RectangleColision.Right && J2.RectangleColision.Right > Entité[i].RectangleColision.Left)
                                 ColY = true;
                         }
                     }

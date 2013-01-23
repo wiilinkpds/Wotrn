@@ -1,87 +1,78 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 using GameProject.Managers;
 
 namespace GameProject.Decors
 {
     public class DesignDecors
     {
-        static public void Decors(ContentManager content, Sprite Back, out Sprite[] Entite, int numbDecor, Vector2 PosDepart) //Definie les caracteristiques du decor choisi
+        static public void Decors(ContentManager content, Sprite back, out Sprite[] entite, int numb_decor, Vector2 pos_depart) //Definie les caracteristiques du decor choisi
         {
-            Back.Initialize(Vector2.Zero + PosDepart);
-            Back.LoadContent(content, "Sprites/BackGrounds/Fond2");
+            back.Initialize(Vector2.Zero + pos_depart);
+            back.LoadContent(content, "Sprites/BackGrounds/Fond2");
             // Decor 1 : Arbres en Diagonales
-            if (numbDecor == 1)
+            if (numb_decor == 1)
             {
-                Entite = new Sprite[15];
-                Back.LoadContent(content, "Sprites/BackGrounds/Fond2");
+                entite = new Sprite[15];
+                back.LoadContent(content, "Sprites/BackGrounds/Fond2");
 
-                for (int i = 0; i < Entite.Length; i++)
+                for (int i = 0; i < entite.Length; i++)
                 {
-                    Entite[i] = new Sprite();
-                    Entite[i].Initialize(new Vector2(80 * i) + PosDepart);
+                    entite[i] = new Sprite();
+                    entite[i].Initialize(new Vector2(80 * i) + pos_depart);
                 }
-                for (int i = 0; i < Entite.Length; i++)
-                    Entite[i].LoadContent(content, "Sprites/Decors/Arbrebeta");
+                for (int i = 0; i < entite.Length; i++)
+                    entite[i].LoadContent(content, "Sprites/Decors/Arbrebeta");
             }
             // Decor 2 : Axe d'arbres
-            else if (numbDecor == 2)
+            else if (numb_decor == 2)
             {
-                Entite = new Sprite[50];
-                Back.LoadContent(content, "Sprites/BackGrounds/Fond2");
+                entite = new Sprite[50];
+                back.LoadContent(content, "Sprites/BackGrounds/Fond2");
 
-                for (int i = 0; i < Entite.Length / 2; i++)
+                for (int i = 0; i < entite.Length / 2; i++)
                 {
-                    Entite[i] = new Sprite();
-                    Entite[i].Initialize(new Vector2(80 * i + PosDepart.X, PosDepart.Y));
+                    entite[i] = new Sprite();
+                    entite[i].Initialize(new Vector2(80 * i + pos_depart.X, pos_depart.Y));
                 }
-                for (int i = 0; i < Entite.Length / 2 ; i++)
+                for (int i = 0; i < entite.Length / 2 ; i++)
                 {
-                    Entite[i + Entite.Length / 2] = new Sprite();
-                    Entite[i + Entite.Length / 2].Initialize(new Vector2(PosDepart.X, 80 * i + PosDepart.Y));
+                    entite[i + entite.Length / 2] = new Sprite();
+                    entite[i + entite.Length / 2].Initialize(new Vector2(pos_depart.X, 80 * i + pos_depart.Y));
                 }
-                for (int i = 0; i < Entite.Length / 2; i++)
-                    Entite[i].LoadContent(content, "Sprites/Decors/Arbrebeta");
-                for (int i = 0; i < Entite.Length / 2; i++)
-                    Entite[i + Entite.Length /2].LoadContent(content, "Sprites/Decors/cailloux");
+                for (int i = 0; i < entite.Length / 2; i++)
+                    entite[i].LoadContent(content, "Sprites/Decors/Arbrebeta");
+                for (int i = 0; i < entite.Length / 2; i++)
+                    entite[i + entite.Length /2].LoadContent(content, "Sprites/Decors/cailloux");
 
             }
             else
             {
-                Entite = new Sprite[30];
-                Vector2 pos = new Vector2(MainGame.rand.Next(MainGame.ScreenX,Back.Width),MainGame.rand.Next(MainGame.ScreenY,Back.Height));
+                entite = new Sprite[30];
+                Vector2 pos = new Vector2(MainGame.Rand.Next(MainGame.ScreenX,back.Width),MainGame.Rand.Next(MainGame.ScreenY,back.Height));
                 bool posDif = false;
-                Entite[0] = new Sprite();
-                Entite[0].Initialize(pos);
-                posDif = !(Entite[0].Position == pos);
-                for (int j = 1; j < Entite.Length; j++)
+                entite[0] = new Sprite();
+                entite[0].Initialize(pos);
+                posDif = !(entite[0].Position == pos);
+                for (int j = 1; j < entite.Length; j++)
                 {
-                    pos = new Vector2(MainGame.rand.Next(MainGame.ScreenX, Back.Width), MainGame.rand.Next(MainGame.ScreenY, Back.Height));
+                    pos = new Vector2(MainGame.Rand.Next(MainGame.ScreenX, back.Width), MainGame.Rand.Next(MainGame.ScreenY, back.Height));
                     posDif = false;
                     while (!posDif)
                     {
-                        pos = new Vector2(MainGame.rand.Next(MainGame.ScreenX, Back.Width), MainGame.rand.Next(MainGame.ScreenY, Back.Height));
+                        pos = new Vector2(MainGame.Rand.Next(MainGame.ScreenX, back.Width), MainGame.Rand.Next(MainGame.ScreenY, back.Height));
                         for (int i = 0; i < j; i++)
-                            posDif = !(Entite[i].Position == pos);
+                            posDif = !(entite[i].Position == pos);
                     }
-                    Entite[j] = new Sprite();
-                    Entite[j].Initialize(pos);
+                    entite[j] = new Sprite();
+                    entite[j].Initialize(pos);
                 }
-                for (int i = 0; i < Entite.Length; i++)
+                for (int i = 0; i < entite.Length; i++)
                 {
                     if (i % 2 == 0)
-                        Entite[i].LoadContent(content, "Sprites/Decors/Arbrebeta");
+                        entite[i].LoadContent(content, "Sprites/Decors/Arbrebeta");
                     else
-                        Entite[i].LoadContent(content, "Sprites/Decors/cailloux");
+                        entite[i].LoadContent(content, "Sprites/Decors/cailloux");
                 }
 
             }           

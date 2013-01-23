@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using GameProject.Joueurs;
 
 namespace GameProject.Managers
 {
@@ -19,87 +10,88 @@ namespace GameProject.Managers
 
         public Vector2 Position { get; set; }
 
-        public Rectangle rectangleColision
+        public Rectangle RectangleColision
         {
-            get {
+            get
+            {
                 if (SourceRectangle != null)
                     return new Rectangle((int)Position.X, (int)Position.Y + SourceRectangle.Value.Height / 2, SourceRectangle.Value.Width, SourceRectangle.Value.Height / 2);
-                else
-                    return new Rectangle((int)Position.X, (int)Position.Y + this.Height / 2, this.Width, this.Height / 2);
+                return new Rectangle((int)Position.X, (int)Position.Y + Height / 2, Width, Height / 2);
             }
         }
-        public Rectangle rectangle { get { return new Rectangle((int)Position.X, (int)Position.Y, this.Width, this.Height); }}
+        public Rectangle Rectangle { get { return new Rectangle((int)Position.X, (int)Position.Y, Width, Height); }}
 
-        public Rectangle? SourceRectangle { get; set; }
+        protected Rectangle? SourceRectangle { get; set; }
 
-        public int maXindex { get; set; }
-        public int maYindex {get;set;}
-        float Xindex = 0 , Yindex = 0;
-        public string readingDimension { get; set; }
+        protected int MaXindex { private get; set; }
+        protected int MaYindex { private get;set;}
+        float xindex;
+        private const float Yindex = 0;
+        protected string ReadingDimension { private get; set; }
 
-        public virtual void Initialize(Vector2 Position_init)
+        public void Initialize(Vector2 position_init)
         {
             SourceRectangle = null;
-            Position = Position_init;
+            Position = position_init;
         }
-        public virtual void Initialize(Vector2 Position_init, Rectangle? SourceRectangle)
+        public void Initialize(Vector2 position_init, Rectangle? source_rect)
         {
-            Position = Position_init;
-            this.SourceRectangle = SourceRectangle;
-            maXindex = 0;
-            maYindex = 0;
-        }
-
-        public virtual void LoadContent(ContentManager content, string assetName)
-        {
-            Texture = content.Load<Texture2D>(assetName);
-        }
-        public virtual void LoadContent(ContentManager content, string assetName, int maXindex, int maYindex, string readingDimension)
-        {
-            Texture = content.Load<Texture2D>(assetName);
-            this.maXindex = maXindex;
-            this.maYindex = maYindex;
-            this.readingDimension = readingDimension;
+            Position = position_init;
+            SourceRectangle = source_rect;
+            MaXindex = 0;
+            MaYindex = 0;
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch)
+        public void LoadContent(ContentManager content, string asset_name)
         {
-            spriteBatch.Draw(Texture,Position,SourceRectangle, Color.White);
+            Texture = content.Load<Texture2D>(asset_name);
         }
-        public virtual void Draw(SpriteBatch spriteBatch, Rectangle _rectangle)
+        public void LoadContent(ContentManager content, string asset_name, int max_xindex, int max_yindex, string reading_dim)
         {
-            spriteBatch.Draw(Texture, _rectangle, Color.White);
+            Texture = content.Load<Texture2D>(asset_name);
+            MaXindex = max_xindex;
+            MaYindex = max_yindex;
+            ReadingDimension = reading_dim;
+        }
+
+        public void Draw(SpriteBatch sprite_batch)
+        {
+            sprite_batch.Draw(Texture,Position,SourceRectangle, Color.White);
+        }
+        public void Draw(SpriteBatch sprite_batch, Rectangle rectangle)
+        {
+            sprite_batch.Draw(Texture, rectangle, Color.White);
         }
 
         public int Height { get { return Texture.Height; }}
 
         public int Width { get { return Texture.Width; }}
 
-        public virtual void UpdateAnimation(GameTime gameTime)
+        protected void UpdateAnimation(GameTime game_time)
         {
-            if (maXindex != 0)
+            if (MaXindex != 0)
             {
-                Xindex += gameTime.ElapsedGameTime.Milliseconds * 0.004f;
+                xindex += game_time.ElapsedGameTime.Milliseconds * 0.006f;
 
-                if (Xindex > maXindex)
-                    Xindex = 0;
-                if (readingDimension == "h")
-                    SourceRectangle = new Rectangle((int)Xindex * SourceRectangle.Value.Width, SourceRectangle.Value.Y, SourceRectangle.Value.Width, SourceRectangle.Value.Height);
-                else if (readingDimension == "v")
+                if (xindex > MaXindex)
+                    xindex = 0;
+                if (ReadingDimension == "h")
+                    SourceRectangle = new Rectangle((int)xindex * SourceRectangle.Value.Width, SourceRectangle.Value.Y, SourceRectangle.Value.Width, SourceRectangle.Value.Height);
+                else if (ReadingDimension == "v")
                     SourceRectangle = new Rectangle(SourceRectangle.Value.X, (int)Yindex * SourceRectangle.Value.Height, SourceRectangle.Value.Width, SourceRectangle.Value.Height);
             }
         }
         public void UpdateSetStateAnimation(int index)
         {
-            if (readingDimension == "h")
+            if (ReadingDimension == "h")
                 SourceRectangle = new Rectangle(index * SourceRectangle.Value.Width, SourceRectangle.Value.Y, SourceRectangle.Value.Width, SourceRectangle.Value.Height);
-            else if (readingDimension == "v")
+            else if (ReadingDimension == "v")
                 SourceRectangle = new Rectangle(SourceRectangle.Value.X, index * SourceRectangle.Value.Height, SourceRectangle.Value.Width, SourceRectangle.Value.Height);
         }
 
-        public void UpdateSetStateAnimation(int indexX, int indexY)
+        public void UpdateSetStateAnimation(int index_x, int index_y)
         {
-            SourceRectangle = new Rectangle(indexX * SourceRectangle.Value.Width, indexY * SourceRectangle.Value.Height, SourceRectangle.Value.Width, SourceRectangle.Value.Height);
+            SourceRectangle = new Rectangle(index_x * SourceRectangle.Value.Width, index_y * SourceRectangle.Value.Height, SourceRectangle.Value.Width, SourceRectangle.Value.Height);
         }
     }
 }
