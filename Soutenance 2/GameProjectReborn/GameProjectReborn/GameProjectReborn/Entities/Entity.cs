@@ -23,8 +23,9 @@ namespace GameProjectReborn.Entities
         public Texture2D Texture { get; private set; }
         public Vector2 TextureSize { get; private set; }
 
-        protected Direction direction;
-        protected int step;
+        public Direction direction;
+        public int step;
+
         private int[] frameCount;
         private double stepTime;
 

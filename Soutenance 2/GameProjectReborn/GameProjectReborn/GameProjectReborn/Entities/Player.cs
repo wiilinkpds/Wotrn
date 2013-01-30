@@ -64,10 +64,12 @@ namespace GameProjectReborn.Entities
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
-
             if (CanMove)
+            {
+                base.Update(gameTime);
                 InternalMove(gameTime);
+            }
+
 
             Keys[] keys = new[] { Keys.A, Keys.E, Keys.R };
 
@@ -127,11 +129,11 @@ namespace GameProjectReborn.Entities
 
             if (KeyboardManager.IsDown(Keys.Right))
                 move.X += 1;
-            if (KeyboardManager.IsDown(Keys.Left))
+            else if (KeyboardManager.IsDown(Keys.Left))
                 move.X -= 1;
-            if (KeyboardManager.IsDown(Keys.Down))
+            else if (KeyboardManager.IsDown(Keys.Down))
                 move.Y += 1;
-            if (KeyboardManager.IsDown(Keys.Up))
+            else if (KeyboardManager.IsDown(Keys.Up))
                 move.Y -= 1;
             
             if (move == Vector2.Zero)
@@ -140,7 +142,9 @@ namespace GameProjectReborn.Entities
                 return;
             }
 
-            if ((int)move.Y == 1) // Defini la Directiondu Player
+
+            // Defini la Direction du Player
+            if ((int)move.Y == 1)
                 direction = Direction.Down;
             if ((int)move.Y == -1)
                 direction = Direction.Up;
@@ -159,7 +163,7 @@ namespace GameProjectReborn.Entities
             base.Draw(gameTime, spriteBatch);
 
             foreach (Spell spell in spells)
-                spell.Draw(spriteBatch);
+                spell.Draw(spriteBatch, gameTime);
         }
 
         public override void DrawUI(GameTime gameTime, UberSpriteBatch spriteBatch)
@@ -184,21 +188,20 @@ namespace GameProjectReborn.Entities
             Vector2 position = new Vector2(MainGame.ScreenX / 2 - TexturesManager.PowerBar.Width / 2,
                                            MainGame.ScreenY - TexturesManager.PowerBar.Height);
 
-            // Test
             // Draw la barre d'Xp
             size = experience * XpBarSize / ExperienceNeeded;
             for (int i = 0; i < size; i++)
                 spriteBatch.DrawUI(TexturesManager.Xp, new Vector2(position.X + i, position.Y - TexturesManager.Xp.Height), Color.White);
             for (int i = size; i < XpBarSize; i++)
                 spriteBatch.DrawUI(TexturesManager.Xp, new Vector2(position.X + i, position.Y - TexturesManager.Xp.Height), (i % 60 == 0 && i != 0) ? Color.Black : Color.Gray);
-            // Test
 
             // Draw la barre de Sort
             spriteBatch.DrawUI(TexturesManager.PowerBar, position, Color.White);
             position += new Vector2(5, 5);
             Vector2 delta = new Vector2(TexturesManager.PowerBar.Width / 10.0f, 0);
 
-            foreach (Spell spell in spells) // Fais clignoter les sorts actifs
+            // Fais clignoter les sorts actifs
+            foreach (Spell spell in spells)
             {
                 if (!spell.IsActivated || gameTime.TotalGameTime.TotalMilliseconds % 1000 < 500) // Draw si non actif || Draw pendant 500 ms si actif sur 1000 ms
                     spriteBatch.DrawUI(spell.Icon, position);

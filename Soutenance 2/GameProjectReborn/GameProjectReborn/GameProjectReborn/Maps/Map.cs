@@ -33,15 +33,19 @@ namespace GameProjectReborn.Maps
             if (position.X < 0 || position.Y < 0)
                 return true;
 
+            // Point Haut Gauche
             Point point = new Point((int)position.X, (int)position.Y);
             if (IsCollidedAt(entity, position, point)) return true;
 
+            // Point Bas Gauche
             point = new Point((int)position.X + (int)entity.TextureSize.X, (int)position.Y);
             if (IsCollidedAt(entity, position, point)) return true;
 
+            // Point Haut Droite
             point = new Point((int)position.X, (int)position.Y + (int)entity.TextureSize.Y);
             if (IsCollidedAt(entity, position, point)) return true;
 
+            // Point Bas Droite
             point = new Point((int)position.X + (int)entity.TextureSize.X, (int)position.Y + (int)entity.TextureSize.Y);
             if (IsCollidedAt(entity, position, point)) return true;
 
@@ -58,7 +62,7 @@ namespace GameProjectReborn.Maps
             if (point.X >= data.MapWidth || point.Y >= data.MapHeight || point.X < 0 || point.Y < 0)
                 return true;
 
-            if (data.Accessibility[id] == 1)
+            if (data.Accessibility[id] == 1) // Si la case est rouge dans l'editeur
                 return true;
 
             // 0000 1111
@@ -94,12 +98,52 @@ namespace GameProjectReborn.Maps
                 intersect.Add(new Vector2(point.X * TileSize + TileSize, point.Y * TileSize + TileSize));
             }
 
+            // Haut + Gauche
+            if (data.SideAccess[id] == 5)
+            {
+                intersect.Add(new Vector2(point.X * TileSize, point.Y * TileSize));
+                intersect.Add(new Vector2(point.X * TileSize + TileSize, point.Y * TileSize));
+
+                intersect.Add(new Vector2(point.X * TileSize, point.Y * TileSize));
+                intersect.Add(new Vector2(point.X * TileSize, point.Y * TileSize + TileSize));
+            }
+
+            // Haut + Droite
+            if (data.SideAccess[id] == 9)
+            {
+                intersect.Add(new Vector2(point.X * TileSize, point.Y * TileSize));
+                intersect.Add(new Vector2(point.X * TileSize + TileSize, point.Y * TileSize));
+
+                intersect.Add(new Vector2(point.X * TileSize + TileSize, point.Y * TileSize));
+                intersect.Add(new Vector2(point.X * TileSize + TileSize, point.Y * TileSize + TileSize));
+            }
+
+            // Bas + Gauche
+            if (data.SideAccess[id] == 6)
+            {
+                intersect.Add(new Vector2(point.X * TileSize, point.Y * TileSize + TileSize));
+                intersect.Add(new Vector2(point.X * TileSize + TileSize, point.Y * TileSize + TileSize));
+
+                intersect.Add(new Vector2(point.X * TileSize, point.Y * TileSize));
+                intersect.Add(new Vector2(point.X * TileSize, point.Y * TileSize + TileSize));
+            }
+
+            // Bas + Droite
+            if (data.SideAccess[id] == 10)
+            {
+                intersect.Add(new Vector2(point.X * TileSize, point.Y * TileSize + TileSize));
+                intersect.Add(new Vector2(point.X * TileSize + TileSize, point.Y * TileSize + TileSize));
+
+                intersect.Add(new Vector2(point.X * TileSize + TileSize, point.Y * TileSize));
+                intersect.Add(new Vector2(point.X * TileSize + TileSize, point.Y * TileSize + TileSize));
+            }
+
             foreach (Vector2 vect in intersect)
             {
-                if (vect.X >= position.X
+                if (   vect.X >= position.X
                     && vect.X <= position.X + entity.TextureSize.X) // Si il est compris entre Position.X et Position.X + entity.Texture.Width !!!!
                 {
-                    if (vect.Y >= position.Y
+                    if (   vect.Y >= position.Y
                         && vect.Y <= position.Y + entity.TextureSize.Y)
                         return true;
                 }
@@ -133,7 +177,6 @@ namespace GameProjectReborn.Maps
             tileId = data.MapTilesHigh[cellId];
             DrawTile(spriteBatch, tileId, x, y);
         }
-
 
         private static void DrawTile(UberSpriteBatch spriteBatch, int tileId, int x, int y)
         {

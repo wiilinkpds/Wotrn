@@ -18,7 +18,7 @@ namespace GameProjectReborn
         public Player Player { get; private set; } 
         public IList<Entity> Entities { get; private set; }
 
-        private IList<Entity> deletedEntities; 
+        private IList<Entity> deletedEntities;
         private GraphicsDeviceManager graphics;
         private UberSpriteBatch spriteBatch;
 

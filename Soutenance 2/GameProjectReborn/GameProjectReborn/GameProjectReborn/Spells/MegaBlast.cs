@@ -1,5 +1,4 @@
-﻿using System;
-using GameProjectReborn.Entities;
+﻿using GameProjectReborn.Entities;
 using GameProjectReborn.Managers;
 using Microsoft.Xna.Framework;
 
@@ -11,6 +10,7 @@ namespace GameProjectReborn.Spells
 
         public MegaBlast(Entity owner) : base(owner, TexturesManager.MegaBlast, SpellType.Cast, 20)
         {
+
         }
 
         public override bool Cast()

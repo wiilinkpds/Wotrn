@@ -49,8 +49,9 @@ namespace GameProjectReborn.Spells
             return true;
         }
 
-        public virtual void Draw(UberSpriteBatch spriteBatch)
+        public virtual void Draw(UberSpriteBatch spriteBatch,GameTime gameTime)
         {
+
         }
 
         public virtual void Update(GameTime gameTime)
