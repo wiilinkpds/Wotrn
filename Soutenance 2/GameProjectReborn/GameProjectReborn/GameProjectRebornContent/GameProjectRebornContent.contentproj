@@ -126,7 +126,13 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="enemis.png">
+      <Name>enemis</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Maps\map.mrm">
       <Name>map</Name>

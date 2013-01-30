@@ -24,7 +24,7 @@ namespace GameProjectReborn.Managers
         public static void Load(ContentManager content)
         {
             Player = content.Load<Texture2D>("Player");
-            Ennemy = content.Load<Texture2D>("Ennemy");
+            Ennemy = content.Load<Texture2D>("enemis");
 
             Power = content.Load<Texture2D>("UI/Power");
             Life = content.Load<Texture2D>("UI/Life");

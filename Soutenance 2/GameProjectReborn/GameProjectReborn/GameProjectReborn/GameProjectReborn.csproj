@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camera\Cam.cs" />
     <Compile Include="Entities\Direction.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Monster.cs" />

@@ -15,7 +15,7 @@ namespace GameProjectReborn.Entities
 
         public Monster(MainGame game, Texture2D texture) : base(game) // Constructeur avec pour paramètres les mêmes que sa classe père
         {
-            InitTexture(texture, 3, 4);
+            InitTexture(texture, 1, 4);
 
             Speed = 1.0f;
             Position = new Vector2(100, 100);

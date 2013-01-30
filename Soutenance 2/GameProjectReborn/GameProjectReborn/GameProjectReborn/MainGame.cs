@@ -5,13 +5,14 @@ using GameProjectReborn.Managers;
 using GameProjectReborn.Maps;
 using GameProjectReborn.Utils;
 using Microsoft.Xna.Framework;
+using GameProjectReborn.Camera;
 
 namespace GameProjectReborn
 {
     public class MainGame : Game
     {
-        public const int ScreenX = 1024;
-        public const int ScreenY = 768;
+        public const int ScreenX = 1280;
+        public const int ScreenY = 800;
 
         public Map MapFirst { get; private set; }
 
@@ -21,11 +22,14 @@ namespace GameProjectReborn
         private IList<Entity> deletedEntities;
         private GraphicsDeviceManager graphics;
         private UberSpriteBatch spriteBatch;
+        private Cam camera;
 
         public MainGame()
         {
             graphics = new GraphicsDeviceManager(this) { PreferredBackBufferWidth = ScreenX, PreferredBackBufferHeight = ScreenY };
             Content.RootDirectory = "Content";
+            graphics.IsFullScreen = true;
+            IsMouseVisible = true;
         }
 
         protected override void LoadContent()
@@ -46,6 +50,8 @@ namespace GameProjectReborn
             if (!mapData.FromFile("Content/Maps/map.mrm"))
                 Exit();
             MapFirst = new Map(mapData);
+
+            camera = new Cam(mapData.MapWidth, mapData.MapHeight,GraphicsDevice);
         }
 
         protected override void Update(GameTime gameTime)
@@ -53,6 +59,7 @@ namespace GameProjectReborn
             KeyboardManager.Update();
 
             Player.Update(gameTime);
+            camera.CameraMouvement(Player.CanMove ? Player.Position : Player.AstralPosition);
 
             foreach (Monster entity in Entities.OfType<Monster>()) // Si liste modifiée pendant la boucle -> exception
                 entity.Update(gameTime);
@@ -68,11 +75,8 @@ namespace GameProjectReborn
 
         protected override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin();
+            spriteBatch.DrawCam(camera);
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            Vector2 center = Player.CanMove ? Player.Position : Player.AstralPosition;
-            spriteBatch.Position = -center + new Vector2(ScreenX / 2, ScreenY / 2) - new Vector2(Player.TextureSize.X / 2.0f, Player.TextureSize.Y / 2.0f);
 
             MapFirst.Draw(spriteBatch, true);
 
@@ -82,6 +86,9 @@ namespace GameProjectReborn
 
             MapFirst.Draw(spriteBatch, false);
 
+            spriteBatch.End();
+
+            spriteBatch.Begin();
             foreach (Entity entity in Entities)
                 entity.DrawUI(gameTime, spriteBatch);
             Player.DrawUI(gameTime, spriteBatch);

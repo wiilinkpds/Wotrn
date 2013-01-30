@@ -168,8 +168,8 @@ namespace GameProjectReborn.Entities
 
         public override void DrawUI(GameTime gameTime, UberSpriteBatch spriteBatch)
         {
-            spriteBatch.DrawUI(TexturesManager.Level,"Heros " + Level, new Vector2(0, 0));
-
+            spriteBatch.DrawUI(TexturesManager.Level,"Heros niveau " + Level, new Vector2(0, 0));
+            
             // Draw la barre de Vie
             int size = Life * LifeBarSize / LifeMax;
             for (int i = 0; i < size; i++)
