@@ -44,9 +44,9 @@ namespace GameProjectReborn.Entities
             // Draw la barre de Vie si Targeter est non null
             int size = Life * LifeBarSize / LifeMax;
             for (int i = 0; i < size; i++)
-                spriteBatch.DrawUI(TexturesManager.Life, new Vector2(MainGame.ScreenX - LifeBarSize + i, 0), Color.White);
+                spriteBatch.DrawUI(TexturesManager.Life, new Vector2(Position.X + i, Position.Y - TexturesManager.Life.Height), Color.White);
             for (int i = size; i < LifeBarSize; i++)
-                spriteBatch.DrawUI(TexturesManager.Life, new Vector2(MainGame.ScreenX - LifeBarSize + i, 0), Color.Gray);
+                spriteBatch.DrawUI(TexturesManager.Life, new Vector2(Position.X + i, Position.Y - TexturesManager.Life.Height), Color.Gray);
         }
 
         public void Damage(int life) 

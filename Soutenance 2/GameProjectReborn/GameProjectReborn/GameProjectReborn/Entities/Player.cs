@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GameProjectReborn.Camera;
 using GameProjectReborn.Managers;
 using GameProjectReborn.Spells;
 using GameProjectReborn.Utils;
@@ -24,12 +25,13 @@ namespace GameProjectReborn.Entities
 
         private int experience;
         private int targetIndex;
+        private readonly Vector2 delta = new Vector2(TexturesManager.PowerBar.Width / 10.0f, 0);
         private readonly IList<Spell> spells;
+        private Rectangle[] SpellsRect { get; set; }
         
         public Player(MainGame game, Texture2D texture) : base(game)
         {
             InitTexture(texture, 3, 4);
-
             Speed = 3.0f;
             Power = 600; // Mana
             PowerMax = 600; // Change uniquement en lvlUp
@@ -49,6 +51,15 @@ namespace GameProjectReborn.Entities
                     new AstralMove(this),
                     new MegaBlast(this)
                 };
+            SpellsRect = new Rectangle[spells.Count];
+            for (int i = 0; i < spells.Count; i++)
+            {
+                SpellsRect[i] = new Rectangle();
+                SpellsRect[i] =
+                    new Rectangle((int) (MainGame.ScreenX/2 - TexturesManager.PowerBar.Width/2 + 5 + delta.X*i),
+                                  (int) (MainGame.ScreenY - TexturesManager.PowerBar.Height + 5 + delta.Y*i),
+                                  spells[i].Icon.Width, spells[i].Icon.Height);
+            }
         }
 
         public void GainXp(int gain)
@@ -62,7 +73,7 @@ namespace GameProjectReborn.Entities
             }
         }
 
-        public override void Update(GameTime gameTime)
+        public  void Update(GameTime gameTime, Cam camera)
         {
             if (CanMove)
             {
@@ -70,13 +81,12 @@ namespace GameProjectReborn.Entities
                 InternalMove(gameTime);
             }
 
-
             Keys[] keys = new[] { Keys.A, Keys.E, Keys.R };
 
             for (int i = 0; i < spells.Count; i++)
             {
                 if (keys.Length < i) break;
-                if (!KeyboardManager.IsPressed(keys[i])) continue;
+                if (!KeyboardManager.IsPressed(keys[i]) && !(MouseManager.MouseIn(SpellsRect[i]) && MouseManager.LeftClic)) continue;
 
                 if (spells[i].Type == SpellType.Buff) // Si le sort est un Buff...
                 {
@@ -88,18 +98,29 @@ namespace GameProjectReborn.Entities
                 else
                     spells[i].Cast();
             }
-
+            IList<Monster> monsters = Game.Entities.OfType<Monster>().ToList();
             if (KeyboardManager.IsPressed(Keys.Tab)) // Change de cible
             {
                 if (Target != null)
                     Target.Targeter = null;
 
-                IList<Monster> monsters = Game.Entities.OfType<Monster>().ToList();
                 ++targetIndex;
                 if (targetIndex >= monsters.Count)
                     targetIndex = (monsters.Count > 0 ? 0 : -1);
                 Target = targetIndex >= 0 ? monsters[targetIndex] : null;
-
+                if (Target != null)
+                    Target.Targeter = this;
+            }
+            if (MouseManager.LeftClic)
+            {
+                if (Target != null)
+                    Target.Targeter = null;
+                for (int i = 0; i < monsters.Count; i++)
+                {
+                    if (
+                        MouseManager.MouseIn(new Rectangle((int)(monsters[i].Position.X),(int)(monsters[i].Position.Y),(int) monsters[i].TextureSize.X,(int) monsters[i].TextureSize.Y),camera))
+                        Target = monsters[i];
+                }
                 if (Target != null)
                     Target.Targeter = this;
             }
@@ -198,14 +219,15 @@ namespace GameProjectReborn.Entities
             // Draw la barre de Sort
             spriteBatch.DrawUI(TexturesManager.PowerBar, position, Color.White);
             position += new Vector2(5, 5);
-            Vector2 delta = new Vector2(TexturesManager.PowerBar.Width / 10.0f, 0);
 
             // Fais clignoter les sorts actifs
+
             foreach (Spell spell in spells)
             {
                 if (!spell.IsActivated || gameTime.TotalGameTime.TotalMilliseconds % 1000 < 500) // Draw si non actif || Draw pendant 500 ms si actif sur 1000 ms
                     spriteBatch.DrawUI(spell.Icon, position);
                 position += delta;
+
             }
         }
 

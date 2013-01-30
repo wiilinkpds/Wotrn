@@ -113,6 +113,7 @@
     <Compile Include="Entities\Monster.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Managers\KeyboardManager.cs" />
+    <Compile Include="Managers\MouseManager.cs" />
     <Compile Include="Managers\TexturesManager.cs" />
     <Compile Include="Maps\Map.cs" />
     <Compile Include="Maps\MapData.cs" />

@@ -11,26 +11,18 @@ namespace GameProjectReborn.Camera
         private readonly int worldWidth;
         private readonly int worldHeight;
 
-        private const float ZoomArrièreMax = 2.0f;
-        private const float ZoomAvantMax = 0.2f;
+        private Matrix transformation { get; set; }
 
-        public Vector2 Position { get; private set; }
+        public static Vector2 Position { get; private set; }
 
         public float Zoom
         {
             get { return zoom; }
             set
             {
-                zoom = value;
-                if (zoom < 1)
-                    zoom = ZoomArrièreMax;
-                if (zoom > 10)
-                    zoom = ZoomAvantMax;
-                float zoomMinX = (float)device.Viewport.Width / worldWidth;
-                float zoomMinY = (float)device.Viewport.Height / worldHeight;
-                float zoomMin = (zoomMinX < zoomMinY) ? zoomMinY : zoomMinX;
-                if (zoom < zoomMin)
-                    zoom = zoomMin;
+                if (zoom < 0.1F) 
+                    zoom = 0.1F;
+                else zoom = value;
             }
         }
         private float zoom = 1.0f;
@@ -42,13 +34,18 @@ namespace GameProjectReborn.Camera
             worldWidth = world_width;
             worldHeight = world_height;
         }
+        public Vector2 Location(Vector2 position)
+        {
+            return Vector2.Transform(position,Matrix.Invert(transformation));
+        }
 
         public Matrix GetTransformation()
         {
-            return Matrix.CreateTranslation(new Vector3(-Position.X, -Position.Y, 0)) * 
+            transformation = Matrix.CreateTranslation(new Vector3(-Position.X, -Position.Y, 0)) * 
                 Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) * 
                 Matrix.CreateTranslation(new Vector3(device.Viewport.Width * 0.5f, device.Viewport.Height * 0.5f, 0)) 
                 * Matrix.Identity;
+            return transformation;
         }
 
         public void CameraMouvement(Vector2 position)

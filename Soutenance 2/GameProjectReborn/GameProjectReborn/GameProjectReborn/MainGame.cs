@@ -6,6 +6,7 @@ using GameProjectReborn.Maps;
 using GameProjectReborn.Utils;
 using Microsoft.Xna.Framework;
 using GameProjectReborn.Camera;
+using Microsoft.Xna.Framework.Input;
 
 namespace GameProjectReborn
 {
@@ -28,7 +29,7 @@ namespace GameProjectReborn
         {
             graphics = new GraphicsDeviceManager(this) { PreferredBackBufferWidth = ScreenX, PreferredBackBufferHeight = ScreenY };
             Content.RootDirectory = "Content";
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
             IsMouseVisible = true;
         }
 
@@ -45,7 +46,7 @@ namespace GameProjectReborn
                 };
             Entities[1].Position = new Vector2(10, 100);
             deletedEntities = new List<Entity>(); // On transfere un Monster deleted a l'interieur puis on le detruit dans cette liste
-
+            
             MapData mapData = new MapData();
             if (!mapData.FromFile("Content/Maps/map.mrm"))
                 Exit();
@@ -57,9 +58,9 @@ namespace GameProjectReborn
         protected override void Update(GameTime gameTime)
         {
             KeyboardManager.Update();
+            MouseManager.Update();
 
-            Player.Update(gameTime);
-            camera.CameraMouvement(Player.CanMove ? Player.Position : Player.AstralPosition);
+            Player.Update(gameTime, camera);
 
             foreach (Monster entity in Entities.OfType<Monster>()) // Si liste modifiée pendant la boucle -> exception
                 entity.Update(gameTime);
@@ -69,8 +70,12 @@ namespace GameProjectReborn
                 Entities.Remove(deletedEntities[0]); // Remove dans la liste des ennemis les ennemis deleted grâce à la fonction Delete() dans la fonction Damage()
                 deletedEntities.RemoveAt(0); // Pour éviter que cela le fasse deux fois.
             }
-
+            camera.CameraMouvement(Player.CanMove ? Player.Position : Player.AstralPosition);
             base.Update(gameTime);
+            if (KeyboardManager.IsDown(Keys.F1))
+                camera.Zoom +=  0.01F;
+            if (KeyboardManager.IsDown(Keys.F2))
+                camera.Zoom -= 0.01F;
         }
 
         protected override void Draw(GameTime gameTime)
@@ -85,14 +90,13 @@ namespace GameProjectReborn
             Player.Draw(gameTime, spriteBatch);
 
             MapFirst.Draw(spriteBatch, false);
+            foreach (Entity entity in Entities)
+                entity.DrawUI(gameTime, spriteBatch);
 
             spriteBatch.End();
 
             spriteBatch.Begin();
-            foreach (Entity entity in Entities)
-                entity.DrawUI(gameTime, spriteBatch);
             Player.DrawUI(gameTime, spriteBatch);
-
             spriteBatch.End();
             base.Draw(gameTime);
         }
