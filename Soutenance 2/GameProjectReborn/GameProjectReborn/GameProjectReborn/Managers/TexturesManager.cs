@@ -15,16 +15,21 @@ namespace GameProjectReborn.Managers
 
         public static Texture2D SpeedUp { get; private set; }
         public static Texture2D MegaBlast { get; private set; }
+        public static Texture2D UberBlast { get; private set; }
         public static Texture2D AstralMove { get; private set; }
 
         public static Texture2D MapTiles { get; private set; }
 
+        public static Texture2D BackgroundMenu { get; private set; }
+
         public static SpriteFont Level { get; private set; }
+        public static SpriteFont Menu { get; private set; }
+        public static SpriteFont Title { get; private set; }
 
         public static void Load(ContentManager content)
         {
             Player = content.Load<Texture2D>("Player");
-            Ennemy = content.Load<Texture2D>("enemis");
+            Ennemy = content.Load<Texture2D>("Ennemy");
 
             Power = content.Load<Texture2D>("UI/Power");
             Life = content.Load<Texture2D>("UI/Life");
@@ -33,11 +38,16 @@ namespace GameProjectReborn.Managers
 
             SpeedUp = content.Load<Texture2D>("SpellsIcon/SpeedUp");
             MegaBlast = content.Load<Texture2D>("SpellsIcon/MegaBlast");
+            UberBlast = content.Load<Texture2D>("SpellsIcon/UberBlast");
             AstralMove = content.Load<Texture2D>("SpellsIcon/AstralMove");
 
             MapTiles = content.Load<Texture2D>("MapTiles");
 
+            BackgroundMenu = content.Load<Texture2D>("Menu/BackgroundMenu");
+
             Level = content.Load<SpriteFont>("Ui/Level");
+            Menu = content.Load<SpriteFont>("Menu/MainFont");
+            Title = content.Load<SpriteFont>("Menu/Title");
         }
     }
 }

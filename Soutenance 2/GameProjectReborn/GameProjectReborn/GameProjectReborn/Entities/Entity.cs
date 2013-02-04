@@ -1,4 +1,5 @@
-﻿using GameProjectReborn.Utils;
+﻿using GameProjectReborn.Screens;
+using GameProjectReborn.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -9,19 +10,19 @@ namespace GameProjectReborn.Entities
     {
         public const int StepDelay = 150;
 
-        public MainGame Game { get; private set; }
+        public GameScreen Game { get; private set; }
+
+        public Rectangle Bounds { get; set; }
+        public Vector2 Position { get; set; }
+
+        public Vector2 TextureSize { get; private set; }
+        public Texture2D Texture { get; private set; }
 
         public int Life { get; set; }
         public int LifeMax { get; set; }
-
         public int Power { get; set; }
         public int PowerMax { get; set; }
-
-        public Vector2 Position { get; set; }
         public float Speed { get; set; }
-
-        public Texture2D Texture { get; private set; }
-        public Vector2 TextureSize { get; private set; }
 
         public Direction direction;
         public int step;
@@ -29,7 +30,7 @@ namespace GameProjectReborn.Entities
         private int[] frameCount;
         private double stepTime;
 
-        protected Entity(MainGame game)
+        protected Entity(GameScreen game)
         {
             Game = game;
         }

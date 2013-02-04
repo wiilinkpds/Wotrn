@@ -27,7 +27,7 @@ namespace GameProjectReborn.Spells
             move.Normalize(); // Donne au vecteur la taille d'un pixel
 
             target.Position += move * 20;
-            target.Damage(20);
+            target.Damage(Owner, 20);
 
             return true;
         }
