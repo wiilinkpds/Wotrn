@@ -15,18 +15,19 @@ namespace GameProjectReborn.Spells
             get { return Owner as Player; }
         }
 
+        public const int StepDelay = 200;
+
         public Texture2D Icon { get; private set; }
         public SpellType Type { get; private set; }
         public bool IsActivated { get; private set; }
 
-        private readonly int manaCost;
         private DateTime last;
+        private readonly int powerCost;
 
-        
-        protected Spell(Entity owner, Texture2D icon , SpellType type, int cost)
+        protected Spell(Entity owner, Texture2D icon, SpellType type, int cost)
         {
             Owner = owner;
-            manaCost = cost;
+            powerCost = cost;
             Icon = icon;
             Type = type;
         }
@@ -44,19 +45,20 @@ namespace GameProjectReborn.Spells
 
         public virtual bool Cast()
         {
-            if (Owner.Power < manaCost)
+            if (Owner.Power < powerCost)
                 return false;
-            Owner.Power -= manaCost;
+            Owner.Power -= powerCost;
             return true;
         }
 
-        public virtual void Draw(UberSpriteBatch spriteBatch)
+        public virtual void Draw(UberSpriteBatch spriteBatch,GameTime gameTime)
         {
+
         }
 
         public virtual void Update(GameTime gameTime)
         {
-            if (IsActivated && Owner.Power == 0)
+            if (IsActivated && Owner.Power < powerCost)
                 Unbuff();
             if (!IsActivated)
                 return;
@@ -66,7 +68,7 @@ namespace GameProjectReborn.Spells
             if (elapsed.TotalMilliseconds < 100) 
                 return;
 
-            Owner.Power -= manaCost;
+            Owner.Power -= powerCost;
 
             if (Owner.Power < 0)
                 Owner.Power = 0;

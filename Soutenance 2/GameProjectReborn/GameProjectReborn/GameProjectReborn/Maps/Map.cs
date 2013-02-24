@@ -9,20 +9,22 @@ namespace GameProjectReborn.Maps
 {
     public class Map
     {
-        private const int TileSize = 32; //pixels ?
+        public const int TileSize = 32; //pixels
 
-        private readonly MapData data;
+        public readonly MapData Data;
 
         public Map(MapData map)
         {
-            data = map;
+            Data = map;
         }
 
         public Vector2 Move(Entity entity, Vector2 position, Vector2 move)
         {
             Vector2 newPosition = position + move;
+
             if (!IsCollided(entity, newPosition))
                 return newPosition;
+
             return position;
         }
 
@@ -31,18 +33,34 @@ namespace GameProjectReborn.Maps
             if (position.X < 0 || position.Y < 0)
                 return true;
 
+            // Point Haut Gauche
             Point point = new Point((int)position.X, (int)position.Y);
             if (IsCollidedAt(entity, position, point)) return true;
 
-            point = new Point((int)position.X + entity.Texture.Width, (int)position.Y);
+            // Point Bas Gauche
+            point = new Point((int)position.X + (int)entity.TextureSize.X, (int)position.Y);
             if (IsCollidedAt(entity, position, point)) return true;
 
-            point = new Point((int)position.X, (int)position.Y + entity.Texture.Height);
+            // Point Haut Droite
+            point = new Point((int)position.X, (int)position.Y + (int)entity.TextureSize.Y);
             if (IsCollidedAt(entity, position, point)) return true;
 
-            point = new Point((int)position.X + entity.Texture.Width, (int)position.Y + entity.Texture.Height);
+            // Point Bas Droite
+            point = new Point((int)position.X + (int)entity.TextureSize.X, (int)position.Y + (int)entity.TextureSize.Y);
             if (IsCollidedAt(entity, position, point)) return true;
 
+            return false;
+        }
+
+        public bool IsCollidedPath(Point point)
+        {
+            point.X = point.X / TileSize;
+            point.Y = point.Y / TileSize;
+
+            int id = point.X + point.Y * Data.MapWidth;
+
+            if (Data.Accessibility[id] == 1) // Si la case est rouge dans l'editeur
+                return true;
             return false;
         }
 
@@ -51,87 +69,93 @@ namespace GameProjectReborn.Maps
             point.X = point.X / TileSize;
             point.Y = point.Y / TileSize;
 
-            int id = point.X + point.Y * data.MapWidth;
+            int id = point.X + point.Y * Data.MapWidth;
 
-            if (point.X >= data.MapWidth || point.Y >= data.MapHeight || point.X < 0 || point.Y < 0)
+            if (point.X >= Data.MapWidth || point.Y >= Data.MapHeight || point.X < 0 || point.Y < 0)
                 return true;
 
-            if (data.Accessibility[id] == 1)
+            if (Data.Accessibility[id] == 1) // Si la case est rouge dans l'editeur
                 return true;
 
-            // Haut 1 - Bas 2 - Gauche 4 - Droite 8
+            // 0000 1111
+            // [0][0][0][0] [Droite] [Gauche] [Bas] [Haut]
+
+            // 0000 0101 = 5
+            // et
+            // 0000 0001 = 1
+            // =
+            // 0000 0001 = 1
+
+            // 0000 0101 = 5
+            // et
+            // 0000 0100 = 4
+            // =
+            // 0000 0100 = 4
 
             IList<Vector2> intersect = new List<Vector2>();
 
             // Haut
-            if (data.SideAccess[id] == 1)
+            if ((Data.SideAccess[id] & 1) == 1)
             {
                 intersect.Add(new Vector2(point.X * TileSize, point.Y * TileSize));
                 intersect.Add(new Vector2(point.X * TileSize + TileSize, point.Y * TileSize));
             }
 
             // Bas
-            if (data.SideAccess[id] == 2)
+            if ((Data.SideAccess[id] & 2) == 2)
             {
                 intersect.Add(new Vector2(point.X * TileSize, point.Y * TileSize + TileSize));
                 intersect.Add(new Vector2(point.X * TileSize + TileSize, point.Y * TileSize + TileSize));
             }
 
             // Gauche
-            if (data.SideAccess[id] == 4)
+            if ((Data.SideAccess[id] & 4) == 4)
             {
                 intersect.Add(new Vector2(point.X * TileSize, point.Y * TileSize));
                 intersect.Add(new Vector2(point.X * TileSize, point.Y * TileSize + TileSize));
             }
 
             // Droite
-            if (data.SideAccess[id] == 8)
+            if ((Data.SideAccess[id] & 8) == 8)
             {
                 intersect.Add(new Vector2(point.X * TileSize + TileSize, point.Y * TileSize));
                 intersect.Add(new Vector2(point.X * TileSize + TileSize, point.Y * TileSize + TileSize));
             }
 
             foreach (Vector2 vect in intersect)
-            {
-                if (vect.X >= position.X
-                    && vect.X <= position.X + entity.Texture.Height) // Si il est compris entre Position.X et Position.X + entity.Texture.Width !!!!
-                {
-                    if (vect.Y >= position.Y
-                        && vect.Y <= position.Y + entity.Texture.Width)
+                if (vect.X >= position.X && vect.X <= position.X + entity.TextureSize.X)
+                    if (vect.Y >= position.Y && vect.Y <= position.Y + entity.TextureSize.Y)
                         return true;
-                }
-            }
 
             return false;
         }
 
         public void Draw(UberSpriteBatch spriteBatch, bool isBackground)
         {
-            for (int x = 0; x < data.MapWidth; x++)
-                for (int y = 0; y < data.MapHeight; y++)
+            for (int x = 0; x < Data.MapWidth; x++)
+                for (int y = 0; y < Data.MapHeight; y++)
                     DrawTile(spriteBatch, x, y, isBackground);
         }
 
         private void DrawTile(UberSpriteBatch spriteBatch, int x, int y, bool isBackground)
         {
-            int cellId = y * data.MapWidth + x;
-            int tileId = data.MapTilesLow[cellId];
+            int cellId = y * Data.MapWidth + x;
+            int tileId = Data.MapTilesLow[cellId];
 
             if (isBackground)
                 DrawTile(spriteBatch, tileId, x, y);
 
-            bool isBackgroundCell = data.Accessibility[cellId] == 0;
+            bool isBackgroundCell = Data.Accessibility[cellId] == 0;
             bool canDraw = (isBackground ^ !isBackgroundCell);
 
             if (!canDraw) return;
 
-            tileId = data.MapTilesMiddle[cellId];
+            tileId = Data.MapTilesMiddle[cellId];
             DrawTile(spriteBatch, tileId, x, y);
 
-            tileId = data.MapTilesHigh[cellId];
+            tileId = Data.MapTilesHigh[cellId];
             DrawTile(spriteBatch, tileId, x, y);
         }
-
 
         private static void DrawTile(UberSpriteBatch spriteBatch, int tileId, int x, int y)
         {

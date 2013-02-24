@@ -16,8 +16,8 @@
     <XnaProfile>HiDef</XnaProfile>
     <XnaCrossPlatformGroupID>75ab7db9-ad7e-4e03-b07e-44c93f544cbc</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
-    <ApplicationIcon>Others\Game.ico</ApplicationIcon>
-    <Thumbnail>Others\GameThumbnail.png</Thumbnail>
+    <ApplicationIcon>Maps\Others\Game.ico</ApplicationIcon>
+    <Thumbnail>Maps\Others\GameThumbnail.png</Thumbnail>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -107,26 +107,53 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Direction.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\PlayerStats.cs" />
+    <Compile Include="Maps\Path\NodePos.cs" />
+    <Compile Include="Screens\Option\Resolution.cs" />
+    <Compile Include="Screens\PlayerEditor.cs" />
+    <Compile Include="Screens\StoryScreen.cs" />
+    <Compile Include="Screens\Windows\DialogWindow.cs" />
+    <Compile Include="Screens\Windows\EscapeMenu.cs" />
+    <Compile Include="Screens\Windows\PanelMenu.cs" />
+    <Compile Include="Screens\Windows\ShowInfo.cs" />
+    <Compile Include="Screens\Windows\Window.cs" />
+    <Compile Include="Spells\Basic.cs" />
+    <Compile Include="Entities\WorldEffect.cs" />
+    <Compile Include="WIP\MovementPath.cs" />
+    <Compile Include="WIP\Pathfinding.cs" />
+    <Compile Include="Screens\Option\OptionMenu.cs" />
+    <Compile Include="Maps\Path\Ia.cs" />
     <Compile Include="Entities\Monster.cs" />
+    <Compile Include="Maps\Path\Node.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Managers\KeyboardManager.cs" />
+    <Compile Include="Managers\MouseManager.cs" />
+    <Compile Include="Managers\RandomManager.cs" />
     <Compile Include="Managers\TexturesManager.cs" />
     <Compile Include="Maps\Map.cs" />
     <Compile Include="Maps\MapData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MainGame.cs" />
+    <Compile Include="Screens\GameScreen.cs" />
+    <Compile Include="Screens\StartMenu.cs" />
+    <Compile Include="Screens\Screen.cs" />
     <Compile Include="Spells\AstralMove.cs" />
     <Compile Include="Spells\MegaBlast.cs" />
     <Compile Include="Spells\SpeedUp.cs" />
     <Compile Include="Spells\Spell.cs" />
     <Compile Include="Spells\SpellType.cs" />
+    <Compile Include="Spells\UberBlast.cs" />
+    <Compile Include="UI\Button.cs" />
+    <Compile Include="UI\Control.cs" />
+    <Compile Include="UI\MouseClickEventArgs.cs" />
     <Compile Include="Utils\UberSpriteBatch.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Others\Game.ico" />
-    <Content Include="Others\GameThumbnail.png" />
+    <Content Include="Maps\Others\Game.ico" />
+    <Content Include="Maps\Others\GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameProjectRebornContent\GameProjectRebornContent.contentproj">
