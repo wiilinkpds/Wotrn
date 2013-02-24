@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GameProjectReborn.Utils
 {
-    public class UberSpriteBatch // Cette classe nous permet d'utiliser un spriteBatch personnalisable
+    public class UberSpriteBatch
     {
         public Vector2 Position { get; set; }
 
@@ -35,12 +35,6 @@ namespace GameProjectReborn.Utils
             spriteBatch.Draw(texture, new Vector2((int)position.X, (int)position.Y), color);
         }
 
-        public void Draw(Texture2D texture, Vector2 position, Rectangle sourceRectangle, Color color)
-        {
-            position += Position;
-            spriteBatch.Draw(texture, new Vector2((int)position.X, (int)position.Y), sourceRectangle, color);
-        }
-
         public void Draw(Texture2D texture, Rectangle destinationRectangle, Rectangle? sourceRectangle)
         {
             destinationRectangle.X += (int)Position.X;
@@ -48,19 +42,14 @@ namespace GameProjectReborn.Utils
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
-        public void DrawUI(Texture2D texture, Vector2 position) // Draw des elements immobiles a l'ecran
+        public void DrawUI(Texture2D texture, Vector2 position)
         {
             DrawUI(texture, position, Color.White);
         }
 
-        public void DrawUI(Texture2D texture, Vector2 position, Color color) // Draw des elements immobiles a l'ecran avec une couleur differente de white
+        public void DrawUI(Texture2D texture, Vector2 position, Color color)
         {
             spriteBatch.Draw(texture, new Vector2((int)position.X, (int)position.Y), color);
-        }
-
-        public void DrawUI(SpriteFont spriteFont, string str, Vector2 position, Color color) // Draw des spriteBatchs
-        {
-            spriteBatch.DrawString(spriteFont, str, new Vector2((int)position.X, (int)position.Y), color);
         }
     }
 }

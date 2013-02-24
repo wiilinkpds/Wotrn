@@ -36,17 +36,16 @@ namespace GameProjectReborn.Spells
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
             float time = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 10.0f;
             Vector2 move = Vector2.Zero;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            if (Keyboard.GetState().IsKeyDown(Keys.Right) && position.X < MainGame.ScreenX - Owner.Texture.Width)
                 move.X += 1;
-            if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            if (Keyboard.GetState().IsKeyDown(Keys.Left) && position.X > 0)
                 move.X -= 1;
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
+            if (Keyboard.GetState().IsKeyDown(Keys.Down) && position.Y < MainGame.ScreenY - Owner.Texture.Height)
                 move.Y += 1;
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            if (Keyboard.GetState().IsKeyDown(Keys.Up) && position.Y > 0)
                 move.Y -= 1;
 
             if (move == Vector2.Zero)
@@ -54,16 +53,12 @@ namespace GameProjectReborn.Spells
 
             move.Normalize();
 
-            position = Owner.Game.MapFirst.Move(Owner, position, move * Owner.Speed * time * 1.5f);
+            position = Owner.Game.Map.Move(Owner, position, move * Owner.Speed * time * 1.5f);
         }
-
-        public override void Draw(UberSpriteBatch spriteBatch, GameTime gameTime)
+        public override void Draw(UberSpriteBatch spriteBatch)
         {
-            Rectangle source = new Rectangle((int) Owner.TextureSize.X * Owner.step,
-                                             (int) Owner.TextureSize.Y*(int) Owner.direction, (int) Owner.TextureSize.X,
-                                             (int) Owner.TextureSize.Y);
             if (IsActivated)
-                spriteBatch.Draw(Owner.Texture, position, source, Color.FromNonPremultiplied(255, 255, 255, 128));
+                spriteBatch.Draw(Owner.Texture, position, Color.FromNonPremultiplied(255, 255, 255, 128));
         }
     }
 }

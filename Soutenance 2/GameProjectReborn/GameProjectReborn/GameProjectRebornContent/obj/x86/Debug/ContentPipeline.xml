@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\Player.xnb</Output>
-      <Time>2013-01-23T22:16:34.565657+01:00</Time>
+      <Output>C:\Users\Nicolas\Desktop\Projets\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\Player.xnb</Output>
+      <Time>2013-01-13T22:18:20.3161104+01:00</Time>
     </Item>
     <Item>
       <Source>UI\Power.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\UI\Power.xnb</Output>
-      <Time>2013-01-13T19:34:57.883+01:00</Time>
+      <Output>C:\Users\Nicolas\Desktop\Projets\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\UI\Power.xnb</Output>
+      <Time>2013-01-13T19:34:57.8834433+01:00</Time>
     </Item>
     <Item>
       <Source>UI\Life.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\UI\Life.xnb</Output>
-      <Time>2013-01-11T17:21:37.253+01:00</Time>
+      <Output>C:\Users\Nicolas\Desktop\Projets\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\UI\Life.xnb</Output>
+      <Time>2013-01-11T17:21:37.2530993+01:00</Time>
     </Item>
     <Item>
       <Source>Char.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\Char.xnb</Output>
-      <Time>2013-01-09T00:55:49.505+01:00</Time>
+      <Output>C:\Users\Nicolas\Desktop\Projets\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\Char.xnb</Output>
+      <Time>2013-01-09T00:55:49.5054147+01:00</Time>
     </Item>
     <Item>
       <Source>Ennemy.png</Source>
@@ -43,53 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\Ennemy.xnb</Output>
-      <Time>2013-01-23T23:26:17.111885+01:00</Time>
-    </Item>
-    <Item>
-      <Source>UI\PowerBar.png</Source>
-      <Name>UI\PowerBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\UI\PowerBar.xnb</Output>
-      <Time>2013-01-12T19:09:04.005+01:00</Time>
-    </Item>
-    <Item>
-      <Source>SpellsIcon\AstralMove.png</Source>
-      <Name>SpellsIcon\AstralMove</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\SpellsIcon\AstralMove.xnb</Output>
-      <Time>2013-01-12T18:14:56.805+01:00</Time>
-    </Item>
-    <Item>
-      <Source>SpellsIcon\MegaBlast.png</Source>
-      <Name>SpellsIcon\MegaBlast</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\SpellsIcon\MegaBlast.xnb</Output>
-      <Time>2013-01-12T18:17:42.988+01:00</Time>
-    </Item>
-    <Item>
-      <Source>SpellsIcon\SpeedUp.png</Source>
-      <Name>SpellsIcon\SpeedUp</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\SpellsIcon\SpeedUp.xnb</Output>
-      <Time>2013-01-21T13:34:48.4505492+01:00</Time>
-    </Item>
-    <Item>
-      <Source>UI\Xp.png</Source>
-      <Name>UI\Xp</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\UI\Xp.xnb</Output>
-      <Time>2013-01-21T13:55:08.4688529+01:00</Time>
+      <Output>C:\Users\Nicolas\Desktop\Projets\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\Ennemy.xnb</Output>
+      <Time>2013-01-09T01:42:27.6714606+01:00</Time>
     </Item>
     <Item>
       <Source>MapTiles.png</Source>
@@ -97,53 +52,35 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\MapTiles.xnb</Output>
-      <Time>2013-01-31T12:45:12.2520604+01:00</Time>
+      <Output>C:\Users\Nicolas\Desktop\Projets\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\MapTiles.xnb</Output>
+      <Time>2013-01-09T23:01:03.0911423+01:00</Time>
     </Item>
     <Item>
-      <Source>SpellsIcon\UberBlast.png</Source>
-      <Name>SpellsIcon\UberBlast</Name>
+      <Source>UI\PowerBar.png</Source>
+      <Name>UI\PowerBar</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\SpellsIcon\UberBlast.xnb</Output>
-      <Time>2013-02-02T01:54:43.4086001+01:00</Time>
+      <Output>C:\Users\Nicolas\Desktop\Projets\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\UI\PowerBar.xnb</Output>
+      <Time>2013-01-12T19:09:04.0051702+01:00</Time>
     </Item>
     <Item>
-      <Source>Menu\BackgroundMenu.jpg</Source>
-      <Name>Menu\BackgroundMenu</Name>
+      <Source>SpellsIcon\AstralMove.png</Source>
+      <Name>SpellsIcon\AstralMove</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\Menu\BackgroundMenu.xnb</Output>
-      <Time>2013-02-03T18:51:04.7930274+01:00</Time>
+      <Output>C:\Users\Nicolas\Desktop\Projets\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\SpellsIcon\AstralMove.xnb</Output>
+      <Time>2013-01-12T18:14:56.805441+01:00</Time>
     </Item>
     <Item>
-      <Source>UI\Level.spritefont</Source>
-      <Name>UI\Level</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Source>SpellsIcon\MegaBlast.png</Source>
+      <Name>SpellsIcon\MegaBlast</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\UI\Level.xnb</Output>
-      <Time>2013-01-21T14:09:10.425245+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Menu\MainFont.spritefont</Source>
-      <Name>Menu\MainFont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\Menu\MainFont.xnb</Output>
-      <Time>2013-02-03T01:56:00.626025+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Menu\Title.spritefont</Source>
-      <Name>Menu\Title</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\Menu\Title.xnb</Output>
-      <Time>2013-02-03T18:44:51.5546794+01:00</Time>
+      <Output>C:\Users\Nicolas\Desktop\Projets\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\SpellsIcon\MegaBlast.xnb</Output>
+      <Time>2013-01-12T18:17:42.9889461+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -151,10 +88,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectRebornContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectRebornContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Nicolas\Desktop\Projets\GameProjectReborn\GameProjectReborn\GameProjectRebornContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Nicolas\Desktop\Projets\GameProjectReborn\GameProjectReborn\GameProjectReborn\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Nicolas\Desktop\Projets\GameProjectReborn\GameProjectReborn\GameProjectRebornContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Nicolas\Desktop\Projets\GameProjectReborn\GameProjectReborn\GameProjectReborn\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -183,7 +120,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2011-08-03T17:33:58.6222029+02:00</Value>
+        <Value>2012-10-22T20:31:38.9904276+02:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

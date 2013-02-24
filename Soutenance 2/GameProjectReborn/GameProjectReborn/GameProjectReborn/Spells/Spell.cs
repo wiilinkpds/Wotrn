@@ -21,6 +21,7 @@ namespace GameProjectReborn.Spells
 
         private readonly int manaCost;
         private DateTime last;
+
         
         protected Spell(Entity owner, Texture2D icon , SpellType type, int cost)
         {
@@ -49,9 +50,8 @@ namespace GameProjectReborn.Spells
             return true;
         }
 
-        public virtual void Draw(UberSpriteBatch spriteBatch,GameTime gameTime)
+        public virtual void Draw(UberSpriteBatch spriteBatch)
         {
-
         }
 
         public virtual void Update(GameTime gameTime)

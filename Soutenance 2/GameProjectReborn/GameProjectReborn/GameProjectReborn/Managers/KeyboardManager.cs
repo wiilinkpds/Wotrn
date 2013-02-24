@@ -9,11 +9,11 @@ namespace GameProjectReborn.Managers
 
         public static void Update()
         {
-            lastState = currentState; // A ce moment la, lastState == currentState
-            currentState = Keyboard.GetState(); // A ce moment la, lastState != de currentState
+            lastState = currentState;
+            currentState = Keyboard.GetState();
         }
 
-        public static bool IsPressed(Keys key) // Ne retourne qu'une seule fois true car lastState est Up a la premiere frame uniquement
+        public static bool IsPressed(Keys key)
         {
             return lastState.IsKeyUp(key) && currentState.IsKeyDown(key);
         }

@@ -1,5 +1,4 @@
-﻿using GameProjectReborn.Screens;
-using GameProjectReborn.Utils;
+﻿using GameProjectReborn.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -8,65 +7,36 @@ namespace GameProjectReborn.Entities
     // abstract empêche les boulets de faire des trucs inutiles.
     public abstract class Entity
     {
-        public const int StepDelay = 150;
-
-        public GameScreen Game { get; private set; }
-
-        public Rectangle Bounds { get; set; }
-        public Vector2 Position { get; set; }
-
-        public Vector2 TextureSize { get; private set; }
-        public Texture2D Texture { get; private set; }
+        public MainGame Game { get; private set; }
 
         public int Life { get; set; }
         public int LifeMax { get; set; }
+
         public int Power { get; set; }
         public int PowerMax { get; set; }
+
+        public Vector2 Position { get; set; }
         public float Speed { get; set; }
 
-        public Direction direction;
-        public int step;
+        public Texture2D Texture { get; private set; }
 
-        private int[] frameCount;
-        private double stepTime;
-
-        protected Entity(GameScreen game)
-        {
-            Game = game;
-        }
-
-        protected void InitTexture(Texture2D texture, int frameX, int frameY)
+        protected Entity(MainGame game, Texture2D texture)
         {
             Texture = texture;
-            TextureSize = new Vector2(texture.Width / (float)frameX, texture.Height / (float)frameY);
-            frameCount = new[] { frameX, frameY };
+            Game = game;
         }
 
         public virtual void Update(GameTime gameTime)
         {
-            stepTime += gameTime.ElapsedGameTime.TotalMilliseconds;
-            while (stepTime >= StepDelay)
-            {
-                stepTime -= StepDelay;
-                if (++step >= frameCount[0])
-                    step = 0;
-            }
         }
 
         public virtual void Draw(GameTime gameTime, UberSpriteBatch spriteBatch)
         {
-            InternalDraw(spriteBatch, Color.White);
-        }
-
-        protected void InternalDraw(UberSpriteBatch spriteBatch, Color color)
-        {
-            Rectangle source = new Rectangle((int)TextureSize.X * step, (int)TextureSize.Y * (int)direction, (int)TextureSize.X, (int)TextureSize.Y);
-            spriteBatch.Draw(Texture, Position, source, color);
+            spriteBatch.Draw(Texture, Position);
         }
 
         public virtual void DrawUI(GameTime gameTime, UberSpriteBatch spriteBatch)
         {
-
         }
 
         protected void Delete()
