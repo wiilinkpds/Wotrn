@@ -2,6 +2,7 @@ Content\Player.xnb
 Content\UI\Power.xnb
 Content\UI\Life.xnb
 Content\Char.xnb
+Content\Ennemy.xnb
 Content\UI\PowerBar.xnb
 Content\SpellsIcon\AstralMove.xnb
 Content\SpellsIcon\MegaBlast.xnb
@@ -10,7 +11,6 @@ Content\UI\Xp.xnb
 Content\SpellsIcon\UberBlast.xnb
 Content\Menu\BackgroundMenu.xnb
 Content\MapTiles.xnb
-Content\Maps\Tile.xnb
 Content\Menu\OptionMenu.xnb
 Content\UI\Window.xnb
 Content\UI\AddButton.xnb
@@ -24,9 +24,4 @@ Content\UI\Level.xnb
 Content\Menu\Menu.xnb
 Content\Menu\Title.xnb
 Content\Menu\Zoom.xnb
-Content\pluie.xnb
-Content\neige.xnb
-Content\Ennemy\Rack.xnb
-Content\Ennemy\RackNinja.xnb
 Content\Maps\map.mrm
-Content\Maps\map2.mrm

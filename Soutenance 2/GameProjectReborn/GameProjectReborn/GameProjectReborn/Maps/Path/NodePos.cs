@@ -5,6 +5,10 @@
         U,
         D,
         R,
-        L
+        L,
+        UL,
+        UR,
+        DL,
+        DR
     }
 }

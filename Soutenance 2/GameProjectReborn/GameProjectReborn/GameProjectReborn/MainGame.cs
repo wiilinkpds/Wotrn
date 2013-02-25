@@ -10,7 +10,7 @@ namespace GameProjectReborn
         public const int ScreenX = 1024;
         public const int ScreenY = 768;
 
-        public static GraphicsDeviceManager graphics;
+        private GraphicsDeviceManager graphics;
         private UberSpriteBatch spriteBatch;
 
         private Screen currentScreen;

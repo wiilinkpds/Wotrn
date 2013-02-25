@@ -13,7 +13,7 @@ namespace GameProjectReborn.Screens.Option
 
         public OptionMenu()
         {
-            soundButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 50), "Son : ");
+            soundButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 50), "Son");
             resolutionButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 100), "Resolution");
             backStartButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 150), "Retour");
 
