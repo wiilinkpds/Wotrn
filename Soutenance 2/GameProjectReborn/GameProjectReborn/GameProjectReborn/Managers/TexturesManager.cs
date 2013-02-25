@@ -5,9 +5,14 @@ namespace GameProjectReborn.Managers
 {
     public static class TexturesManager
     {
+        //Temps
+        public static Texture2D Pluie { get; private set; }
+        public static Texture2D Neige { get; private set; }
+
         // Player, Ennemi, Pnj
         public static Texture2D Player { get; private set; }
-        public static Texture2D Ennemy { get; private set; }
+        public static Texture2D Rack { get; private set; }
+        public static Texture2D RackNinja { get; private set; }
 
         // UI
         public static Texture2D Power { get; private set; }
@@ -36,6 +41,7 @@ namespace GameProjectReborn.Managers
         public static Texture2D Next { get; private set; }
 
         // Map
+        public static Texture2D Tile { get; private set; }
         public static Texture2D MapTiles { get; private set; }
 
         // Menu
@@ -50,8 +56,12 @@ namespace GameProjectReborn.Managers
 
         public static void Load(ContentManager content)
         {
+            Pluie = content.Load<Texture2D>("pluie");
+            Neige = content.Load<Texture2D>("neige");
+
             Player = content.Load<Texture2D>("Player");
-            Ennemy = content.Load<Texture2D>("Ennemy");
+            Rack = content.Load<Texture2D>("Ennemy/Rack");
+            RackNinja = content.Load<Texture2D>("Ennemy/RackNinja");
 
             Power = content.Load<Texture2D>("UI/Power");
             Life = content.Load<Texture2D>("UI/Life");
@@ -74,6 +84,7 @@ namespace GameProjectReborn.Managers
             WinDial = content.Load<Texture2D>("UI/Dialog/WinDial");
             Next = content.Load<Texture2D>("UI/Dialog/Next");
 
+            Tile = content.Load<Texture2D>("Maps/Tile");
             MapTiles = content.Load<Texture2D>("MapTiles");
 
             BackgroundMenu = content.Load<Texture2D>("Menu/BackgroundMenu");

@@ -22,9 +22,12 @@ namespace GameProjectReborn.Managers
             return (Position.X > rectangle.Left && Position.X < rectangle.Right && Position.Y > rectangle.Top && Position.Y < rectangle.Bottom);
         }
 
-        public static bool IsInRectangle(Vector2 vector, Rectangle rectangle)
+        public static bool IsInRectangle(Rectangle rectangle, Cam camera) //Real position
         {
-            return (vector.X > rectangle.Left && vector.X < rectangle.Right && vector.Y > rectangle.Top && vector.Y < rectangle.Bottom);
+            return (camera.Location(Position).X > rectangle.Left &&
+                camera.Location(Position).X < rectangle.Right &&
+                camera.Location(Position).Y > rectangle.Top &&
+                camera.Location(Position).Y < rectangle.Bottom);
         }
 
         public static bool IsClicking()
@@ -40,6 +43,15 @@ namespace GameProjectReborn.Managers
         public static bool IsRightClicked()
         {
             return lastState.RightButton == ButtonState.Pressed && currentState.RightButton == ButtonState.Released;
+        }
+
+        public static bool IsScrollingUp()
+        {
+            return lastState.ScrollWheelValue < currentState.ScrollWheelValue;
+        }
+        public static bool IsScrollingDown()
+        {
+            return lastState.ScrollWheelValue > currentState.ScrollWheelValue;
         }
 
         public static Vector2 Move()

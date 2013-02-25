@@ -9,7 +9,7 @@ namespace GameProjectReborn.Maps.Path
 
         public double DistanceVol { get; set; }
         public double DistanceParcourue { get; set; }
-        public double Weight { get; set; }                                 
+        public double Weight { get; set; }
 
         public Vector2 Position { get; set; }
         public Vector2 Start { get; set; }
@@ -29,10 +29,10 @@ namespace GameProjectReborn.Maps.Path
 
         public Node()
         {
-            
+
         }
 
-        public Node(Node copie, NodePos direction, MapData map)
+        public Node(Node copie, NodePos direction, MapData map, Vector2 Size)
         {
             Start = copie.Start;
             Arrival = copie.Arrival;
@@ -51,20 +51,10 @@ namespace GameProjectReborn.Maps.Path
                 case NodePos.L:
                     Position = new Vector2(copie.Position.X - 32, copie.Position.Y);
                     break;
-                case NodePos.UL:
-                    Position = new Vector2(copie.Position.X - 32, copie.Position.Y - 32);
-                    break;
-                case NodePos.UR:
-                    Position = new Vector2(copie.Position.X + 32, copie.Position.Y - 32);
-                    break;
-                case NodePos.DL:
-                    Position = new Vector2(copie.Position.X - 32, copie.Position.Y + 32);
-                    break;
-                case NodePos.DR:
-                    Position = new Vector2(copie.Position.X + 32, copie.Position.Y + 32);
-                    break;
             }
             Update(map);
+            if (Id < 0 || Id + (int)(Size.Y / 32) * map.MapWidth + (int)(Size.X / 32) >= map.Accessibility.Length || map.Accessibility[Id] == 1)
+                Id = -1;
         }
 
         public void Update(MapData map)

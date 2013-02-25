@@ -22,9 +22,9 @@ namespace GameProjectReborn.Entities
 
         protected int xp { private get; set; }
 
-        public Monster(GameScreen game, Texture2D texture) : base(game) // Constructeur avec pour paramètres les mêmes que sa classe père
+        public Monster(GameScreen game, Texture2D texture, int vertical, int horizontale) : base(game) // Constructeur avec pour paramètres les mêmes que sa classe père
         {
-            InitTexture(texture, 1, 4);
+            InitTexture(texture, horizontale, vertical);
             
             Speed = 1.0f;
 
@@ -38,8 +38,7 @@ namespace GameProjectReborn.Entities
             if (Math.Sqrt((Math.Pow(Math.Abs(Position.X - player.Position.X), 2)
                            + Math.Pow(Math.Abs(Position.Y - player.Position.Y), 2))) < 10000)
             {
-                ia = new Ia(this);
-                ia.Update(gameTime, player);
+                new Ia(gameTime, player.Position, this,map);
             }
             base.Update(gameTime);
             // float time = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 10.0f;
