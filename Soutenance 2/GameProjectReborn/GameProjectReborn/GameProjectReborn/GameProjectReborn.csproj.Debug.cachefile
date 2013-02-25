@@ -2,7 +2,6 @@ Content\Player.xnb
 Content\UI\Power.xnb
 Content\UI\Life.xnb
 Content\Char.xnb
-Content\Ennemy.xnb
 Content\UI\PowerBar.xnb
 Content\SpellsIcon\AstralMove.xnb
 Content\SpellsIcon\MegaBlast.xnb
@@ -20,10 +19,14 @@ Content\SpellsIcon\Effect\Buff.xnb
 Content\SpellsIcon\Basic.xnb
 Content\UI\Dialog\Next.xnb
 Content\UI\Dialog\WinDial.xnb
+Content\SpellsIcon\Effect\Wind.xnb
 Content\UI\Level.xnb
 Content\Menu\Menu.xnb
 Content\Menu\Title.xnb
 Content\Menu\Zoom.xnb
-Content\SpellsIcon\Effect\Wind.xnb
+Content\pluie.xnb
+Content\neige.xnb
+Content\Ennemy\Rack.xnb
+Content\Ennemy\RackNinja.xnb
 Content\Maps\map.mrm
 Content\Maps\map2.mrm

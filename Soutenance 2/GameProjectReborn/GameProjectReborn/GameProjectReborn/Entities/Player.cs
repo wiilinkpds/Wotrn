@@ -35,6 +35,8 @@ namespace GameProjectReborn.Entities
         private readonly IList<Spell> spells;
         private Rectangle[] spellsRect;
 
+        private Vector2 pos = new Vector2(-42, -42);//Pour le mouvement a la souris 
+
         public Player(GameScreen game, Texture2D texture)
             : base(game)
         {
@@ -85,8 +87,15 @@ namespace GameProjectReborn.Entities
         {
             if (CanMove)
             {
+                Vector2 oldPos = Position;
                 base.Update(gameTime);
                 InternalMove(gameTime);
+                if (MouseManager.IsRightClicked()) //Deplacement a la souris
+                    pos = GameScreen.camera.Location(MouseManager.Position);
+                if (pos.X > 0 && pos.Y > 0)
+                    new Maps.Path.Ia(gameTime, pos, this, this.Game.MapFirst.Data);
+                if (oldPos == Position)
+                    Step = 1;
             }
 
             coord = new Vector2((int)Math.Ceiling(Position.X * 32 / 1000) - 1, (int)Math.Ceiling(Position.Y * 32 / 1000) - 1);
@@ -126,8 +135,7 @@ namespace GameProjectReborn.Entities
                 {
                     foreach (Monster monster in Game.Entities.OfType<Monster>())
                     {
-                        Vector2 mouseRealPosition = Game.ScreenToGameCoords(MouseManager.Position);
-                        if (MouseManager.IsInRectangle(mouseRealPosition, monster.Bounds))
+                        if (MouseManager.IsInRectangle(monster.Bounds, GameScreen.camera))
                             Target = monster;
                     }
                 }
@@ -227,9 +235,10 @@ namespace GameProjectReborn.Entities
 
             if (move == Vector2.Zero)
             {
-                Step = 1;
                 return;
             }
+
+            pos = new Vector2(-42, -42);
 
             // Defini la Direction du Player
             if ((int)move.Y == 1)
