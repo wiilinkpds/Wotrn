@@ -124,10 +124,6 @@
       <Name>map</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Maps\map2.mrm">
-      <Name>map2</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <Compile Include="Menu\Menu.spritefont">
       <Name>Menu</Name>
       <Importer>FontDescriptionImporter</Importer>
