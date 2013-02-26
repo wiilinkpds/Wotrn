@@ -79,7 +79,10 @@ namespace GameProjectReborn.Entities
             if (Life <= 0)
             {
                 if (source is Player)
+                {
                     ((Player)source).GainXp(xp);
+                    ((Player)source).Stats.AmountKilled++;
+                }
 
                 Delete(); // Appelle la fonction Delete() qui supprime le Monster et envoie ce dernier dans la liste deletedEntities
                 if (Targeter != null && ReferenceEquals(Targeter.Target, this)) // Si Game.Player.Target == Ce Monster (celui qui vient d'etre detruit) alors le joueur n'a plus de cible

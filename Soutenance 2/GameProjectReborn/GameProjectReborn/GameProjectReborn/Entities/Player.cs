@@ -35,13 +35,13 @@ namespace GameProjectReborn.Entities
         private readonly IList<Spell> spells;
         private Rectangle[] spellsRect;
 
-        private Vector2 pos = new Vector2(-42, -42);//Pour le mouvement a la souris 
+        public Vector2 pos = new Vector2(-42, -42);//Pour le mouvement a la souris 
 
         public Player(GameScreen game, Texture2D texture)
             : base(game)
         {
             Stats = new PlayerStats();
-            Position = new Vector2(448, 400);
+            Position = new Vector2(480, 336);
             InitTexture(texture, 3, 4);
 
             Speed = 3.0f;
@@ -55,6 +55,7 @@ namespace GameProjectReborn.Entities
             Stats.Intelligence = 10;
             Stats.LifeRegeneration = 1.0;
             Stats.PowerRegenaration = 1.0;
+            Stats.AmountKilled = 0;
 
             ExperienceNeeded = 100;
             Level = 1;
@@ -262,6 +263,10 @@ namespace GameProjectReborn.Entities
             {
                 Level++;
                 // caracPoint++;
+                Stats.LifeMax += 2;
+                Life = Stats.LifeMax;
+                Stats.PowerMax += 5;
+                Power += 5;
                 experience -= ExperienceNeeded;
                 ExperienceNeeded += (int)(100 * Math.Log10(Level * 2 + 10));
             }

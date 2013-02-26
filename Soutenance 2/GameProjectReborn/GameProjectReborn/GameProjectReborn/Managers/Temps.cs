@@ -16,10 +16,10 @@ namespace GameProjectReborn.Managers
         {
             if (game_time.TotalGameTime.TotalMilliseconds % 1 < 2 && !end)
                 Rain.Add(new MoteurParticule(TexturesManager.Pluie, new Vector2(RandomManager.Next(-100, mapdata.MapWidth * 32), -100), Direction.Down, RandomManager.Next(50), 3));
-            foreach (var goutte in Rain)
+            foreach (var gout in Rain)
             {
-                goutte.update();
-                goutte.Draw(sprite_batch);
+                gout.update();
+                gout.Draw(sprite_batch);
             }
             Rain.RemoveAll(particule => particule.IsDead || particule.position.X > mapdata.MapWidth * 32 || particule.position.Y > mapdata.MapHeight * 32);
 

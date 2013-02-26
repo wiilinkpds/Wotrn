@@ -7,8 +7,8 @@ namespace GameProjectReborn
 {
     public class MainGame : Game
     {
-        public const int ScreenX = 1024;
-        public const int ScreenY = 768;
+        public const int ScreenX = 1680;
+        public const int ScreenY = 1050;
 
         public static GraphicsDeviceManager graphics;
         private UberSpriteBatch spriteBatch;
@@ -25,6 +25,7 @@ namespace GameProjectReborn
                 PreferredBackBufferWidth = ScreenX,
                 PreferredBackBufferHeight = ScreenY
             };
+            graphics.IsFullScreen = true;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }

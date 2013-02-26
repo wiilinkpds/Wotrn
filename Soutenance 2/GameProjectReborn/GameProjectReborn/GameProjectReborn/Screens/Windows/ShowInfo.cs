@@ -46,6 +46,7 @@ namespace GameProjectReborn.Screens.Windows
             spriteBatch.DrawUI(TexturesManager.Level, "Intelligence : " + actualPlayer.Stats.Intelligence, Position + new Vector2(5, 110), Color.White);
             spriteBatch.DrawUI(TexturesManager.Level, "Vie / Seconde : " + actualPlayer.Stats.LifeRegeneration, Position + new Vector2(5, 130), Color.White);
             spriteBatch.DrawUI(TexturesManager.Level, "Power / Seconde: " + actualPlayer.Stats.PowerRegenaration, Position + new Vector2(5, 150), Color.White);
+            spriteBatch.DrawUI(TexturesManager.Level, "Victimes : " + actualPlayer.Stats.AmountKilled, Position + new Vector2(5, 170), Color.White);
 
         }
     }

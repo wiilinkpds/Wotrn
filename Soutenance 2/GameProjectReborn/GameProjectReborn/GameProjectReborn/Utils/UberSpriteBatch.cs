@@ -30,6 +30,11 @@ namespace GameProjectReborn.Utils
             Draw(texture, position, Color.White);
         }
 
+        public void Draw(Texture2D texture, Rectangle rectangle)
+        {
+            spriteBatch.Draw(texture, rectangle, Color.White);
+        }
+
         public void Draw(Texture2D texture, Vector2 position, Color color)
         {
             spriteBatch.Draw(texture, new Vector2((int)position.X, (int)position.Y), color);

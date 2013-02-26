@@ -16,9 +16,9 @@ namespace GameProjectReborn.Screens
         public StartMenu()
         {
             startButton = new Button(new Vector2(100, MainGame.ScreenY/4), "Demarrer une nouvelle partie");
-            optionButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 50), "Options");
-            storyButton = new Button(new Vector2(100, MainGame.ScreenY/4 + 100), "Histoire");
-            exitButton = new Button(new Vector2(100, MainGame.ScreenY/4 + 150), "Quitter le jeu");
+            optionButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + MainGame.ScreenY / 10), "Options");
+            storyButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 2*MainGame.ScreenY / 10), "Histoire");
+            exitButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 3*MainGame.ScreenY / 10), "Quitter le jeu");
 
             startButton.MouseClick += OnStartButtonMouseClick;
             optionButton.MouseClick += OnOptionButtonMouseClick;
@@ -37,7 +37,7 @@ namespace GameProjectReborn.Screens
         {
             spriteBatch.Begin();
 
-            spriteBatch.DrawUI(TexturesManager.BackgroundMenu, Vector2.Zero);
+            spriteBatch.Draw(TexturesManager.BackgroundMenu, new Rectangle(0,0,MainGame.ScreenX,MainGame.ScreenY));
             spriteBatch.DrawUI(TexturesManager.Title, "Wrath of the Rack Ninja", new Vector2(MainGame.ScreenX / 2, MainGame.ScreenY / 2 - 300), Color.Red);
 
             startButton.Draw(gameTime, spriteBatch);

@@ -31,9 +31,9 @@ namespace GameProjectReborn.Managers
         public void Zooming()
         {
             if (MouseManager.IsScrollingUp())
-                Zoom += 0.05F;
+                Zoom += 0.025F;
             else if (MouseManager.IsScrollingDown())
-                Zoom -= 0.05F;
+                Zoom -= 0.025F;
         }
 
         public Cam(int world_width, int world_height, GraphicsDeviceManager device)
