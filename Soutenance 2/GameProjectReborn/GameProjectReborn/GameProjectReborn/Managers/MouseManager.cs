@@ -10,11 +10,12 @@ namespace GameProjectReborn.Managers
         private static MouseState lastState;
         private static MouseState currentState;
 
-        public static void Update()
+        public static void Update(CursoManagers cursor)
         {
             lastState = currentState;
             currentState = Mouse.GetState(); // A ce moment la, lastState != de currentState
             Position = new Vector2(currentState.X, currentState.Y);
+            cursor.position = Position;
         }
 
         public static bool IsInRectangle(Rectangle rectangle)

@@ -10,6 +10,8 @@ namespace GameProjectReborn
         public const int ScreenX = 1680;
         public const int ScreenY = 1050;
 
+        public static CursoManagers cursor;
+
         public static GraphicsDeviceManager graphics;
         private UberSpriteBatch spriteBatch;
 
@@ -27,13 +29,13 @@ namespace GameProjectReborn
             };
             graphics.IsFullScreen = true;
             Content.RootDirectory = "Content";
-            IsMouseVisible = true;
         }
 
         protected override void LoadContent()
-        {
+        {  
             spriteBatch = new UberSpriteBatch(GraphicsDevice); // Charge notre spriteBatch personnalise
             TexturesManager.Load(Content); // Charge les textures
+            cursor = new CursoManagers(TexturesManager.Cursor);
             RandomManager.Init();
 
             currentScreen = new StartMenu();
@@ -42,7 +44,7 @@ namespace GameProjectReborn
         protected override void Update(GameTime gameTime)
         {
             KeyboardManager.Update();
-            MouseManager.Update();
+            MouseManager.Update(MainGame.cursor);
             currentScreen.Update(gameTime);
 
             base.Update(gameTime);
@@ -52,6 +54,9 @@ namespace GameProjectReborn
         {
             GraphicsDevice.Clear(Color.Black);
             currentScreen.Draw(gameTime, spriteBatch);
+            spriteBatch.Begin();
+            cursor.Draw(spriteBatch);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
 

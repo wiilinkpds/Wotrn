@@ -5,6 +5,9 @@ namespace GameProjectReborn.Managers
 {
     public static class TexturesManager
     {
+        //Cursor
+        public static Texture2D Cursor { get; private set; }
+
         //Temps
         public static Texture2D Pluie { get; private set; }
         public static Texture2D Neige { get; private set; }
@@ -56,6 +59,8 @@ namespace GameProjectReborn.Managers
 
         public static void Load(ContentManager content)
         {
+            Cursor = content.Load<Texture2D>("cursor");
+
             Pluie = content.Load<Texture2D>("pluie");
             Neige = content.Load<Texture2D>("neige");
 

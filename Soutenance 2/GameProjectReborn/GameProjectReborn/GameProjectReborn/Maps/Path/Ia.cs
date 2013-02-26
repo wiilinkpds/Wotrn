@@ -39,7 +39,7 @@ namespace GameProjectReborn.Maps.Path
             float time = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 10.0f;
             if (list != null && list.Remove(monster.Position) && list.Count > 0)
             {
-                if (gameTime.TotalGameTime.TotalMilliseconds % 500 < 1)
+                if (gameTime.TotalGameTime.TotalMilliseconds % 250 < 1)
                 {
                     if (list[list.Count - 1].Y < monster.Position.Y)
                         monster.Direction = Direction.Up;

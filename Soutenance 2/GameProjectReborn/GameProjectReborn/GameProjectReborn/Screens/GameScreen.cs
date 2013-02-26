@@ -32,7 +32,6 @@ namespace GameProjectReborn.Screens
         public GameScreen()
         {
             timeSpawn = 10000;
-
             WorldEffects = new List<WorldEffect>();
 
             Player = new Player(this, TexturesManager.Player); // Charge le Joueur
@@ -122,6 +121,7 @@ namespace GameProjectReborn.Screens
             spriteBatch.End();
 
             spriteBatch.Begin();
+            MainGame.cursor.Draw(spriteBatch);
             foreach (Entity entity in Entities)
                 entity.DrawUI(gameTime, spriteBatch);
             Player.DrawUI(gameTime, spriteBatch);

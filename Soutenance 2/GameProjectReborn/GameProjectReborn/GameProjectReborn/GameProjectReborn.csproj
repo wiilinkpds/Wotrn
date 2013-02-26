@@ -111,6 +111,7 @@
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\PlayerStats.cs" />
     <Compile Include="Managers\Camera.cs" />
+    <Compile Include="Managers\CursoManagers.cs" />
     <Compile Include="Managers\MoteurParticule.cs" />
     <Compile Include="Managers\Temps.cs" />
     <Compile Include="Maps\Path\NodePos.cs" />

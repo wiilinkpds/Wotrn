@@ -33,7 +33,7 @@ namespace GameProjectReborn.Screens.Option
         {
             spriteBatch.Begin();
 
-            spriteBatch.DrawUI(TexturesManager.OptionMenu, Vector2.Zero);
+            spriteBatch.Draw(TexturesManager.OptionMenu, new Rectangle(0, 0, MainGame.ScreenX, MainGame.ScreenY));
             spriteBatch.DrawUI(TexturesManager.Title, "Wrath of the Rack Ninja", new Vector2(MainGame.ScreenX / 2, MainGame.ScreenY / 2 - 300), Color.Red);
             spriteBatch.DrawUI(TexturesManager.Title, "Options", new Vector2(100, MainGame.ScreenY / 2 - 300), Color.Red);
 
