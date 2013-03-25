@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Entities\Direction.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\Ia\IA.cs" />
     <Compile Include="Entities\PlayerStats.cs" />
     <Compile Include="Managers\Camera.cs" />
     <Compile Include="Managers\CursoManagers.cs" />
@@ -128,7 +129,7 @@
     <Compile Include="WIP\MovementPath.cs" />
     <Compile Include="WIP\Pathfinding.cs" />
     <Compile Include="Screens\Option\OptionMenu.cs" />
-    <Compile Include="Maps\Path\Ia.cs" />
+    <Compile Include="Maps\Path\Pathfinding.cs" />
     <Compile Include="Entities\Monster.cs" />
     <Compile Include="Maps\Path\Node.cs" />
     <Compile Include="Entities\Player.cs" />

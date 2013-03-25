@@ -73,22 +73,34 @@ namespace GameProjectReborn.Maps.Path
         {
             if (direction == NodePos.U)
             {
-                if (map.Accessibility[Id] == 1 || map.Accessibility[VectToId(new Vector2(Position.X + size.X, Position.Y))] == 1 || (map.SideAccess[Id] & 2) == 2 || (map.SideAccess[VectToId(new Vector2(Position.X + size.X,Position.Y))] & 2)==2)
+                if (map.Accessibility[Id] == 1 ||
+                    map.Accessibility[VectToId(new Vector2(Position.X + size.X, Position.Y))] == 1 ||
+                    (map.SideAccess[Id] & 2) == 2 ||
+                    (map.SideAccess[VectToId(new Vector2(Position.X + size.X, Position.Y))] & 2) == 2)
                     return false;
             }
             else if (direction == NodePos.D)
             {
-                if (map.Accessibility[Id] == 1 || map.Accessibility[VectToId(new Vector2(Position.X + size.X, Position.Y))] == 1 || (map.SideAccess[Id] & 1) == 1 || (map.SideAccess[VectToId(new Vector2(Position.X + size.X, Position.Y))] & 1) == 1)
+                if (map.Accessibility[Id] == 1 ||
+                    map.Accessibility[VectToId(new Vector2(Position.X + size.X, Position.Y))] == 1 ||
+                    (map.SideAccess[Id] & 1) == 1 ||
+                    (map.SideAccess[VectToId(new Vector2(Position.X + size.X, Position.Y))] & 1) == 1)
                     return false;
             }
             else if (direction == NodePos.L)
             {
-                if (map.Accessibility[Id] == 1 || map.Accessibility[VectToId(new Vector2(Position.X, Position.Y + size.Y))] == 1 || (map.SideAccess[Id] & 8) == 8 || (map.SideAccess[VectToId(new Vector2(Position.X, Position.Y + size.Y))] & 8) == 8)
+                if (map.Accessibility[Id] == 1 ||
+                    map.Accessibility[VectToId(new Vector2(Position.X, Position.Y + size.Y))] == 1 ||
+                    (map.SideAccess[Id] & 8) == 8 ||
+                    (map.SideAccess[VectToId(new Vector2(Position.X, Position.Y + size.Y))] & 8) == 8)
                     return false;
             }
             else if (direction == NodePos.R)
             {
-                if (map.Accessibility[Id] == 1 || map.Accessibility[VectToId(new Vector2(Position.X, Position.Y + size.Y))] == 1 || (map.SideAccess[Id] & 4) == 4 || (map.SideAccess[VectToId(new Vector2(Position.X, Position.Y + size.Y))] & 4) == 4)
+                if (map.Accessibility[Id] == 1 ||
+                    map.Accessibility[VectToId(new Vector2(Position.X, Position.Y + size.Y))] == 1 ||
+                    (map.SideAccess[Id] & 4) == 4 ||
+                    (map.SideAccess[VectToId(new Vector2(Position.X, Position.Y + size.Y))] & 4) == 4)
                     return false;
             }
             return true;

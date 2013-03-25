@@ -1,4 +1,5 @@
 ﻿using System;
+using GameProjectReborn.Entities.Ia;
 using GameProjectReborn.Managers;
 using GameProjectReborn.Maps;
 using GameProjectReborn.Maps.Path;
@@ -15,6 +16,9 @@ namespace GameProjectReborn.Entities
         public Player Targeter { private get; set; }
         public int LifeMax { get; set; }
         public int PowerMax { get; set; }
+        public int Range { get; set; }
+        public int Vision { get; set; }
+        public Vector2 InitialPos { get; set; }
 
         private const int LifeBarSize = 100; // Taille de la bar de Vie du Monstre
 
@@ -29,17 +33,15 @@ namespace GameProjectReborn.Entities
             xp = 100;
             Life = 100;
             LifeMax = 100;
+            Vision = 200;
+            Range = 1000;
         }
 
         public override void Update(GameTime gameTime, MapData map, Player player)
         {
-            if (Math.Sqrt((Math.Pow(Math.Abs(Position.X - player.Position.X), 2)
-                           + Math.Pow(Math.Abs(Position.Y - player.Position.Y), 2))) < 100000)
-            {
-                new Ia(gameTime, player.Position, this,map);
-            }
+            IA ia = new IA();
+            ia.Moving(this,gameTime,player,map);
             base.Update(gameTime);
-            // float time = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 10.0f;
         }
 
         public override void Draw(GameTime gameTime, UberSpriteBatch spriteBatch)

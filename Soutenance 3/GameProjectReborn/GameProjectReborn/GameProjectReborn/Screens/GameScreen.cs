@@ -156,7 +156,8 @@ namespace GameProjectReborn.Screens
             {
                 timeSpent -= timeSpawn;
                 Monster monster = RandomManager.Next(0, 1) == 0 ? new Monster(this, TexturesManager.Rack, 4, 1) : new Monster(this, TexturesManager.RackNinja, 4, 3);
-                monster.Position = new Vector2(RandomManager.Next(500, MapFirst.Data.MapWidth * 32 - 100), RandomManager.Next(500, MapFirst.Data.MapHeight * 32 - 100));
+                monster.InitialPos = new Vector2(RandomManager.Next(500, MapFirst.Data.MapWidth * 32 - 100), RandomManager.Next(500, MapFirst.Data.MapHeight * 32 - 100));
+                monster.Position = monster.InitialPos;
                 Entities.Add(monster);
             }
         }

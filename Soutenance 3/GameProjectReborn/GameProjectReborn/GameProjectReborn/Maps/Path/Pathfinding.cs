@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace GameProjectReborn.Maps.Path
 {
-    public class Ia
+    public class Pathfinding
     {
         private List<Node> OpenedList { get; set; }
         private List<Node> ClosedList { get; set; }
@@ -20,7 +20,7 @@ namespace GameProjectReborn.Maps.Path
         private Entity monster { get; set; }
         private Vector2 move;
 
-        public Ia(GameTime gameTime, Vector2 player, Entity monster, MapData map)
+        public Pathfinding(GameTime gameTime, Vector2 player, Entity monster, MapData map)
         {
             this.monster = monster;
             OpenedList = new List<Node>();
@@ -31,7 +31,7 @@ namespace GameProjectReborn.Maps.Path
             arrival = new Node(player, monster.Position, player, mapData);
 
             OpenedList.Add(start);
-            PathFinding(gameTime);
+            FindPath(gameTime);
         }
 
         public void Mouvement(GameTime gameTime, Entity entitie)
@@ -91,7 +91,7 @@ namespace GameProjectReborn.Maps.Path
             return (int)(Pos.X/ 32) + (int)(Pos.Y / 32) * mapData.MapWidth;
         }
 
-        public void PathFinding(GameTime gameTime)
+        public void FindPath(GameTime gameTime)
         {
             while (!Contains(arrival, ClosedList) && OpenedList.Count != 0)
             {

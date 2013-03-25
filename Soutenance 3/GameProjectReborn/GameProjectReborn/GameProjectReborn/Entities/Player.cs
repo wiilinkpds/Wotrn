@@ -37,7 +37,7 @@ namespace GameProjectReborn.Entities
 
         public Vector2 pos = new Vector2(-42, -42);//Pour le mouvement a la souris
 
-        private Maps.Path.Ia Path = null;
+        private Maps.Path.Pathfinding Path;
 
         public Player(GameScreen game, Texture2D texture)
             : base(game)
@@ -96,7 +96,7 @@ namespace GameProjectReborn.Entities
                 if (MouseManager.IsRightClicked()) //Deplacement a la souris
                 {
                     pos = GameScreen.camera.Location(MouseManager.Position);
-                    Path = new Maps.Path.Ia(gameTime, pos, this, Game.MapFirst.Data);
+                    Path = new Maps.Path.Pathfinding(gameTime, pos, this, Game.MapFirst.Data);
                 }
                 if (pos.X > 0 && pos.Y > 0 && pos.X < Game.MapFirst.Data.MapWidth * 32 && pos.Y < Game.MapFirst.Data.MapHeight * 32 && Path != null)
                     Path.Mouvement(gameTime,this);
