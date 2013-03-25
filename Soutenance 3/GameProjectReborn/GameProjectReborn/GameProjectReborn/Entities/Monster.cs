@@ -22,6 +22,8 @@ namespace GameProjectReborn.Entities
 
         private const int LifeBarSize = 100; // Taille de la bar de Vie du Monstre
 
+        private IA ia;
+
         protected int xp { private get; set; }
 
         public Monster(GameScreen game, Texture2D texture, int vertical, int horizontale) : base(game) // Constructeur avec pour paramètres les mêmes que sa classe père
@@ -34,13 +36,13 @@ namespace GameProjectReborn.Entities
             Life = 100;
             LifeMax = 100;
             Vision = 200;
-            Range = 1000;
+            Range = 500;
+            ia = new IA(game.MapFirst.Data);
         }
 
-        public override void Update(GameTime gameTime, MapData map, Player player)
+        public override void Update(GameTime gameTime,Player player)
         {
-            IA ia = new IA();
-            ia.Moving(this,gameTime,player,map);
+            ia.Moving(this,gameTime,player);
             base.Update(gameTime);
         }
 

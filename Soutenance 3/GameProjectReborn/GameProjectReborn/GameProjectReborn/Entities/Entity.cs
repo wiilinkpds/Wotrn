@@ -61,7 +61,7 @@ namespace GameProjectReborn.Entities
             }
         }
 
-        public virtual void Update(GameTime gameTime, MapData map, Player player) // Pour le pathfinding
+        public virtual void Update(GameTime gameTime, Player player) // Pour le pathfinding
         {
             stepTime += gameTime.ElapsedGameTime.TotalMilliseconds;
             while (stepTime >= StepDelay)

@@ -45,7 +45,7 @@ namespace GameProjectReborn.Maps.Path
             {
                 if (list[list.Count - 1] == id - mapData.MapWidth)
                 {
-                    if (gameTime.TotalGameTime.TotalMilliseconds % 1000 < 10 || !(entitie is Monster))
+                    if (gameTime.TotalGameTime.TotalMilliseconds % 500 < 10 || !(entitie is Monster))
                         entitie.Direction = Direction.Up;
                     move.Y--;
                     move.Normalize();

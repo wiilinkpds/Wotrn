@@ -60,7 +60,7 @@ namespace GameProjectReborn.Screens
                 Player.Update(gameTime);
 
                 foreach (Monster entity in Entities.OfType<Monster>())
-                    entity.Update(gameTime, MapFirst.Data, Player);
+                    entity.Update(gameTime, Player);
 
                 while (deletedEntities.Count > 0)
                 {
