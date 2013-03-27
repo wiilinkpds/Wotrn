@@ -37,12 +37,12 @@ namespace GameProjectReborn.Entities
             LifeMax = 100;
             Vision = 200;
             Range = 500;
-            ia = new IA(game.MapFirst.Data);
+            ia = new IA(game.MapFirst.Data, this);
         }
 
         public override void Update(GameTime gameTime,Player player)
         {
-            ia.Moving(this,gameTime,player);
+            ia.Moving(gameTime,player);
             base.Update(gameTime);
         }
 
