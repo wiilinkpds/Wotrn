@@ -11,7 +11,7 @@ namespace GameProjectReborn.Maps.Path
 
         public double DistanceVol { get; set; }
         public double DistanceParcourue { get; set; }
-        public double Weight { get; set; }                                 
+        public double Weight { get; set; }
 
         public Vector2 Position { get; set; }
         public Vector2 Start { get; set; }
@@ -68,19 +68,19 @@ namespace GameProjectReborn.Maps.Path
 
         private bool Can(NodePos direction, MapData map, Vector2 size)
         {
-            bool isNearNode = ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y)) < map.MapHeight*map.MapWidth;
+            bool isNearNode = ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y)) < map.MapHeight * map.MapWidth;
             switch (direction)
             {
                 case NodePos.U:
                     if (map.Accessibility[Id] == 1 ||
                         (isNearNode && map.Accessibility[ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y))] == 1) ||
                         (map.SideAccess[Id] & 2) == 2 ||
-                        (isNearNode &&(map.SideAccess[ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y))] & 2) == 2))
+                        (isNearNode && (map.SideAccess[ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y))] & 2) == 2))
                         return false;
                     break;
                 case NodePos.D:
                     if (map.Accessibility[Id] == 1 ||
-                        (isNearNode && map.Accessibility[ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y))] == 1 )||
+                        (isNearNode && map.Accessibility[ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y))] == 1) ||
                         (map.SideAccess[Id] & 1) == 1 ||
                         (isNearNode && (map.SideAccess[ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y))] & 1) == 1))
                         return false;

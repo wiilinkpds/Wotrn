@@ -2,7 +2,6 @@ using GameProjectReborn.Managers;
 using GameProjectReborn.Screens;
 using GameProjectReborn.Utils;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.GamerServices;
 
 namespace GameProjectReborn
 {
@@ -11,9 +10,10 @@ namespace GameProjectReborn
         public const int ScreenX = 1680;
         public const int ScreenY = 1050;
 
+        public static GraphicsDeviceManager graphics { get; set; }
+
         public static float SongVolume;
 
-        public static GraphicsDeviceManager graphics;
         private UberSpriteBatch spriteBatch;
 
         private Screen currentScreen;
@@ -29,9 +29,8 @@ namespace GameProjectReborn
                 PreferredBackBufferHeight = ScreenY
             };
             Content.RootDirectory = "Content";
-            Components.Add(new GamerServicesComponent(this));
             //graphics.IsFullScreen = true;
-            IsMouseVisible = false;
+            IsMouseVisible = true;
         }
 
         protected override void LoadContent()
@@ -52,8 +51,6 @@ namespace GameProjectReborn
             MouseManager.Update();
             CursorManager.Update(gameTime);
             currentScreen.Update(gameTime);
-            if (!(currentScreen is GameScreen))
-                CursorManager.Update(gameTime);
             base.Update(gameTime);
         }
 

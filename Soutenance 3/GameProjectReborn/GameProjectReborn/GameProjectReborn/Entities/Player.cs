@@ -82,7 +82,6 @@ namespace GameProjectReborn.Entities
 
         public override void Update(GameTime gameTime)
         {
-
             if (CanMove)
             {
                 base.Update(gameTime);
@@ -128,7 +127,7 @@ namespace GameProjectReborn.Entities
                 {
                     foreach (Monster monster in Game.Entities.OfType<Monster>())
                     {
-                        if (MouseManager.IsInRectangle(GameScreen.camera.ScreenLocation(MouseManager.Position), monster.Bounds))
+                        if (MouseManager.IsInRectangle(GameScreen.Camera.ScreenLocation(MouseManager.Position), monster.Bounds))
                             Target = monster;
                     }
                 }

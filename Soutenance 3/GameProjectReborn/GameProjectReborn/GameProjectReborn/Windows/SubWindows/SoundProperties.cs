@@ -15,7 +15,7 @@ namespace GameProjectReborn.Windows.SubWindows
         public SoundProperties(Screen parent, Vector2 position, Texture2D texture) : base(parent, position, texture)
         {
             this.texture = texture;
-            soundCursor = new Button(position + new Vector2(TexturesManager.Window.Width / 2, TexturesManager.MovingCursor.Height + 5) - new Vector2(TexturesManager.MovingCursor.Width / 2, 0), TexturesManager.MovingCursor, Bounds.X, Bounds.X + TexturesManager.Window.Width);
+            soundCursor = new Button(position + new Vector2(TexturesManager.Window.Width / 2, TexturesManager.MovingCursor.Height + 5) - new Vector2(TexturesManager.MovingCursor.Width / 2, 0), TexturesManager.MovingCursor, Bounds.X, Bounds.X + TexturesManager.Window.Width, 90f);
 
             soundCursor.MouseClicking += OnSoundCursorClicking;
         }
@@ -30,21 +30,17 @@ namespace GameProjectReborn.Windows.SubWindows
         public override void Draw(GameTime gameTime, UberSpriteBatch spriteBatch)
         {
             spriteBatch.DrawUI(TexturesManager.Window, Position);
-            spriteBatch.DrawUI(TexturesManager.Level, "Volume de la musique : ", Position + new Vector2(TexturesManager.Window.Width / 2, 0) - new Vector2(TexturesManager.Level.MeasureString("Volume de la musique : ").X / 2, -5), Color.White);
-            spriteBatch.DrawUI(TexturesManager.Level, MainGame.SongVolume * 100 + " %", new Vector2(Position.X + 15, Position.Y + 25), Color.White);
+            spriteBatch.DrawUI(TexturesManager.Level, "Musique : " + MainGame.SongVolume * 100 + " %", Position + new Vector2(TexturesManager.Window.Width / 2, 0) - new Vector2(TexturesManager.Level.MeasureString("Musique : 100 %").X / 2, -5), Color.White);
 
             soundCursor.Draw(gameTime, spriteBatch);
         }
 
         private void OnSoundCursorClicking(object sender, MouseClickEventArgs e) // object sender renvoie le type du parametre, ici un Button
         {
-            if (soundCursor.Position.X >= soundCursor.BoundLeft && soundCursor.Position.X <= soundCursor.BoundRight)
-            {
-                soundCursor.Position = new Vector2(MouseManager.Position.X, soundCursor.Position.Y);
-                XactManager.Engine.GetCategory("Music").SetVolume(MainGame.SongVolume = soundCursor.Position.X);
-            }
+            if (soundCursor.Position.X < Bounds.Left)
+                soundCursor.Position = new Vector2(Bounds.Left + 1, soundCursor.Position.Y);
             else
-                soundCursor.Position = new Vector2(MouseManager.Position.X - 1, soundCursor.Position.Y - 1);
+                soundCursor.Position = new Vector2(MouseManager.Position.X, soundCursor.Position.Y);
         }
     }
 }

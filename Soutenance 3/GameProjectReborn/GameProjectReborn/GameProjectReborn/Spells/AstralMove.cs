@@ -1,6 +1,5 @@
 ﻿using GameProjectReborn.Entities;
 using GameProjectReborn.Managers;
-using GameProjectReborn.Screens;
 using GameProjectReborn.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;

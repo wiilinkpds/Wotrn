@@ -24,6 +24,7 @@ namespace GameProjectReborn.Managers
 
         // Souris
         public static Texture2D Cursor { get; private set; }
+        public static Texture2D CursorTarget { get; private set; }
 
         // Effets de sorts
 
@@ -49,7 +50,6 @@ namespace GameProjectReborn.Managers
         // Menu
         public static Texture2D BackgroundMenu { get; private set; }
         public static Texture2D OptionMenu { get; private set; }
-        public static Texture2D MultiMenu { get; private set; }
 
         // Spritefonts
         public static SpriteFont Level { get; private set; }
@@ -74,6 +74,7 @@ namespace GameProjectReborn.Managers
             InfoButton = content.Load<Texture2D>("UI/InfoButton");
 
             Cursor = content.Load<Texture2D>("UI/Cursor");
+            CursorTarget = content.Load<Texture2D>("UI/CursorTarget");
 
             Lightning02 = content.Load<Texture2D>("SpellsIcon/Effect/Lightning02");
             BuffEffect = content.Load<Texture2D>("SpellsIcon/Effect/Buff");
@@ -93,7 +94,6 @@ namespace GameProjectReborn.Managers
 
             BackgroundMenu = content.Load<Texture2D>("Menu/BackgroundMenu");
             OptionMenu = content.Load<Texture2D>("Menu/OptionMenu");
-            MultiMenu = content.Load<Texture2D>("Menu/MultiMenu");
 
             Level = content.Load<SpriteFont>("Ui/Level");
             Menu = content.Load<SpriteFont>("Menu/Menu");

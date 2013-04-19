@@ -72,7 +72,7 @@ namespace GameProjectReborn.Entities
         public void InternalDraw(UberSpriteBatch spriteBatch, Color color)
         {
             Rectangle source = new Rectangle((int)textureSize.X * step, (int)textureSize.Y, (int)textureSize.X, (int)textureSize.Y);
-            spriteBatch.Draw(effect, GameScreen.camera.MapLocation(position), source, color);
+            spriteBatch.Draw(effect, GameScreen.Camera.MapLocation(position), source, color);
         }
     }
 }

@@ -260,8 +260,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menu\MultiMenu.jpg">
-      <Name>MultiMenu</Name>
+    <Compile Include="UI\CursorTarget.png">
+      <Name>CursorTarget</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

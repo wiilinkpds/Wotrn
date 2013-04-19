@@ -1,6 +1,4 @@
-﻿using GameProjectReborn.Utils;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace GameProjectReborn.Managers
@@ -48,11 +46,11 @@ namespace GameProjectReborn.Managers
         {
             return lastState.ScrollWheelValue < currentState.ScrollWheelValue;
         }
+
         public static bool IsScrollingDown()
         {
             return lastState.ScrollWheelValue > currentState.ScrollWheelValue;
         }
-
         public static Vector2 Move()
         {
             return new Vector2(currentState.X - lastState.X, currentState.Y - lastState.Y);

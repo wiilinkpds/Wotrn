@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace GameProjectReborn.Managers
 {
@@ -36,12 +35,12 @@ namespace GameProjectReborn.Managers
                 Zoom -= 0.025F;
         }
 
-        public Cam(int world_width, int world_height, GraphicsDeviceManager device)
+        public Cam(int worldWidth, int worldHeight, GraphicsDeviceManager device)
         {
             Position = Vector2.Zero;
             this.device = device;
-            worldWidth = world_width;
-            worldHeight = world_height;
+            this.worldWidth = worldWidth;
+            this.worldHeight = worldHeight;
         }
         public Vector2 ScreenLocation(Vector2 position)
         {
