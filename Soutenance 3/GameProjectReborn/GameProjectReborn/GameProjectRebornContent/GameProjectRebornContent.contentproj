@@ -63,14 +63,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Char.png">
-      <Name>Char</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Ennemy\Rack.png">
+    <Compile Include="Rack.png">
       <Name>Rack</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -120,10 +113,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Maps\map.mrm">
-      <Name>map</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <Compile Include="Menu\Menu.spritefont">
       <Name>Menu</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -230,29 +219,42 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="pluie.png">
-      <Name>pluie</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="neige.png">
-      <Name>neige</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Ennemy\RackNinja.png">
+    <Compile Include="RackNinja.png">
       <Name>RackNinja</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cursor.png">
-      <Name>cursor</Name>
+    <None Include="Maps\map.mrm">
+      <Name>map</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="UI\Cursor.png">
+      <Name>Cursor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Musique\GameProjectRebornSound.xap">
+      <Name>GameProjectRebornSound</Name>
+      <Importer>XactImporter</Importer>
+      <Processor>XactProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SpellsIcon\Effect\Lightning02.png">
+      <Name>Lightning02</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="UI\MovingCursor.png">
+      <Name>MovingCursor</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

@@ -9,9 +9,9 @@
         public int Dexterity;
         public int Intelligence;
 
+        public int AmountKilled;
+
         public double LifeRegeneration;
         public double PowerRegenaration;
-
-        public int AmountKilled;
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using GameProjectReborn.Screens.Windows;
 using GameProjectReborn.Utils;
+using GameProjectReborn.Windows;
 using Microsoft.Xna.Framework;
 
 namespace GameProjectReborn.Screens

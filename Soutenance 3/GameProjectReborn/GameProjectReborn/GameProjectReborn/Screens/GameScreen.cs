@@ -4,8 +4,9 @@ using System.Linq;
 using GameProjectReborn.Entities;
 using GameProjectReborn.Managers;
 using GameProjectReborn.Maps;
-using GameProjectReborn.Screens.Windows;
+using GameProjectReborn.Screens.SubScreens;
 using GameProjectReborn.Utils;
+using GameProjectReborn.Windows;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -17,7 +18,6 @@ namespace GameProjectReborn.Screens
         public Player Player { get; set; }
         public IList<Entity> Entities { get; set; }
         public IList<WorldEffect> WorldEffects { get; set; }
-        public static Cam camera;
 
         public bool IsPaused { get; set; }
         
@@ -27,19 +27,18 @@ namespace GameProjectReborn.Screens
         private double timeSpent;
         private double timeSpawn;
         private bool isShown;
-        private int i = 0; //Sert pour le temps(pluie neige ...)
 
+        // Gerer la projection des ennemis sur des cases interdites sinon sortie du pathfinding
         public GameScreen()
         {
-            timeSpawn = 10000;
+            XactManager.PlaySong("Day01");
+
             WorldEffects = new List<WorldEffect>();
 
             Player = new Player(this, TexturesManager.Player); // Charge le Joueur
 
-            Windows.Add(new PanelMenu(this, new Vector2(0, MainGame.ScreenY / 2), TexturesManager.Window, Player));
+            Windows.Add(new Panel(this, new Vector2(0, MainGame.ScreenY / 2), TexturesManager.Window, Player));
             escapeMenu = new EscapeMenu(this, new Vector2(100, MainGame.ScreenY / 4 + 50));
-
-            IsPaused = false;
 
             Entities = new List<Entity>();
             deletedEntities = new List<Entity>(); // On transfere un Monster deleted a l'interieur puis on le detruit dans cette liste
@@ -49,7 +48,8 @@ namespace GameProjectReborn.Screens
                 throw new Exception();
             MapFirst = new Map(mapData);
 
-            camera = new Cam(mapData.MapWidth * 32, mapData.MapHeight * 32, MainGame.graphics);
+            IsPaused = false;
+            timeSpawn = 1000;
 
         }
 
@@ -58,6 +58,9 @@ namespace GameProjectReborn.Screens
             if (!escapeMenu.IsOpened)
             {
                 Player.Update(gameTime);
+
+                if (Player.Life <= 0)
+                    MainGame.GetInstance().SetScreen(new GameOverScreen());
 
                 foreach (Monster entity in Entities.OfType<Monster>())
                     entity.Update(gameTime, Player);
@@ -82,8 +85,6 @@ namespace GameProjectReborn.Screens
                     WorldEffects.Remove(deletedEffects[0]);
                     deletedEffects.RemoveAt(0);
                 }
-
-                camera.Update(Player.CanMove ? Player.Position : Player.AstralPosition);
                 Spawn(gameTime);
             }
 
@@ -98,12 +99,10 @@ namespace GameProjectReborn.Screens
 
         public override void Draw(GameTime gameTime, UberSpriteBatch spriteBatch)
         {
-            spriteBatch.BeginCam(camera);
-
+            spriteBatch.Begin();
+            spriteBatch.Position = -ConversionManager.ScreenToGameCoords(Player, Vector2.Zero);
             MapFirst.Draw(spriteBatch, true);
-            if (isShown)
-                if (Player.pos.X >= 0 && Player.pos.Y >= 0)
-                    spriteBatch.Draw(TexturesManager.Tile, Player.pos);
+
             foreach (Monster entity in Entities.OfType<Monster>())
                 entity.Draw(gameTime, spriteBatch);
 
@@ -111,20 +110,13 @@ namespace GameProjectReborn.Screens
 
             MapFirst.Draw(spriteBatch, false);
 
-            foreach (WorldEffect worldEffect in WorldEffects)
-                worldEffect.Draw(gameTime, spriteBatch);
-
-            if (gameTime.TotalGameTime.TotalMilliseconds % 10000 < 10)
-                i = RandomManager.Next(0, 2);
-            Temps.Pluie(spriteBatch, gameTime, MapFirst.Data, i == 1 ? false : true);
-            Temps.Neige(spriteBatch, gameTime, MapFirst.Data, i == 2 ? false : true);
-            spriteBatch.End();
-
-            spriteBatch.Begin();
-            MainGame.cursor.Draw(spriteBatch);
             foreach (Entity entity in Entities)
                 entity.DrawUI(gameTime, spriteBatch);
+
             Player.DrawUI(gameTime, spriteBatch);
+
+            foreach (WorldEffect worldEffect in WorldEffects)
+                worldEffect.Draw(gameTime, spriteBatch);
 
             foreach (Window win in Windows)
                 win.Draw(gameTime, spriteBatch);
@@ -155,8 +147,8 @@ namespace GameProjectReborn.Screens
             while (timeSpent >= timeSpawn)
             {
                 timeSpent -= timeSpawn;
-                Monster monster = RandomManager.Next(0, 1) == 0 ? new Monster(this, TexturesManager.Rack, 4, 1) : new Monster(this, TexturesManager.RackNinja, 4, 3);
-                monster.InitialPos = new Vector2(MapFirst.Data.MapWidth * 32 -150,500);//new Vector2(RandomManager.Next(500, MapFirst.Data.MapWidth * 32 - 100), RandomManager.Next(500, MapFirst.Data.MapHeight * 32 - 100));
+                Monster monster = RandomManager.Next(0, 1) == 0 ? new Monster(this, TexturesManager.Rack, 1,4) : new Monster(this, TexturesManager.RackNinja, 3,4);
+                monster.InitialPos = new Vector2(MapFirst.Data.MapWidth * 32 - 150, 500);
                 monster.Position = monster.InitialPos;
                 Entities.Add(monster);
             }

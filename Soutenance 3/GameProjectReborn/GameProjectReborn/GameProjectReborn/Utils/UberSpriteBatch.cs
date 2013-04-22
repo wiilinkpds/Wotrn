@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using GameProjectReborn.Managers;
 
 namespace GameProjectReborn.Utils
 {
@@ -37,11 +36,15 @@ namespace GameProjectReborn.Utils
 
         public void Draw(Texture2D texture, Vector2 position, Color color)
         {
+            // Pour pas utiliser la camera
+            position += Position;
             spriteBatch.Draw(texture, new Vector2((int)position.X, (int)position.Y), color);
         }
 
         public void Draw(Texture2D texture, Vector2 position, Rectangle sourceRectangle, Color color)
         {
+            // Pour pas utiliser la camera
+            position += Position;
             spriteBatch.Draw(texture, new Vector2((int)position.X, (int)position.Y), sourceRectangle, color);
         }
 
@@ -67,9 +70,11 @@ namespace GameProjectReborn.Utils
             spriteBatch.DrawString(spriteFont, str, new Vector2((int)position.X, (int)position.Y), color);
         }
 
+        /* Pour la futur camera
         public void BeginCam(Cam camera)
         {
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, camera.GetTransformation());
         }
+        */
     }
 }

@@ -8,7 +8,7 @@ namespace GameProjectReborn.Spells
     {
         private Monster target;
 
-        public MegaBlast(Entity owner) : base(owner, TexturesManager.MegaBlast, SpellType.Cast, 1)
+        public MegaBlast(Entity owner) : base(owner, TexturesManager.MegaBlast, SpellType.Cast, 1, 50)
         {
 
         }
@@ -23,10 +23,10 @@ namespace GameProjectReborn.Spells
             // Créer un vecteur directeur
             Vector2 move = target.Position + new Vector2(target.TextureSize.X, target.TextureSize.Y) / 2;
 
-            move -= Owner.Position + new Vector2(Owner.TextureSize.X, Owner.TextureSize.Y) / 2;
-            move.Normalize(); // Donne au vecteur la taille d'un pixel
+            //move -= Owner.Position + new Vector2(Owner.TextureSize.X, Owner.TextureSize.Y) / 2;
+            //move.Normalize(); // Donne au vecteur la taille d'un pixel
+            //target.Position += move * 20;
 
-            target.Position += move * 20;
             target.Damage(Owner, 20);
 
 

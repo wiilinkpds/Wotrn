@@ -19,9 +19,10 @@ namespace GameProjectReborn.Entities
 
         public PlayerStats Stats { get; private set; }
 
-        public Vector2 AstralPosition { get; set; }
         public Monster Target { get; set; } // Cible du Player
+        public Vector2 AstralPosition { get; set; }
         public Vector2 coord { get; set; }
+        public Vector2 RealMousePosition { get; set; }
 
         public bool CanMove { get; set; } // Booleen indiquant si le Player peut se deplacer
 
@@ -29,21 +30,16 @@ namespace GameProjectReborn.Entities
         public int Level { get; set; }
 
         private int experience;
-        // private int caracPoint;
 
-        private int targetIndex;
-        private readonly IList<Spell> spells;
         private Rectangle[] spellsRect;
-
-        public Vector2 pos = new Vector2(-42, -42);//Pour le mouvement a la souris
-
-        private Maps.Path.Pathfinding Path;
+        private readonly IList<Spell> spells;
+        private int targetIndex;
 
         public Player(GameScreen game, Texture2D texture)
             : base(game)
         {
             Stats = new PlayerStats();
-            Position = new Vector2(480, 336);
+            Position = new Vector2(64, 64);
             InitTexture(texture, 3, 4);
 
             Speed = 3.0f;
@@ -63,7 +59,6 @@ namespace GameProjectReborn.Entities
             Level = 1;
 
             experience = 0;
-            // caracPoint = 0;
 
             CanMove = true;
 
@@ -81,41 +76,32 @@ namespace GameProjectReborn.Entities
             for (int i = 0; i < spells.Count; i++)
             {
                 spellsRect[i] = new Rectangle((int)(MainGame.ScreenX / 2 - TexturesManager.PowerBar.Width / 2 + 5 + delta.X * i),
-                                              (int)(MainGame.ScreenY - TexturesManager.PowerBar.Height + 5 + delta.Y * i),
+                                              (int)(MainGame.ScreenY - TexturesManager.PowerBar.Height + 5 + delta.Y * i - TexturesManager.Xp.Height),
                                                 spells[i].Icon.Width, spells[i].Icon.Height);
             }
         }
 
         public override void Update(GameTime gameTime)
         {
+            CursorManager.Update(gameTime, this);
+
             if (CanMove)
             {
-                Vector2 oldPos = Position;
                 base.Update(gameTime);
                 InternalMove(gameTime);
-                if (MouseManager.IsRightClicked()) //Deplacement a la souris
-                {
-                    pos = GameScreen.camera.Location(MouseManager.Position);
-                    Path = new Maps.Path.Pathfinding(gameTime, pos, this, Game.MapFirst.Data);
-                }
-                if (pos.X > 0 && pos.Y > 0 && pos.X < Game.MapFirst.Data.MapWidth * 32 && pos.Y < Game.MapFirst.Data.MapHeight * 32 && Path != null)
-                    Path.Mouvement(gameTime,this);
-                else
-                    pos = new Vector2(-42,-42);
-                if (oldPos == Position)
-                    Step = 1;
-            }                                         
+            }
 
             coord = new Vector2((int)Math.Ceiling(Position.X * 32 / 1000) - 1, (int)Math.Ceiling(Position.Y * 32 / 1000) - 1);
 
-            Keys[] keys = new[] {Keys.Q, Keys.A, Keys.E, Keys.R, Keys.D2 };
+            Keys[] keys = new[] {Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5 };
 
+            // Pour le lancement de spells
             for (int i = 0; i < spells.Count; i++)
             {
                 if (keys.Length < i) break;
                 if (!KeyboardManager.IsPressed(keys[i]) && !(MouseManager.IsInRectangle(spellsRect[i]) && MouseManager.IsLeftClicked())) continue;
 
-                if (spells[i].Type == SpellType.Buff) // Si le sort est un Buff...
+                if (spells[i].Type == SpellType.Buff)
                 {
                     if (spells[i].IsActivated)
                         spells[i].Unbuff();
@@ -126,7 +112,8 @@ namespace GameProjectReborn.Entities
                     spells[i].Cast();
             }
 
-            if (KeyboardManager.IsPressed(Keys.Tab) || MouseManager.IsLeftClicked()) // Change de cible
+            // Change de cible
+            if (KeyboardManager.IsPressed(Keys.Tab) || MouseManager.IsLeftClicked())
             {
                 if (Target != null)
                     Target.Targeter = null;
@@ -143,7 +130,8 @@ namespace GameProjectReborn.Entities
                 {
                     foreach (Monster monster in Game.Entities.OfType<Monster>())
                     {
-                        if (MouseManager.IsInRectangle(monster.Bounds, GameScreen.camera))
+                        RealMousePosition = ConversionManager.ScreenToGameCoords(this, MouseManager.Position);
+                        if (MouseManager.IsInRectangle(RealMousePosition, monster.Bounds))
                             Target = monster;
                     }
                 }
@@ -152,7 +140,8 @@ namespace GameProjectReborn.Entities
                     Target.Targeter = this;
             }
 
-            if (KeyboardManager.IsPressed(Keys.Escape)) // Deselectionne une cible
+            // Deselectionne une cible
+            if (KeyboardManager.IsPressed(Keys.Escape))
             {
                 if (Target != null)
                     Target.Targeter = null;
@@ -160,11 +149,11 @@ namespace GameProjectReborn.Entities
             }
 
             // Insérer tout le cheat
-            if (Keyboard.GetState().IsKeyDown(Keys.D1))
+            if (Keyboard.GetState().IsKeyDown(Keys.D0))
                 Power = Stats.PowerMax;
-            // Insérer tout le cheat
 
-            foreach (Spell spell in spells) // Update tout les spells
+            // Update tout les spells
+            foreach (Spell spell in spells)
                 spell.Update(gameTime);
 
             Regeneration(gameTime);
@@ -232,29 +221,29 @@ namespace GameProjectReborn.Entities
             float time = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 10.0f;
             Vector2 move = Vector2.Zero;
 
-            if (KeyboardManager.IsDown(Keys.Right))
-                move.X ++;
-            else if (KeyboardManager.IsDown(Keys.Left))
-                move.X --;
-            else if (KeyboardManager.IsDown(Keys.Down))
-                move.Y ++;
-            else if (KeyboardManager.IsDown(Keys.Up))
-                move.Y --;
+            if (KeyboardManager.IsDown(Keys.D))
+                move.X += 1;
+            else if (KeyboardManager.IsDown(Keys.A))
+                move.X -= 1;
+            else if (KeyboardManager.IsDown(Keys.S))
+                move.Y += 1;
+            else if (KeyboardManager.IsDown(Keys.W))
+                move.Y -= 1;
 
             if (move == Vector2.Zero)
+            {
+                Step = 1;
                 return;
-
-            pos = new Vector2(-42, -42);
-            Path = null;
+            }
 
             // Defini la Direction du Player
             if ((int)move.Y == 1)
                 Direction = Direction.Down;
-            else if ((int)move.Y == -1)
+            if ((int)move.Y == -1)
                 Direction = Direction.Up;
             if ((int)move.X == 1)
                 Direction = Direction.Right;
-            else if ((int)move.X == -1)
+            if ((int)move.X == -1)
                 Direction = Direction.Left;
 
             move.Normalize(); // Donne au vecteur la taille d'un pixel
@@ -268,11 +257,6 @@ namespace GameProjectReborn.Entities
             if (experience >= ExperienceNeeded)
             {
                 Level++;
-                // caracPoint++;
-                Stats.LifeMax += 2;
-                Life = Stats.LifeMax;
-                Stats.PowerMax += 5;
-                Power += 5;
                 experience -= ExperienceNeeded;
                 ExperienceNeeded += (int)(100 * Math.Log10(Level * 2 + 10));
             }

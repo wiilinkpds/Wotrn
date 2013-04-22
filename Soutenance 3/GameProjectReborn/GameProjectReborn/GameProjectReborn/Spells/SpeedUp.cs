@@ -8,7 +8,7 @@ namespace GameProjectReborn.Spells
     {
         private float value;
 
-        public SpeedUp(Entity owner) : base(owner, TexturesManager.SpeedUp, SpellType.Buff , 1)
+        public SpeedUp(Entity owner) : base(owner, TexturesManager.SpeedUp, SpellType.Buff , 1, 200)
         {
             
         }

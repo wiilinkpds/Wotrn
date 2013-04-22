@@ -1,8 +1,5 @@
-﻿using System;
-using GameProjectReborn.Entities.Ia;
+﻿using GameProjectReborn.Entities.IA;
 using GameProjectReborn.Managers;
-using GameProjectReborn.Maps;
-using GameProjectReborn.Maps.Path;
 using GameProjectReborn.Screens;
 using GameProjectReborn.Utils;
 using Microsoft.Xna.Framework;
@@ -14,35 +11,36 @@ namespace GameProjectReborn.Entities
     public class Monster : Entity
     {
         public Player Targeter { private get; set; }
+        public Vector2 InitialPos { get; set; } 
+
+        public int MovingScope { get; set; }
         public int LifeMax { get; set; }
         public int PowerMax { get; set; }
-        public int Range { get; set; }
-        public int Vision { get; set; }
-        public Vector2 InitialPos { get; set; }
 
-        private const int LifeBarSize = 100; // Taille de la bar de Vie du Monstre
-
-        private IA ia;
+        private const int LifeBarSize = 100;
+        private Ia ia;
 
         protected int xp { private get; set; }
 
-        public Monster(GameScreen game, Texture2D texture, int vertical, int horizontale) : base(game) // Constructeur avec pour paramètres les mêmes que sa classe père
+        public Monster(GameScreen game, Texture2D texture, int horizontal, int vertical) : base(game)
         {
-            InitTexture(texture, horizontale, vertical);
-            
+            InitTexture(texture, horizontal, vertical);
+
             Speed = 1.0f;
+            MovingScope = 500;
+            VisionSight = 200;
 
             xp = 100;
             Life = 100;
             LifeMax = 100;
-            Vision = 200;
-            Range = 500;
-            ia = new IA(game.MapFirst.Data, this);
+            VisionSight = 200;
+
+            ia = new Ia(game.MapFirst.Data, this);
         }
 
-        public override void Update(GameTime gameTime,Player player)
+        public override void Update(GameTime gameTime, Player player)
         {
-            ia.Moving(gameTime,player);
+            ia.Moving(gameTime, player);
             base.Update(gameTime);
         }
 
@@ -82,8 +80,8 @@ namespace GameProjectReborn.Entities
             {
                 if (source is Player)
                 {
-                    ((Player)source).GainXp(xp);
-                    ((Player)source).Stats.AmountKilled++;
+                    ((Player) source).GainXp(xp);
+                    ((Player) source).Stats.AmountKilled++;
                 }
 
                 Delete(); // Appelle la fonction Delete() qui supprime le Monster et envoie ce dernier dans la liste deletedEntities

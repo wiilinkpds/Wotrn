@@ -5,13 +5,6 @@ namespace GameProjectReborn.Managers
 {
     public static class TexturesManager
     {
-        //Cursor
-        public static Texture2D Cursor { get; private set; }
-
-        //Temps
-        public static Texture2D Pluie { get; private set; }
-        public static Texture2D Neige { get; private set; }
-
         // Player, Ennemi, Pnj
         public static Texture2D Player { get; private set; }
         public static Texture2D Rack { get; private set; }
@@ -24,11 +17,17 @@ namespace GameProjectReborn.Managers
         public static Texture2D PowerBar { get; private set; }
         public static Texture2D Window { get; private set; }
 
+
+        public static Texture2D MovingCursor { get; private set; }
         public static Texture2D AddButton { get; private set; }
         public static Texture2D InfoButton { get; private set; }
 
+        // Souris
+        public static Texture2D Cursor { get; private set; }
+
         // Effets de sorts
 
+        public static Texture2D Lightning02 { get; private set; }
         public static Texture2D BuffEffect { get; private set; }
         public static Texture2D WindEffect { get; private set; }
 
@@ -59,14 +58,9 @@ namespace GameProjectReborn.Managers
 
         public static void Load(ContentManager content)
         {
-            Cursor = content.Load<Texture2D>("cursor");
-
-            Pluie = content.Load<Texture2D>("pluie");
-            Neige = content.Load<Texture2D>("neige");
-
             Player = content.Load<Texture2D>("Player");
-            Rack = content.Load<Texture2D>("Ennemy/Rack");
-            RackNinja = content.Load<Texture2D>("Ennemy/RackNinja");
+            Rack = content.Load<Texture2D>("Rack");
+            RackNinja = content.Load<Texture2D>("RackNinja");
 
             Power = content.Load<Texture2D>("UI/Power");
             Life = content.Load<Texture2D>("UI/Life");
@@ -74,9 +68,13 @@ namespace GameProjectReborn.Managers
             PowerBar = content.Load<Texture2D>("UI/PowerBar");
             Window = content.Load<Texture2D>("UI/Window");
 
+            MovingCursor = content.Load<Texture2D>("UI/MovingCursor");
             AddButton = content.Load<Texture2D>("UI/AddButton");
             InfoButton = content.Load<Texture2D>("UI/InfoButton");
 
+            Cursor = content.Load<Texture2D>("UI/Cursor");
+
+            Lightning02 = content.Load<Texture2D>("SpellsIcon/Effect/Lightning02");
             BuffEffect = content.Load<Texture2D>("SpellsIcon/Effect/Buff");
             WindEffect = content.Load<Texture2D>("SpellsIcon/Effect/Wind");
 

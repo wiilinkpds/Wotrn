@@ -9,7 +9,7 @@ namespace GameProjectReborn.Spells
     public class UberBlast : Spell
     {
         public UberBlast(Entity owner)
-            : base(owner, TexturesManager.UberBlast, SpellType.Cast, 1)
+            : base(owner, TexturesManager.UberBlast, SpellType.Cast, 1, 500)
         {
 
         }
@@ -19,7 +19,10 @@ namespace GameProjectReborn.Spells
             if (!base.Cast())
                 return false;
 
+            XactManager.SoundBank.GetCue("Bolt01").Play();
+
             new WorldEffect(Owner.Game, TexturesManager.WindEffect, Owner, new Vector2(0, Owner.TextureSize.Y), 2000, 2, 2);
+            new WorldEffect(Owner.Game, TexturesManager.Lightning02, Owner, new Vector2(0, Owner.TextureSize.Y - TexturesManager.Lightning02.Height), 2000, 1, 1);
 
             foreach (Monster target in Owner.Game.Entities.OfType<Monster>())
             {
@@ -35,6 +38,7 @@ namespace GameProjectReborn.Spells
                     move -= Owner.Position + new Vector2(Owner.TextureSize.X, Owner.TextureSize.Y) / 2;
                     move.Normalize(); // Donne au vecteur la taille d'un pixel
                     target.Position += move * 20;
+
                     target.Damage(Owner, 20);
                 }
             }

@@ -1,5 +1,4 @@
 ﻿using GameProjectReborn.Managers;
-using GameProjectReborn.Maps;
 using GameProjectReborn.Screens;
 using GameProjectReborn.Utils;
 using Microsoft.Xna.Framework;
@@ -7,7 +6,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GameProjectReborn.Entities
 {
-    // abstract empêche les boulets de faire des trucs inutiles.
     public abstract class Entity
     {
         public const int StepDelay = 150;
@@ -26,6 +24,7 @@ namespace GameProjectReborn.Entities
         public Vector2 TextureSize { get; private set; }
         public Texture2D Texture { get; private set; }
 
+        public int VisionSight { get; set; }
         public double Life { get; set; }
         public double Power { get; set; }
         public float Speed { get; set; }
@@ -39,8 +38,7 @@ namespace GameProjectReborn.Entities
         protected Entity(GameScreen game)
         {
             Game = game;
-            // Juste pour les tests
-            Position = new Vector2(RandomManager.Next(100, 200), RandomManager.Next(100, 200));
+            Position = new Vector2(RandomManager.Next(100, 200), RandomManager.Next(100, 200)); // Juste pour les tests
         }
 
         protected void InitTexture(Texture2D texture, int frameX, int frameY)

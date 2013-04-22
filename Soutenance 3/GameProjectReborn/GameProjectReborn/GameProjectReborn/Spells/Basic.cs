@@ -10,7 +10,7 @@ namespace GameProjectReborn.Spells
         private Monster target;
         private int range;
 
-        public Basic(Entity owner) : base(owner, TexturesManager.Basic, SpellType.Cast, 0)
+        public Basic(Entity owner) : base(owner, TexturesManager.Basic, SpellType.Cast, 0, 1)
         {
             range = 40;
         }

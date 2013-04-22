@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GameProjectReborn.Utils;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace GameProjectReborn.Managers
@@ -10,12 +12,11 @@ namespace GameProjectReborn.Managers
         private static MouseState lastState;
         private static MouseState currentState;
 
-        public static void Update(CursoManagers cursor)
+        public static void Update()
         {
             lastState = currentState;
             currentState = Mouse.GetState(); // A ce moment la, lastState != de currentState
             Position = new Vector2(currentState.X, currentState.Y);
-            cursor.position = Position;
         }
 
         public static bool IsInRectangle(Rectangle rectangle)
@@ -23,12 +24,9 @@ namespace GameProjectReborn.Managers
             return (Position.X > rectangle.Left && Position.X < rectangle.Right && Position.Y > rectangle.Top && Position.Y < rectangle.Bottom);
         }
 
-        public static bool IsInRectangle(Rectangle rectangle, Cam camera) //Real position
+        public static bool IsInRectangle(Vector2 vector, Rectangle rectangle)
         {
-            return (camera.Location(Position).X > rectangle.Left &&
-                camera.Location(Position).X < rectangle.Right &&
-                camera.Location(Position).Y > rectangle.Top &&
-                camera.Location(Position).Y < rectangle.Bottom);
+            return (vector.X > rectangle.Left && vector.X < rectangle.Right && vector.Y > rectangle.Top && vector.Y < rectangle.Bottom);
         }
 
         public static bool IsClicking()
@@ -44,15 +42,6 @@ namespace GameProjectReborn.Managers
         public static bool IsRightClicked()
         {
             return lastState.RightButton == ButtonState.Pressed && currentState.RightButton == ButtonState.Released;
-        }
-
-        public static bool IsScrollingUp()
-        {
-            return lastState.ScrollWheelValue < currentState.ScrollWheelValue;
-        }
-        public static bool IsScrollingDown()
-        {
-            return lastState.ScrollWheelValue > currentState.ScrollWheelValue;
         }
 
         public static Vector2 Move()

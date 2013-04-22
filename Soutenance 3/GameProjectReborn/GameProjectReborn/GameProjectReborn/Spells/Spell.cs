@@ -20,12 +20,14 @@ namespace GameProjectReborn.Spells
         public Texture2D Icon { get; private set; }
         public SpellType Type { get; private set; }
         public bool IsActivated { get; private set; }
+        public int TimeUp { get; private set; }
 
         private DateTime last;
         private readonly int powerCost;
 
-        protected Spell(Entity owner, Texture2D icon, SpellType type, int cost)
+        protected Spell(Entity owner, Texture2D icon, SpellType type, int cost, int timeUp)
         {
+            TimeUp = timeUp;
             Owner = owner;
             powerCost = cost;
             Icon = icon;

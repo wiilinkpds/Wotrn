@@ -14,7 +14,7 @@ namespace GameProjectReborn.Spells
             set { Caster.AstralPosition = value; }
         }
 
-        public AstralMove(Entity owner) : base(owner, TexturesManager.AstralMove,SpellType.Buff, 1)
+        public AstralMove(Entity owner) : base(owner, TexturesManager.AstralMove,SpellType.Buff, 1, 200)
         {
             position = owner.Position;
         }
@@ -40,13 +40,13 @@ namespace GameProjectReborn.Spells
             float time = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 10.0f;
             Vector2 move = Vector2.Zero;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
                 move.X += 1;
-            if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
                 move.X -= 1;
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
                 move.Y += 1;
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
                 move.Y -= 1;
 
             if (move == Vector2.Zero)

@@ -15,10 +15,5 @@ namespace GameProjectReborn.Managers
         {
             return random.Next(min, max + 1);
         }
-
-        public static int Next(int max)
-        {
-            return random.Next(max + 1);
-        }
     }
 }

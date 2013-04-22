@@ -1,75 +1,81 @@
 ﻿using System;
+using GameProjectReborn.Managers;
 using GameProjectReborn.Maps;
 using GameProjectReborn.Maps.Path;
 using Microsoft.Xna.Framework;
 
-namespace GameProjectReborn.Entities.Ia
+namespace GameProjectReborn.Entities.IA
 {
-    
-    class IA
+    class Ia
     {
         private MapData map;
         private Monster monster;
-        private bool inVision { get; set; }
-        private bool OutRange { get; set; }
-        private bool Patroui { get; set; }
         private Direction direction { get; set; }
 
-        public IA(MapData mapData, Monster monster)
+        private bool inVision { get; set; }
+        private bool OutRange { get; set; }
+        private bool isPatrolling { get; set; }
+
+        public Ia(MapData mapData, Monster monster)
         {
             map = mapData;
-            inVision = false;
-            OutRange = true;
-            Patroui = true;
             this.monster = monster;
             direction = Direction.Down;
 
-        }
-
-        private int VectToId(Vector2 Pos)
-        {
-            return (int)(Pos.X / 32) + (int)(Pos.Y / 32) * map.MapWidth;
+            inVision = false;
+            OutRange = true;
+            isPatrolling = true;
         }
 
         public void Moving(GameTime gameTime, Player player)
         {
-            if (VectToId(monster.InitialPos) == VectToId(monster.Position))
+            
+            if (monster.Bounds.Intersects(player.Bounds))
+                return;
+            if (ConversionManager.VectToId(map, monster.InitialPos) == ConversionManager.VectToId(map, monster.Position))
             {
                 OutRange = false;
-                Patroui = true;
+                isPatrolling = true;
             }
 
             inVision = false;
             if (Math.Sqrt((Math.Pow(Math.Abs(monster.Position.X - player.Position.X), 2)
-                + Math.Pow(Math.Abs(monster.Position.Y - player.Position.Y), 2))) < monster.Vision && !OutRange)
+                + Math.Pow(Math.Abs(monster.Position.Y - player.Position.Y), 2))) < monster.VisionSight && !OutRange)
             {
                 inVision = true;
-                Patroui = false;
+                isPatrolling = false;
             }
             if (Math.Sqrt((Math.Pow(Math.Abs(monster.Position.X - monster.InitialPos.X), 2)
-       + Math.Pow(Math.Abs(monster.Position.Y - monster.InitialPos.Y), 2))) > monster.Range)
+       + Math.Pow(Math.Abs(monster.Position.Y - monster.InitialPos.Y), 2))) > monster.MovingScope)
             {
                 OutRange = true;
                 inVision = false;
             }
 
+            if (monster.Life < monster.LifeMax)
+            {
+                inVision = true;
+                OutRange = false;
+                isPatrolling = false;
+            }
+
             if (inVision)
                 new Pathfinding(gameTime, player.Position, monster, map);
-            else if (!Patroui) 
+            else if (!isPatrolling)
                 new Pathfinding(gameTime, monster.InitialPos, monster, map);
-            else 
-                Patrouille(gameTime);      
+            else
+                Patrol(gameTime);
         }
 
-        public void Patrouille(GameTime gameTime)
+        public void Patrol(GameTime gameTime)
         {
-            if (VectToId(monster.Position) == VectToId(monster.InitialPos))
+            if (ConversionManager.VectToId(map, monster.Position) == ConversionManager.VectToId(map, monster.InitialPos))
                 direction = Direction.Down;
-            else if (VectToId(monster.Position) == VectToId(monster.InitialPos) + 4 * map.MapWidth)
+            else if (ConversionManager.VectToId(map, monster.Position) == ConversionManager.VectToId(map, monster.InitialPos) + 4 * map.MapWidth)
                 direction = Direction.Left;
-            else if (VectToId(monster.Position) == VectToId(monster.InitialPos) + 4 * map.MapWidth - 4)
+            else if (ConversionManager.VectToId(map, monster.Position) == ConversionManager.VectToId(map, monster.InitialPos) + 4 * map.MapWidth - 4)
                 direction = Direction.Up;
-            else if (VectToId(monster.Position) == VectToId(monster.InitialPos) - 4)
+            else if (ConversionManager.VectToId(map, monster.Position) == ConversionManager.VectToId(map, monster.InitialPos) - 4)
                 direction = Direction.Right;
 
             switch (direction)
@@ -82,7 +88,7 @@ namespace GameProjectReborn.Entities.Ia
                     break;
                 case Direction.Right:
                     new Pathfinding(gameTime, new Vector2(monster.Position.X + 32, monster.Position.Y), monster, map);
-                    break; 
+                    break;
                 case Direction.Left:
                     new Pathfinding(gameTime, new Vector2(monster.Position.X - 32, monster.Position.Y), monster, map);
                     break;
