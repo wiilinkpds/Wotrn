@@ -39,12 +39,12 @@ namespace GameProjectReborn.Windows.SubWindows
         private void OnSoundCursorClicking(object sender, MouseClickEventArgs e) // object sender renvoie le type du parametre, ici un Button
         {
             if (soundCursor.Position.X >= soundCursor.BoundLeft && soundCursor.Position.X <= soundCursor.BoundRight)
-                soundCursor.Position = new Vector2(MouseManager.Position.X, soundCursor.Position.Y);
-            else
             {
-                soundCursor.Position = new Vector2(MouseManager.Position.X - 1, soundCursor.Position.Y - 1);
+                soundCursor.Position = new Vector2(MouseManager.Position.X, soundCursor.Position.Y);
+                XactManager.Engine.GetCategory("Music").SetVolume(MainGame.SongVolume = soundCursor.Position.X);
             }
-            XactManager.Engine.GetCategory("Music").SetVolume(MainGame.SongVolume);
+            else
+                soundCursor.Position = new Vector2(MouseManager.Position.X - 1, soundCursor.Position.Y - 1);
         }
     }
 }

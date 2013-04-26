@@ -18,6 +18,7 @@ namespace GameProjectReborn.Screens
         public Player Player { get; set; }
         public IList<Entity> Entities { get; set; }
         public IList<WorldEffect> WorldEffects { get; set; }
+        public static Cam camera;
 
         public bool IsPaused { get; set; }
         
@@ -50,7 +51,7 @@ namespace GameProjectReborn.Screens
 
             IsPaused = false;
             timeSpawn = 1000;
-
+            camera = new Cam(mapData.MapWidth * 32, mapData.MapHeight * 32,MainGame.graphics);
         }
 
         public override void Update(GameTime gameTime)
@@ -58,7 +59,7 @@ namespace GameProjectReborn.Screens
             if (!escapeMenu.IsOpened)
             {
                 Player.Update(gameTime);
-
+                camera.Update(Player.CanMove ? Player.Position : Player.AstralPosition);
                 if (Player.Life <= 0)
                     MainGame.GetInstance().SetScreen(new GameOverScreen());
 
@@ -95,12 +96,12 @@ namespace GameProjectReborn.Screens
                 isShown = !isShown;
             if (KeyboardManager.IsPressed(Keys.Escape))
                 ToggleWindow(escapeMenu);
+
         }
 
         public override void Draw(GameTime gameTime, UberSpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
-            spriteBatch.Position = -ConversionManager.ScreenToGameCoords(Player, Vector2.Zero);
+            spriteBatch.BeginCam(camera);
             MapFirst.Draw(spriteBatch, true);
 
             foreach (Monster entity in Entities.OfType<Monster>())
@@ -109,6 +110,10 @@ namespace GameProjectReborn.Screens
             Player.Draw(gameTime, spriteBatch);
 
             MapFirst.Draw(spriteBatch, false);
+
+            spriteBatch.End();
+
+            spriteBatch.Begin();
 
             foreach (Entity entity in Entities)
                 entity.DrawUI(gameTime, spriteBatch);
@@ -123,7 +128,6 @@ namespace GameProjectReborn.Screens
 
             if (isShown)
                 DrawInfo(gameTime, spriteBatch, Color.White);
-
             spriteBatch.End();
         }
 

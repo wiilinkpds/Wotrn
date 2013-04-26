@@ -22,12 +22,13 @@ Content\UI\Dialog\WinDial.xnb
 Content\SpellsIcon\Effect\Wind.xnb
 Content\RackNinja.xnb
 Content\UI\Cursor.xnb
+Content\SpellsIcon\Effect\Lightning02.xnb
+Content\UI\MovingCursor.xnb
 Content\UI\Level.xnb
 Content\Menu\Menu.xnb
 Content\Menu\Title.xnb
 Content\Menu\Zoom.xnb
-Content\SpellsIcon\Effect\Lightning02.xnb
-Content\UI\MovingCursor.xnb
+Content\Menu\MultiMenu.xnb
 Content\Musique\GameProjectRebornSound.xgs
 Content\Musique\Wave Bank.xwb
 Content\Musique\Sound Bank.xsb

@@ -44,6 +44,15 @@ namespace GameProjectReborn.Managers
             return lastState.RightButton == ButtonState.Pressed && currentState.RightButton == ButtonState.Released;
         }
 
+        public static bool IsScrollingUp()
+        {
+            return lastState.ScrollWheelValue < currentState.ScrollWheelValue;
+        }
+        public static bool IsScrollingDown()
+        {
+            return lastState.ScrollWheelValue > currentState.ScrollWheelValue;
+        }
+
         public static Vector2 Move()
         {
             return new Vector2(currentState.X - lastState.X, currentState.Y - lastState.Y);

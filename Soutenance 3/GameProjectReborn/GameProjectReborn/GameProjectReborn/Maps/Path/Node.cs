@@ -68,34 +68,35 @@ namespace GameProjectReborn.Maps.Path
 
         private bool Can(NodePos direction, MapData map, Vector2 size)
         {
+            bool isNearNode = ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y)) < map.MapHeight*map.MapWidth;
             switch (direction)
             {
                 case NodePos.U:
                     if (map.Accessibility[Id] == 1 ||
-                        map.Accessibility[ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y))] == 1 ||
+                        (isNearNode && map.Accessibility[ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y))] == 1) ||
                         (map.SideAccess[Id] & 2) == 2 ||
-                        (map.SideAccess[ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y))] & 2) == 2)
+                        (isNearNode &&(map.SideAccess[ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y))] & 2) == 2))
                         return false;
                     break;
                 case NodePos.D:
                     if (map.Accessibility[Id] == 1 ||
-                        map.Accessibility[ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y))] == 1 ||
+                        (isNearNode && map.Accessibility[ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y))] == 1 )||
                         (map.SideAccess[Id] & 1) == 1 ||
-                        (map.SideAccess[ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y))] & 1) == 1)
+                        (isNearNode && (map.SideAccess[ConversionManager.VectToId(map, new Vector2(Position.X + size.X, Position.Y))] & 1) == 1))
                         return false;
                     break;
                 case NodePos.L:
                     if (map.Accessibility[Id] == 1 ||
-                        map.Accessibility[ConversionManager.VectToId(map, new Vector2(Position.X, Position.Y + size.Y))] == 1 ||
+                        (isNearNode && map.Accessibility[ConversionManager.VectToId(map, new Vector2(Position.X, Position.Y + size.Y))] == 1) ||
                         (map.SideAccess[Id] & 8) == 8 ||
-                        (map.SideAccess[ConversionManager.VectToId(map, new Vector2(Position.X, Position.Y + size.Y))] & 8) == 8)
+                        (isNearNode && (map.SideAccess[ConversionManager.VectToId(map, new Vector2(Position.X, Position.Y + size.Y))] & 8) == 8))
                         return false;
                     break;
                 case NodePos.R:
                     if (map.Accessibility[Id] == 1 ||
-                        map.Accessibility[ConversionManager.VectToId(map, new Vector2(Position.X, Position.Y + size.Y))] == 1 ||
+                        (isNearNode && map.Accessibility[ConversionManager.VectToId(map, new Vector2(Position.X, Position.Y + size.Y))] == 1) ||
                         (map.SideAccess[Id] & 4) == 4 ||
-                        (map.SideAccess[ConversionManager.VectToId(map, new Vector2(Position.X, Position.Y + size.Y))] & 4) == 4)
+                        (isNearNode && (map.SideAccess[ConversionManager.VectToId(map, new Vector2(Position.X, Position.Y + size.Y))] & 4) == 4))
                         return false;
                     break;
             }

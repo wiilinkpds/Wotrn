@@ -49,6 +49,7 @@ namespace GameProjectReborn.Managers
         // Menu
         public static Texture2D BackgroundMenu { get; private set; }
         public static Texture2D OptionMenu { get; private set; }
+        public static Texture2D MultiMenu { get; private set; }
 
         // Spritefonts
         public static SpriteFont Level { get; private set; }
@@ -92,6 +93,7 @@ namespace GameProjectReborn.Managers
 
             BackgroundMenu = content.Load<Texture2D>("Menu/BackgroundMenu");
             OptionMenu = content.Load<Texture2D>("Menu/OptionMenu");
+            MultiMenu = content.Load<Texture2D>("Menu/MultiMenu");
 
             Level = content.Load<SpriteFont>("Ui/Level");
             Menu = content.Load<SpriteFont>("Menu/Menu");

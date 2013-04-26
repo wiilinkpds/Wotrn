@@ -22,7 +22,6 @@ namespace GameProjectReborn.Entities
         public Monster Target { get; set; } // Cible du Player
         public Vector2 AstralPosition { get; set; }
         public Vector2 coord { get; set; }
-        public Vector2 RealMousePosition { get; set; }
 
         public bool CanMove { get; set; } // Booleen indiquant si le Player peut se deplacer
 
@@ -83,7 +82,6 @@ namespace GameProjectReborn.Entities
 
         public override void Update(GameTime gameTime)
         {
-            CursorManager.Update(gameTime, this);
 
             if (CanMove)
             {
@@ -130,8 +128,7 @@ namespace GameProjectReborn.Entities
                 {
                     foreach (Monster monster in Game.Entities.OfType<Monster>())
                     {
-                        RealMousePosition = ConversionManager.ScreenToGameCoords(this, MouseManager.Position);
-                        if (MouseManager.IsInRectangle(RealMousePosition, monster.Bounds))
+                        if (MouseManager.IsInRectangle(GameScreen.camera.ScreenLocation(MouseManager.Position), monster.Bounds))
                             Target = monster;
                     }
                 }
@@ -221,13 +218,13 @@ namespace GameProjectReborn.Entities
             float time = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 10.0f;
             Vector2 move = Vector2.Zero;
 
-            if (KeyboardManager.IsDown(Keys.D))
+            if (KeyboardManager.IsDown(Keys.Right))
                 move.X += 1;
-            else if (KeyboardManager.IsDown(Keys.A))
+            else if (KeyboardManager.IsDown(Keys.Left))
                 move.X -= 1;
-            else if (KeyboardManager.IsDown(Keys.S))
+            else if (KeyboardManager.IsDown(Keys.Down))
                 move.Y += 1;
-            else if (KeyboardManager.IsDown(Keys.W))
+            else if (KeyboardManager.IsDown(Keys.Up))
                 move.Y -= 1;
 
             if (move == Vector2.Zero)

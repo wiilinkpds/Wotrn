@@ -1,4 +1,5 @@
 ﻿using GameProjectReborn.Entities;
+using GameProjectReborn.Screens;
 using GameProjectReborn.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -14,12 +15,6 @@ namespace GameProjectReborn.Managers
         {
             Position = MouseManager.Position;
         }
-
-        public static void Update(GameTime gameTime, Player player)
-        {
-            Position = ConversionManager.ScreenToGameCoords(player, MouseManager.Position);
-        }
-
         public static void Draw(UberSpriteBatch spriteBatch)
         {
             spriteBatch.Begin();

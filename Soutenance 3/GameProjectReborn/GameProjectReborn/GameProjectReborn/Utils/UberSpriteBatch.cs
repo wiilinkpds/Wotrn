@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GameProjectReborn.Managers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GameProjectReborn.Utils
@@ -36,15 +37,11 @@ namespace GameProjectReborn.Utils
 
         public void Draw(Texture2D texture, Vector2 position, Color color)
         {
-            // Pour pas utiliser la camera
-            position += Position;
             spriteBatch.Draw(texture, new Vector2((int)position.X, (int)position.Y), color);
         }
 
         public void Draw(Texture2D texture, Vector2 position, Rectangle sourceRectangle, Color color)
         {
-            // Pour pas utiliser la camera
-            position += Position;
             spriteBatch.Draw(texture, new Vector2((int)position.X, (int)position.Y), sourceRectangle, color);
         }
 
@@ -60,9 +57,18 @@ namespace GameProjectReborn.Utils
             DrawUI(texture, position, Color.White);
         }
 
+        public void DrawUI(Texture2D texture, Rectangle rectangle)
+        {
+            spriteBatch.Draw(texture, rectangle, Color.White);
+        }
+
         public void DrawUI(Texture2D texture, Vector2 position, Color color) // Draw des elements immobiles a l'ecran avec une couleur differente de white
         {
             spriteBatch.Draw(texture, new Vector2((int)position.X, (int)position.Y), color);
+        }
+        public void DrawUI(Texture2D texture, Rectangle rectangle, Color color)
+        {
+            spriteBatch.Draw(texture, rectangle, color);
         }
 
         public void DrawUI(SpriteFont spriteFont, string str, Vector2 position, Color color) // Draw des spriteBatchs
@@ -70,11 +76,9 @@ namespace GameProjectReborn.Utils
             spriteBatch.DrawString(spriteFont, str, new Vector2((int)position.X, (int)position.Y), color);
         }
 
-        /* Pour la futur camera
         public void BeginCam(Cam camera)
         {
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, camera.GetTransformation());
         }
-        */
     }
 }

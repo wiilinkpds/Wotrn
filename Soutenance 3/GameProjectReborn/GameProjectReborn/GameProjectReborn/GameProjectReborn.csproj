@@ -59,6 +59,9 @@
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
@@ -111,16 +114,22 @@
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\IA\Ia.cs" />
     <Compile Include="Entities\PlayerStats.cs" />
+    <Compile Include="Managers\Camera.cs" />
     <Compile Include="Managers\ConversionManager.cs" />
     <Compile Include="Managers\CursorManager.cs" />
     <Compile Include="Managers\XactManager.cs" />
     <Compile Include="Maps\Path\NodePos.cs" />
+    <Compile Include="MultiJoueurs\Client.cs" />
+    <Compile Include="MultiJoueurs\Serveur.cs" />
     <Compile Include="Screens\SubScreens\GameOverScreen.cs" />
+    <Compile Include="Screens\SubScreens\MultiMenu.cs" />
     <Compile Include="Screens\SubScreens\PlayerEditor.cs" />
     <Compile Include="Screens\SubScreens\StoryMenu.cs" />
     <Compile Include="Windows\SubWindows\DialogWindow.cs" />
     <Compile Include="Windows\EscapeMenu.cs" />
     <Compile Include="Windows\Panel.cs" />
+    <Compile Include="Windows\SubWindows\LocalServeur.cs" />
+    <Compile Include="Windows\SubWindows\MultiLocalWindow.cs" />
     <Compile Include="Windows\SubWindows\ShowInfo.cs" />
     <Compile Include="Windows\SubWindows\SoundProperties.cs" />
     <Compile Include="Windows\Window.cs" />

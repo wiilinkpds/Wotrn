@@ -1,6 +1,0 @@
-C:\Users\NaudotN\Desktop\GameProjectReborn\GameProjectReborn\GameProjectRebornContent\obj\x86\Debug\ResolveAssemblyReference.cache
-F:\Users\NaudotN\Desktop\GameProjectReborn\GameProjectReborn\GameProjectRebornContent\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectRebornContent\obj\x86\Debug\ResolveAssemblyReference.cache
-F:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectRebornContent\obj\x86\Debug\ResolveAssemblyReference.cache
-G:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectRebornContent\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\NaudotN\Desktop\MyProjects\GameProjectReborn\GameProjectReborn\GameProjectRebornContent\obj\x86\Debug\Musique\GameProjectRebornSound.xml
