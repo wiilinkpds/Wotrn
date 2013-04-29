@@ -81,7 +81,7 @@ namespace GameProjectReborn.Windows.SubWindows
 
         private void OnStartMouseClick(object sender, MouseClickEventArgs e)
         {
-            
+            serveur.Start();
         }
 
         private void OnCreateMouseClick(object sender, MouseClickEventArgs e)
@@ -97,7 +97,7 @@ namespace GameProjectReborn.Windows.SubWindows
                     isCreate = true;
                     box[0].IsSelect = false;
                     box[1].IsSelect = false;
-                    serveur = new Serveur(true, port);
+                    serveur = new Serveur(port);
                     box.Add(new TextBox(new Vector2(Bounds.X + 20, box[0].Bound.Bottom + 10), 20, 10,
                                         TexturesManager.Menu, Color.Blue, Color.Red));
                 }

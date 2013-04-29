@@ -22,7 +22,7 @@ namespace GameProjectReborn.Screens.SubScreens
             backStartButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 150), "Retour");
             backStartButton.MouseClick += OnBackStartMouseClick;
 
-            localButton = new Button(new Vector2(100,MainGame.ScreenY / 4),"Local" );
+            localButton = new Button(new Vector2(100,MainGame.ScreenY / 4),"Privée" );
             localButton.MouseClick += OnLocalMouseClick;
 
             localWindows = new MultiLocalWindow(this, new Vector2(localButton.Bounds.Right + 10, localButton.Bounds.Y + 10), TexturesManager.Window);

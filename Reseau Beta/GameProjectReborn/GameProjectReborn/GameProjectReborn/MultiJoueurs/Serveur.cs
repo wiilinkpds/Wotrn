@@ -10,32 +10,24 @@ namespace GameProjectReborn.MultiJoueurs
 {
     class Serveur
     {
-        public Dictionary<string, IPEndPoint> Clients { get; private set; }
+        public Dictionary<string, IPEndPoint> Clients { get; private set; } //IPEndPoint de chaque client associer a leur nom
 
         private Socket socket;
         private Thread Taccept;
         private UdpClient serveur;
         private bool IsLaunch;      
 
-        public Serveur(bool local, int port)
+        public Serveur(int port)
         {
             Clients = new Dictionary<string, IPEndPoint>();
             serveur = new UdpClient(port);
             Taccept = new Thread(Accepte);
             Taccept.Start();
         }
-        public void Start(int port)
+        public void Start()
         {
             Taccept.Abort();
-            try
-            {
-                socket.Bind(new IPEndPoint(IPAddress.Any, port));
-            }
-            catch (Exception)
-            {
-            }
-            socket.Listen(10);
-
+            MainGame.GetInstance().SetScreen(new MultiScreen());
         }
 
         public void Update()
