@@ -60,11 +60,9 @@ namespace GameProjectReborn.MultiJoueurs
                 return ByteArrayToPlayer(msg, game);
             }
             catch (Exception)
-            {
-
+            {    
             }
             return null;
-
         }
 
         private byte[] ObjectToByteArray(Object obj)

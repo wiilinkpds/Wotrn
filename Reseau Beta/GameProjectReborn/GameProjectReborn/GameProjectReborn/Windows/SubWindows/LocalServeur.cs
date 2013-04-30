@@ -50,6 +50,12 @@ namespace GameProjectReborn.Windows.SubWindows
             else
             {
                 createButton.Update(gameTime);
+                if (KeyboardManager.IsPressed(Keys.Tab))
+                {
+                    box[boxselect].IsSelect = false;
+                    boxselect = (boxselect + 1) % box.Count;
+                    box[boxselect].IsSelect = true;
+                }
                 for (int i = 0; i < box.Count; i++)
                 {
                     if (MouseManager.IsInRectangle(box[i].Bound) && MouseManager.IsClicking())
@@ -76,7 +82,7 @@ namespace GameProjectReborn.Windows.SubWindows
             if (isCreate)
                 StartButton.Draw(gameTime, spriteBatch);
             else
-                createButton.Draw(gameTime,spriteBatch);
+                createButton.Draw(gameTime, spriteBatch);
         }
 
         private void OnStartMouseClick(object sender, MouseClickEventArgs e)

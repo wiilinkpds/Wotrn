@@ -27,7 +27,7 @@ namespace GameProjectReborn.Screens
             IsClient = false;       
             server = serveur;
             if (!IsClient)
-                for (int i = 0; i < server.Clients.Count;i++ )
+                for (int i = 0; i < server.Clients.Count;i++)
                     otherPlayer.Add(new Player(this,TexturesManager.Player));
 
             Reseau = true;
@@ -43,6 +43,7 @@ namespace GameProjectReborn.Screens
         
         public MultiScreen(Client client)
         {
+            otherPlayer = new List<Player>();
             IsClient = true;
             this.client = client;
             oldPos = Vector2.Zero;
@@ -60,7 +61,7 @@ namespace GameProjectReborn.Screens
         {
             if (!IsClient && gameTime.TotalGameTime.TotalMilliseconds % 500 < 10)
             {
-                List<Player> all = otherPlayer;
+                List<Player> all = Copie(otherPlayer);
                 all.Add(Player);
                 server.Sending(all);
             }
@@ -71,6 +72,14 @@ namespace GameProjectReborn.Screens
             }
 
             base.Update(gameTime);
+        }
+
+        private List<Player> Copie(List<Player> init)
+        {
+            List<Player> copi = new List<Player>();
+            for(int i =0;i<init.Count;i++)
+                copi.Add(init[i]);
+            return copi;
         }
 
         private void ReceiveServeur()
@@ -96,12 +105,11 @@ namespace GameProjectReborn.Screens
 
         public override void Draw(GameTime gameTime, UberSpriteBatch spriteBatch)
         {
+            base.Draw(gameTime, spriteBatch);
             spriteBatch.BeginCam(camera);
             foreach (var player in otherPlayer)
                 player.Draw(gameTime,spriteBatch);
             spriteBatch.End();
-
-            base.Draw(gameTime, spriteBatch);
         }
     }
 }

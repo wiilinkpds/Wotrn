@@ -37,7 +37,7 @@ namespace GameProjectReborn.MultiJoueurs
             while (true)
             {
                 string msg = Encoding.Default.GetString(client.Receive(ref serveur));
-                if (msg == "/launch")
+                if (msg == "/Launch")
                     MainGame.GetInstance().SetScreen(new MultiScreen(this));
                 else if (!names.Contains(msg))
                     names.Add(msg);
