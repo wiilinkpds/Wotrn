@@ -46,7 +46,7 @@ namespace GameProjectReborn.Screens
             deletedEntities = new List<Entity>(); // On transfere un Monster deleted a l'interieur puis on le detruit dans cette liste
 
             IsPaused = false;        
-            timeSpawn = 1000;
+            timeSpawn = 10000;
         }
 
         public override void Update(GameTime gameTime)

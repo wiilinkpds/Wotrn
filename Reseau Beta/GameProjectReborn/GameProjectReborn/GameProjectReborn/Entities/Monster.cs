@@ -1,4 +1,5 @@
-﻿using GameProjectReborn.Entities.IA;
+﻿using System;
+using GameProjectReborn.Entities.IA;
 using GameProjectReborn.Managers;
 using GameProjectReborn.Screens;
 using GameProjectReborn.Utils;

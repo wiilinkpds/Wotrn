@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Serialization;
 using GameProjectReborn.Managers;
 using GameProjectReborn.Screens;
 using GameProjectReborn.Spells;
@@ -27,12 +28,21 @@ namespace GameProjectReborn.Entities
 
         public int ExperienceNeeded { get; set; }
         public int Level { get; set; }
-
         private int experience;
 
         private Rectangle[] spellsRect;
         private readonly IList<Spell> spells;
         private int targetIndex;
+
+        public EntityMulti PlayerToMulti()
+        {
+            EntityMulti player = new EntityMulti();
+            player.Life = Life;
+            player.Power = Power;
+            player.Position = Position;
+            player.Direction = Direction;
+            return player;
+        }
 
         public Player(GameScreen game, Texture2D texture)
             : base(game)
@@ -79,7 +89,6 @@ namespace GameProjectReborn.Entities
                                                 spells[i].Icon.Width, spells[i].Icon.Height);
             }
         }
-
         public override void Update(GameTime gameTime)
         {
             if (CanMove)

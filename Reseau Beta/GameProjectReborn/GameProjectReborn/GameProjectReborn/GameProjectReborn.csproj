@@ -125,6 +125,7 @@
   <ItemGroup>
     <Compile Include="Entities\Direction.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\EntityMulti.cs" />
     <Compile Include="Entities\IA\Ia.cs" />
     <Compile Include="Entities\PlayerStats.cs" />
     <Compile Include="Managers\Camera.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Maps\Path\NodePos.cs" />
     <Compile Include="MultiJoueurs\Client.cs" />
     <Compile Include="MultiJoueurs\Serveur.cs" />
+    <Compile Include="MultiJoueurs\ServeurClient.cs" />
     <Compile Include="Screens\MultiScreen.cs" />
     <Compile Include="Screens\SubScreens\GameOverScreen.cs" />
     <Compile Include="Screens\SubScreens\MultiMenu.cs" />

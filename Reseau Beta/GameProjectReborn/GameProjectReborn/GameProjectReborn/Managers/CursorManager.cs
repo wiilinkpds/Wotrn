@@ -1,4 +1,5 @@
-﻿using GameProjectReborn.Entities;
+﻿using System;
+using GameProjectReborn.Entities;
 using GameProjectReborn.Screens;
 using GameProjectReborn.Utils;
 using Microsoft.Xna.Framework;

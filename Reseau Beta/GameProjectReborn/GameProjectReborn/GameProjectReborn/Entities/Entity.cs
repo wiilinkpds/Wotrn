@@ -1,4 +1,6 @@
-﻿using GameProjectReborn.Managers;
+﻿using System;
+using System.Xml.Serialization;
+using GameProjectReborn.Managers;
 using GameProjectReborn.Screens;
 using GameProjectReborn.Utils;
 using Microsoft.Xna.Framework;

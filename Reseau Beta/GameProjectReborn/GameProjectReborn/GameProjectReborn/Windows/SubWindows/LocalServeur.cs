@@ -45,7 +45,7 @@ namespace GameProjectReborn.Windows.SubWindows
                 box[2].RemoveAll();
                 box[2].WriteLine(name);
                 for (int i = 0; i < serveur.Clients.Count;i++)
-                    box[2].WriteLine(serveur.Clients.ElementAt(i).Key);
+                    box[2].WriteLine(serveur.Clients[i].name);
             }
             else
             {

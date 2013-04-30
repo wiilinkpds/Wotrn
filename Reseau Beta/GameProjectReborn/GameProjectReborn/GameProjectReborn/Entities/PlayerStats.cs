@@ -1,4 +1,6 @@
-﻿namespace GameProjectReborn.Entities
+﻿using System;
+
+namespace GameProjectReborn.Entities
 {
     public class PlayerStats
     {
