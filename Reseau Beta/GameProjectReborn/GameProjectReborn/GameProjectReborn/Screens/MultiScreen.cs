@@ -19,6 +19,7 @@ namespace GameProjectReborn.Screens
         private Serveur server;
         private Client client;
         private List<Player> otherPlayer;
+        private Vector2 oldPos;
 
         public MultiScreen(Serveur serveur)
         {
@@ -44,7 +45,7 @@ namespace GameProjectReborn.Screens
         {
             IsClient = true;
             this.client = client;
-
+            oldPos = Vector2.Zero;
             Reseau = true;
             MapData mapData = new MapData();
             if (!mapData.FromFile("Content/Maps/map.mrm"))
@@ -57,16 +58,18 @@ namespace GameProjectReborn.Screens
 
         public override void Update(GameTime gameTime)
         {
-            if (!IsClient)
+            if (!IsClient && gameTime.TotalGameTime.TotalMilliseconds % 500 < 10)
             {
                 List<Player> all = otherPlayer;
                 all.Add(Player);
                 server.Sending(all);
             }
-            else
+            else if (IsClient && oldPos != Player.Position)
             {
+                oldPos = Player.Position;
                 client.Sending(Player);
             }
+
             base.Update(gameTime);
         }
 
@@ -76,7 +79,8 @@ namespace GameProjectReborn.Screens
             {
                 int i = 0;
                 Player temp = server.Receving(ref i,this);
-                otherPlayer[i] = temp;
+                if (temp != null)
+                    otherPlayer[i] = temp;
             }
         }
 
@@ -84,7 +88,9 @@ namespace GameProjectReborn.Screens
         {
             while (true)
             {
-                otherPlayer = client.Receving(this);
+                List<Player> temp = client.Receving(this);
+                if (temp != null && temp.Count > 0)
+                    otherPlayer = temp;
             }
         }
 

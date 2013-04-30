@@ -25,5 +25,6 @@ namespace GameProjectReborn.Entities
             player.Direction = Direction;
             return player;
         }
+
     }
 }

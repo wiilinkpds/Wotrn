@@ -15,15 +15,18 @@ namespace GameProjectReborn.MultiJoueurs
 {
     public class Client
     {
+        public List<string> names;
+
         private UdpClient client;
         private IPEndPoint serveur;
+        
 
         public Client (string name, int port, string hostname)
         {
             byte[] msg = Encoding.Default.GetBytes(name);
 
             client = new UdpClient();
-
+            names = new List<string>();
             client.Send(msg, msg.Length, hostname, port);
             Thread waitStart = new Thread(WaitStart);
             waitStart.Start();
@@ -33,8 +36,11 @@ namespace GameProjectReborn.MultiJoueurs
         {
             while (true)
             {
-                if (Encoding.Default.GetString(client.Receive(ref serveur)) == "/launch")
+                string msg = Encoding.Default.GetString(client.Receive(ref serveur));
+                if (msg == "/launch")
                     MainGame.GetInstance().SetScreen(new MultiScreen(this));
+                else if (!names.Contains(msg))
+                    names.Add(msg);
             }
         }
 
@@ -45,10 +51,18 @@ namespace GameProjectReborn.MultiJoueurs
 
         public List<Player> Receving(GameScreen game)
         {
-            List<EntityMulti> mult = ByteArrayToListPlayer(client.Receive(ref serveur));
             List<Player> list = new List<Player>();
-            for (int j = 0; j < mult.Count; j++)
-                list.Add(mult[j].MultiToPlayer(game,TexturesManager.Player));
+            try
+            {
+                List<EntityMulti> mult = ByteArrayToListPlayer(client.Receive(ref serveur));
+                for (int j = 0; j < mult.Count; j++)
+                    if (mult[j] != null)
+                        list.Add(mult[j].MultiToPlayer(game, TexturesManager.Player));
+            }
+            catch (Exception)
+            {
+            }
+ 
             return list;
         }
 
@@ -74,7 +88,14 @@ namespace GameProjectReborn.MultiJoueurs
 
         private void SendMsg(byte[] msg)
         {
-            client.Send(msg, msg.Length, serveur);
+            try
+            {
+                client.Send(msg, msg.Length, serveur);
+            }
+            catch (Exception)
+            {
+            }
+            
         }
     }
 }

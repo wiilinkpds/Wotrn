@@ -20,6 +20,7 @@ namespace GameProjectReborn.Windows.SubWindows
         private int port, boxselect;
         private string name;
         private bool IsJoin;
+        private Client client;
 
         public LocalClient(Screen parent, Vector2 position) : base(parent, position)
         {
@@ -52,6 +53,12 @@ namespace GameProjectReborn.Windows.SubWindows
                 if (KeyboardManager.IsPressed(Keys.Back))
                     box[boxselect].RemoveLast();
             }
+            else
+            {
+                box[3].RemoveAll();
+                for (int i = 0; i < client.names.Count; i++)
+                    box[3].WriteLine(client.names[i]);
+            }
         }
 
         public override void Draw(GameTime gameTime, UberSpriteBatch spriteBatch)
@@ -83,7 +90,7 @@ namespace GameProjectReborn.Windows.SubWindows
                     IsJoin = true;
                     box.Add(new TextBox(new Vector2(Bounds.X + 20, box[2].Bound.Bottom + 10), 20, 10,
                                         TexturesManager.Menu, Color.Blue, Color.Red));
-                    new Client(name, port, box[2].Text());
+                    client = new Client(name, port, box[2].Text());
                 }
                 catch (Exception)
                 {
