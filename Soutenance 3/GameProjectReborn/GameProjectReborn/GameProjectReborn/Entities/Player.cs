@@ -35,6 +35,16 @@ namespace GameProjectReborn.Entities
         public IList<Spell> spells { get; set; }
         private int targetIndex;
 
+        public EntityMulti PlayerToMulti()
+        {
+            EntityMulti player = new EntityMulti();
+            player.Life = Life;
+            player.Power = Power;
+            player.Position = Position;
+            player.Direction = Direction;
+            return player;
+        }
+
         public Player(GameScreen game, Texture2D texture)
             : base(game)
         {

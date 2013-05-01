@@ -2,6 +2,7 @@
 using GameProjectReborn.Managers;
 using GameProjectReborn.Maps;
 using GameProjectReborn.Maps.Path;
+using GameProjectReborn.Screens;
 using Microsoft.Xna.Framework;
 
 namespace GameProjectReborn.Entities.IA
@@ -29,42 +30,49 @@ namespace GameProjectReborn.Entities.IA
 
         public void Moving(GameTime gameTime, Player player)
         {
-            
-            if (monster.Bounds.Intersects(player.Bounds))
-                return;
-            if (ConversionManager.VectToId(map, monster.InitialPos) == ConversionManager.VectToId(map, monster.Position))
-            {
-                OutRange = false;
-                isPatrolling = true;
-            }
-
-            inVision = false;
-            if (Math.Sqrt((Math.Pow(Math.Abs(monster.Position.X - player.Position.X), 2)
-                + Math.Pow(Math.Abs(monster.Position.Y - player.Position.Y), 2))) < monster.VisionSight && !OutRange)
-            {
-                inVision = true;
-                isPatrolling = false;
-            }
-            if (Math.Sqrt((Math.Pow(Math.Abs(monster.Position.X - monster.InitialPos.X), 2)
-       + Math.Pow(Math.Abs(monster.Position.Y - monster.InitialPos.Y), 2))) > monster.MovingScope)
-            {
-                OutRange = true;
-                inVision = false;
-            }
-
-            if (monster.Life < monster.LifeMax)
-            {
-                inVision = true;
-                OutRange = false;
-                isPatrolling = false;
-            }
-
-            if (inVision)
+            if (GameScreen.Reseau)
                 new Pathfinding(gameTime, player.Position, monster, map);
-            else if (!isPatrolling)
-                new Pathfinding(gameTime, monster.InitialPos, monster, map);
             else
-                Patrol(gameTime);
+            {
+                if (monster.Bounds.Intersects(player.Bounds))
+                    return;
+                if (ConversionManager.VectToId(map, monster.InitialPos) ==
+                    ConversionManager.VectToId(map, monster.Position))
+                {
+                    OutRange = false;
+                    isPatrolling = true;
+                }
+
+                inVision = false;
+                if (Math.Sqrt((Math.Pow(Math.Abs(monster.Position.X - player.Position.X), 2)
+                               + Math.Pow(Math.Abs(monster.Position.Y - player.Position.Y), 2))) < monster.VisionSight &&
+                    !OutRange)
+                {
+                    inVision = true;
+                    isPatrolling = false;
+                }
+                if (Math.Sqrt((Math.Pow(Math.Abs(monster.Position.X - monster.InitialPos.X), 2)
+                               + Math.Pow(Math.Abs(monster.Position.Y - monster.InitialPos.Y), 2))) >
+                    monster.MovingScope)
+                {
+                    OutRange = true;
+                    inVision = false;
+                }
+
+                if (monster.Life < monster.LifeMax)
+                {
+                    inVision = true;
+                    OutRange = false;
+                    isPatrolling = false;
+                }
+
+                if (inVision)
+                    new Pathfinding(gameTime, player.Position, monster, map);
+                else if (!isPatrolling)
+                    new Pathfinding(gameTime, monster.InitialPos, monster, map);
+                else
+                    Patrol(gameTime);
+            }
         }
 
         public void Patrol(GameTime gameTime)

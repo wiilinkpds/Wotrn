@@ -45,7 +45,7 @@ namespace GameProjectReborn.Screens.SubScreens
 
         public void OnGoMouseClick(object sender, MouseClickEventArgs e)
         {
-            MainGame.GetInstance().SetScreen(new GameScreen());
+            MainGame.GetInstance().SetScreen(new SoloScreen());
         }
 
         // Pour les points de carac

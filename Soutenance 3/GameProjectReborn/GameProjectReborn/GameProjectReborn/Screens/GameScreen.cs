@@ -22,6 +22,7 @@ namespace GameProjectReborn.Screens
         public IList<WorldEffect> WorldEffects { get; set; }
 
         public bool IsPaused { get; set; }
+        public static bool Reseau;
         
         private IList<Entity> deletedEntities;
         private EscapeMenu escapeMenu;
@@ -45,10 +46,6 @@ namespace GameProjectReborn.Screens
             Entities = new List<Entity>();
             deletedEntities = new List<Entity>(); // On transfere un Monster deleted a l'interieur puis on le detruit dans cette liste
 
-            MapData mapData = new MapData();
-            if (!mapData.FromFile("Content/Maps/map.mrm"))
-                throw new Exception();
-            MapFirst = new Map(mapData);
 
             IsPaused = false;
             timeSpawn = 1000;

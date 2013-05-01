@@ -35,6 +35,7 @@ namespace GameProjectReborn.Screens
             startButton.Update(gameTime);
             optionButton.Update(gameTime);
             exitButton.Update(gameTime);
+            multiplayerButton.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime, UberSpriteBatch spriteBatch)
@@ -60,7 +61,7 @@ namespace GameProjectReborn.Screens
 
         private void OnMultiplayerButtonMouseClick(object sender, MouseClickEventArgs e)
         {
-
+            MainGame.GetInstance().SetScreen(new MultiMenu());
         }
 
         private void OnOptionButtonMouseClick(object sender, MouseClickEventArgs e)

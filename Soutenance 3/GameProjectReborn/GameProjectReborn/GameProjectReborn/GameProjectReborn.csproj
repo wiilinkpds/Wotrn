@@ -13,7 +13,7 @@
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
-    <XnaProfile>HiDef</XnaProfile>
+    <XnaProfile>Reach</XnaProfile>
     <XnaCrossPlatformGroupID>75ab7db9-ad7e-4e03-b07e-44c93f544cbc</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>Maps\Others\Game.ico</ApplicationIcon>
@@ -90,6 +90,10 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
+    <Reference Include="Polenter.SharpSerializer, Version=2.18.0.0, Culture=neutral, PublicKeyToken=8f4f20011571ee5f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Polenter.SharpSerializer.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -109,6 +113,7 @@
   <ItemGroup>
     <Compile Include="Entities\Direction.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\EntityMulti.cs" />
     <Compile Include="Entities\IA\Ia.cs" />
     <Compile Include="Entities\PlayerStats.cs" />
     <Compile Include="Managers\CameraManager.cs" />
@@ -116,20 +121,30 @@
     <Compile Include="Managers\CursorManager.cs" />
     <Compile Include="Managers\XactManager.cs" />
     <Compile Include="Maps\Path\NodePos.cs" />
+    <Compile Include="Multijoueur\Client.cs" />
+    <Compile Include="Multijoueur\Serveur.cs" />
+    <Compile Include="Multijoueur\ServeurClient.cs" />
     <Compile Include="Resources\Res.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Res.resx</DependentUpon>
     </Compile>
+    <Compile Include="Screens\MultiScreen.cs" />
+    <Compile Include="Screens\SoloScreen.cs" />
     <Compile Include="Screens\SubScreens\GameOverScreen.cs" />
     <Compile Include="Screens\SubScreens\IntroScreen.cs" />
+    <Compile Include="Screens\SubScreens\MultiMenu.cs" />
     <Compile Include="Screens\SubScreens\PlayerEditor.cs" />
     <Compile Include="Screens\SubScreens\StoryMenu.cs" />
+    <Compile Include="UI\TextBox.cs" />
     <Compile Include="Windows\SubWindows\DialogWindow.cs" />
     <Compile Include="Windows\EscapeMenu.cs" />
     <Compile Include="Windows\Panel.cs" />
     <Compile Include="Windows\SubWindows\InfoPlayer.cs" />
     <Compile Include="Windows\SubWindows\KeyBinding.cs" />
+    <Compile Include="Windows\SubWindows\LocalClient.cs" />
+    <Compile Include="Windows\SubWindows\LocalServeur.cs" />
+    <Compile Include="Windows\SubWindows\MultiLocalWindow.cs" />
     <Compile Include="Windows\SubWindows\SoundProperties.cs" />
     <Compile Include="Windows\SubWindows\SpellList.cs" />
     <Compile Include="Windows\Window.cs" />
@@ -166,6 +181,7 @@
   <ItemGroup>
     <Content Include="Maps\Others\Game.ico" />
     <Content Include="Maps\Others\GameThumbnail.png" />
+    <Content Include="Polenter.SharpSerializer.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameProjectRebornContent\GameProjectRebornContent.contentproj">

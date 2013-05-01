@@ -5,13 +5,14 @@ using GameProjectReborn.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using System.Globalization;
+using Microsoft.Xna.Framework.GamerServices;
 
 namespace GameProjectReborn
 {
     public class MainGame : Game
     {
-        public static int ScreenX = 1680;
-        public static int ScreenY = 1050;
+        public static int ScreenX = 1280;
+        public static int ScreenY = 1080;
 
         public GraphicsDeviceManager graphics { get; set; }
 
@@ -29,6 +30,7 @@ namespace GameProjectReborn
                 PreferredBackBufferWidth = ScreenX,
                 PreferredBackBufferHeight = ScreenY
             };
+            Components.Add(new GamerServicesComponent(this));
             Content.RootDirectory = "Content";
             graphics.IsFullScreen = true;
 
