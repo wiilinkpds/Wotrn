@@ -1,4 +1,0 @@
-C:\Users\Pierre\Desktop\Reseau Beta\GameProjectReborn\GameProjectReborn\GameProjectRebornContent\obj\x86\Debug\GameProjectRebornContent.contentprojResolveAssemblyReference.cache
-C:\Users\Pierre\Desktop\Reseau Beta\GameProjectReborn\GameProjectReborn\GameProjectRebornContent\obj\x86\Debug\Musique\GameProjectRebornSound.xml
-C:\Users\Pierre\Desktop\GameProjectReborn\GameProjectReborn\GameProjectRebornContent\obj\x86\Debug\GameProjectRebornContent.contentprojResolveAssemblyReference.cache
-C:\Users\Pierre\Desktop\GameProjectReborn\GameProjectReborn\GameProjectRebornContent\obj\x86\Debug\Musique\GameProjectRebornSound.xml

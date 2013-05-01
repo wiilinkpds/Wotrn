@@ -1,3 +1,0 @@
-Content\Musique\GameProjectRebornSound.xgs
-Content\Musique\Wave Bank.xwb
-Content\Musique\Sound Bank.xsb
