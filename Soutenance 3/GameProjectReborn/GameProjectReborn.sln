@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameProjectReborn", "GameProjectReborn\GameProjectReborn\GameProjectReborn.csproj", "{F67C929F-AEE5-46F1-9356-C48F6A94C6A9}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "GameProjectRebornContent", "GameProjectReborn\GameProjectRebornContent\GameProjectRebornContent.contentproj", "{8989E729-B862-443C-A1D2-FD343C8BEB0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameProjectRebornContent", "GameProjectReborn\GameProjectRebornContent\GameProjectRebornContent.contentproj", "{8989E729-B862-443C-A1D2-FD343C8BEB0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

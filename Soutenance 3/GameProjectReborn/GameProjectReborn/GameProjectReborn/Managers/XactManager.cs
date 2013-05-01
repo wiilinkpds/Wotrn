@@ -17,6 +17,9 @@ namespace GameProjectReborn.Managers
 
         public static Cue CurrentSong { get; set; }
 
+        public static float SongVolume;
+        public static float SoundEffectVolume;
+
         public static void Load()
         {
             Engine = new AudioEngine("Content\\Musique\\GameProjectRebornSound.xgs");

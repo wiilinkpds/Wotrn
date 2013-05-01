@@ -4,7 +4,6 @@ using GameProjectReborn.Screens;
 using GameProjectReborn.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace GameProjectReborn.Entities
 {
@@ -48,7 +47,7 @@ namespace GameProjectReborn.Entities
         {
             InternalDraw(spriteBatch, Targeter == null ? Color.White : Color.SkyBlue); // Draw le monstre et change la couleur de la cible
             
-            if (Targeter == null && !KeyboardManager.IsDown(Keys.LeftControl))
+            if (Targeter == null && !KeyboardManager.IsDown(KeyboardManager.BindedKeys[(int) KeyboardManager.KeysEnum.ShowLife]))
                 return;
 
             Vector2 position = Position - new Vector2(0, TexturesManager.Life.Height);

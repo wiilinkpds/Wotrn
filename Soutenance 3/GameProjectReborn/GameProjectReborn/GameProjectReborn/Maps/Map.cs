@@ -130,11 +130,20 @@ namespace GameProjectReborn.Maps
             return false;
         }
 
-        public void Draw(UberSpriteBatch spriteBatch, bool isBackground)
+        public void Draw(UberSpriteBatch spriteBatch, bool isBackground, Vector2 position)
         {
             for (int x = 0; x < Data.MapWidth; x++)
                 for (int y = 0; y < Data.MapHeight; y++)
-                    DrawTile(spriteBatch, x, y, isBackground);
+                    if (IsSeen(new Point(x, y), position))
+                        DrawTile(spriteBatch, x, y, isBackground);
+        }
+
+        public bool IsSeen(Point p, Vector2 position)
+        {
+            // Pour savoir si la tile est dans le champ de vision du personnage
+            if (p.X < MainGame.ScreenX / 32 + position.X / 32 && p.Y < MainGame.ScreenY / 32 + position.Y / 32)
+                return true;
+            return false;
         }
 
         private void DrawTile(UberSpriteBatch spriteBatch, int x, int y, bool isBackground)

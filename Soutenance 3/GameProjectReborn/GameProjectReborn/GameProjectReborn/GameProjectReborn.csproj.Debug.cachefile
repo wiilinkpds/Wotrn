@@ -25,10 +25,14 @@ Content\UI\Cursor.xnb
 Content\SpellsIcon\Effect\Lightning02.xnb
 Content\UI\MovingCursor.xnb
 Content\UI\CursorTarget.xnb
+Content\UI\SlideBar.xnb
+Content\UI\SpellButton.xnb
 Content\UI\Level.xnb
 Content\Menu\Menu.xnb
 Content\Menu\Title.xnb
 Content\Menu\Zoom.xnb
+Content\Video\Introduction.xnb
+Content\Video\Introduction.wmv
 Content\Musique\GameProjectRebornSound.xgs
 Content\Musique\Wave Bank.xwb
 Content\Musique\Sound Bank.xsb

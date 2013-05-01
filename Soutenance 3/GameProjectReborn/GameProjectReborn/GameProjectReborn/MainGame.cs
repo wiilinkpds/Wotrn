@@ -1,18 +1,19 @@
 using GameProjectReborn.Managers;
+using GameProjectReborn.Resources;
 using GameProjectReborn.Screens;
 using GameProjectReborn.Utils;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using System.Globalization;
 
 namespace GameProjectReborn
 {
     public class MainGame : Game
     {
-        public const int ScreenX = 1680;
-        public const int ScreenY = 1050;
+        public static int ScreenX = 1680;
+        public static int ScreenY = 1050;
 
-        public static GraphicsDeviceManager graphics { get; set; }
-
-        public static float SongVolume;
+        public GraphicsDeviceManager graphics { get; set; }
 
         private UberSpriteBatch spriteBatch;
 
@@ -29,8 +30,9 @@ namespace GameProjectReborn
                 PreferredBackBufferHeight = ScreenY
             };
             Content.RootDirectory = "Content";
-            //graphics.IsFullScreen = true;
-            IsMouseVisible = true;
+            graphics.IsFullScreen = true;
+
+            Res.Culture = new CultureInfo("fr");
         }
 
         protected override void LoadContent()
@@ -42,7 +44,9 @@ namespace GameProjectReborn
             XactManager.Load();
             currentScreen = new StartMenu();
 
-            SongVolume = 0.5f;
+            XactManager.PlaySong("Menu01");
+            XactManager.Engine.GetCategory("Music").SetVolume(0.5f);
+            XactManager.Engine.GetCategory("SoundEffect").SetVolume(0.5f);
         }
 
         protected override void Update(GameTime gameTime)
@@ -59,6 +63,7 @@ namespace GameProjectReborn
             GraphicsDevice.Clear(Color.Black);
             currentScreen.Draw(gameTime, spriteBatch);
             CursorManager.Draw(spriteBatch);
+
             base.Draw(gameTime);
         }
 
@@ -70,6 +75,23 @@ namespace GameProjectReborn
         public static MainGame GetInstance() // Retourne la dernière instance mainGame créé, ici toujours la même
         {
             return instance;
+        }
+
+        public static void SetGraphics(int screenX, int screenY)
+        {
+            ScreenX = screenX;
+            ScreenY = screenY;
+            GetInstance().graphics.PreferredBackBufferWidth = screenX;
+            GetInstance().graphics.PreferredBackBufferHeight = screenY;
+            GetInstance().graphics.ApplyChanges();
+        }
+
+        public static void MainExit()
+        {
+            XactManager.Engine.GetCategory("Music").Stop(AudioStopOptions.Immediate);
+            XactManager.Engine.GetCategory("SoundEffect").Stop(AudioStopOptions.Immediate);
+            XactManager.Engine.Dispose();
+            GetInstance().Exit();
         }
     }
 }

@@ -12,6 +12,6 @@
         public int AmountKilled;
 
         public double LifeRegeneration;
-        public double PowerRegenaration;
+        public double PowerRegeneration;
     }
 }

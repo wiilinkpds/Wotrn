@@ -53,11 +53,12 @@ namespace GameProjectReborn.Screens
             IsPaused = false;
             timeSpawn = 1000;
 
-            Camera = new Cam(mapData.MapWidth * 32, mapData.MapHeight * 32, MainGame.graphics);
+            Camera = new Cam(MainGame.GetInstance().graphics);
         }
 
         public override void Update(GameTime gameTime)
         {
+            
             if (!escapeMenu.IsOpened)
             {
                 Player.Update(gameTime);
@@ -96,7 +97,7 @@ namespace GameProjectReborn.Screens
 
             if (KeyboardManager.IsPressed(Keys.F1))
                 isShown = !isShown;
-            if (KeyboardManager.IsPressed(Keys.Escape))
+            if (KeyboardManager.IsPressed(KeyboardManager.BindedKeys[(int) KeyboardManager.KeysEnum.Escape]))
                 ToggleWindow(escapeMenu);
 
         }
@@ -104,14 +105,14 @@ namespace GameProjectReborn.Screens
         public override void Draw(GameTime gameTime, UberSpriteBatch spriteBatch)
         {
             spriteBatch.BeginCam(Camera);
-            MapFirst.Draw(spriteBatch, true);
+            MapFirst.Draw(spriteBatch, true, Player.CanMove ? Player.Position : Player.AstralPosition);
 
             foreach (Monster entity in Entities.OfType<Monster>())
                 entity.Draw(gameTime, spriteBatch);
 
             Player.Draw(gameTime, spriteBatch);
 
-            MapFirst.Draw(spriteBatch, false);
+            MapFirst.Draw(spriteBatch, false, Player.CanMove ? Player.Position : Player.AstralPosition);
 
             spriteBatch.End();
 
@@ -155,7 +156,7 @@ namespace GameProjectReborn.Screens
             {
                 timeSpent -= timeSpawn;
                 Monster monster = RandomManager.Next(0, 1) == 0 ? new Monster(this, TexturesManager.Rack, 1,4) : new Monster(this, TexturesManager.RackNinja, 3,4);
-                monster.InitialPos = new Vector2(MapFirst.Data.MapWidth * 32 - 150, 500);
+                monster.InitialPos = new Vector2(2000, 1000);
                 monster.Position = monster.InitialPos;
                 Entities.Add(monster);
             }

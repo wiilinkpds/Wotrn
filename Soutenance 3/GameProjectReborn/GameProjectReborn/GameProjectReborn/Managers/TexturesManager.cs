@@ -19,8 +19,10 @@ namespace GameProjectReborn.Managers
 
 
         public static Texture2D MovingCursor { get; private set; }
+        public static Texture2D SlideBar { get; private set; }
         public static Texture2D AddButton { get; private set; }
         public static Texture2D InfoButton { get; private set; }
+        public static Texture2D SpellButton { get; private set; }
 
         // Souris
         public static Texture2D Cursor { get; private set; }
@@ -70,8 +72,10 @@ namespace GameProjectReborn.Managers
             Window = content.Load<Texture2D>("UI/Window");
 
             MovingCursor = content.Load<Texture2D>("UI/MovingCursor");
+            SlideBar = content.Load<Texture2D>("UI/SlideBar");
             AddButton = content.Load<Texture2D>("UI/AddButton");
             InfoButton = content.Load<Texture2D>("UI/InfoButton");
+            SpellButton = content.Load<Texture2D>("UI/SpellButton");
 
             Cursor = content.Load<Texture2D>("UI/Cursor");
             CursorTarget = content.Load<Texture2D>("UI/CursorTarget");

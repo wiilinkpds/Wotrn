@@ -52,7 +52,8 @@ namespace GameProjectReborn.Utils
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
-        public void DrawUI(Texture2D texture, Vector2 position) // Draw des elements immobiles a l'ecran
+        // Draw des elements immobiles a l'ecran
+        public void DrawUI(Texture2D texture, Vector2 position)
         {
             DrawUI(texture, position, Color.White);
         }
@@ -62,7 +63,8 @@ namespace GameProjectReborn.Utils
             spriteBatch.Draw(texture, rectangle, Color.White);
         }
 
-        public void DrawUI(Texture2D texture, Vector2 position, Color color) // Draw des elements immobiles a l'ecran avec une couleur differente de white
+        // Draw des elements immobiles a l'ecran avec une couleur differente de white
+        public void DrawUI(Texture2D texture, Vector2 position, Color color)
         {
             spriteBatch.Draw(texture, new Vector2((int)position.X, (int)position.Y), color);
         }
@@ -71,7 +73,8 @@ namespace GameProjectReborn.Utils
             spriteBatch.Draw(texture, rectangle, color);
         }
 
-        public void DrawUI(SpriteFont spriteFont, string str, Vector2 position, Color color) // Draw des spriteBatchs
+        // Draw des spriteFonts
+        public void DrawUI(SpriteFont spriteFont, string str, Vector2 position, Color color)
         {
             spriteBatch.DrawString(spriteFont, str, new Vector2((int)position.X, (int)position.Y), color);
         }

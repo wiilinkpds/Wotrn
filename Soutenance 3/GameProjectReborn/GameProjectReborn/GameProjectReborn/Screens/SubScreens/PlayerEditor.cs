@@ -1,8 +1,8 @@
 ﻿using GameProjectReborn.Managers;
 using GameProjectReborn.UI;
 using GameProjectReborn.Utils;
-using GameProjectReborn.Windows;
 using GameProjectReborn.Windows.SubWindows;
+using GameProjectReborn.Resources;
 using Microsoft.Xna.Framework;
 
 namespace GameProjectReborn.Screens.SubScreens
@@ -16,7 +16,7 @@ namespace GameProjectReborn.Screens.SubScreens
 
         public PlayerEditor()
         {
-            goButton = new Button(new Vector2(MainGame.ScreenX / 2, MainGame.ScreenY - 50) - TexturesManager.Level.MeasureString("Se réveiller !"), "Se réveiller !");
+            goButton = new Button(new Vector2(MainGame.ScreenX / 2, MainGame.ScreenY / 2) - TexturesManager.Level.MeasureString(Res.PlayerEditorWake), Res.PlayerEditorWake);
             addButton = new Button(new Vector2(0, 0), TexturesManager.AddButton);
 
             intro = new DialogWindow(this, new Vector2(MainGame.ScreenX / 2 - TexturesManager.WinDial.Width / 2, 100), TexturesManager.WinDial);

@@ -1,0 +1,13 @@
+C:\Users\Nicolas\Desktop\MapEditorReborn\MapEditorReborn\bin\Debug\MapEditorReborn.exe
+C:\Users\Nicolas\Desktop\MapEditorReborn\MapEditorReborn\bin\Debug\MapEditorReborn.pdb
+C:\Users\Nicolas\Desktop\MapEditorReborn\MapEditorReborn\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Nicolas\Desktop\MapEditorReborn\MapEditorReborn\obj\x86\Debug\MapEditorReborn.Accessfrm.resources
+C:\Users\Nicolas\Desktop\MapEditorReborn\MapEditorReborn\obj\x86\Debug\MapEditorReborn.Mainfrm.resources
+C:\Users\Nicolas\Desktop\MapEditorReborn\MapEditorReborn\obj\x86\Debug\MapEditorReborn.Modfrm.resources
+C:\Users\Nicolas\Desktop\MapEditorReborn\MapEditorReborn\obj\x86\Debug\MapEditorReborn.Properties.Resources.resources
+C:\Users\Nicolas\Desktop\MapEditorReborn\MapEditorReborn\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Nicolas\Desktop\MapEditorReborn\MapEditorReborn\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Nicolas\Desktop\MapEditorReborn\MapEditorReborn\obj\x86\Debug\MapEditorReborn.exe
+C:\Users\Nicolas\Desktop\MapEditorReborn\MapEditorReborn\obj\x86\Debug\MapEditorReborn.pdb
+C:\Users\Nicolas\Desktop\Projets\MapEditorReborn\MapEditorReborn\obj\x86\Debug\MapEditorReborn.exe
+C:\Users\Nicolas\Desktop\Projets\MapEditorReborn\MapEditorReborn\obj\x86\Debug\MapEditorReborn.pdb

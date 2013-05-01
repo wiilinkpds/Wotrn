@@ -1,5 +1,6 @@
 ﻿using GameProjectReborn.UI;
 using GameProjectReborn.Utils;
+using GameProjectReborn.Resources;
 using Microsoft.Xna.Framework;
 
 namespace GameProjectReborn.Screens.SubScreens
@@ -11,8 +12,11 @@ namespace GameProjectReborn.Screens.SubScreens
 
         public GameOverScreen()
         {
-            loadButton = new Button(new Vector2(MainGame.ScreenX / 1.5f, MainGame.ScreenY / 1.5f), "Recharger la dernière sauvegarde");
-            mainButton = new Button(new Vector2(MainGame.ScreenX / 4f, MainGame.ScreenY / 1.5f), "Fuir au Menu Principal");
+            string load = Res.LoadLastSave;
+            string main = Res.ReturnMainMenu;
+
+            loadButton = new Button(new Vector2(100, MainGame.ScreenY / 4f), load);
+            mainButton = new Button(new Vector2(100, MainGame.ScreenY / 2f), main);
 
             loadButton.MouseClick += OnLoadButtonMouseClick;
             mainButton.MouseClick += OnMainButtonMouseClick;

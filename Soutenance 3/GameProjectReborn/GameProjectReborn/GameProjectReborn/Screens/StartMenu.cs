@@ -1,4 +1,5 @@
 ﻿using GameProjectReborn.Managers;
+using GameProjectReborn.Resources;
 using GameProjectReborn.Screens.SubScreens;
 using GameProjectReborn.UI;
 using GameProjectReborn.Utils;
@@ -16,19 +17,17 @@ namespace GameProjectReborn.Screens
 
         public StartMenu()
         {
-            startButton = new Button(new Vector2(100, MainGame.ScreenY / 4), "Lancer une nouvelle partie");
-            multiplayerButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 1 * MainGame.ScreenY / 10), "Multijoueur");
-            optionButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 2 *MainGame.ScreenY / 10), "Options");
-            storyButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 3 * MainGame.ScreenY / 10), "Histoire");
-            exitButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 4 * MainGame.ScreenY / 10), "Quitter le jeu");
+            startButton = new Button(new Vector2(100, MainGame.ScreenY / 4), Res.Create);
+            multiplayerButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 1 * MainGame.ScreenY / 10), Res.Multi);
+            optionButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 2 * MainGame.ScreenY / 10), Res.Options);
+            storyButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 3 * MainGame.ScreenY / 10), Res.History);
+            exitButton = new Button(new Vector2(100, MainGame.ScreenY / 4 + 4 * MainGame.ScreenY / 10), Res.LeaveGame);
 
             startButton.MouseClick += OnStartButtonMouseClick;
             multiplayerButton.MouseClick += OnMultiplayerButtonMouseClick;
             optionButton.MouseClick += OnOptionButtonMouseClick;
             storyButton.MouseClick += OnStoryButtonMouseClick;
             exitButton.MouseClick += OnExitButtonMouseClick;
-
-            XactManager.PlaySong("Menu01");
         }
 
         public override void Update(GameTime gameTime)
@@ -56,7 +55,7 @@ namespace GameProjectReborn.Screens
 
         private void OnStartButtonMouseClick(object sender, MouseClickEventArgs e) // object sender renvoie le type du parametre, ici un Button
         {
-            MainGame.GetInstance().SetScreen(new PlayerEditor());
+            MainGame.GetInstance().SetScreen(new IntroScreen());
         }
 
         private void OnMultiplayerButtonMouseClick(object sender, MouseClickEventArgs e)
@@ -76,7 +75,7 @@ namespace GameProjectReborn.Screens
 
         private void OnExitButtonMouseClick(object sender, MouseClickEventArgs e)
         {
-            MainGame.GetInstance().Exit();
+            MainGame.MainExit();
         }
     }
 }

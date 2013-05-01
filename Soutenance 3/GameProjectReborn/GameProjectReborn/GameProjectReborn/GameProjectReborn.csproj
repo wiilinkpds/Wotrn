@@ -116,16 +116,24 @@
     <Compile Include="Managers\CursorManager.cs" />
     <Compile Include="Managers\XactManager.cs" />
     <Compile Include="Maps\Path\NodePos.cs" />
+    <Compile Include="Resources\Res.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Res.resx</DependentUpon>
+    </Compile>
     <Compile Include="Screens\SubScreens\GameOverScreen.cs" />
+    <Compile Include="Screens\SubScreens\IntroScreen.cs" />
     <Compile Include="Screens\SubScreens\PlayerEditor.cs" />
     <Compile Include="Screens\SubScreens\StoryMenu.cs" />
     <Compile Include="Windows\SubWindows\DialogWindow.cs" />
     <Compile Include="Windows\EscapeMenu.cs" />
     <Compile Include="Windows\Panel.cs" />
-    <Compile Include="Windows\SubWindows\ShowInfo.cs" />
+    <Compile Include="Windows\SubWindows\InfoPlayer.cs" />
+    <Compile Include="Windows\SubWindows\KeyBinding.cs" />
     <Compile Include="Windows\SubWindows\SoundProperties.cs" />
+    <Compile Include="Windows\SubWindows\SpellList.cs" />
     <Compile Include="Windows\Window.cs" />
-    <Compile Include="Spells\Basic.cs" />
+    <Compile Include="Spells\SpellList\Basic.cs" />
     <Compile Include="Entities\WorldEffect.cs" />
     <Compile Include="Screens\SubScreens\OptionMenu.cs" />
     <Compile Include="Maps\Path\Pathfinding.cs" />
@@ -144,12 +152,12 @@
     <Compile Include="Screens\GameScreen.cs" />
     <Compile Include="Screens\StartMenu.cs" />
     <Compile Include="Screens\Screen.cs" />
-    <Compile Include="Spells\AstralMove.cs" />
-    <Compile Include="Spells\MegaBlast.cs" />
-    <Compile Include="Spells\SpeedUp.cs" />
+    <Compile Include="Spells\SpellList\AstralMove.cs" />
+    <Compile Include="Spells\SpellList\MegaBlast.cs" />
+    <Compile Include="Spells\SpellList\SpeedUp.cs" />
     <Compile Include="Spells\Spell.cs" />
     <Compile Include="Spells\SpellType.cs" />
-    <Compile Include="Spells\UberBlast.cs" />
+    <Compile Include="Spells\SpellList\UberBlast.cs" />
     <Compile Include="UI\Button.cs" />
     <Compile Include="UI\Control.cs" />
     <Compile Include="UI\MouseClickEventArgs.cs" />
@@ -192,7 +200,13 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Res.fr.resx" />
+    <EmbeddedResource Include="Resources\Res.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Res.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

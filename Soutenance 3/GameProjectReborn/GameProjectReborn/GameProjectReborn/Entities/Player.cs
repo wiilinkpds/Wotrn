@@ -4,6 +4,7 @@ using System.Linq;
 using GameProjectReborn.Managers;
 using GameProjectReborn.Screens;
 using GameProjectReborn.Spells;
+using GameProjectReborn.Spells.SpellList;
 using GameProjectReborn.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -31,14 +32,14 @@ namespace GameProjectReborn.Entities
         private int experience;
 
         private Rectangle[] spellsRect;
-        private readonly IList<Spell> spells;
+        public IList<Spell> spells { get; set; }
         private int targetIndex;
 
         public Player(GameScreen game, Texture2D texture)
             : base(game)
         {
             Stats = new PlayerStats();
-            Position = new Vector2(64, 64);
+            Position = new Vector2(19*32, 18*32);
             InitTexture(texture, 3, 4);
 
             Speed = 3.0f;
@@ -51,7 +52,7 @@ namespace GameProjectReborn.Entities
             Stats.Dexterity = 10;
             Stats.Intelligence = 10;
             Stats.LifeRegeneration = 1.0;
-            Stats.PowerRegenaration = 1.0;
+            Stats.PowerRegeneration = 1.0;
             Stats.AmountKilled = 0;
 
             ExperienceNeeded = 100;
@@ -90,13 +91,10 @@ namespace GameProjectReborn.Entities
 
             coord = new Vector2((int)Math.Ceiling(Position.X * 32 / 1000) - 1, (int)Math.Ceiling(Position.Y * 32 / 1000) - 1);
 
-            Keys[] keys = new[] {Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5 };
-
             // Pour le lancement de spells
             for (int i = 0; i < spells.Count; i++)
             {
-                if (keys.Length < i) break;
-                if (!KeyboardManager.IsPressed(keys[i]) && !(MouseManager.IsInRectangle(spellsRect[i]) && MouseManager.IsLeftClicked())) continue;
+                if (!KeyboardManager.IsPressed(KeyboardManager.BindedKeys[(int) KeyboardManager.KeysEnum.Spell1 + i]) && !(MouseManager.IsInRectangle(spellsRect[i]) && MouseManager.IsLeftClicked())) continue;
 
                 if (spells[i].Type == SpellType.Buff)
                 {
@@ -110,12 +108,12 @@ namespace GameProjectReborn.Entities
             }
 
             // Change de cible
-            if (KeyboardManager.IsPressed(Keys.Tab) || MouseManager.IsLeftClicked())
+            if (KeyboardManager.IsPressed(KeyboardManager.BindedKeys[(int)KeyboardManager.KeysEnum.Target]) || MouseManager.IsLeftClicked())
             {
                 if (Target != null)
                     Target.Targeter = null;
 
-                if (KeyboardManager.IsPressed(Keys.Tab))
+                if (KeyboardManager.IsPressed(KeyboardManager.BindedKeys[(int)KeyboardManager.KeysEnum.Target]))
                 {
                     IList<Monster> monsters = Game.Entities.OfType<Monster>().ToList();
                     ++targetIndex;
@@ -137,7 +135,7 @@ namespace GameProjectReborn.Entities
             }
 
             // Deselectionne une cible
-            if (KeyboardManager.IsPressed(Keys.Escape))
+            if (KeyboardManager.IsPressed(KeyboardManager.BindedKeys[(int)KeyboardManager.KeysEnum.Escape]))
             {
                 if (Target != null)
                     Target.Targeter = null;
@@ -177,7 +175,7 @@ namespace GameProjectReborn.Entities
                 spriteBatch.DrawUI(TexturesManager.Life, pos + new Vector2(i, 0), Color.Gray);
             Rectangle bounds = new Rectangle((int)pos.X, (int)pos.Y, LifeBarSize, TexturesManager.Life.Height);
             if (MouseManager.IsInRectangle(bounds))
-                spriteBatch.DrawUI(TexturesManager.Level, "Vie : " + (int)Life, pos - new Vector2(0, TexturesManager.Level.MeasureString("Vie : " + Life).Y), Color.Red);
+                spriteBatch.DrawUI(TexturesManager.Level, Resources.Res.Life + " : " + (int)Life, pos - new Vector2(0, TexturesManager.Level.MeasureString(Resources.Res.Life + " : " + Life).Y), Color.Red);
 
             // Draw la barre de Power
             size = (int)Power * PowerBarSize / Stats.PowerMax;
@@ -188,7 +186,7 @@ namespace GameProjectReborn.Entities
                 spriteBatch.DrawUI(TexturesManager.Power, pos + new Vector2(i, 0), Color.Gray);
             bounds = new Rectangle((int)pos.X, (int)pos.Y, PowerBarSize, TexturesManager.Power.Height);
             if (MouseManager.IsInRectangle(bounds))
-                spriteBatch.DrawUI(TexturesManager.Level, "Power : " + (int)Power, pos - new Vector2(0, TexturesManager.Level.MeasureString("Power : " + Power).Y), Color.MediumPurple);
+                spriteBatch.DrawUI(TexturesManager.Level, Resources.Res.Power + " : " + (int)Power, pos - new Vector2(0, TexturesManager.Level.MeasureString(Resources.Res.Power + " : " + Power).Y), Color.MediumPurple);
 
 
             // Draw la barre d'Xp
@@ -203,11 +201,11 @@ namespace GameProjectReborn.Entities
             position += new Vector2(5, 5);
             Vector2 delta = new Vector2(TexturesManager.PowerBar.Width / 10.0f, 0);
 
-            // Fais clignoter les sorts actifs
             foreach (Spell spell in spells)
             {
                 if (!spell.IsActivated || gameTime.TotalGameTime.TotalMilliseconds % 1000 < 500) // Draw si non actif || Draw pendant 500 ms si actif sur 1000 ms
-                    spriteBatch.DrawUI(spell.Icon, position);
+                    spriteBatch.DrawUI(spell.Icon, position, spell.IsReady() ? Color.White : Color.Gray);
+
                 position += delta;
             }
         }
@@ -217,14 +215,14 @@ namespace GameProjectReborn.Entities
             float time = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 10.0f;
             Vector2 move = Vector2.Zero;
 
-            if (KeyboardManager.IsDown(Keys.Right))
-                move.X += 1;
-            else if (KeyboardManager.IsDown(Keys.Left))
-                move.X -= 1;
-            else if (KeyboardManager.IsDown(Keys.Down))
-                move.Y += 1;
-            else if (KeyboardManager.IsDown(Keys.Up))
+            if (KeyboardManager.IsDown(KeyboardManager.BindedKeys[(int)KeyboardManager.KeysEnum.Up]))
                 move.Y -= 1;
+            else if (KeyboardManager.IsDown(KeyboardManager.BindedKeys[(int)KeyboardManager.KeysEnum.Down]))
+                move.Y += 1;
+            else if (KeyboardManager.IsDown(KeyboardManager.BindedKeys[(int)KeyboardManager.KeysEnum.Left]))
+                move.X -= 1;
+            else if (KeyboardManager.IsDown(KeyboardManager.BindedKeys[(int)KeyboardManager.KeysEnum.Right]))
+                move.X += 1;
 
             if (move == Vector2.Zero)
             {
@@ -233,14 +231,14 @@ namespace GameProjectReborn.Entities
             }
 
             // Defini la Direction du Player
-            if ((int)move.Y == 1)
-                Direction = Direction.Down;
             if ((int)move.Y == -1)
                 Direction = Direction.Up;
-            if ((int)move.X == 1)
-                Direction = Direction.Right;
+            if ((int)move.Y == 1)
+                Direction = Direction.Down;
             if ((int)move.X == -1)
                 Direction = Direction.Left;
+            if ((int)move.X == 1)
+                Direction = Direction.Right;
 
             move.Normalize(); // Donne au vecteur la taille d'un pixel
 
@@ -258,10 +256,26 @@ namespace GameProjectReborn.Entities
             }
         }
 
+        private double powerDelta;
+        private double lifeDelta;
+
         public void Regeneration(GameTime gameTime)
         {
-            if (Math.Floor(Power + Stats.PowerRegenaration) <= Stats.PowerMax)
-                    Power += Stats.PowerRegenaration / 60;
+            if (Math.Floor(Power + Stats.PowerRegeneration) <= Stats.PowerMax)
+                powerDelta += Stats.PowerRegeneration * gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (Math.Floor(Life + Stats.LifeRegeneration) <= Stats.LifeMax)
+                lifeDelta += Stats.LifeRegeneration * gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            while (powerDelta > 1000.0)
+            {
+                Power++;
+                powerDelta -= 1000.0;
+            }
+            while (lifeDelta > 1000.0)
+            {
+                Life++;
+                lifeDelta -= 1000.0;
+            }
         }
     }
 }

@@ -24,7 +24,7 @@ namespace GameProjectReborn.UI
             if (MouseManager.IsInRectangle(Bounds) && MouseManager.IsLeftClicked())
                 OnMouseClick(new MouseClickEventArgs(0, MouseManager.Position));
             if (MouseManager.IsClicking() && MouseManager.Position.Y <= Bounds.Bottom && MouseManager.Position.Y >= Bounds.Y)
-                OnMouseClickingAxeX(new MouseClickEventArgs(0, MouseManager.Position));
+                OnSlideAxeX(new MouseClickEventArgs(0, MouseManager.Position));
         }
 
         public abstract void Draw(GameTime gameTime, UberSpriteBatch spriteBatch);
@@ -32,13 +32,15 @@ namespace GameProjectReborn.UI
         private void OnMouseClick(MouseClickEventArgs e)
         {
             MouseClickEventHandler handler = MouseClick;
-            if (handler != null) handler(this, e);
+            if (handler != null) 
+                handler(this, e);
         }
 
-        private void OnMouseClickingAxeX(MouseClickEventArgs e)
+        private void OnSlideAxeX(MouseClickEventArgs e)
         {
             MouseClickEventHandler handler = MouseClicking;
-            if (handler != null) handler(this, e);
+            if (handler != null) 
+                handler(this, e);
         }
     }
 }

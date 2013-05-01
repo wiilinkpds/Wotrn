@@ -20,14 +20,17 @@ namespace GameProjectReborn.Spells
         public Texture2D Icon { get; private set; }
         public SpellType Type { get; private set; }
         public bool IsActivated { get; private set; }
-        public int TimeUp { get; private set; }
-
+        public int CoolDown { get; private set; } // En millisecondes
+        
         private DateTime last;
         private readonly int powerCost;
+        private double coolDown;
 
-        protected Spell(Entity owner, Texture2D icon, SpellType type, int cost, int timeUp)
+        protected Spell(Entity owner, Texture2D icon, SpellType type, int cost) : this(owner, icon, type, cost, 0) {}
+
+        protected Spell(Entity owner, Texture2D icon, SpellType type, int cost, int coolDown)
         {
-            TimeUp = timeUp;
+            CoolDown = coolDown;
             Owner = owner;
             powerCost = cost;
             Icon = icon;
@@ -49,8 +52,18 @@ namespace GameProjectReborn.Spells
         {
             if (Owner.Power < powerCost)
                 return false;
+            if (coolDown > 0)
+                return false;
+
+            coolDown = CoolDown;
+
             Owner.Power -= powerCost;
             return true;
+        }
+
+        public bool IsReady()
+        {
+            return coolDown <= 0;
         }
 
         public virtual void Draw(UberSpriteBatch spriteBatch,GameTime gameTime)
@@ -60,6 +73,12 @@ namespace GameProjectReborn.Spells
 
         public virtual void Update(GameTime gameTime)
         {
+            if (Type == SpellType.Cast && coolDown > 0)
+            {
+                coolDown -= gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (coolDown < 0)
+                    coolDown = 0;
+            }
             if (IsActivated && Owner.Power < powerCost)
                 Unbuff();
             if (!IsActivated)
